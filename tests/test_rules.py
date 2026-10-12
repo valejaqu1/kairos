@@ -297,3 +297,16 @@ def test_update_lessons_edge_inputs():
     assert update_lessons(text, {"add": [], "remove": None}, date(2026, 10, 18)) == (text, [])
     assert update_lessons(text, {"add": ["  ", "b"], "remove": ["absent"]}, date(2026, 10, 18)) == (
         LESSONS_HEADER + "- a\n- b\n", [])
+
+
+def test_validate_decisions_rejects_non_object_elements():
+    assert validate_decisions(dec(forecasts=["oops"]), TODAY) == ["forecasts contient un élément invalide"]
+    assert validate_decisions(dec(bets=[{"event_id": "e1", "selection": "1"}, "e1"]), TODAY) == [
+        "bets contient un élément invalide"]
+    assert validate_decisions(dec(forecasts=[{"event_id": "e1", "p": [0.5, 0.3, 0.2], "sources": []}]), TODAY) == []
+
+
+def test_accept_forecasts_rejects_boolean_probabilities():
+    d = dec(forecasts=[{"event_id": "e1", "p": [True, False, False], "sources": []}])
+    acc, rej = accept_forecasts(d, EV, {}, {}, TODAY)
+    assert acc == [] and rej == [("e1", "probabilités invalides")]

@@ -17,8 +17,12 @@ def validate_decisions(dec: dict, today: date) -> list[str]:
         errors.append("date incorrecte")
     if not isinstance(dec.get("forecasts"), list):
         errors.append("forecasts doit être une liste")
+    elif not all(isinstance(f, dict) for f in dec["forecasts"]):
+        errors.append("forecasts contient un élément invalide")
     if not isinstance(dec.get("bets"), list):
         errors.append("bets doit être une liste")
+    elif not all(isinstance(b, dict) for b in dec["bets"]):
+        errors.append("bets contient un élément invalide")
     message = dec.get("message")
     if not isinstance(message, str) or not message.strip():
         errors.append("message manquant")
@@ -48,7 +52,7 @@ def accept_forecasts(dec: dict, events: dict, model: dict, sources: dict, today:
             rejected.append((eid, "match inconnu"))
             continue
         p = f.get("p")
-        if not (isinstance(p, list) and len(p) == 3 and all(isinstance(x, (int, float)) and 0 <= x <= 1 for x in p)):
+        if not (isinstance(p, list) and len(p) == 3 and all(isinstance(x, (int, float)) and not isinstance(x, bool) and 0 <= x <= 1 for x in p)):
             rejected.append((eid, "probabilités invalides"))
             continue
         total = sum(p)
