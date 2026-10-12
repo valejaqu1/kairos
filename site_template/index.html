@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kairos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root {
+  --void: #06070d; --panel: #0d1019; --panel-2: #131826; --line: #222a3d;
+  --ink: #e9edf7; --ink-2: #9aa4bd; --ink-3: #626c86;
+  --vital: #6fe6ff; --vital-deep: #1b6f86; --hunger: #ffb547; --win: #5fe3a1; --loss: #ff6b7d; --gold: #e8c46a;
+  --f-display: "Saira Condensed", "Arial Narrow", system-ui, sans-serif;
+  --f-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-data: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--void); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 16px; padding-block: 20px 48px; }
+.topbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: baseline; gap: 12px; }
+.brand h1 { font-family: var(--f-display); font-weight: 800; font-size: 34px; letter-spacing: .06em; margin: 0; text-transform: uppercase; }
+.brand .gen { font-family: var(--f-data); font-size: 12px; color: var(--ink-3); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-family: var(--f-data); font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-2); }
+.chip.live { color: var(--vital); border-color: var(--vital-deep); }
+.chip.live::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--vital); margin-right: 7px; vertical-align: 1px; animation: blink 2.4s ease-in-out infinite; }
+.chip.dead { color: var(--loss); border-color: #5a2430; }
+@keyframes blink { 50% { opacity: .25; } }
+.grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 20px; margin-top: 20px; }
+@media (max-width: 860px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.col { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px; min-width: 0; }
+.label { font-family: var(--f-display); font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 12px; }
+.entity { position: relative; padding: 0; overflow: hidden; }
+#orb { display: block; width: 100%; height: 340px; }
+.entity-overlay { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+.bank .v { font-family: var(--f-display); font-weight: 800; font-size: 56px; line-height: .95; font-variant-numeric: tabular-nums; }
+.bank .v small { font-size: 22px; color: var(--ink-2); font-weight: 700; margin-left: 6px; }
+.bank .d { font-family: var(--f-data); font-size: 13px; }
+.mood { text-align: right; font-family: var(--f-data); font-size: 12px; color: var(--ink-2); }
+.mood b { display: block; font-family: var(--f-display); font-size: 20px; letter-spacing: .08em; text-transform: uppercase; color: var(--vital); font-weight: 700; }
+.vitals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 480px) { .vitals { grid-template-columns: minmax(0, 1fr); } }
+.vital { background: var(--panel-2); border-radius: 12px; padding: 12px; }
+.vital .k { font-size: 12px; color: var(--ink-3); }
+.vital .n { font-family: var(--f-data); font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.bar { height: 6px; border-radius: 3px; background: var(--line); margin-top: 8px; overflow: hidden; }
+.bar i { display: block; height: 100%; border-radius: 3px; width: 0; }
+.quote { font-size: 16px; margin: 0; }
+.quote .meta { display: block; font-family: var(--f-data); font-size: 12px; color: var(--ink-3); margin-top: 10px; }
+.card { position: relative; border-radius: 20px; padding: 18px; background: var(--panel); border: 1px solid #5a4a22; overflow: hidden; }
+.card::after { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 80% at 100% 0%, rgba(232,196,106,.14), transparent 60%); pointer-events: none; }
+.card-head { display: flex; align-items: center; gap: 16px; }
+.rank { flex: none; width: 74px; height: 86px; clip-path: polygon(50% 0, 100% 22%, 100% 78%, 50% 100%, 0 78%, 0 22%); background: linear-gradient(160deg, #f3dc9a, #a9842f); display: grid; place-items: center; color: #2a1f05; font-family: var(--f-display); font-weight: 800; text-align: center; }
+.rank span { font-size: 30px; line-height: 1; display: block; }
+.rank em { font-style: normal; font-size: 11px; letter-spacing: .12em; display: block; }
+.card-title { min-width: 0; }
+.card-title h2 { font-family: var(--f-display); font-weight: 800; font-size: 28px; margin: 0; letter-spacing: .04em; text-transform: uppercase; text-wrap: balance; }
+.card-title p { margin: 2px 0 0; color: var(--ink-2); font-size: 13px; }
+.xp { margin-top: 14px; }
+.xp .row { display: flex; justify-content: space-between; font-family: var(--f-data); font-size: 12px; color: var(--ink-2); }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+@media (max-width: 480px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.stat { text-align: center; padding: 10px 4px; border-radius: 12px; background: rgba(255,255,255,.03); }
+.stat .n { font-family: var(--f-display); font-weight: 800; font-size: 28px; line-height: 1; font-variant-numeric: tabular-nums; }
+.stat .k { font-size: 11px; color: var(--ink-3); margin-top: 4px; }
+.bets { display: flex; flex-direction: column; gap: 10px; }
+.bet { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; padding: 12px 14px; border-radius: 14px; background: var(--panel-2); border: 1px solid var(--line); }
+.bet .league { font-family: var(--f-data); font-size: 11px; color: var(--ink-3); }
+.bet .match { font-family: var(--f-display); font-weight: 700; font-size: 20px; }
+.bet .pick { font-size: 13px; color: var(--ink-2); grid-column: 1 / -1; }
+.bet .pick b { color: var(--ink); font-weight: 600; }
+.bet .res { text-align: right; align-self: start; font-family: var(--f-data); font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.bet .res small { display: block; font-size: 11px; font-weight: 400; color: var(--ink-3); }
+.bet.won { border-color: rgba(95,227,161,.35); } .bet.won .res { color: var(--win); }
+.bet.lost .res { color: var(--loss); } .bet.open .res { color: var(--vital); } .bet.void .res { color: var(--ink-2); }
+.clv { font-family: var(--f-data); font-size: 11px; padding: 2px 7px; border-radius: 6px; margin-left: 6px; }
+.clv.up { color: var(--win); background: rgba(95,227,161,.1); } .clv.down { color: var(--loss); background: rgba(255,107,125,.1); }
+.spark { width: 100%; height: 120px; display: block; }
+.learn { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+@media (max-width: 560px) { .learn { grid-template-columns: minmax(0, 1fr); } }
+.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.list li { font-size: 13px; color: var(--ink-2); padding: 9px 11px; border-radius: 10px; background: var(--panel-2); }
+.list li .tag { float: right; font-family: var(--f-data); font-size: 11px; margin-left: 8px; }
+.tag.kept { color: var(--win); } .tag.test { color: var(--hunger); } .tag.dropped { color: var(--loss); }
+.empty { font-size: 13px; color: var(--ink-3); }
+.trophies { display: flex; flex-wrap: wrap; gap: 10px; }
+.trophy { display: flex; align-items: center; gap: 10px; padding: 8px 12px 8px 8px; border-radius: 12px; background: var(--panel-2); border: 1px solid var(--line); font-size: 13px; }
+.trophy i { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; font-style: normal; font-family: var(--f-display); font-weight: 800; color: #2a1f05; background: linear-gradient(160deg, #f3dc9a, #a9842f); }
+.trophy.locked { opacity: .45; } .trophy.locked i { background: var(--line); color: var(--ink-3); }
+.note { margin-top: 24px; font-family: var(--f-data); font-size: 12px; color: var(--ink-3); text-align: center; }
+@media (prefers-reduced-motion: reduce) { .chip.live::before { animation: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="topbar">
+    <div class="brand"><h1 id="name">Kairos</h1><span class="gen" id="gen"></span></div>
+    <div class="chips" id="chips"></div>
+  </header>
+  <div class="grid">
+    <div class="col">
+      <section class="panel entity" aria-label="État de Kairos">
+        <canvas id="orb" aria-hidden="true"></canvas>
+        <div class="entity-overlay">
+          <div class="bank"><div class="v"><span id="bank"></span><small>CHF</small></div><div class="d" id="delta"></div></div>
+          <div class="mood"><b id="mood"></b><span id="woke"></span></div>
+        </div>
+      </section>
+      <section class="vitals" aria-label="Signes vitaux">
+        <div class="vital"><div class="k">Faim payée</div><div class="n" id="hunger"></div><div class="bar"><i id="hunger-bar" style="background:var(--hunger)"></i></div></div>
+        <div class="vital"><div class="k">Cote battue (CLV)</div><div class="n" id="clv"></div><div class="bar"><i id="clv-bar" style="background:var(--vital)"></i></div></div>
+        <div class="vital"><div class="k">Série en cours</div><div class="n" id="streak"></div><div class="bar"><i id="streak-bar" style="background:var(--win)"></i></div></div>
+      </section>
+      <section class="panel">
+        <p class="label">Message du jour</p>
+        <p class="quote"><span id="msg"></span><span class="meta" id="msg-meta"></span></p>
+      </section>
+      <section class="panel">
+        <p class="label" id="curve-label">Cagnotte</p>
+        <svg class="spark" id="spark" viewBox="0 0 600 120" preserveAspectRatio="none" role="img" aria-label="Évolution de la cagnotte"></svg>
+      </section>
+    </div>
+    <div class="col">
+      <section class="card" aria-label="Fiche de joueur">
+        <div class="card-head">
+          <div class="rank"><div><span id="rank-div"></span><em id="rank-tier"></em></div></div>
+          <div class="card-title"><h2 id="rank-title"></h2><p id="rank-sub"></p></div>
+        </div>
+        <div class="xp">
+          <div class="row"><span id="rank-next"></span><span id="rank-pct"></span></div>
+          <div class="bar"><i id="rank-bar" style="background:linear-gradient(90deg,#a9842f,#f3dc9a)"></i></div>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="n" id="s-bets"></div><div class="k">paris</div></div>
+          <div class="stat"><div class="n" id="s-won"></div><div class="k">gagnés</div></div>
+          <div class="stat"><div class="n" id="s-roi"></div><div class="k">rendement</div></div>
+          <div class="stat"><div class="n" id="s-clv"></div><div class="k">CLV moyen</div></div>
+        </div>
+      </section>
+      <section class="panel"><p class="label">Paris</p><div class="bets" id="bets"></div></section>
+      <section class="panel">
+        <p class="label">Ce qu'il a appris</p>
+        <div class="learn"><ul class="list" id="lessons" aria-label="Leçons"></ul><ul class="list" id="sources" aria-label="Sources"></ul></div>
+      </section>
+      <section class="panel"><p class="label">Trophées</p><div class="trophies" id="trophies"></div></section>
+    </div>
+  </div>
+  <p class="note" id="updated"></p>
+</div>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function chf(c) { var s = (Math.abs(c) / 100).toFixed(2).replace('.', ','); return (c < 0 ? '−' : '') + s; }
+  function pct(x) { return (x >= 0 ? '+' : '−') + Math.abs(x * 100).toFixed(1).replace('.', ',') + ' %'; }
+  function when(iso) { return new Date(iso).toLocaleString('fr-CH', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Zurich' }); }
+  var SEL = { '1': function (b) { return b.home + ' gagne'; }, 'X': function () { return 'match nul'; }, '2': function (b) { return b.away + ' gagne'; } };
+  var STATUS = { kept: 'gardée', test: 'en test', dropped: 'jetée' };
+
+  function render(d) {
+    $('name').textContent = d.name;
+    $('gen').textContent = 'génération ' + d.generation;
+    var chips = $('chips');
+    if (d.alive) {
+      chips.appendChild(el('span', 'chip live', 'vivant · jour ' + d.day));
+      chips.appendChild(el('span', 'chip', d.diploma ? 'diplôme ' + d.diploma : 'diplôme dans ' + d.diploma_in + ' jours'));
+    } else {
+      chips.appendChild(el('span', 'chip dead', 'mort le ' + d.death_date));
+    }
+    chips.appendChild(el('span', 'chip', 'mode simulation'));
+    $('bank').textContent = chf(d.equity_cents);
+    $('delta').textContent = (d.delta_cents >= 0 ? '+' : '') + chf(d.delta_cents) + ' depuis le départ';
+    $('delta').style.color = d.delta_cents >= 0 ? 'var(--win)' : 'var(--loss)';
+    $('mood').textContent = d.mood;
+    $('woke').textContent = 'mis à jour ' + when(d.last_run);
+    $('hunger').textContent = chf(d.hunger_total_cents) + ' CHF';
+    $('hunger-bar').style.width = Math.min(100, d.hunger_total_cents / 14) + '%';
+    $('clv').textContent = d.clv.beats + ' / ' + d.clv.total;
+    $('clv-bar').style.width = (d.clv.total ? 100 * d.clv.beats / d.clv.total : 0) + '%';
+    $('streak').textContent = d.streak + (d.streak > 1 ? ' gagnés' : ' gagné');
+    $('streak-bar').style.width = Math.min(100, d.streak * 20) + '%';
+    $('msg').textContent = d.message || "Kairos ne s'est pas encore exprimé.";
+    $('msg-meta').textContent = d.message_date ? d.name + ' · ' + d.message_date : '';
+    var r = d.rank;
+    $('rank-div').textContent = r.division || '★';
+    $('rank-tier').textContent = r.tier.toUpperCase();
+    $('rank-title').textContent = 'Analyste ' + r.tier.toLowerCase() + (r.division ? ' ' + r.division : '');
+    $('rank-sub').textContent = 'Score ' + Math.round(r.score * 100) + ' sur 100 · prévisions et cotes battues';
+    $('rank-next').textContent = r.next ? 'vers ' + r.next : 'rang maximal';
+    $('rank-pct').textContent = Math.round(r.progress * 100) + ' %';
+    $('rank-bar').style.width = Math.round(r.progress * 100) + '%';
+    $('s-bets').textContent = d.stats.bets;
+    $('s-won').textContent = d.stats.won;
+    $('s-roi').textContent = pct(d.stats.roi);
+    $('s-clv').textContent = pct(d.stats.clv_avg);
+    renderBets(d.bets);
+    renderList($('lessons'), d.lessons.map(function (l) { return [l, null, null]; }), 'Pas encore de leçon : il faut des résultats.');
+    renderList($('sources'), d.sources.map(function (s) { return [s.description || s.id, STATUS[s.status] || s.status, s.status]; }), 'Aucune source pour l’instant.');
+    var tr = $('trophies');
+    d.trophies.forEach(function (t, i) {
+      var box = el('div', 'trophy' + (t.date ? '' : ' locked'));
+      box.appendChild(el('i', null, String(i + 1)));
+      box.appendChild(document.createTextNode(t.label));
+      tr.appendChild(box);
+    });
+    $('updated').textContent = 'Simulation en argent fictif · mise à jour ' + when(d.updated_at);
+    drawSpark(d.history);
+    startOrb(d.alive ? d.health : 0, d.alive);
+  }
+
+  function renderBets(bets) {
+    var box = $('bets');
+    if (!bets.length) { box.appendChild(el('p', 'empty', 'Aucun pari pour le moment.')); return; }
+    bets.forEach(function (b) {
+      var card = el('article', 'bet ' + b.status);
+      var left = el('div');
+      left.appendChild(el('div', 'league', b.league.toUpperCase() + ' · ' + when(b.kickoff)));
+      left.appendChild(el('div', 'match', b.home + ' – ' + b.away));
+      card.appendChild(left);
+      var res = el('div', 'res');
+      var label = { open: 'en cours', won: 'gagné', lost: 'perdu', void: 'remboursé' }[b.status];
+      var amount = b.status === 'open' ? chf(b.stake_cents) : b.status === 'won' ? '+' + chf(b.payout_cents - b.stake_cents) : b.status === 'lost' ? '−' + chf(b.stake_cents) : chf(0);
+      res.appendChild(document.createTextNode(amount));
+      res.appendChild(el('small', null, label));
+      card.appendChild(res);
+      var pick = el('div', 'pick');
+      pick.appendChild(document.createTextNode('Pari '));
+      pick.appendChild(el('b', null, SEL[b.selection](b)));
+      pick.appendChild(document.createTextNode(' à '));
+      pick.appendChild(el('b', null, b.odds_sim.toFixed(2).replace('.', ',')));
+      if (b.closing_odds) {
+        var up = b.odds_median > b.closing_odds;
+        pick.appendChild(el('span', 'clv ' + (up ? 'up' : 'down'), 'cote fermée ' + b.closing_odds.toFixed(2).replace('.', ',')));
+      } else if (b.status === 'open') {
+        pick.appendChild(document.createTextNode(' · sa proba ' + Math.round(b.p_kairos * 100) + ' % contre ' + Math.round(b.p_market * 100) + ' % pour le marché'));
+      }
+      card.appendChild(pick);
+      box.appendChild(card);
+    });
+  }
+
+  function renderList(ul, rows, emptyText) {
+    if (!rows.length) { ul.appendChild(el('li', null, emptyText)); return; }
+    rows.forEach(function (row) {
+      var li = el('li');
+      li.appendChild(document.createTextNode(row[0]));
+      if (row[1]) li.appendChild(el('span', 'tag ' + row[2], row[1]));
+      ul.appendChild(li);
+    });
+  }
+
+  function drawSpark(history) {
+    var svg = $('spark'), ns = 'http://www.w3.org/2000/svg';
+    $('curve-label').textContent = 'Cagnotte sur ' + history.length + ' jour' + (history.length > 1 ? 's' : '');
+    if (history.length < 2) return;
+    var vals = history.map(function (h) { return h.equity_cents / 100; });
+    var lo = Math.min.apply(null, vals.concat([100])) - 2, hi = Math.max.apply(null, vals.concat([100])) + 2, w = 600, h = 120, pad = 8;
+    function x(i) { return pad + i * (w - 2 * pad) / (vals.length - 1); }
+    function y(v) { return h - pad - (v - lo) * (h - 2 * pad) / (hi - lo); }
+    var d = vals.map(function (v, i) { return (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(v).toFixed(1); }).join(' ');
+    function add(tag, attrs) { var e = document.createElementNS(ns, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+    add('line', { x1: 0, x2: 600, y1: y(100).toFixed(1), y2: y(100).toFixed(1), stroke: '#626c86', 'stroke-dasharray': '4 6', 'vector-effect': 'non-scaling-stroke' });
+    add('path', { d: d + ' L' + x(vals.length - 1).toFixed(1) + ' ' + (h - pad) + ' L' + pad + ' ' + (h - pad) + ' Z', fill: 'rgba(111,230,255,.12)' });
+    add('path', { d: d, fill: 'none', stroke: '#6fe6ff', 'stroke-width': 2, 'vector-effect': 'non-scaling-stroke' });
+    add('circle', { cx: x(vals.length - 1).toFixed(1), cy: y(vals[vals.length - 1]).toFixed(1), r: 4, fill: '#6fe6ff' });
+  }
+
+  function startOrb(health, alive) {
+    var c = $('orb'), ctx = c.getContext('2d');
+    var reduce = !alive || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var dpr = Math.min(window.devicePixelRatio || 1, 2), W, H;
+    function size() { var r = c.getBoundingClientRect(); W = r.width; H = r.height; c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+    var motes = [];
+    for (var i = 0; i < 70; i++) motes.push({ a: Math.random() * 6.283, r: 70 + Math.random() * 90, s: 0.15 + Math.random() * 0.5, z: Math.random() });
+    function mix(a, b, t) { return Math.round(a + (b - a) * t); }
+    var col = alive ? [mix(255, 111, health), mix(181, 230, health), mix(71, 255, health)] : [98, 108, 134];
+    function frame(ms) {
+      var t = ms / 1000, cx = W / 2, cy = H * 0.42;
+      var beat = alive ? 1 + 0.06 * Math.sin(t * (1.4 + (1 - health) * 2)) : 1;
+      var R = Math.min(W, H) * 0.24 * beat;
+      ctx.clearRect(0, 0, W, H);
+      var halo = ctx.createRadialGradient(cx, cy, R * 0.2, cx, cy, R * 3.2);
+      halo.addColorStop(0, 'rgba(' + col + ',' + (alive ? 0.22 : 0.08) + ')');
+      halo.addColorStop(1, 'rgba(' + col + ',0)');
+      ctx.fillStyle = halo; ctx.fillRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'lighter';
+      for (var k = 0; k < 4; k++) {
+        var ox = Math.cos(t * (0.5 + k * 0.17) + k * 1.7) * R * 0.28, oy = Math.sin(t * (0.6 + k * 0.13) + k * 2.1) * R * 0.22;
+        var g = ctx.createRadialGradient(cx + ox, cy + oy, 0, cx + ox, cy + oy, R * (0.9 + k * 0.12));
+        g.addColorStop(0, 'rgba(255,255,255,' + (alive ? (k === 0 ? 0.55 : 0.12) : 0.06) + ')');
+        g.addColorStop(0.35, 'rgba(' + col + ',' + (alive ? 0.35 : 0.12) + ')');
+        g.addColorStop(1, 'rgba(' + col + ',0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx + ox, cy + oy, R * (0.9 + k * 0.12), 0, 6.283); ctx.fill();
+      }
+      for (var m = 0; m < motes.length; m++) {
+        var p = motes[m], ang = p.a + t * p.s * 0.4, rr = p.r * (R / 80) * (0.9 + 0.1 * Math.sin(t + m));
+        ctx.fillStyle = 'rgba(' + col + ',' + (0.25 + 0.5 * p.z) * (alive ? 1 : 0.3) + ')';
+        ctx.beginPath(); ctx.arc(cx + Math.cos(ang) * rr, cy + Math.sin(ang) * rr * 0.55, 0.6 + p.z * 1.4, 0, 6.283); ctx.fill();
+      }
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.strokeStyle = 'rgba(' + col + ',0.35)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.ellipse(cx, cy, R * 1.9, R * 0.5, 0, 0, 6.283); ctx.stroke();
+      if (!reduce) requestAnimationFrame(frame);
+    }
+    size(); window.addEventListener('resize', function () { size(); if (reduce) frame(0); });
+    frame(performance.now());
+  }
+
+  fetch('data.json', { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(render)
+    .catch(function () { $('msg').textContent = 'Les données de Kairos sont momentanément indisponibles.'; });
+})();
+</script>
+</body>
+</html>
