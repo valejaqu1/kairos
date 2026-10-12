@@ -192,3 +192,10 @@ def test_data_json_contract_fully_populated():
     dead_data = build_site_data(dead, bets, forecasts, sources, lessons, date(2026, 10, 17), NOW)
     assert dead_data["alive"] is False and dead_data["death_date"] == "2026-10-20"
     assert dead_data["health"] == 0.0 and dead_data["mood"] == "Éteint"
+
+    diplomed = dict(s, diploma="obtenu")
+    diplomed_data = build_site_data(diplomed, bets, forecasts, sources, lessons, date(2026, 10, 17), NOW)
+    assert diplomed_data["diploma"] == "obtenu" and diplomed_data["mood"] == "Diplômé"
+    missed = dict(s, diploma="manqué")
+    missed_data = build_site_data(missed, bets, forecasts, sources, lessons, date(2026, 10, 17), NOW)
+    assert missed_data["diploma"] == "manqué" and missed_data["mood"] == "En chasse"

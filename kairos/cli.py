@@ -159,8 +159,9 @@ def cmd_apply(ctx: Context) -> None:
             messages.append("daily")
 
     update_sources(sources, forecasts)
-    update_trophies(state, bets, sources, ctx.today)
+    # Le diplôme se décide avant les trophées : le trophée « Diplômé » porte la date du jour 56, pas du lendemain.
     check_diploma(state, bets, forecasts, ctx.today)
+    update_trophies(state, bets, sources, ctx.today)
     check_death(state, bets, ctx.today)
     history = [h for h in state["history"] if h["date"] != today]
     state["history"] = history + [{"date": today, "equity_cents": equity_cents(state, bets)}]

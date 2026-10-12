@@ -521,3 +521,29 @@ def test_apply_persists_forecasts_new_source_and_lessons(tmp_root):
     assert store.load_sources()["compos"]["status"] == "test"
     assert store.read_text("memory/lessons.md", "").endswith("- Toujours lire les compos.\n")
     assert "nouvelle source en test : compos" in (tmp_root / "journal" / "2026-10-18.md").read_text(encoding="utf-8")
+
+
+# --- Revue finale : ordre du diplôme et des trophées ---
+
+
+def closed_bet(i, status="lost"):
+    bet = open_bet("2026-10-16T14:00:00Z", event_id=f"evt-closed-{i}")
+    bet.update(status=status, payout_cents=0, settled_date="2026-10-16", closing_odds=2.0)
+    return bet
+
+
+def scored_forecast(i):
+    return {"date": "2026-10-15", "event_id": f"evt-scored-{i}", "sport_key": "soccer_epl", "home": "A", "away": "B",
+            "commence_time": "2026-10-16T14:00:00Z", "p_kairos": [0.5, 0.3, 0.2], "p_market": [0.4, 0.3, 0.3], "p_model": None,
+            "sources": [], "note": "", "outcome": 0, "rps_kairos": 0.1, "rps_market": 0.2, "rps_model": None, "void": False}
+
+
+def test_diploma_trophy_is_dated_the_day_the_diploma_is_decided(tmp_root):
+    seed_state(start_date=(TODAY - timedelta(days=55)).isoformat(), hunger_paid_through="2026-10-17")
+    store.save_bets([closed_bet(i) for i in range(5)])
+    store.save_forecasts([scored_forecast(i) for i in range(5)])
+    sent = []
+    cmd_apply(make_ctx(sent.append, now=MIDMORNING))
+    state = load_state(TODAY)
+    assert state["diploma"] == "obtenu" and state["trophies"]["diplome"] == "2026-10-17"
+    assert sent[1].startswith("Jour 56 : Kairos décroche son diplôme.")
