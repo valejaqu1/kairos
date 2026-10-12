@@ -1,16 +1,26 @@
+import re
 from datetime import date, datetime, timedelta
 
 from kairos.config import (KELLY_FRACTION, KICKOFF_MARGIN_MIN, MAX_BETS_PER_DAY, MAX_EXPOSURE_SHARE, MAX_FORECASTS_PER_DAY,
                            MAX_LESSONS, MAX_LESSONS_ADDED, MAX_MESSAGE_CHARS, MAX_STAKE_SHARE, MIN_BET_ODDS, MIN_STAKE_CENTS,
-                           MAX_SOURCES_PER_FORECAST, STAKE_STEP_CENTS, VALUE_THRESHOLD)
+                           MAX_SOURCES_PER_FORECAST, SOURCE_DESCRIPTION_MAX, SOURCE_URL_MAX, STAKE_STEP_CENTS, VALUE_THRESHOLD)
 from kairos.odds import SEL_INDEX
 from kairos.store import parse_ts
 
 LESSONS_HEADER = "# Leçons de Kairos\n\n"
+SOURCE_ID = re.compile(r"[a-z0-9-]{1,40}")  # fullmatch : un « $ » accepterait un retour à la ligne final
+
+
+def _one_line(value) -> str:
+    return " ".join(str(value).split())
 
 
 def _is_text_list(value) -> bool:
     return isinstance(value, list) and all(isinstance(x, str) for x in value)
+
+
+def _is_source_id(value) -> bool:
+    return isinstance(value, str) and SOURCE_ID.fullmatch(value) is not None
 
 
 def _forecast_errors(i: int, f: dict) -> list[str]:
@@ -21,6 +31,8 @@ def _forecast_errors(i: int, f: dict) -> list[str]:
         errors.append(f"forecasts[{i}].p doit être une liste")
     if "sources" in f and not _is_text_list(f["sources"]):
         errors.append(f"forecasts[{i}].sources doit être une liste de textes")
+    elif "sources" in f and not all(_is_source_id(s) for s in f["sources"]):
+        errors.append(f"forecasts[{i}].sources contient un identifiant invalide")
     if "note" in f and not isinstance(f["note"], str):
         errors.append(f"forecasts[{i}].note doit être un texte")
     return errors
@@ -34,6 +46,26 @@ def _bet_errors(i: int, b: dict) -> list[str]:
         errors.append(f"bets[{i}].selection doit être un texte")
     if "reasoning" in b and not isinstance(b["reasoning"], str):
         errors.append(f"bets[{i}].reasoning doit être un texte")
+    return errors
+
+
+def _new_source_errors(source: dict) -> list[str]:
+    errors = []
+    if not _is_source_id(source.get("id")):
+        errors.append("new_source.id doit être un identifiant (a-z, 0-9, tirets, 40 caractères au maximum)")
+    if "description" in source:
+        if not isinstance(source["description"], str):
+            errors.append("new_source.description doit être un texte")
+        elif len(_one_line(source["description"])) > SOURCE_DESCRIPTION_MAX:
+            errors.append(f"new_source.description trop longue ({SOURCE_DESCRIPTION_MAX} caractères au maximum)")
+    if "url" in source:
+        url = source["url"]
+        if not isinstance(url, str):
+            errors.append("new_source.url doit être un texte")
+        elif not url.startswith(("https://", "http://")):
+            errors.append("new_source.url doit commencer par https:// ou http://")
+        elif len(url) > SOURCE_URL_MAX:
+            errors.append(f"new_source.url trop longue ({SOURCE_URL_MAX} caractères au maximum)")
     return errors
 
 
@@ -60,6 +92,8 @@ def validate_decisions(dec: dict, today: date) -> list[str]:
     new_source = dec.get("new_source")
     if new_source is not None and not isinstance(new_source, dict):
         errors.append("new_source doit être un objet ou null")
+    elif isinstance(new_source, dict):
+        errors += _new_source_errors(new_source)
     lessons = dec.get("lessons")
     if lessons is not None and not isinstance(lessons, dict):
         errors.append("lessons doit être un objet ou null")
@@ -83,7 +117,8 @@ def register_sources(dec: dict, sources: dict, today: date) -> str | None:
     sid = new["id"].strip()
     if sid in sources:
         return None
-    sources[sid] = {"description": str(new.get("description", ""))[:200], "url": str(new.get("url", ""))[:300],
+    sources[sid] = {"description": _one_line(new.get("description", ""))[:SOURCE_DESCRIPTION_MAX],
+                    "url": str(new.get("url", ""))[:SOURCE_URL_MAX],
                     "status": "test", "uses": 0, "score": None, "first_seen": today.isoformat()}
     return sid
 
@@ -187,10 +222,6 @@ def place_bets(dec: dict, forecasts_by_event: dict, events: dict, state: dict, b
         })
     bets.extend(placed)
     return placed, rejected
-
-
-def _one_line(value) -> str:
-    return " ".join(str(value).split())
 
 
 def update_lessons(text: str, changes: dict | None, today: date) -> tuple[str, list[str]]:

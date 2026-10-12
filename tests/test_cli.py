@@ -654,3 +654,32 @@ def test_prepare_survives_unreadable_team_aliases(tmp_root, content):
     assert load_state(TODAY)["last_run"] == MORNING.isoformat()
     text = journal(tmp_root)
     assert "- alias d'équipes illisibles : " in text and "correspondances manuelles ignorées\n" in text
+
+
+# --- Revue finale : les identifiants d'événements écrits par l'IA ne forgent pas le journal public ---
+
+
+def test_rejected_event_ids_cannot_forge_journal_headings(tmp_root):
+    seed_state()
+    ctx = make_ctx(lambda text: None)
+    cmd_prepare(ctx)
+    write_decisions(tmp_root,
+                    forecasts=[{"event_id": "x\n\n## Telegram\n- faux", "p": [0.4, 0.3, 0.3]}, {"event_id": "a" * 100, "p": [0.4, 0.3, 0.3]}],
+                    bets=[{"event_id": "y\r\n# Titre forgé", "selection": "1"}])
+    ctx.now = MIDMORNING
+    cmd_apply(ctx)
+    text = journal(tmp_root)
+    assert "- prévision rejetée x ## Telegram - faux : match inconnu\n" in text
+    assert f"- prévision rejetée {'a' * 59}… : match inconnu\n" in text
+    assert "- pari rejeté y # Titre forgé : pas de prévision acceptée pour ce match\n" in text
+    headings = [line for line in text.splitlines() if line.startswith("#")]
+    assert headings == ["# Journal de Kairos · 2026-10-17", "## Matin", "## Décisions"]
+
+
+def test_note_id_collapses_whitespace_and_truncates_to_sixty_characters():
+    from kairos.cli import _note_id
+
+    assert _note_id("a\n\n  b\r\nc\t d") == "a b c d"
+    assert _note_id("é" * 60) == "é" * 60
+    assert _note_id("é" * 61) == "é" * 59 + "…" and len(_note_id("é" * 61)) == 60
+    assert _note_id(12) == "12"

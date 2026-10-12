@@ -420,3 +420,53 @@ def test_place_bets_rejects_a_match_already_bet_on_an_earlier_day():
     placed, rej = place_bets(dec(bets=[bet()]), {"e1": {"p_kairos": [0.55, 0.25, 0.20]}}, EV, s, earlier, NOW, TODAY)
     assert placed == [] and rej == [("e1", "déjà un pari sur ce match")]
     assert s["bankroll_cents"] == 9_580 and len(earlier) == 1
+
+
+# --- Revue finale : textes fournis par l'IA (identifiants de source, description, URL) ---
+
+BAD_SOURCE_IDS = ["", "Presse-CH", "presse ch", "presse_ch", "présse", "a" * 41, "ok\n", "ok\n## Pwn", " ok", "../x", "a;b"]
+
+
+def test_validate_decisions_rejects_bad_new_source_ids():
+    for bad in BAD_SOURCE_IDS:
+        errs = validate_decisions(dec(new_source={"id": bad}), TODAY)
+        assert errs == ["new_source.id doit être un identifiant (a-z, 0-9, tirets, 40 caractères au maximum)"], repr(bad)
+    for missing in ({}, {"description": "sans id"}, {"id": 42}, {"id": None}):
+        assert len(validate_decisions(dec(new_source=missing), TODAY)) == 1, missing
+    for good in ("a", "presse-locale-ch", "a" * 40, "0-9"):
+        assert validate_decisions(dec(new_source={"id": good}), TODAY) == [], good
+
+
+def test_validate_decisions_rejects_bad_forecast_source_ids():
+    msg = ["forecasts[1].sources contient un identifiant invalide"]
+    assert validate_decisions(dec(forecasts=[fc(sources=["compos"]), fc(sources=["compos", "Bad Id"])]), TODAY) == msg
+    for bad in BAD_SOURCE_IDS:
+        assert validate_decisions(dec(forecasts=[fc(), fc(sources=[bad])]), TODAY) == msg, repr(bad)
+    assert validate_decisions(dec(forecasts=[fc(sources=["a" * 40, "x-1"])]), TODAY) == []
+
+
+def test_validate_decisions_limits_new_source_description_after_collapsing_whitespace():
+    msg = ["new_source.description trop longue (200 caractères au maximum)"]
+    assert validate_decisions(dec(new_source={"id": "s", "description": "d" * 201}), TODAY) == msg
+    assert validate_decisions(dec(new_source={"id": "s", "description": "d" * 200}), TODAY) == []
+    assert validate_decisions(dec(new_source={"id": "s", "description": "d" + " " * 300 + "e\n\n\t f"}), TODAY) == []
+    assert validate_decisions(dec(new_source={"id": "s", "description": "d " * 100 + "d" * 2}), TODAY) == msg
+    assert validate_decisions(dec(new_source={"id": "s", "description": 5}), TODAY) == ["new_source.description doit être un texte"]
+
+
+def test_validate_decisions_requires_a_web_url_of_bounded_length():
+    scheme = ["new_source.url doit commencer par https:// ou http://"]
+    for bad in ("", "ftp://x", "javascript:alert(1)", "//x", "x.ch", " https://x", "data:text/html,x", "file:///etc/passwd"):
+        assert validate_decisions(dec(new_source={"id": "s", "url": bad}), TODAY) == scheme, repr(bad)
+    for good in ("https://x", "http://x", "https://presse.ch/a?b=1"):
+        assert validate_decisions(dec(new_source={"id": "s", "url": good}), TODAY) == [], good
+    assert validate_decisions(dec(new_source={"id": "s", "url": "https://" + "x" * 292}), TODAY) == []
+    assert validate_decisions(dec(new_source={"id": "s", "url": "https://" + "x" * 293}), TODAY) == [
+        "new_source.url trop longue (300 caractères au maximum)"]
+    assert validate_decisions(dec(new_source={"id": "s", "url": None}), TODAY) == ["new_source.url doit être un texte"]
+
+
+def test_register_sources_stores_the_collapsed_description():
+    sources = {}
+    register_sources(dec(new_source={"id": "s", "description": "ligne un\n\nligne   deux", "url": "https://x"}), sources, TODAY)
+    assert sources["s"]["description"] == "ligne un ligne deux"

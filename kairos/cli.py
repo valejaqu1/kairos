@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Callable
 
 from kairos import store
-from kairos.config import CREDIT_FLOOR, DEFAULT_PAGE_URL, LEAGUES
+from kairos.config import CREDIT_FLOOR, DEFAULT_PAGE_URL, LEAGUES, NOTE_ID_MAX
 
 
 @dataclass
@@ -26,6 +26,13 @@ def _why(exc: Exception) -> str:
     # enveloppés (OddsApiError, NotifyError) : des RuntimeError sans clé ni jeton. Toute autre
     # exception est réduite à son type, car son message pourrait citer une URL de requête.
     return str(exc) if isinstance(exc, RuntimeError) else type(exc).__name__
+
+
+def _note_id(value) -> str:
+    # Les identifiants de match viennent de l'IA et entrent dans le journal public : une seule ligne, longueur bornée.
+    # Un retour à la ligne y forgerait un titre (« ## Telegram ») ou une fausse ligne de liste.
+    text = " ".join(str(value).split())
+    return text if len(text) <= NOTE_ID_MAX else text[:NOTE_ID_MAX - 1] + "…"
 
 
 def _notify(ctx: Context, text: str, notes: list[str]) -> bool:
@@ -161,8 +168,8 @@ def cmd_apply(ctx: Context) -> None:
                 placed, rejected_bets = place_bets(dec, {f["event_id"]: f for f in accepted}, events, state, bets, ctx.now, ctx.today)
                 lessons, lesson_notes = update_lessons(lessons, dec.get("lessons"), ctx.today)
                 notes += [f"{len(accepted)} prévision(s), {len(placed)} pari(s) placé(s)"]
-                notes += [f"prévision rejetée {eid} : {why}" for eid, why in rejected]
-                notes += [f"pari rejeté {eid} : {why}" for eid, why in rejected_bets]
+                notes += [f"prévision rejetée {_note_id(eid)} : {why}" for eid, why in rejected]
+                notes += [f"pari rejeté {_note_id(eid)} : {why}" for eid, why in rejected_bets]
                 notes += lesson_notes
                 state["last_message"] = dec["message"].strip()
             state["last_message_date"] = today

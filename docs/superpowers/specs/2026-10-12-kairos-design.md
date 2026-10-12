@@ -120,6 +120,8 @@ Chaque composant est une fonction pure testable plus une fine couche d'entrées-
 
 Kairos ne fixe pas ses mises : le code les calcule à partir de sa probabilité. Une proposition invalide est rejetée et journalisée, sans bloquer le reste.
 
+Les textes écrits par l'IA sont bornés par la validation du fichier : identifiant de source `[a-z0-9-]{1,40}` (aussi pour les sources citées dans une prévision), description de nouvelle source de 200 caractères au plus (espaces réduits), URL en `https://` ou `http://` de 300 caractères au plus. Les identifiants de match qui entrent dans le journal public sont ramenés à une ligne de 60 caractères au plus, pour qu'ils ne puissent pas forger un titre.
+
 **Configuration de la routine :** dépôt `valejaqu1/kairos` uniquement, aucun connecteur (liste vidée explicitement après création), environnement cloud dédié « kairos » avec accès réseau complet (nécessaire pour découvrir des sources) et sans variable secrète. Compétence d'analyste dans `.claude/skills/kairos-analyste/` (méthode adaptée de sports-betting-claude, MIT : détection de valeur, liste de biais, discipline des sources).
 
 **Rayon d'action si une page web piège Kairos :** écrire des fichiers dans son propre dépôt public. Pas de clé à voler, pas de compte connecté, et ses mises restent bornées par le code.
