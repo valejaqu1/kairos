@@ -231,7 +231,8 @@ def test_script_is_an_executable_bash_script_with_strict_mode():
 
 
 def git(repo, *args):
-    subprocess.run(["git", "-C", str(repo), "-c", "user.email=t@example.org", "-c", "user.name=t", *args], check=True, capture_output=True)
+    config = ["-c", "user.email=t@example.org", "-c", "user.name=t", "-c", "commit.gpgsign=false"]
+    subprocess.run(["git", "-C", str(repo), *config, *args], check=True, capture_output=True)
 
 
 def locked_repo(tmp_path):
