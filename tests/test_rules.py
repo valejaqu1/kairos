@@ -310,3 +310,75 @@ def test_accept_forecasts_rejects_boolean_probabilities():
     d = dec(forecasts=[{"event_id": "e1", "p": [True, False, False], "sources": []}])
     acc, rej = accept_forecasts(d, EV, {}, {}, TODAY)
     assert acc == [] and rej == [("e1", "probabilités invalides")]
+
+
+def fc(**kw):
+    base = {"event_id": "e1", "p": [0.5, 0.3, 0.2], "sources": []}
+    base.update(kw)
+    return base
+
+
+def bet(**kw):
+    base = {"event_id": "e1", "selection": "1"}
+    base.update(kw)
+    return base
+
+
+def test_validate_decisions_rejects_bad_forecast_fields():
+    assert validate_decisions(dec(forecasts=[fc(event_id=1)]), TODAY) == ["forecasts[0].event_id doit être un texte"]
+    assert validate_decisions(dec(forecasts=[fc(p="0.5,0.3,0.2")]), TODAY) == ["forecasts[0].p doit être une liste"]
+    assert validate_decisions(dec(forecasts=[fc(sources=None)]), TODAY) == [
+        "forecasts[0].sources doit être une liste de textes"]
+    assert validate_decisions(dec(forecasts=[fc(sources=[1])]), TODAY) == [
+        "forecasts[0].sources doit être une liste de textes"]
+    assert validate_decisions(dec(forecasts=[fc(), fc(note=5)]), TODAY) == ["forecasts[1].note doit être un texte"]
+    assert validate_decisions(dec(forecasts=[fc(sources=["compos"], note="ok")]), TODAY) == []
+    assert validate_decisions(dec(forecasts=[{"event_id": "e1"}]), TODAY) == ["forecasts[0].p doit être une liste"]
+
+
+def test_validate_decisions_rejects_bad_bet_fields():
+    assert validate_decisions(dec(bets=[bet(event_id=1)]), TODAY) == ["bets[0].event_id doit être un texte"]
+    assert validate_decisions(dec(bets=[bet(selection=["1"])]), TODAY) == ["bets[0].selection doit être un texte"]
+    assert validate_decisions(dec(bets=[bet(reasoning=None)]), TODAY) == ["bets[0].reasoning doit être un texte"]
+    assert validate_decisions(dec(bets=[bet(reasoning="retour du buteur")]), TODAY) == []
+
+
+def test_validate_decisions_rejects_bad_new_source_and_lessons():
+    assert validate_decisions(dec(new_source="presse"), TODAY) == ["new_source doit être un objet ou null"]
+    assert validate_decisions(dec(new_source={"id": "presse-ch"}), TODAY) == []
+    assert validate_decisions(dec(lessons="texte"), TODAY) == ["lessons doit être un objet ou null"]
+    assert validate_decisions(dec(lessons={"add": "une leçon"}), TODAY) == ["lessons.add doit être une liste de textes"]
+    assert validate_decisions(dec(lessons={"add": ["a", 1], "remove": None}), TODAY) == [
+        "lessons.add doit être une liste de textes", "lessons.remove doit être une liste de textes"]
+    assert validate_decisions(dec(lessons={"add": ["a"], "remove": ["b"]}), TODAY) == []
+    assert validate_decisions(dec(lessons=None), TODAY) == []
+
+
+def test_update_lessons_counts_each_lesson_as_one_line():
+    new, notes = update_lessons(LESSONS_HEADER, {"add": ["a\n- b\n- c"]}, date(2026, 10, 18))
+    assert new == LESSONS_HEADER + "- a - b - c\n" and notes == []
+    text = LESSONS_HEADER + "".join(f"- l{i}\n" for i in range(14))
+    new, notes = update_lessons(text, {"add": ["a\n- b\n- c", "d"]}, date(2026, 10, 18))
+    assert new == text + "- a - b - c\n" and notes == ["ajout ignoré : déjà 15 leçons"]
+
+
+def test_update_lessons_matches_removals_after_normalisation():
+    text = LESSONS_HEADER + "- b c\n- z\n"
+    new, _ = update_lessons(text, {"remove": ["b\nc"]}, date(2026, 10, 18))
+    assert new == LESSONS_HEADER + "- z\n"
+
+
+def test_accept_forecasts_rejects_a_second_forecast_for_the_same_event():
+    acc, rej = accept_forecasts(dec(forecasts=[fc(), fc()]), EV, {}, {}, TODAY)
+    assert len(acc) == 1 and rej == [("e1", "doublon")]
+    acc, rej = accept_forecasts(dec(forecasts=[fc(p=[0.9, 0.3, 0.2]), fc()]), EV, {}, {}, TODAY)
+    assert len(acc) == 1 and rej == [("e1", "les probabilités ne somment pas à 1")]
+
+
+def test_accept_forecasts_dedupes_then_caps_sources_in_order():
+    sources = {k: {"status": "kept"} for k in ["s1", "s2", "s3", "s4", "s5", "s6", "s7"]}
+    acc, _ = accept_forecasts(dec(forecasts=[fc(sources=["s3", "s1", "s3", "s2", "s1", "s4", "s5", "s6", "s7"])]),
+                              EV, {}, sources, TODAY)
+    assert acc[0]["sources"] == ["s3", "s1", "s2", "s4", "s5"]
+    acc, _ = accept_forecasts(dec(forecasts=[fc(sources=["s1", "s1"])]), EV, {}, sources, TODAY)
+    assert acc[0]["sources"] == ["s1"]

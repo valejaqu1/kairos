@@ -2,11 +2,39 @@ from datetime import date, datetime, timedelta
 
 from kairos.config import (KELLY_FRACTION, KICKOFF_MARGIN_MIN, MAX_BETS_PER_DAY, MAX_EXPOSURE_SHARE, MAX_FORECASTS_PER_DAY,
                            MAX_LESSONS, MAX_LESSONS_ADDED, MAX_MESSAGE_CHARS, MAX_STAKE_SHARE, MIN_BET_ODDS, MIN_STAKE_CENTS,
-                           STAKE_STEP_CENTS, VALUE_THRESHOLD)
+                           MAX_SOURCES_PER_FORECAST, STAKE_STEP_CENTS, VALUE_THRESHOLD)
 from kairos.odds import SEL_INDEX
 from kairos.store import parse_ts
 
 LESSONS_HEADER = "# Leçons de Kairos\n\n"
+
+
+def _is_text_list(value) -> bool:
+    return isinstance(value, list) and all(isinstance(x, str) for x in value)
+
+
+def _forecast_errors(i: int, f: dict) -> list[str]:
+    errors = []
+    if not isinstance(f.get("event_id"), str):
+        errors.append(f"forecasts[{i}].event_id doit être un texte")
+    if not isinstance(f.get("p"), list):
+        errors.append(f"forecasts[{i}].p doit être une liste")
+    if "sources" in f and not _is_text_list(f["sources"]):
+        errors.append(f"forecasts[{i}].sources doit être une liste de textes")
+    if "note" in f and not isinstance(f["note"], str):
+        errors.append(f"forecasts[{i}].note doit être un texte")
+    return errors
+
+
+def _bet_errors(i: int, b: dict) -> list[str]:
+    errors = []
+    if not isinstance(b.get("event_id"), str):
+        errors.append(f"bets[{i}].event_id doit être un texte")
+    if not isinstance(b.get("selection"), str):
+        errors.append(f"bets[{i}].selection doit être un texte")
+    if "reasoning" in b and not isinstance(b["reasoning"], str):
+        errors.append(f"bets[{i}].reasoning doit être un texte")
+    return errors
 
 
 def validate_decisions(dec: dict, today: date) -> list[str]:
@@ -19,10 +47,27 @@ def validate_decisions(dec: dict, today: date) -> list[str]:
         errors.append("forecasts doit être une liste")
     elif not all(isinstance(f, dict) for f in dec["forecasts"]):
         errors.append("forecasts contient un élément invalide")
+    else:
+        for i, f in enumerate(dec["forecasts"]):
+            errors += _forecast_errors(i, f)
     if not isinstance(dec.get("bets"), list):
         errors.append("bets doit être une liste")
     elif not all(isinstance(b, dict) for b in dec["bets"]):
         errors.append("bets contient un élément invalide")
+    else:
+        for i, b in enumerate(dec["bets"]):
+            errors += _bet_errors(i, b)
+    new_source = dec.get("new_source")
+    if new_source is not None and not isinstance(new_source, dict):
+        errors.append("new_source doit être un objet ou null")
+    lessons = dec.get("lessons")
+    if lessons is not None and not isinstance(lessons, dict):
+        errors.append("lessons doit être un objet ou null")
+    elif isinstance(lessons, dict):
+        if "add" in lessons and not _is_text_list(lessons["add"]):
+            errors.append("lessons.add doit être une liste de textes")
+        if "remove" in lessons and not _is_text_list(lessons["remove"]):
+            errors.append("lessons.remove doit être une liste de textes")
     message = dec.get("message")
     if not isinstance(message, str) or not message.strip():
         errors.append("message manquant")
@@ -45,6 +90,7 @@ def register_sources(dec: dict, sources: dict, today: date) -> str | None:
 
 def accept_forecasts(dec: dict, events: dict, model: dict, sources: dict, today: date):
     accepted, rejected = [], []
+    seen = set()
     for f in dec["forecasts"][:MAX_FORECASTS_PER_DAY]:
         eid = str(f.get("event_id"))
         ev = events.get(eid)
@@ -59,7 +105,12 @@ def accept_forecasts(dec: dict, events: dict, model: dict, sources: dict, today:
         if not 0.98 <= total <= 1.02:
             rejected.append((eid, "les probabilités ne somment pas à 1"))
             continue
-        srcs = [s for s in f.get("sources", []) if isinstance(s, str) and s in sources and sources[s].get("status") != "dropped"]
+        if eid in seen:
+            rejected.append((eid, "doublon"))
+            continue
+        seen.add(eid)
+        usable = (s for s in f.get("sources", []) if isinstance(s, str) and s in sources and sources[s].get("status") != "dropped")
+        srcs = list(dict.fromkeys(usable))[:MAX_SOURCES_PER_FORECAST]
         accepted.append({
             "date": today.isoformat(), "event_id": eid, "sport_key": ev["sport_key"], "home": ev["home"], "away": ev["away"],
             "commence_time": ev["commence_time"], "p_kairos": [round(x / total, 4) for x in p], "p_market": ev["p_market"],
@@ -129,6 +180,10 @@ def place_bets(dec: dict, forecasts_by_event: dict, events: dict, state: dict, b
     return placed, rejected
 
 
+def _one_line(value) -> str:
+    return " ".join(str(value).split())
+
+
 def update_lessons(text: str, changes: dict | None, today: date) -> tuple[str, list[str]]:
     if not changes:
         return text, []
@@ -137,9 +192,10 @@ def update_lessons(text: str, changes: dict | None, today: date) -> tuple[str, l
     lines = [l[2:].strip() for l in text.splitlines() if l.startswith("- ")]
     notes = []
     for item in changes.get("remove", []) or []:
+        item = _one_line(item)
         if item in lines:
             lines.remove(item)
-    adds = [str(a).strip()[:200] for a in (changes.get("add", []) or []) if str(a).strip()]
+    adds = [_one_line(a)[:200] for a in (changes.get("add", []) or []) if _one_line(a)]
     if len(adds) > MAX_LESSONS_ADDED:
         notes.append(f"{len(adds) - MAX_LESSONS_ADDED} ajout ignoré ({MAX_LESSONS_ADDED} au maximum)")
         adds = adds[:MAX_LESSONS_ADDED]
