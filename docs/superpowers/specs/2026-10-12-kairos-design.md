@@ -82,7 +82,7 @@ site/                    page publiée (HTML + data.json)
 3. **market** : probabilités du marché sans marge (`penaltyblog.implied`) à partir des cotes médianes.
 4. **settle** : récupère les scores des championnats avec paris ou prévisions en attente, règle les paris (gagné : mise × cote simulée ; perdu : 0 ; annulé ou reporté de plus de 3 jours : remboursé) et note les prévisions.
 5. **hunger** : retire 0,25 CHF × jours écoulés depuis la dernière faim payée ; déclare la mort selon §3.
-6. **rules** : valide chaque proposition (match connu, coup d'envoi futur, probabilités cohérentes, seuil de valeur), calcule la mise, applique les plafonds, place les paris acceptés, journalise les rejets avec leur raison.
+6. **rules** : valide chaque proposition (match connu, coup d'envoi futur avec la même marge de 10 minutes pour les prévisions et les paris, probabilités cohérentes, une seule prévision par match et par pari ouvert : la première est gardée, seuil de valeur), calcule la mise, applique les plafonds, place les paris acceptés, journalise les rejets avec leur raison.
 7. **metrics** : RPS (ranked probability score) de Kairos, du marché et du modèle sur chaque prévision réglée ; CLV par pari = cote prise / cote de clôture − 1 (cotes brutes, sans décote) ; score des sources ; rang ; trophées ; état du diplôme.
 8. **site** : construit `site/data.json` et la page à partir de la maquette validée (`maquette-kairos.html`), y compris l'état « mort ».
 9. **notify** : envoie sur Telegram le message de Kairos suivi d'une ligne automatique (cagnotte, faim, paris du jour).
