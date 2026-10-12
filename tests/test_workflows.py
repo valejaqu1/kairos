@@ -159,20 +159,27 @@ def test_crons_are_offset_from_the_hour_and_the_half_hour():
 
 
 # --- Verrou du code : les workflows qui portent des clés refusent de tourner si le code a changé ---
+# L'empreinte couvre tout le dépôt suivi par git SAUF les dossiers de données que les workflows et la routine écrivent.
 
 import hashlib
 import os
 import shutil
 import subprocess
+import sys
 
 import pytest
 
 SCRIPT = WF.parent.parent / "scripts" / "empreinte-code.sh"
-LOCKED_PATHS = ["kairos", "site_template", "pyproject.toml", ".github", "ROUTINE.md", ".claude", "data/team_aliases.json"]
-FINGERPRINT_COMMAND = "git ls-tree -r HEAD -- " + " ".join(LOCKED_PATHS) + " | sha256sum | cut -d' ' -f1"
-LOCKED_FILES = ["kairos/x.txt", "site_template/x.txt", "pyproject.toml", ".github/x.txt", "ROUTINE.md", ".claude/x.txt", "data/team_aliases.json"]
+DATA_DIRS = ["state", "decisions", "journal", "memory", "site", "data/odds", "data/model"]
+FINGERPRINT_COMMAND = (r"""git ls-tree -r --full-tree HEAD | awk -F'\t' '$2 !~ /^(state|decisions|journal|memory|site|data\/odds|data\/model)\//'"""
+                       r""" | sha256sum | cut -d' ' -f1""")
 LOCKED_JOBS = {"prepare.yml": "prepare", "apply.yml": "apply", "closing.yml": "closing", "check.yml": "check"}
 LOCK_NAME = "Verrou du code"
+# Un fichier suivi dans chaque dossier ou à la racine : tous verrouillés, sauf ceux des dossiers de données.
+LOCKED_FILES = ["kairos/x.txt", "tests/x.txt", "docs/x.md", "scripts/x.sh", "site_template/x.txt", ".github/x.txt", ".claude/x.txt",
+                "pyproject.toml", "ROUTINE.md", "README.md", ".gitignore", "data/team_aliases.json"]
+DATA_FILES = ["state/kairos.json", "decisions/2026-10-17.json", "journal/2026-10-17.md", "memory/lessons.md", "site/index.html",
+              "site/data.json", "data/odds/2026-10-17.json", "data/model/2026-10-17.json"]
 
 
 def lock_step(name):
@@ -206,7 +213,8 @@ def test_lock_step_is_the_same_in_the_four_workflows_and_names_the_mismatch():
     assert len(set(runs.values())) == 1
     run = runs["prepare.yml"]
     assert "Code non validé : empreinte $actual, attendue ${KAIROS_CODE_FINGERPRINT:-(vide)}" in run
-    assert run.rstrip().endswith("exit 1\nfi")
+    assert "Code non validé : site/ ne doit contenir que index.html et data.json, trouvé :" in run
+    assert run.count("exit 1") == 2 and run.rstrip().endswith("exit 1\nfi")
 
 
 def test_fingerprint_command_is_identical_in_the_workflows_and_the_script():
@@ -216,12 +224,12 @@ def test_fingerprint_command_is_identical_in_the_workflows_and_the_script():
         assert lock_step(name)[1]["run"].count(FINGERPRINT_COMMAND) == 1, name
 
 
-def test_locked_path_list_is_exactly_the_code_that_runs_with_the_keys():
-    pattern = re.compile(r"git ls-tree -r HEAD -- (?P<paths>.+?) \| sha256sum")
+def test_the_excluded_set_is_exactly_the_data_the_workflows_and_the_routine_write():
+    pattern = re.compile(r"awk -F'\\t' '\$2 !~ /\^\((?P<dirs>[^)]+)\)\\//'")
     texts = [lock_step(name)[1]["run"] for name in LOCKED_JOBS] + [SCRIPT.read_text(encoding="utf-8")]
     for text in texts:
         (match,) = pattern.finditer(text)
-        assert match.group("paths").split(" ") == LOCKED_PATHS
+        assert match.group("dirs").replace("\\/", "/").split("|") == DATA_DIRS
 
 
 def test_script_is_an_executable_bash_script_with_strict_mode():
@@ -237,11 +245,10 @@ def git(repo, *args):
 
 def locked_repo(tmp_path):
     repo = tmp_path / "repo"
-    for rel in [*LOCKED_FILES, "state/kairos.json", "decisions/2026-10-17.json", "data/odds/2026-10-17.json"]:
+    for rel in [*LOCKED_FILES, *DATA_FILES]:
         path = repo / rel
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(rel, encoding="utf-8")
-    (repo / "scripts").mkdir()
     shutil.copy2(SCRIPT, repo / "scripts" / SCRIPT.name)
     git(repo.parent, "init", "-q", str(repo))
     git(repo, "add", "-A")
@@ -250,8 +257,11 @@ def locked_repo(tmp_path):
 
 
 def independent_fingerprint(repo):
-    listing = subprocess.run(["git", "-C", str(repo), "ls-tree", "-r", "HEAD", "--", *LOCKED_PATHS], check=True, capture_output=True).stdout
-    return hashlib.sha256(listing).hexdigest()
+    # Calculé en Python (re, hashlib), pas avec le pipeline awk | sha256sum qu'on teste.
+    listing = subprocess.run(["git", "-C", str(repo), "ls-tree", "-r", "--full-tree", "HEAD"], check=True, capture_output=True, text=True).stdout
+    excluded = re.compile("^(" + "|".join(DATA_DIRS) + ")/")
+    kept = [line for line in listing.splitlines(keepends=True) if not excluded.match(line.split("\t", 1)[1])]
+    return hashlib.sha256("".join(kept).encode()).hexdigest()
 
 
 def run_lock(repo, value, workflow="prepare.yml"):
@@ -259,11 +269,37 @@ def run_lock(repo, value, workflow="prepare.yml"):
     return subprocess.run(["bash", "-eo", "pipefail", "-c", lock_step(workflow)[1]["run"]], cwd=repo, env=env, capture_output=True, text=True)
 
 
+def commit_file(repo, rel, content="changé"):
+    path = repo / rel
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(content, encoding="utf-8")
+    git(repo, "add", "-A")
+    git(repo, "commit", "-q", "-m", f"change {rel}")
+
+
+def lock_codes(repo, value, workflows=("prepare.yml",)):
+    """Code de sortie de l'étape de verrou. Les boucles n'exécutent que prepare.yml (les quatre étapes sont identiques,
+    un autre test le vérifie) ; `workflows=ALL` les exécute toutes aux points de contrôle."""
+    return {workflow: run_lock(repo, value, workflow).returncode for workflow in workflows}
+
+
+ALL = tuple(sorted(LOCKED_JOBS))
+
+
+def passes(repo, value, workflows=("prepare.yml",)):
+    return set(lock_codes(repo, value, workflows).values()) == {0}
+
+
+def fails(repo, value, workflows=("prepare.yml",)):
+    return set(lock_codes(repo, value, workflows).values()) == {1}
+
+
 needs_sha256sum = pytest.mark.skipif(shutil.which("sha256sum") is None, reason="sha256sum absent")
+EVERY_WORKFLOW = pytest.mark.parametrize("workflow", sorted(LOCKED_JOBS))
 
 
 @needs_sha256sum
-@pytest.mark.parametrize("workflow", sorted(LOCKED_JOBS))
+@EVERY_WORKFLOW
 def test_lock_step_passes_only_on_the_exact_fingerprint(tmp_path, workflow):
     repo = locked_repo(tmp_path)
     good = independent_fingerprint(repo)
@@ -277,20 +313,62 @@ def test_lock_step_passes_only_on_the_exact_fingerprint(tmp_path, workflow):
 
 
 @needs_sha256sum
-@pytest.mark.parametrize("workflow", sorted(LOCKED_JOBS))
-def test_lock_follows_locked_paths_and_ignores_state_files(tmp_path, workflow):
+def test_lock_covers_every_tracked_file_except_the_data_dirs(tmp_path):
     repo = locked_repo(tmp_path)
     good = independent_fingerprint(repo)
-    for rel in ("state/kairos.json", "decisions/2026-10-17.json", "data/odds/2026-10-17.json"):
-        (repo / rel).write_text("changé", encoding="utf-8")
-        git(repo, "commit", "-q", "-am", f"état {rel}")
-        assert run_lock(repo, good, workflow).returncode == 0, rel
+    for rel in DATA_FILES:
+        commit_file(repo, rel)
+        assert passes(repo, good), rel
+    assert passes(repo, good, ALL)
     for rel in LOCKED_FILES:
-        (repo / rel).write_text("changé", encoding="utf-8")
-        git(repo, "commit", "-q", "-am", f"code {rel}")
-        assert run_lock(repo, good, workflow).returncode == 1, rel
+        commit_file(repo, rel)
+        assert fails(repo, good), rel
         good = independent_fingerprint(repo)  # la nouvelle empreinte validée par l'utilisateur
-        assert run_lock(repo, good, workflow).returncode == 0, rel
+        assert passes(repo, good), rel
+    commit_file(repo, "kairos/x.txt", "encore")
+    assert fails(repo, good, ALL)
+
+
+@needs_sha256sum
+def test_a_new_root_file_is_locked_but_a_new_data_file_is_not(tmp_path):
+    repo = locked_repo(tmp_path)
+    good = independent_fingerprint(repo)
+    for rel in ("state/new.json", "decisions/new.json", "journal/new.md", "memory/new.md", "data/odds/new.json", "data/model/new.json",
+                "state/deep/er/new.json"):
+        commit_file(repo, rel)
+    assert passes(repo, good, ALL)
+    # fichiers hors exclusion : une ressemblance de nom ne suffit pas (ancrage au début et frontière du dossier)
+    for rel in ("requests.py", "json.py", "sitecustomize.py", "setup.py", "conftest.py", "data/other.json", "data/odds.py",
+                "data/modelling/x.json", "statefile", "kairos/state/x.py", "docs/memory/x.md", "tests/journal/x.md"):
+        commit_file(repo, rel)
+        assert fails(repo, good), rel
+        assert independent_fingerprint(repo) != good, rel
+        good = independent_fingerprint(repo)
+        assert passes(repo, good), rel
+    commit_file(repo, "requests.py", "encore")
+    assert fails(repo, good, ALL)
+
+
+@needs_sha256sum
+def test_lock_refuses_anything_in_site_but_index_and_data_json(tmp_path):
+    repo = locked_repo(tmp_path)
+    good = independent_fingerprint(repo)  # site/ est hors empreinte : seul le contrôle de contenu peut réagir
+    for rel in ("site/evil.js", "site/sub/page.html", "site/index.htm", "site/data.json.bak", "site/.nojekyll", "site/CNAME"):
+        commit_file(repo, rel)
+        assert independent_fingerprint(repo) == good, rel
+        done = run_lock(repo, good)
+        assert done.returncode == 1, rel
+        assert done.stdout.startswith("Code non validé : site/ ne doit contenir que index.html et data.json, trouvé : ") and rel in done.stdout
+        git(repo, "rm", "-q", "-f", rel)
+        git(repo, "commit", "-q", "-m", f"retire {rel}")
+        assert passes(repo, good), rel
+    git(repo, "rm", "-q", "-f", "site/index.html", "site/data.json")
+    git(repo, "commit", "-q", "-m", "site vide")
+    assert passes(repo, good, ALL)  # site/ absent : rien d'inattendu
+    commit_file(repo, "site/data.json")
+    assert passes(repo, good, ALL)
+    commit_file(repo, "site/evil.js")
+    assert fails(repo, good, ALL)
 
 
 @needs_sha256sum
@@ -298,6 +376,29 @@ def test_script_prints_the_fingerprint_the_lock_expects(tmp_path):
     repo = locked_repo(tmp_path)
     done = subprocess.run([str(repo / "scripts" / SCRIPT.name)], cwd=tmp_path, capture_output=True, text=True)  # lancé de n'importe où
     assert done.returncode == 0 and done.stdout == independent_fingerprint(repo) + "\n" and done.stderr == ""
+
+
+def test_every_cli_step_runs_with_the_working_directory_off_the_import_path():
+    for name in LOCKED_JOBS:
+        data, _ = load(name)
+        cli_steps = [s for job in data["jobs"].values() for s in job["steps"] if "python -m kairos.cli" in s.get("run", "")]
+        assert len(cli_steps) == 1, name
+        assert cli_steps[0]["env"]["PYTHONSAFEPATH"] == "1", name
+
+
+def test_pythonsafepath_keeps_a_root_module_from_shadowing_the_standard_library(tmp_path):
+    # Un fichier posé à la racine du dépôt (json.py, requests.py…) serait importé avant la bibliothèque, car « python -m »
+    # place le répertoire courant en tête de sys.path. Avec PYTHONSAFEPATH=1, le paquet reste importable (installation éditable).
+    (tmp_path / "json.py").write_text("raise SystemExit('json.py du dépôt importé')\n", encoding="utf-8")
+    probe = [sys.executable, "-c", "import kairos"]
+    safe = {**os.environ, "PYTHONSAFEPATH": "1"}
+    if subprocess.run(probe, cwd=tmp_path, env=safe, capture_output=True).returncode != 0:
+        pytest.skip("kairos n'est pas installé en mode éditable dans cet environnement")
+    command = [sys.executable, "-m", "kairos.cli", "check-decisions", str(tmp_path / "absent.json")]
+    unsafe = subprocess.run(command, cwd=tmp_path, env={k: v for k, v in os.environ.items() if k != "PYTHONSAFEPATH"}, capture_output=True, text=True)
+    assert unsafe.returncode != 0 and "json.py du dépôt importé" in unsafe.stderr
+    done = subprocess.run(command, cwd=tmp_path, env=safe, capture_output=True, text=True)
+    assert done.returncode == 1 and done.stdout.startswith("illisible : ") and "json.py" not in done.stderr
 
 
 def test_secret_ref_catches_names_case_and_bare_contexts():

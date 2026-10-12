@@ -26,12 +26,12 @@ Dans le dépôt `valejaqu1/kairos` : Settings → Secrets and variables → Acti
 
 ## 4. Variable du verrou de code (toi, avec la valeur de Claude)
 
-La routine peut pousser sur `main`. Sans précaution, une routine piégée par une page web pourrait modifier le code que les workflows exécutent avec tes clés. Chaque workflow qui porte une clé commence donc par une étape « Verrou du code » : elle calcule une empreinte du code et refuse de continuer si elle ne correspond pas à la variable `KAIROS_CODE_FINGERPRINT`, que la routine ne peut pas modifier.
+La routine peut pousser sur `main`. Sans précaution, une routine piégée par une page web pourrait modifier le code que les workflows exécutent avec tes clés. Chaque workflow qui porte une clé commence donc par une étape « Verrou du code » : elle calcule l'empreinte de tout le dépôt sauf les dossiers de données (`state/`, `decisions/`, `journal/`, `memory/`, `site/`, `data/odds/`, `data/model/`) et refuse de continuer si elle ne correspond pas à la variable `KAIROS_CODE_FINGERPRINT`, que la routine ne peut pas modifier. Elle refuse aussi tout fichier de `site/` autre que `index.html` et `data.json`.
 
 1. Claude lance `scripts/empreinte-code.sh` sur la branche qui partira sur `main` et te donne la valeur (64 caractères hexadécimaux).
 2. Dans le dépôt : Settings → Secrets and variables → Actions → onglet **Variables** → New repository variable. Nom : `KAIROS_CODE_FINGERPRINT`, valeur : celle de Claude, collée telle quelle.
 
-**Chaque mise à jour du code exige une nouvelle valeur** : après avoir relu le changement, Claude relance `scripts/empreinte-code.sh` et tu mets la variable à jour. Si un workflow s'arrête avec « Code non validé : empreinte A, attendue B », le code a changé depuis ta dernière validation : relis le changement, puis mets A dans la variable.
+**Chaque mise à jour du code exige une nouvelle valeur**, c'est-à-dire tout changement d'un fichier du dépôt hors des dossiers de données, documentation et tests compris : après avoir relu le changement, Claude relance `scripts/empreinte-code.sh` et tu mets la variable à jour. Si un workflow s'arrête avec « Code non validé : empreinte A, attendue B », le code a changé depuis ta dernière validation : relis le changement, puis mets A dans la variable.
 
 ## 5. Page (toi)
 
