@@ -63,12 +63,22 @@ def test_hunger_never_refunds_a_negative_bankroll():
     assert s["bankroll_cents"] == -10
 
 
-def test_death_threshold_is_strictly_below_200():
+def test_death_threshold_is_strictly_below_40_chf():
     s = new_state(date(2026, 10, 13))
-    s["bankroll_cents"] = 200
+    s["bankroll_cents"] = 4_000
     assert check_death(s, [], date(2026, 10, 20)) is False
-    s["bankroll_cents"] = 199
+    s["bankroll_cents"] = 3_999
     assert check_death(s, [], date(2026, 10, 20)) is True
+
+
+def test_death_threshold_is_where_the_minimum_stake_becomes_unreachable():
+    # 5 % de l'avoir doit atteindre 2 CHF : 40 CHF est le plus petit avoir qui permet encore de miser.
+    from kairos.config import DEATH_THRESHOLD_CENTS, MIN_STAKE_CENTS
+    from kairos.rules import stake_cents
+
+    assert DEATH_THRESHOLD_CENTS == 4_000 and isinstance(DEATH_THRESHOLD_CENTS, int)
+    assert stake_cents(0.9, 2.0, DEATH_THRESHOLD_CENTS) == MIN_STAKE_CENTS
+    assert stake_cents(0.9, 2.0, DEATH_THRESHOLD_CENTS - 1) == 0
 
 
 def test_dead_state_is_not_killed_twice():

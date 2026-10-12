@@ -196,12 +196,13 @@ def test_telegram_failure_never_aborts_apply(tmp_root, capsys, exc, shown):
     assert_no_secret(tmp_root, capsys)
 
 
-DEATH_MESSAGE = f"Kairos est mort le 2026-10-17. Cagnotte finale : 0,40 CHF.\nSon histoire reste en ligne : {PAGE}"
+DEATH_MESSAGE = f"Kairos est mort le 2026-10-17. Cagnotte finale : 39,75 CHF.\nSon histoire reste en ligne : {PAGE}"
 
 
 def seed_starved():
+    # Sous 40 CHF (seuil de mort), sans pari ouvert : 5 % de l'avoir n'atteint plus la mise minimale de 2 CHF.
     state = new_state(date(2026, 10, 1))
-    state.update(bankroll_cents=40, hunger_paid_through="2026-10-17")
+    state.update(bankroll_cents=3_975, hunger_paid_through="2026-10-17")
     store.save_state(state)
 
 
@@ -234,7 +235,7 @@ def test_death_announcement_is_retried_until_telegram_succeeds(tmp_root):
 
 def test_prepare_marks_a_starved_kairos_dead(tmp_root):
     state = new_state(date(2026, 10, 1))
-    state.update(bankroll_cents=150, hunger_paid_through="2026-10-17")
+    state.update(bankroll_cents=3_950, hunger_paid_through="2026-10-17")
     store.save_state(state)
     cmd_prepare(make_ctx(lambda text: None))
     assert load_state(TODAY)["alive"] is False and load_state(TODAY)["death_date"] == "2026-10-17"
@@ -252,10 +253,10 @@ def test_prepare_settles_a_win_before_charging_hunger(tmp_root):
 
 def test_prepare_checks_death_after_charging_hunger(tmp_root):
     state = new_state(date(2026, 10, 1))
-    state.update(bankroll_cents=210, hunger_paid_through="2026-10-16")
+    state.update(bankroll_cents=4_010, hunger_paid_through="2026-10-16")  # au-dessus de 40 CHF avant la faim, en dessous après
     store.save_state(state)
     cmd_prepare(make_ctx(lambda text: None))
-    assert load_state(TODAY)["bankroll_cents"] == 185 and load_state(TODAY)["alive"] is False
+    assert load_state(TODAY)["bankroll_cents"] == 3_985 and load_state(TODAY)["alive"] is False
 
 
 def test_prepare_checks_death_after_settling_the_last_bet(tmp_root):
@@ -495,12 +496,12 @@ def test_failed_diploma_announcement_is_retried_until_it_goes_out(tmp_root):
 
 def test_a_dead_kairos_past_day_56_gets_no_diploma_text(tmp_root):
     state = new_state(TODAY - timedelta(days=60))
-    state.update(alive=False, death_date="2026-10-16", bankroll_cents=40, hunger_paid_through="2026-10-17")
+    state.update(alive=False, death_date="2026-10-16", bankroll_cents=3_975, hunger_paid_through="2026-10-17")
     store.save_state(state)
     sent = []
     cmd_apply(make_ctx(sent.append, now=MIDMORNING))
     assert load_state(TODAY)["diploma"] == "manqué" and not load_state(TODAY).get("diploma_announced")
-    assert sent == [f"Kairos est mort le 2026-10-16. Cagnotte finale : 0,40 CHF.\nSon histoire reste en ligne : {PAGE}"]
+    assert sent == [f"Kairos est mort le 2026-10-16. Cagnotte finale : 39,75 CHF.\nSon histoire reste en ligne : {PAGE}"]
 
 
 def test_apply_persists_forecasts_new_source_and_lessons(tmp_root):

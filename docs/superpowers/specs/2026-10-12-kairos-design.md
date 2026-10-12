@@ -4,7 +4,7 @@ Date : 2026-10-12 · Statut : validée en brainstorming, à planifier
 
 ## 1. En une phrase
 
-Kairos est un agent IA autonome qui vit d'une cagnotte fictive de 100 CHF : chaque jour il paie sa « faim », analyse des matchs de foot, parie en simulation sur de vraies cotes, apprend de ses résultats, et meurt si sa cagnotte tombe à zéro. On l'observe sur une page web et il envoie un message quotidien sur Telegram.
+Kairos est un agent IA autonome qui vit d'une cagnotte fictive de 100 CHF : chaque jour il paie sa « faim », analyse des matchs de foot, parie en simulation sur de vraies cotes, apprend de ses résultats, et meurt quand il ne peut plus placer la mise minimale (cagnotte sous 40 CHF, aucun pari en cours). On l'observe sur une page web et il envoie un message quotidien sur Telegram.
 
 ## 2. Cadre et limites
 
@@ -26,7 +26,7 @@ Kairos est un agent IA autonome qui vit d'une cagnotte fictive de 100 CHF : chaq
 | Cote minimale | 1,10 (en dessous, pas de pari) |
 | Paris par jour | 3 au maximum |
 | Exposition | mises en cours ≤ 15 % de la cagnotte |
-| Mort | cagnotte < 2,00 CHF (plus de mise possible) et aucun pari en cours |
+| Mort | cagnotte < 40,00 CHF (5 % de l'avoir n'atteignent plus la mise minimale de 2,00 CHF, donc plus de mise possible) et aucun pari en cours |
 | Diplôme | au jour 56 : vivant, cagnotte ≥ 100,00 CHF, prévisions meilleures que le marché en moyenne (score de compétence > 0) et CLV positive sur ≥ 55 % des paris |
 
 Après le jour 56, la simulation continue jusqu'à la mort ; le diplôme est un jalon, obtenu ou non une seule fois. Pas de résurrection. Une « génération 2 » éventuelle repartirait de zéro avec le carnet de leçons de la génération 1 (hors périmètre de cette spec).
