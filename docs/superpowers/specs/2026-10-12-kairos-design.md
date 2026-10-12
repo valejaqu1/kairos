@@ -46,16 +46,16 @@ Principe : **l'IA propose, le code décide.** Tout ce qui touche à l'argent, au
   │   lit state/ data/ memory/ → recherche web → écrit decisions/    │
   │   puis push                                                      │
   │                                                                  │
-  │ Actions « apply »  (sur push de decisions/, secours à 15:00)     │
+  │ Actions « apply »  (sur push de decisions/, secours 13:10 UTC)   │
   │   valide et applique les règles → state/   métriques → memory/   │
   │   construit site/ → GitHub Pages     message → Telegram          │
   │                                                                  │
-  │ Actions « closing »  (toutes les 30 min, 9h–23h)                 │
+  │ Actions « closing »  (à :07 et :37, environ 9h–23h Zurich)       │
   │   cote juste avant le coup d'envoi des paris en cours → CLV      │
   └──────────────────────────────────────────────────────────────────┘
 ```
 
-- Les trois workflows partagent un groupe de concurrence `kairos-state` (un seul à la fois) et font `git pull --rebase` avant de commiter.
+- Les trois workflows d'état partagent un groupe de concurrence `kairos-state` (un seul à la fois), lisent la dernière version de `main` (`ref: main` : un run en file d'attente garde sinon le SHA de son déclencheur et lirait un état périmé) et font `git pull --rebase` avant de commiter.
 - Déclencheurs autorisés : `schedule`, `push` sur `main`, `workflow_dispatch`. Jamais `pull_request_target` (dépôt public).
 - Secrets GitHub Actions : `ODDS_API_KEY`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`. La routine Claude n'en voit aucun.
 
@@ -124,7 +124,11 @@ Les textes écrits par l'IA sont bornés par la validation du fichier : identifi
 
 **Configuration de la routine :** dépôt `valejaqu1/kairos` uniquement, aucun connecteur (liste vidée explicitement après création), environnement cloud dédié « kairos » avec accès réseau complet (nécessaire pour découvrir des sources) et sans variable secrète. Compétence d'analyste dans `.claude/skills/kairos-analyste/` (méthode adaptée de sports-betting-claude, MIT : détection de valeur, liste de biais, discipline des sources).
 
-**Rayon d'action si une page web piège Kairos :** écrire des fichiers dans son propre dépôt public. Pas de clé à voler, pas de compte connecté, et ses mises restent bornées par le code.
+**Rayon d'action si une page web piège Kairos :** écrire des fichiers dans son propre dépôt public, y compris pousser sur `main`. La routine n'a aucune clé et aucun compte connecté, et ses mises restent bornées par le code. Mais les workflows exécutent le code du dépôt avec les clés (The Odds API, Telegram) : sans protection, une routine piégée pourrait modifier ce code et lire les clés. Le code qui tourne avec les clés est donc verrouillé par une empreinte que seul l'utilisateur valide.
+
+- Les workflows qui portent une clé (`prepare`, `apply`, `closing`, `check-api`) commencent, juste après le checkout et avant toute installation, par l'étape « Verrou du code » : elle calcule `git ls-tree -r HEAD -- kairos site_template pyproject.toml .github ROUTINE.md .claude data/team_aliases.json | sha256sum | cut -d' ' -f1` et le compare à la variable de dépôt `KAIROS_CODE_FINGERPRINT`, qu'une routine limitée aux fichiers du dépôt ne peut pas modifier. Si l'empreinte diffère ou si la variable est vide, le workflow affiche « Code non validé : empreinte … » et s'arrête avant d'installer ou d'exécuter quoi que ce soit, donc avant que les clés soient lues.
+- `scripts/empreinte-code.sh` affiche la même empreinte pour que l'utilisateur la colle dans la variable. **Chaque mise à jour du code exige une nouvelle empreinte**, validée par l'utilisateur après relecture.
+- Risque résiduel : si l'intégration GitHub de la routine était autorisée à modifier `.github/workflows`, elle pourrait retirer le verrou. On vérifie à la mise en route qu'elle ne le peut pas. La page publiée (`site/`) n'est pas verrouillée : elle ne contient aucune clé et ne peut en lire aucune.
 
 ## 8. Apprentissage
 
@@ -148,7 +152,7 @@ Les textes écrits par l'IA sont bornés par la validation du fichier : identifi
 |---|---|
 | The Odds API indisponible | « prepare » réessaie 2 fois, sinon pas de nouvelles cotes ; la routine n'a rien à analyser et le dit dans son message |
 | Cotes illisibles (réponse qui n'est pas une liste, match sans prix) | le championnat ou le match concerné est ignoré et compté dans le journal, sans texte d'erreur ; les autres matchs, l'état et le journal sont enregistrés |
-| Routine absente ou en échec | « apply » de secours à 15:00 : faim appliquée, aucun pari, message « Kairos n'a pas donné signe de vie aujourd'hui » |
+| Routine absente ou en échec | « apply » de secours à 13:10 UTC (15:10 en été, 14:10 en hiver à Zurich) : faim appliquée, aucun pari, message « Kairos n'a pas donné signe de vie aujourd'hui » |
 | Fichier de décisions invalide | rejeté en entier, journalisé ; même traitement que l'absence |
 | Match reporté | pari en attente ; remboursé après 3 jours |
 | Jours sans aucun run | faim rattrapée au run suivant |

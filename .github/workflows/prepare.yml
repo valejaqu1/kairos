@@ -13,6 +13,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Verrou du code
+        env:
+          KAIROS_CODE_FINGERPRINT: ${{ vars.KAIROS_CODE_FINGERPRINT }}
+        run: |
+          actual=$(git ls-tree -r HEAD -- kairos site_template pyproject.toml .github ROUTINE.md .claude data/team_aliases.json | sha256sum | cut -d' ' -f1)
+          if [ -z "${KAIROS_CODE_FINGERPRINT:-}" ] || [ "$actual" != "$KAIROS_CODE_FINGERPRINT" ]; then
+            echo "Code non validé : empreinte $actual, attendue ${KAIROS_CODE_FINGERPRINT:-(vide)}"
+            exit 1
+          fi
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
