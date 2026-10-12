@@ -164,6 +164,31 @@ def test_fetch_results_raises_when_no_season_is_available():
         fetch_results(EPL, TODAY, get=lambda url, timeout: Resp(404))
 
 
+@pytest.mark.parametrize("status", [403, 429, 500, 503])
+@pytest.mark.parametrize("failing_season", ["2526", "2627"])
+def test_fetch_results_raises_on_a_non_404_error_instead_of_training_on_one_season(status, failing_season):
+    good = _main_csv("16/08/2025,15:00,A,B,2,1,H")
+
+    def get(url, timeout):
+        return Resp(status, b"<html>oops</html>") if failing_season in url else Resp(200, good)
+
+    with pytest.raises(RuntimeError) as err:
+        fetch_results(EPL, TODAY, get=get)
+    assert f"football-data HTTP {status} pour https://x/{failing_season}/E0.csv" in str(err.value)
+
+
+def test_fetch_results_raises_on_a_non_404_error_for_the_single_new_format_file():
+    new_league = League("soccer_switzerland_superleague", "https://x/new/SWZ.csv", "new", "SL")
+    with pytest.raises(RuntimeError, match="HTTP 503 pour https://x/new/SWZ.csv"):
+        fetch_results(new_league, TODAY, get=lambda url, timeout: Resp(503))
+
+
+def test_fetch_results_accepts_a_missing_first_season_file():
+    good = _main_csv("16/08/2025,15:00,A,B,2,1,H")
+    df = fetch_results(EPL, TODAY, get=lambda url, timeout: Resp(404) if "2526" in url else Resp(200, good))
+    assert df["home"].tolist() == ["A"]
+
+
 def test_fetch_results_keeps_the_cutoff_day_drops_the_day_before_and_sorts():
     csv_bytes = _main_csv(
         "20/03/2025,15:00,A,B,1,0,H",

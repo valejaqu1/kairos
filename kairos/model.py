@@ -37,7 +37,11 @@ def fetch_results(league: League, today: date, get=requests.get) -> pd.DataFrame
     frames = []
     for url in urls:
         resp = get(url, timeout=60)
-        if resp.status_code == 200 and resp.content.strip():
+        if resp.status_code == 404:
+            continue
+        if resp.status_code != 200:
+            raise RuntimeError(f"football-data HTTP {resp.status_code} pour {url}")
+        if resp.content.strip():
             frames.append(parse_results(resp.content.decode("utf-8-sig", errors="replace"), league.fd_format))
     if not frames:
         raise RuntimeError(f"aucun résultat pour {league.sport_key}")
