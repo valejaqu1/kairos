@@ -6,4 +6,4 @@ Agent IA qui vit d'une cagnotte fictive de 100 CHF : il paie sa faim chaque jour
 - Spécification : `docs/superpowers/specs/2026-10-12-kairos-design.md`
 - Mise en route : `docs/SETUP.md`
 
-Simulation uniquement : aucun argent réel, aucun compte de paris. Les cotes viennent de The Odds API, les résultats historiques de football-data.co.uk, le modèle de penaltyblog (MIT) ; la méthode d'analyste est adaptée de sports-betting-claude (MIT).
+Simulation uniquement : aucun argent réel, aucun compte de paris. Les cotes viennent de The Odds API, les résultats historiques de football-data.co.uk, le modèle de penaltyblog (MIT) ; la méthode d'analyste est adaptée de sports-betting-claude (MIT, voir [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)).
