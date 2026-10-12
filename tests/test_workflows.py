@@ -199,6 +199,16 @@ def test_lock_step_follows_checkout_and_precedes_setup_and_install():
         assert position == checkout + 1 < setup < install, name
 
 
+def test_locked_workflows_restore_no_dependency_cache():
+    # setup-python restaure ~/.cache/pip APRÈS le verrou, dans un espace partagé avec tests.yml (sans verrou) :
+    # ce que « pip install -e . » consommerait échapperait à l'empreinte. Les workflows à clés n'ont donc aucun cache.
+    for name in LOCKED_JOBS:
+        steps, _ = lock_step(name)
+        (setup,) = [s for s in steps if str(s.get("uses", "")).startswith("actions/setup-python")]
+        assert not [key for key in setup.get("with", {}) if key.startswith("cache")], name
+        assert not [s for s in steps if str(s.get("uses", "")).startswith("actions/cache")], name
+
+
 def test_lock_step_reads_the_repository_variable_and_holds_no_secret():
     for name in LOCKED_JOBS:
         _, lock = lock_step(name)
