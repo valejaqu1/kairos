@@ -8,6 +8,10 @@ BASE = "https://api.the-odds-api.com/v4"
 RETRY_STATUSES = {429, 500, 502, 503, 504}
 
 
+class OddsApiError(RuntimeError):
+    pass
+
+
 class OddsApi:
     def __init__(self, key: str, session=None):
         self.key = key
@@ -15,24 +19,27 @@ class OddsApi:
         self.remaining: int | None = None
 
     def _get(self, path: str, **params):
+        # La clé ne doit jamais apparaître dans un message d'erreur : les messages
+        # ne citent que le chemin, et l'exception n'est pas chaînée (from None).
         params["apiKey"] = self.key
-        last_error: Exception | None = None
+        failure = ""
         for attempt in range(3):
             try:
                 resp = self.session.get(f"{BASE}{path}", params=params, timeout=30)
-            except requests.ConnectionError as exc:
-                last_error = exc
+            except (requests.ConnectionError, requests.Timeout):
+                failure = f"connexion impossible sur {path}"
             else:
                 if resp.status_code not in RETRY_STATUSES:
-                    resp.raise_for_status()
+                    if resp.status_code >= 400:
+                        raise OddsApiError(f"HTTP {resp.status_code} sur {path}") from None
                     remaining = resp.headers.get("x-requests-remaining")
                     if remaining is not None:
                         self.remaining = int(float(remaining))
                     return resp.json()
-                last_error = RuntimeError(f"HTTP {resp.status_code}")
+                failure = f"HTTP {resp.status_code} sur {path}"
             if attempt < 2:
                 time.sleep(5 * (attempt + 1))
-        raise last_error
+        raise OddsApiError(f"{failure} après 3 tentatives") from None
 
     def odds(self, sport_key: str) -> list:
         return self._get(f"/sports/{sport_key}/odds/", regions="eu", markets="h2h", oddsFormat="decimal", dateFormat="iso")

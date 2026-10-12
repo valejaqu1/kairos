@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 import requests
 
-from kairos.api import FakeOddsApi, OddsApi
+from kairos.api import FakeOddsApi, OddsApi, OddsApiError
 
 FIX = Path(__file__).parent / "fixtures"
 
@@ -55,6 +55,7 @@ def test_gives_up_after_three_attempts(monkeypatch):
     s = Session([Resp(503, {}), Resp(503, {}), Resp(503, {})])
     with pytest.raises(RuntimeError):
         OddsApi("KEY", session=s).odds("soccer_epl")
+    assert len(s.calls) == 3
 
 
 def test_fake_api_reads_fixtures():
@@ -120,3 +121,61 @@ def test_fake_event_odds_reads_event_file(tmp_path):
     (tmp_path / "event_odds_evt-live.json").write_text('{"id": "evt-live"}', encoding="utf-8")
     fake = FakeOddsApi(tmp_path)
     assert fake.event_odds("soccer_epl", "evt-live") == {"id": "evt-live"}
+
+
+def test_succeeds_on_third_attempt(monkeypatch):
+    monkeypatch.setattr("kairos.api.time.sleep", lambda s: None)
+    s = Session([Resp(503, {}), Resp(503, {}), Resp(200, [{"id": "z"}])])
+    assert OddsApi("KEY", session=s).odds("soccer_epl") == [{"id": "z"}]
+    assert len(s.calls) == 3
+
+
+def test_retries_on_read_timeout(monkeypatch):
+    monkeypatch.setattr("kairos.api.time.sleep", lambda s: None)
+    s = Session([Resp(200, [{"id": "t"}])])
+    attempts = []
+
+    def slow_get(url, params, timeout):
+        attempts.append(url)
+        if len(attempts) == 1:
+            raise requests.ReadTimeout("read timed out")
+        return Session.get(s, url, params, timeout)
+
+    s.get = slow_get
+    assert OddsApi("KEY", session=s).odds("soccer_epl") == [{"id": "t"}]
+    assert len(attempts) == 2
+
+
+def test_client_error_message_hides_key(monkeypatch):
+    monkeypatch.setattr("kairos.api.time.sleep", lambda s: None)
+    s = Session([Resp(401, {})])
+    with pytest.raises(OddsApiError) as info:
+        OddsApi("KEY", session=s).odds("soccer_epl")
+    assert "KEY" not in str(info.value)
+    assert "/sports/soccer_epl/odds/" in str(info.value)
+    assert info.value.__cause__ is None
+
+
+def test_exhausted_server_error_message_hides_key(monkeypatch):
+    monkeypatch.setattr("kairos.api.time.sleep", lambda s: None)
+    s = Session([Resp(503, {}), Resp(503, {}), Resp(503, {})])
+    with pytest.raises(OddsApiError) as info:
+        OddsApi("KEY", session=s).odds("soccer_epl")
+    assert "KEY" not in str(info.value)
+    assert "après 3 tentatives" in str(info.value)
+    assert info.value.__cause__ is None
+
+
+def test_exhausted_connection_error_message_hides_key(monkeypatch):
+    monkeypatch.setattr("kairos.api.time.sleep", lambda s: None)
+
+    class Down:
+        def get(self, url, params, timeout):
+            raise requests.ConnectionError(f"Max retries exceeded with url: {url}?apiKey={params['apiKey']}")
+
+    with pytest.raises(OddsApiError) as info:
+        OddsApi("KEY", session=Down()).odds("soccer_epl")
+    assert "KEY" not in str(info.value)
+    assert "connexion impossible" in str(info.value)
+    assert "après 3 tentatives" in str(info.value)
+    assert info.value.__cause__ is None
