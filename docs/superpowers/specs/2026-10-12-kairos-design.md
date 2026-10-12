@@ -11,7 +11,8 @@ Kairos est un agent IA autonome qui vit d'une cagnotte fictive de 100 CHF : chaq
 - **Simulation uniquement.** Aucun argent réel, aucun compte de paris. Le passage à l'argent réel (semi-automatique sur Jouez Sport, l'utilisateur valide chaque ticket à la main) est un projet séparé, envisagé seulement si Kairos décroche son diplôme.
 - **Pas de lecture de Jouez Sport.** Le site jeux.loro.ch bloque les navigateurs automatisés (403 constaté le 2026-10-12). On ne contourne pas cette protection. Les cotes viennent de The Odds API (bookmakers européens), avec une décote prudente.
 - **Légalité.** Seule plateforme légale pour l'utilisateur (Suisse romande) : Jouez Sport. Les plateformes étrangères (Polymarket, bookmakers étrangers) sont bloquées en Suisse et ne sont pas utilisées.
-- **Sport couvert :** football, marché 1X2 (victoire domicile / nul / victoire extérieur), avant-match uniquement.
+- **Sport couvert :** football, pari « 1X2 classique » en temps réglementaire (victoire domicile / nul / victoire extérieur), avant-match uniquement.
+- **Fidélité à Jouez Sport** (règlement 17e édition, septembre 2024) : mise minimale d'un pari Single en ligne 2 CHF (art. 9), cote minimale 1,10 (art. 7), le 1X2 classique fait partie des paris autorisés (annexe 1, art. 1). Les championnats suivis sont l'intersection de l'offre football réelle de Jouez Sport, de The Odds API et de football-data.co.uk, relevée par l'utilisateur à la mise en route. Limite connue : Jouez Sport peut réserver certains 1X2 aux paris combinés (art. 5.2) ; la simulation ne peut pas le savoir et suppose que le pari Single est disponible.
 
 ## 3. Règles du jeu
 
@@ -19,12 +20,13 @@ Kairos est un agent IA autonome qui vit d'une cagnotte fictive de 100 CHF : chaq
 |---|---|
 | Cagnotte de départ | 100,00 CHF fictifs |
 | Faim | 0,25 CHF par jour calendaire, jours manqués rattrapés |
-| Décote des cotes | cote simulée = cote médiane UE × 0,95 (plancher 1,01) |
+| Décote des cotes | cote simulée = cote médiane UE × 0,95 (plancher 1,01), facteur recalé à la mise en route sur de vraies cotes Jouez Sport |
 | Seuil de valeur | proba de Kairos × cote simulée − 1 ≥ 0,05 |
-| Mise | ¼ de Kelly, plafond 5 % de la cagnotte, arrondi à 0,10 CHF, minimum 1,00 CHF (sinon pas de pari) |
+| Mise | ¼ de Kelly, plafond 5 % de l'avoir, arrondi à 0,10 CHF, minimum 2,00 CHF (sinon pas de pari) |
+| Cote minimale | 1,10 (en dessous, pas de pari) |
 | Paris par jour | 3 au maximum |
 | Exposition | mises en cours ≤ 15 % de la cagnotte |
-| Mort | cagnotte < 1,00 CHF et aucun pari en cours |
+| Mort | cagnotte < 2,00 CHF (plus de mise possible) et aucun pari en cours |
 | Diplôme | au jour 56 : vivant, cagnotte ≥ 100,00 CHF, prévisions meilleures que le marché en moyenne (score de compétence > 0) et CLV positive sur ≥ 55 % des paris |
 
 Après le jour 56, la simulation continue jusqu'à la mort ; le diplôme est un jalon, obtenu ou non une seule fois. Pas de résurrection. Une « génération 2 » éventuelle repartirait de zéro avec le carnet de leçons de la génération 1 (hors périmètre de cette spec).
@@ -61,11 +63,11 @@ Principe : **l'IA propose, le code décide.** Tout ce qui touche à l'argent, au
 
 ```
 state/kairos.json        état vivant : cagnotte, jour, vivant/mort, génération, dates clés
-state/bets.json          tous les paris (ouverts et réglés)
+state/bets.json          tous les paris (ouverts et réglés), cote de clôture comprise (champ closing_odds)
 state/forecasts.json     toutes les prévisions (pariées ou non), avec score une fois le match joué
 data/odds/AAAA-MM-JJ.json    instantané des cotes (médiane UE par issue, cote simulée)
 data/model/AAAA-MM-JJ.json   probabilités du modèle statistique par match
-data/closing.json        cotes d'avant-coup-d'envoi des paris
+data/team_aliases.json   correspondances de noms d'équipes entre The Odds API et football-data
 decisions/AAAA-MM-JJ.json    sortie de la routine (schéma §7)
 memory/sources.json      sources avec utilisations, score et statut (gardée / en test / jetée)
 memory/lessons.md        carnet de leçons, 15 règles au maximum
@@ -153,7 +155,7 @@ Kairos ne fixe pas ses mises : le code les calcule à partir de sa probabilité.
 
 - Tests unitaires (pytest) pour rules, hunger, settle, metrics (RPS, CLV, rang, sources), validation du fichier de décisions.
 - Réponses de The Odds API et de football-data enregistrées en fixtures ; aucun appel réseau dans les tests.
-- Mode `--dry-run` local : enchaîne prepare → décisions d'exemple → apply sans Telegram ni push.
+- Test de bout en bout avec un faux client API : prepare → décisions d'exemple → apply → closing → prepare du surlendemain, sans réseau, sans Telegram ni push.
 - Avant la mise en route : une journée complète en dry-run, puis un premier jour réel surveillé.
 
 ## 12. Ce que l'utilisateur fait lui-même
@@ -169,3 +171,4 @@ Argent réel et Jouez Sport ; autres sports et marchés ; paris en direct ; gén
 - Clés de championnats disponibles chez The Odds API (Super League suisse incluse ?) et coût exact en crédits des appels odds, scores et cotes par match.
 - Format des fichiers football-data.co.uk pour la Suisse (fichiers « nouvelles ligues ») et fonction de chargement de `penaltyblog`.
 - Fuseau horaire accepté par la planification des routines.
+- Offre football réelle de Jouez Sport et décote réelle : l'utilisateur relève la liste des championnats et une quinzaine de cotes 1X2 un jour donné ; on recale la décote et la liste des championnats.
