@@ -118,3 +118,77 @@ def test_write_site_copies_template_verbatim(tmp_root):
     from kairos.site import TEMPLATE
     write_site({"name": "Kairos"})
     assert (tmp_root / "site" / "index.html").read_bytes() == TEMPLATE.read_bytes()
+
+
+def test_data_json_contract_fully_populated():
+    from kairos.metrics import current_streak, rank, stats
+
+    s = new_state(date(2026, 9, 26))
+    s.update(generation=3, bankroll_cents=9_900, hunger_total_cents=1_375, last_message="Message de test",
+             last_message_date="2026-10-16", trophies={"premier_gain": "2026-10-14"},
+             history=[{"date": "2026-10-15", "equity_cents": 10_050}, {"date": "2026-10-16", "equity_cents": 10_210}])
+    bets = [
+        _bet(date="2026-10-17", commence_time="2026-10-18T14:00:00Z", home="Brighton", away="Villa", selection="1",
+             odds_sim=2.18, odds_median=2.30, stake_cents=310, status="open", p_kairos=0.5, p_market=0.42, closing_odds=None),
+        _bet(sport_key="soccer_spain_la_liga", date="2026-10-15", commence_time="2026-10-15T20:00:00Z", settled_date="2026-10-16",
+             home="Séville", away="Betis", selection="X", odds_sim=3.10, odds_median=3.30, stake_cents=400, payout_cents=1240,
+             status="won", p_kairos=0.36, p_market=0.31, closing_odds=3.20),
+        _bet(sport_key="soccer_germany_bundesliga", date="2026-10-13", commence_time="2026-10-13T18:00:00Z", settled_date="2026-10-14",
+             home="Bayern", away="Dortmund", selection="2", odds_sim=1.90, odds_median=2.00, stake_cents=200, payout_cents=380,
+             status="won", p_kairos=0.55, p_market=0.50, closing_odds=2.10),
+        _bet(sport_key="soccer_italy_serie_a", date="2026-10-12", commence_time="2026-10-12T15:00:00Z", settled_date="2026-10-13",
+             home="Inter", away="Milan", selection="1", odds_sim=2.50, odds_median=2.40, stake_cents=250, payout_cents=0,
+             status="lost", p_kairos=0.45, p_market=0.42, closing_odds=2.30),
+        _bet(date="2026-10-11", commence_time="2026-10-11T12:00:00Z", settled_date="2026-10-12", home="Arsenal", away="Chelsea",
+             selection="X", odds_sim=3.00, odds_median=3.10, stake_cents=150, payout_cents=150, status="void",
+             p_kairos=0.30, p_market=0.28, closing_odds=None),
+    ]
+    forecasts = [
+        {"outcome": 1, "rps_market": 0.20, "rps_kairos": 0.15},
+        {"outcome": 0, "rps_market": 0.22, "rps_kairos": 0.30},
+        {"outcome": None, "rps_market": 0.10, "rps_kairos": 0.05},
+    ]
+    sources = {"compos": {"description": "Compos", "status": "kept", "uses": 12, "score": 0.01}}
+    lessons = "# Leçons de Kairos\n\n- une leçon (3 cas)\n- seconde leçon\n"
+    assert rank(forecasts, bets) != rank([], bets)  # the forecast part must change the rank, or the probe proves nothing
+
+    data = build_site_data(s, bets, forecasts, sources, lessons, date(2026, 10, 17), NOW)
+    assert data["name"] == "Kairos" and data["generation"] == 3
+    assert data["day"] == 22 and data["diploma_day"] == 56 and data["diploma_in"] == 34
+    assert data["alive"] is True and data["death_date"] is None and data["diploma"] is None
+    assert data["equity_cents"] == 10_210 and data["bankroll_cents"] == 9_900 and data["delta_cents"] == 210
+    assert data["hunger_total_cents"] == 1_375 and data["health"] == 0.851
+    assert data["mood"] == "En chasse"
+    assert data["last_run"] == NOW.isoformat() and data["updated_at"] == NOW.isoformat()
+    assert data["message"] == "Message de test" and data["message_date"] == "2026-10-16"
+    assert data["history"] == [{"date": "2026-10-15", "equity_cents": 10_050}, {"date": "2026-10-16", "equity_cents": 10_210}]
+    assert data["clv"] == {"beats": 2, "total": 3}
+    assert data["streak"] == current_streak(bets) == 2
+    assert data["rank"] == rank(forecasts, bets)
+    assert data["stats"] == {k: stats(bets)[k] for k in ("bets", "won", "roi", "clv_avg")}
+    assert data["bets"] == [
+        {"league": "Premier League", "kickoff": "2026-10-18T14:00:00Z", "home": "Brighton", "away": "Villa", "selection": "1",
+         "odds_sim": 2.18, "odds_median": 2.30, "stake_cents": 310, "payout_cents": None, "status": "open",
+         "p_kairos": 0.5, "p_market": 0.42, "closing_odds": None},
+        {"league": "LaLiga", "kickoff": "2026-10-15T20:00:00Z", "home": "Séville", "away": "Betis", "selection": "X",
+         "odds_sim": 3.10, "odds_median": 3.30, "stake_cents": 400, "payout_cents": 1240, "status": "won",
+         "p_kairos": 0.36, "p_market": 0.31, "closing_odds": 3.20},
+        {"league": "Bundesliga", "kickoff": "2026-10-13T18:00:00Z", "home": "Bayern", "away": "Dortmund", "selection": "2",
+         "odds_sim": 1.90, "odds_median": 2.00, "stake_cents": 200, "payout_cents": 380, "status": "won",
+         "p_kairos": 0.55, "p_market": 0.50, "closing_odds": 2.10},
+        {"league": "Serie A", "kickoff": "2026-10-12T15:00:00Z", "home": "Inter", "away": "Milan", "selection": "1",
+         "odds_sim": 2.50, "odds_median": 2.40, "stake_cents": 250, "payout_cents": 0, "status": "lost",
+         "p_kairos": 0.45, "p_market": 0.42, "closing_odds": 2.30},
+        {"league": "Premier League", "kickoff": "2026-10-11T12:00:00Z", "home": "Arsenal", "away": "Chelsea", "selection": "X",
+         "odds_sim": 3.00, "odds_median": 3.10, "stake_cents": 150, "payout_cents": 150, "status": "void",
+         "p_kairos": 0.30, "p_market": 0.28, "closing_odds": None},
+    ]
+    assert data["lessons"] == ["une leçon (3 cas)", "seconde leçon"]
+    assert data["sources"] == [{"id": "compos", "description": "Compos", "status": "kept", "uses": 12, "score": 0.01}]
+    assert data["trophies"][0] == {"id": "premier_gain", "label": "Premier pari gagné", "date": "2026-10-14"}
+    assert len(data["trophies"]) == 7 and all(t["date"] is None for t in data["trophies"][1:])
+
+    dead = dict(s, alive=False, death_date="2026-10-20")
+    dead_data = build_site_data(dead, bets, forecasts, sources, lessons, date(2026, 10, 17), NOW)
+    assert dead_data["alive"] is False and dead_data["death_date"] == "2026-10-20"
+    assert dead_data["health"] == 0.0 and dead_data["mood"] == "Éteint"

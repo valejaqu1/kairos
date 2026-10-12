@@ -150,7 +150,7 @@ body { margin: 0; background: var(--void); color: var(--ink); font-family: var(-
       <section class="panel"><p class="label">Trophées</p><div class="trophies" id="trophies"></div></section>
     </div>
   </div>
-  <p class="note" id="updated"></p>
+  <p class="note" id="updated">Simulation en argent fictif.</p>
 </div>
 <script>
 (function () {
@@ -168,7 +168,7 @@ body { margin: 0; background: var(--void); color: var(--ink); font-family: var(-
     var chips = $('chips');
     if (d.alive) {
       chips.appendChild(el('span', 'chip live', 'vivant · jour ' + d.day));
-      chips.appendChild(el('span', 'chip', d.diploma ? 'diplôme ' + d.diploma : 'diplôme dans ' + d.diploma_in + ' jours'));
+      chips.appendChild(el('span', 'chip', d.diploma ? 'diplôme ' + d.diploma : d.diploma_in === 0 ? 'diplôme aujourd’hui' : d.diploma_in === 1 ? 'diplôme dans 1 jour' : 'diplôme dans ' + d.diploma_in + ' jours'));
     } else {
       chips.appendChild(el('span', 'chip dead', 'mort le ' + d.death_date));
     }
@@ -230,7 +230,7 @@ body { margin: 0; background: var(--void); color: var(--ink); font-family: var(-
       card.appendChild(res);
       var pick = el('div', 'pick');
       pick.appendChild(document.createTextNode('Pari '));
-      pick.appendChild(el('b', null, SEL[b.selection](b)));
+      pick.appendChild(el('b', null, (SEL[b.selection] || function () { return b.selection; })(b)));
       pick.appendChild(document.createTextNode(' à '));
       pick.appendChild(el('b', null, b.odds_sim.toFixed(2).replace('.', ',')));
       if (b.closing_odds) {
@@ -314,7 +314,7 @@ body { margin: 0; background: var(--void); color: var(--ink); font-family: var(-
   fetch('data.json', { cache: 'no-store' })
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(render)
-    .catch(function () { $('msg').textContent = 'Les données de Kairos sont momentanément indisponibles.'; });
+    .catch(function (err) { console.error(err); $('msg').textContent = 'Les données de Kairos sont momentanément indisponibles.'; });
 })();
 </script>
 </body>
