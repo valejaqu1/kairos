@@ -154,6 +154,7 @@ def test_client_error_message_hides_key(monkeypatch):
     assert "KEY" not in str(info.value)
     assert "/sports/soccer_epl/odds/" in str(info.value)
     assert info.value.__cause__ is None
+    assert info.value.__context__ is None
 
 
 def test_exhausted_server_error_message_hides_key(monkeypatch):
@@ -164,6 +165,7 @@ def test_exhausted_server_error_message_hides_key(monkeypatch):
     assert "KEY" not in str(info.value)
     assert "après 3 tentatives" in str(info.value)
     assert info.value.__cause__ is None
+    assert info.value.__context__ is None
 
 
 def test_exhausted_connection_error_message_hides_key(monkeypatch):
@@ -179,3 +181,4 @@ def test_exhausted_connection_error_message_hides_key(monkeypatch):
     assert "connexion impossible" in str(info.value)
     assert "après 3 tentatives" in str(info.value)
     assert info.value.__cause__ is None
+    assert info.value.__context__ is None

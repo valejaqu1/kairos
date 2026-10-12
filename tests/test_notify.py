@@ -3,6 +3,7 @@ from datetime import date
 import pytest
 import requests
 
+from kairos.config import DIPLOMA_DAY
 from kairos.notify import NotifyError, chf, compose_daily, compose_death, compose_diploma, send
 from kairos.store import new_state
 
@@ -63,7 +64,7 @@ def test_compose_daily_plural_bets():
 
 def test_compose_diploma_not_obtained():
     text = compose_diploma(new_state(date(2026, 10, 1)), "manqué", URL)
-    assert text == f"Jour 56 : pas de diplôme pour Kairos. La simulation continue jusqu'à la fin.\n{URL}"
+    assert text == f"Jour {DIPLOMA_DAY} : pas de diplôme pour Kairos. La simulation continue jusqu'à la fin.\n{URL}"
 
 
 @pytest.mark.parametrize("result", ["obtenu", "manqué"])
@@ -84,12 +85,13 @@ def test_send_http_error_hides_token():
         send("SECRET123", "42", "salut", post=lambda url, json, timeout: R())
     assert "SECRET123" not in str(info.value)
     assert info.value.__cause__ is None and info.value.__suppress_context__
+    assert info.value.__context__ is None
 
 
 @pytest.mark.parametrize("exc", [
     requests.ConnectionError("HTTPSConnectionPool(host='api.telegram.org'): Max retries exceeded with url: /botSECRET123/sendMessage"),
     requests.Timeout("HTTPSConnectionPool(host='api.telegram.org'): Read timed out. with url: /botSECRET123/sendMessage"),
-])
+], ids=["ConnectionError", "Timeout"])
 def test_send_network_error_hides_token(exc):
     def post(url, json, timeout):
         raise exc
@@ -99,6 +101,7 @@ def test_send_network_error_hides_token(exc):
     assert str(info.value) == f"Telegram : {type(exc).__name__}"
     assert "SECRET123" not in str(info.value)
     assert info.value.__cause__ is None and info.value.__suppress_context__
+    assert info.value.__context__ is None
 
 
 def test_send_timeout_is_30():

@@ -33,13 +33,17 @@ def compose_diploma(state: dict, result: str, page_url: str) -> str:
 
 def send(token: str, chat_id: str, text: str, post=requests.post) -> None:
     # Le jeton figure dans l'URL, et les messages requests citent cette URL : le message
-    # ne reprend que le type de l'erreur. from None masque la chaîne dans les tracebacks,
-    # mais exc.__context__ garde l'exception d'origine : ne jamais l'afficher.
-    # Pas de raise_for_status, pour la même raison (son message cite l'URL).
+    # ne reprend que le type de l'erreur. L'erreur est levée après le bloc except (comme
+    # OddsApi._get) : aucun objet d'exception d'origine n'est référencé. Pas de
+    # raise_for_status, pour la même raison (son message cite l'URL).
+    failure = None
     try:
         resp = post(f"https://api.telegram.org/bot{token}/sendMessage",
                     json={"chat_id": chat_id, "text": text, "disable_web_page_preview": True}, timeout=30)
     except requests.RequestException as exc:
-        raise NotifyError(f"Telegram : {type(exc).__name__}") from None
-    if resp.status_code >= 400:
-        raise NotifyError(f"Telegram : HTTP {resp.status_code}") from None
+        failure = f"Telegram : {type(exc).__name__}"
+    else:
+        if resp.status_code >= 400:
+            failure = f"Telegram : HTTP {resp.status_code}"
+    if failure:
+        raise NotifyError(failure) from None
