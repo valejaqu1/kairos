@@ -116,9 +116,9 @@ def write_decisions(root, **changes):
     (root / "decisions" / "2026-10-17.json").write_text(json.dumps(valid_decisions(**changes)), encoding="utf-8")
 
 
-def open_bet(commence):
-    return {"id": "2026-10-16-evt-old-1", "date": "2026-10-16", "event_id": "evt-old", "sport_key": "soccer_epl",
-            "home": "Brighton and Hove Albion", "away": "Aston Villa", "commence_time": commence, "selection": "1",
+def open_bet(commence, event_id="evt-old", selection="1"):
+    return {"id": f"2026-10-16-{event_id}-{selection}", "date": "2026-10-16", "event_id": event_id, "sport_key": "soccer_epl",
+            "home": "Brighton and Hove Albion", "away": "Aston Villa", "commence_time": commence, "selection": selection,
             "odds_median": 2.3, "odds_sim": 2.18, "stake_cents": 420, "p_kairos": 0.55, "p_market": 0.42, "status": "open",
             "payout_cents": None, "closing_odds": None, "settled_date": None, "reasoning": "valeur"}
 
@@ -210,6 +210,7 @@ def test_a_kairos_that_dies_today_gets_only_the_death_message(tmp_root):
     sent = []
     cmd_apply(make_ctx(sent.append, now=MIDMORNING))
     assert sent == [DEATH_MESSAGE]
+    assert (tmp_root / "site" / "data.json").exists()
 
 
 def test_death_announcement_is_retried_until_telegram_succeeds(tmp_root):
@@ -220,6 +221,7 @@ def test_death_announcement_is_retried_until_telegram_succeeds(tmp_root):
     ctx = make_ctx(boom, now=MIDMORNING)
     cmd_apply(ctx)
     assert load_state(TODAY)["alive"] is False and not load_state(TODAY).get("death_announced")
+    assert (tmp_root / "site" / "data.json").exists()
     assert "Telegram indisponible : Telegram : HTTP 502" in journal(tmp_root)
     sent = []
     ctx.notify = sent.append
@@ -236,6 +238,33 @@ def test_prepare_marks_a_starved_kairos_dead(tmp_root):
     store.save_state(state)
     cmd_prepare(make_ctx(lambda text: None))
     assert load_state(TODAY)["alive"] is False and load_state(TODAY)["death_date"] == "2026-10-17"
+
+
+def test_prepare_settles_a_win_before_charging_hunger(tmp_root):
+    state = new_state(date(2026, 10, 14))  # trois jours de faim (75 centimes) à payer le 17
+    state.update(bankroll_cents=20)
+    store.save_state(state)
+    store.save_bets([open_bet("2026-10-16T14:00:00Z", event_id="evt-brighton-villa", selection="1")])
+    cmd_prepare(make_ctx(lambda text: None))
+    assert load_bets()[0]["status"] == "won"
+    assert load_state(TODAY)["bankroll_cents"] == 20 + round(420 * 2.18) - 75
+
+
+def test_prepare_checks_death_after_charging_hunger(tmp_root):
+    state = new_state(date(2026, 10, 1))
+    state.update(bankroll_cents=210, hunger_paid_through="2026-10-16")
+    store.save_state(state)
+    cmd_prepare(make_ctx(lambda text: None))
+    assert load_state(TODAY)["bankroll_cents"] == 185 and load_state(TODAY)["alive"] is False
+
+
+def test_prepare_checks_death_after_settling_the_last_bet(tmp_root):
+    state = new_state(date(2026, 10, 1))
+    state.update(bankroll_cents=100, hunger_paid_through="2026-10-17")
+    store.save_state(state)
+    store.save_bets([open_bet("2026-10-16T14:00:00Z", event_id="evt-brighton-villa", selection="2")])
+    cmd_prepare(make_ctx(lambda text: None))
+    assert load_bets()[0]["status"] == "lost" and load_state(TODAY)["alive"] is False
 
 
 def test_prepare_on_a_dead_kairos_only_saves_state(tmp_root):
@@ -259,6 +288,17 @@ def test_prepare_degrades_to_no_model_when_football_data_is_unavailable(tmp_root
     ctx.now = MIDMORNING
     cmd_apply(ctx)
     assert [f["p_model"] for f in store.load_forecasts()] == [None]
+
+
+def test_model_failure_note_quotes_only_wrapped_text(tmp_root, capsys):
+    def leaky(url, timeout):
+        raise ConnectionError(f"GET {url}?token={SECRET}")
+
+    ctx = make_ctx(lambda text: None)
+    ctx.http_get = leaky
+    cmd_prepare(ctx)
+    assert "- modèle indisponible pour Premier League : ConnectionError\n" in journal(tmp_root)
+    assert_no_secret(tmp_root, capsys)
 
 
 class FailingApi(FakeOddsApi):
@@ -378,6 +418,7 @@ def test_check_decisions_exit_codes_and_messages(tmp_path, monkeypatch, capsys):
     assert cmd_check_decisions(None, TODAY) == 2
     assert capsys.readouterr().out == "chemin manquant\n"
     assert check(None) == (2, "chemin manquant\n")
+    assert check("") == (2, "chemin manquant\n")
     assert check(write("ok.json", json.dumps(valid_decisions()))) == (0, "fichier de décisions valide\n")
     assert check(write("old.json", json.dumps(valid_decisions(date="2026-10-16")))) == (1, "erreur : date incorrecte\n")
     for bad in (write("bad.json", "{ pas du json"), write("bin.json", b"\xff\xfe\x00"), tmp_path / "absent.json"):
@@ -425,6 +466,41 @@ def test_diploma_message_is_sent_once_on_day_56(tmp_root):
     assert len(sent) == 2 and sent[1].startswith("Jour 56 : pas de diplôme pour Kairos.")
     cmd_apply(ctx)
     assert len(sent) == 2
+
+
+DIPLOMA_MISSED = f"Jour 56 : pas de diplôme pour Kairos. La simulation continue jusqu'à la fin.\n{PAGE}"
+
+
+def test_failed_diploma_announcement_is_retried_until_it_goes_out(tmp_root):
+    seed_state(start_date=(TODAY - timedelta(days=55)).isoformat(), hunger_paid_through="2026-10-17")
+    sent = []
+
+    def flaky(text):
+        if text.startswith("Jour 56"):
+            raise RuntimeError("Telegram : HTTP 502")
+        sent.append(text)
+
+    ctx = make_ctx(flaky, now=MIDMORNING)
+    cmd_apply(ctx)
+    assert len(sent) == 1 and sent[0].startswith("Kairos n'a pas donné signe de vie")
+    assert load_state(TODAY)["diploma"] == "manqué" and not load_state(TODAY).get("diploma_announced")
+    assert "Telegram indisponible : Telegram : HTTP 502" in journal(tmp_root)
+    ctx.notify = sent.append
+    cmd_apply(ctx)
+    assert sent[1:] == [DIPLOMA_MISSED]
+    assert load_state(TODAY)["diploma_announced"] is True
+    cmd_apply(ctx)
+    assert len(sent) == 2
+
+
+def test_a_dead_kairos_past_day_56_gets_no_diploma_text(tmp_root):
+    state = new_state(TODAY - timedelta(days=60))
+    state.update(alive=False, death_date="2026-10-16", bankroll_cents=40, hunger_paid_through="2026-10-17")
+    store.save_state(state)
+    sent = []
+    cmd_apply(make_ctx(sent.append, now=MIDMORNING))
+    assert load_state(TODAY)["diploma"] == "manqué" and not load_state(TODAY).get("diploma_announced")
+    assert sent == [f"Kairos est mort le 2026-10-16. Cagnotte finale : 0,40 CHF.\nSon histoire reste en ligne : {PAGE}"]
 
 
 def test_apply_persists_forecasts_new_source_and_lessons(tmp_root):

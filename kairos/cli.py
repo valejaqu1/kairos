@@ -97,8 +97,7 @@ def cmd_prepare(ctx: Context) -> None:
             preds.update(p)
             unmatched += um
         except Exception as exc:
-            # Texte repris tel quel : seul football-data (sans clé) est contacté ici, le reste est du calcul local.
-            notes.append(f"modèle indisponible pour {league.label} : {exc}")
+            notes.append(f"modèle indisponible pour {league.label} : {_why(exc)}")
             preds.update({e["event_id"]: None for e in league_events})
     store.write_json(f"data/model/{ctx.today.isoformat()}.json", {"events": preds, "unmatched": sorted(set(unmatched))})
     notes.append(f"{len(events)} match(s) dans les 48 h, {len(set(unmatched))} équipe(s) non reconnue(s)")
@@ -161,7 +160,7 @@ def cmd_apply(ctx: Context) -> None:
 
     update_sources(sources, forecasts)
     update_trophies(state, bets, sources, ctx.today)
-    diploma = check_diploma(state, bets, forecasts, ctx.today)
+    check_diploma(state, bets, forecasts, ctx.today)
     check_death(state, bets, ctx.today)
     history = [h for h in state["history"] if h["date"] != today]
     state["history"] = history + [{"date": today, "equity_cents": equity_cents(state, bets)}]
@@ -181,8 +180,11 @@ def cmd_apply(ctx: Context) -> None:
     telegram_notes = []
     if "daily" in messages and state["alive"]:
         _notify(ctx, compose_daily(state, bets, placed, hunger_today, ctx.page_url), telegram_notes)
-    if diploma:
-        _notify(ctx, compose_diploma(state, diploma, ctx.page_url), telegram_notes)
+    # Comme la mort : l'annonce est répétée tant qu'elle n'est pas partie. Un Kairos éteint n'a pas de diplôme à fêter.
+    if state["alive"] and state.get("diploma") and not state.get("diploma_announced"):
+        if _notify(ctx, compose_diploma(state, state["diploma"], ctx.page_url), telegram_notes):
+            state["diploma_announced"] = True
+            store.save_state(state)
     if not state["alive"] and not state.get("death_announced"):
         if _notify(ctx, compose_death(state, ctx.page_url), telegram_notes):
             state["death_announced"] = True
