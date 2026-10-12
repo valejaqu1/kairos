@@ -31,3 +31,24 @@ def test_unknown_returns_none():
 def test_alias_to_missing_candidate_falls_back_to_prefix():
     assert match_team("Brighton and Hove Albion", FD, {"Brighton and Hove Albion": "Brighton & HA"}) == "Brighton"
     assert match_team("Brighton and Hove Albion", FD, {}) == "Brighton"
+
+
+def test_fuzzy_only_transposed_letters():
+    assert match_team("Yound Boys", FD, {}) == "Young Boys"
+
+
+def test_fuzzy_only_dropped_letter():
+    assert match_team("Servete", FD, {}) == "Servette"
+
+
+def test_fuzzy_only_abbreviated_name():
+    assert match_team("Nottingham Forest", FD, {}) == "Nott'm Forest"
+
+
+def test_trailing_word_resolves_to_club():
+    # Not prefix-isolated: fuzzy (ratio exactly 0.8) also matches this input; see report.
+    assert match_team("Young Boys Bern", FD, {}) == "Young Boys"
+
+
+def test_prefix_only_city_suffix():
+    assert match_team("Servette Geneve", FD, {}) == "Servette"
