@@ -45,3 +45,48 @@ def test_no_vig_sums_to_one_and_keeps_order():
     p = no_vig({"1": 2.30, "X": 3.50, "2": 3.20})
     assert sum(p) == pytest.approx(1.0, abs=1e-3)
     assert p[0] > p[2] > p[1]
+
+
+def _summary(event_id, commence_time):
+    return {"event_id": event_id, "commence_time": commence_time}
+
+
+def test_within_lookahead_keeps_exactly_48h_and_drops_one_second_later():
+    now = datetime(2026, 10, 17, 9, 0, tzinfo=timezone.utc)
+    summaries = [
+        _summary("at-48h", "2026-10-19T09:00:00Z"),
+        _summary("48h-plus-1s", "2026-10-19T09:00:01Z"),
+    ]
+    kept = within_lookahead(summaries, now)
+    assert [s["event_id"] for s in kept] == ["at-48h"]
+
+
+def test_within_lookahead_drops_kickoff_now_and_past_matches():
+    now = datetime(2026, 10, 17, 9, 0, tzinfo=timezone.utc)
+    summaries = [
+        _summary("at-now", "2026-10-17T09:00:00Z"),
+        _summary("past", "2026-10-17T08:00:00Z"),
+        _summary("next-hour", "2026-10-17T10:00:00Z"),
+    ]
+    kept = within_lookahead(summaries, now)
+    assert [s["event_id"] for s in kept] == ["next-hour"]
+
+
+def test_event_prices_ignores_non_h2h_markets():
+    event = {
+        "id": "evt-spreads",
+        "home_team": "Brighton and Hove Albion",
+        "away_team": "Aston Villa",
+        "bookmakers": [
+            {"key": "pinnacle", "markets": [
+                {"key": "spreads", "outcomes": [
+                    {"name": "Brighton and Hove Albion", "price": 9.99},
+                    {"name": "Aston Villa", "price": 9.98},
+                    {"name": "Draw", "price": 9.97}]},
+                {"key": "h2h", "outcomes": [
+                    {"name": "Brighton and Hove Albion", "price": 2.30},
+                    {"name": "Aston Villa", "price": 3.20},
+                    {"name": "Draw", "price": 3.50}]}]}
+        ],
+    }
+    assert event_prices(event) == {"1": [2.30], "X": [3.50], "2": [3.20]}
