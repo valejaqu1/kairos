@@ -369,11 +369,17 @@ def _directory(root):
     (root / "decisions" / "2026-10-17.json").mkdir(parents=True)
 
 
+def _deeply_nested(root):
+    (root / "decisions").mkdir()
+    (root / "decisions" / "2026-10-17.json").write_text("[" * 100_000 + "]" * 100_000, encoding="utf-8")
+
+
 @pytest.mark.parametrize("writer, reason", [
     (_bad_date, "date incorrecte"),
     (_not_json, "fichier JSON illisible"),
     (_binary, "fichier JSON illisible"),
     (_directory, "fichier JSON illisible"),
+    (_deeply_nested, "fichier JSON illisible"),
 ])
 def test_rejected_decisions_place_no_bet_and_send_one_apology(tmp_root, writer, reason):
     seed_state()
@@ -422,7 +428,8 @@ def test_check_decisions_exit_codes_and_messages(tmp_path, monkeypatch, capsys):
     assert check("") == (2, "chemin manquant\n")
     assert check(write("ok.json", json.dumps(valid_decisions()))) == (0, "fichier de décisions valide\n")
     assert check(write("old.json", json.dumps(valid_decisions(date="2026-10-16")))) == (1, "erreur : date incorrecte\n")
-    for bad in (write("bad.json", "{ pas du json"), write("bin.json", b"\xff\xfe\x00"), tmp_path / "absent.json"):
+    nested = write("nested.json", "[" * 100_000 + "]" * 100_000)
+    for bad in (write("bad.json", "{ pas du json"), write("bin.json", b"\xff\xfe\x00"), tmp_path / "absent.json", nested):
         code, out = check(bad)
         assert code == 1 and out.startswith("illisible : ")
 
@@ -683,3 +690,44 @@ def test_note_id_collapses_whitespace_and_truncates_to_sixty_characters():
     assert _note_id("é" * 60) == "é" * 60
     assert _note_id("é" * 61) == "é" * 59 + "…" and len(_note_id("é" * 61)) == 60
     assert _note_id(12) == "12"
+
+
+# --- Revue finale : un Kairos mort et annoncé ne produit plus rien ---
+
+
+def snapshot(root):
+    return {str(p.relative_to(root)): p.read_bytes() for p in sorted(root.rglob("*")) if p.is_file()}
+
+
+def test_a_dead_kairos_whose_death_was_announced_changes_nothing_on_later_days(tmp_root):
+    seed_starved()
+    sent = []
+    cmd_apply(make_ctx(sent.append, now=MIDMORNING))
+    assert sent == [DEATH_MESSAGE] and load_state(TODAY)["death_announced"] is True
+    history = load_state(TODAY)["history"]
+    frozen = snapshot(tmp_root)
+    for offset in (1, 2, 30):
+        later = TODAY + timedelta(days=offset)
+        cmd_apply(make_ctx(sent.append, today=later, now=datetime(2026, 10, 17, 9, 40, tzinfo=timezone.utc) + timedelta(days=offset)))
+        assert snapshot(tmp_root) == frozen
+    assert sent == [DEATH_MESSAGE] and load_state(TODAY)["history"] == history
+
+
+def test_a_dead_kairos_whose_death_is_not_yet_announced_still_writes_the_site_and_history(tmp_root):
+    seed_starved()
+    cmd_apply(make_ctx(lambda text: None, now=MIDMORNING))
+    first = snapshot(tmp_root)
+    assert "site/data.json" in first and first["state/kairos.json"]
+    state = load_state(TODAY)
+    state["death_announced"] = False
+    store.save_state(state)
+    cmd_apply(make_ctx(lambda text: None, today=TODAY + timedelta(days=1), now=MIDMORNING + timedelta(days=1)))
+    assert [h["date"] for h in load_state(TODAY)["history"]] == ["2026-10-17", "2026-10-18"]
+
+
+def test_an_alive_kairos_always_runs_even_if_a_stale_death_flag_is_set(tmp_root):
+    # Seul un Kairos à la fois mort et annoncé se tait : le drapeau seul ne suffit pas.
+    seed_state(death_announced=True)
+    sent = []
+    cmd_apply(make_ctx(sent.append, now=MIDMORNING))
+    assert len(sent) == 1 and load_state(TODAY)["history"] == [{"date": "2026-10-17", "equity_cents": 10_000}]

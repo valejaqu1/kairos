@@ -142,7 +142,11 @@ def cmd_apply(ctx: Context) -> None:
     from kairos.site import build_site_data, write_site
 
     today = ctx.today.isoformat()
-    state, bets, forecasts, sources = store.load_state(ctx.today), store.load_bets(), store.load_forecasts(), store.load_sources()
+    state = store.load_state(ctx.today)
+    if not state["alive"] and state.get("death_announced"):
+        # Mort annoncée : plus rien à écrire ni à commiter, la page existe déjà.
+        return
+    bets, forecasts, sources = store.load_bets(), store.load_forecasts(), store.load_sources()
     lessons = store.read_text("memory/lessons.md", LESSONS_HEADER)
     messages, notes, placed = [], [], []
 
@@ -151,7 +155,7 @@ def cmd_apply(ctx: Context) -> None:
         model = store.read_json(f"data/model/{today}.json", {"events": {}})["events"]
         try:
             dec = store.read_json(f"decisions/{today}.json", None)
-        except (OSError, ValueError):
+        except (OSError, ValueError, RecursionError):  # RecursionError : fichier imbriqué à l'excès
             dec, errors = {}, ["fichier JSON illisible"]
         else:
             errors = validate_decisions(dec, ctx.today) if dec is not None else []
@@ -234,7 +238,7 @@ def cmd_check_decisions(path: str, today: date) -> int:
         return 2
     try:
         dec = json.loads(Path(path).read_text(encoding="utf-8"))
-    except (OSError, ValueError) as exc:
+    except (OSError, ValueError, RecursionError) as exc:
         print(f"illisible : {exc}")
         return 1
     errors = validate_decisions(dec, today)
