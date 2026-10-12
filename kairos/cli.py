@@ -67,24 +67,41 @@ def cmd_prepare(ctx: Context) -> None:
     notes.append(f"{len(settled)} pari(s) réglé(s), {scored} prévision(s) notée(s), faim −{hunger / 100:.2f} CHF")
 
     open_keys = {b["sport_key"] for b in bets if b["status"] == "open"}
-    events = []
+    events, skipped = [], 0
     for league in LEAGUES:
         if ctx.api.remaining is not None and ctx.api.remaining < CREDIT_FLOOR and league.sport_key not in open_keys:
             notes.append(f"{league.label} sauté : crédits bas ({ctx.api.remaining})")
             continue
         try:
             raw = ctx.api.odds(league.sport_key)
+            if not isinstance(raw, list):
+                raise RuntimeError("réponse inattendue : liste attendue")
         except Exception as exc:
             notes.append(f"cotes indisponibles pour {league.label} : {_why(exc)}")
             continue
-        summaries = [s for s in (summarize_event(e, league.sport_key) for e in raw) if s]
-        for s in within_lookahead(summaries, ctx.now):
-            s["p_market"] = no_vig(s["median"])
+        for e in raw:
+            # Un événement illisible est ignoré seul : il ne doit ni perdre les autres matchs, ni empêcher d'enregistrer l'état.
+            try:
+                s = summarize_event(e, league.sport_key)
+                if not s or not within_lookahead([s], ctx.now):
+                    continue
+                s["p_market"] = no_vig(s["median"])
+            except Exception:
+                skipped += 1
+                continue
             events.append(s)
+    if skipped:
+        notes.append(f"{skipped} match(s) ignoré(s) : données de cotes illisibles")
     store.write_json(f"data/odds/{ctx.today.isoformat()}.json", {"fetched_at": ctx.now.isoformat(), "events": events})
 
     preds, unmatched = {}, []
-    aliases = load_aliases()
+    try:
+        aliases = load_aliases()
+        if not isinstance(aliases, dict):
+            raise TypeError("alias d'équipes : objet attendu")
+    except Exception as exc:
+        aliases = {}
+        notes.append(f"alias d'équipes illisibles : {_why(exc)} ; correspondances manuelles ignorées")
     for league in LEAGUES:
         league_events = [e for e in events if e["sport_key"] == league.sport_key]
         if not league_events:

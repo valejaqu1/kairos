@@ -596,3 +596,61 @@ def test_apply_keeps_the_first_forecast_of_a_match_seen_on_two_days(tmp_root):
     assert "prévision rejetée evt-brighton-villa : déjà prévu\n" in text
     assert "pari rejeté evt-brighton-villa : pas de prévision acceptée pour ce match\n" in text
     assert load_state(DAY2)["bankroll_cents"] == 10_000 - 75
+
+
+# --- Revue finale : un événement ou une réponse illisible ne doit pas faire échouer prepare ---
+
+
+def _bad_events():
+    return [
+        # prix absent : KeyError dans le résumé de l'événement
+        {"id": "evt-noprice", "commence_time": "2026-10-18T15:00:00Z", "home_team": "A", "away_team": "B",
+         "bookmakers": [{"markets": [{"key": "h2h", "outcomes": [{"name": "A"}, {"name": "B", "price": 2.0}, {"name": "Draw", "price": 3.0}]}]}]},
+        # cotes complètes mais date de coup d'envoi illisible : ValueError au filtre des 48 h
+        {"id": "evt-baddate", "commence_time": "pas une date", "home_team": "C", "away_team": "D",
+         "bookmakers": [{"markets": [{"key": "h2h", "outcomes": [{"name": "C", "price": 2.0}, {"name": "D", "price": 3.0}, {"name": "Draw", "price": 3.1}]}]}]},
+    ]
+
+
+class MalformedOddsApi(FakeOddsApi):
+    def odds(self, sport_key):
+        if sport_key == "soccer_epl":
+            return self._bad_first() + super().odds(sport_key) + _bad_events()[1:]
+        if sport_key == "soccer_spain_la_liga":
+            return {"message": "quota dépassé"}  # réponse JSON qui n'est pas une liste
+        return super().odds(sport_key)
+
+    def _bad_first(self):
+        return _bad_events()[:1]
+
+
+def test_prepare_survives_a_non_list_payload_and_malformed_events(tmp_root):
+    ctx = make_ctx(lambda text: None, api=MalformedOddsApi(FIX))
+    cmd_prepare(ctx)
+    snap = json.loads((tmp_root / "data" / "odds" / "2026-10-17.json").read_text())
+    assert [e["event_id"] for e in snap["events"]] == ["evt-brighton-villa"]
+    assert (tmp_root / "data" / "model" / "2026-10-17.json").exists()
+    state = load_state(TODAY)
+    assert state["last_run"] == MORNING.isoformat() and state["hunger_today"]["date"] == "2026-10-17"
+    text = journal(tmp_root)
+    assert "- 2 match(s) ignoré(s) : données de cotes illisibles\n" in text
+    assert "- cotes indisponibles pour LaLiga : réponse inattendue : liste attendue\n" in text
+    assert "1 match(s) dans les 48 h" in text
+    assert "KeyError" not in text and "ValueError" not in text and "price" not in text and "pas une date" not in text
+
+
+def test_prepare_without_malformed_events_writes_no_skip_note(tmp_root):
+    cmd_prepare(make_ctx(lambda text: None))
+    assert "ignoré" not in journal(tmp_root)
+
+
+@pytest.mark.parametrize("content", ["{ pas du json", "[]", '"texte"', "null"])
+def test_prepare_survives_unreadable_team_aliases(tmp_root, content):
+    (tmp_root / "data").mkdir()
+    (tmp_root / "data" / "team_aliases.json").write_text(content, encoding="utf-8")
+    cmd_prepare(make_ctx(lambda text: None))
+    model = json.loads((tmp_root / "data" / "model" / "2026-10-17.json").read_text())
+    assert model["events"]["evt-brighton-villa"] is not None
+    assert load_state(TODAY)["last_run"] == MORNING.isoformat()
+    text = journal(tmp_root)
+    assert "- alias d'équipes illisibles : " in text and "correspondances manuelles ignorées\n" in text

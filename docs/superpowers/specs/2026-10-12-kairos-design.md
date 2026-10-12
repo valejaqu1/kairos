@@ -145,6 +145,7 @@ Kairos ne fixe pas ses mises : le code les calcule à partir de sa probabilité.
 | Cas | Comportement |
 |---|---|
 | The Odds API indisponible | « prepare » réessaie 2 fois, sinon pas de nouvelles cotes ; la routine n'a rien à analyser et le dit dans son message |
+| Cotes illisibles (réponse qui n'est pas une liste, match sans prix) | le championnat ou le match concerné est ignoré et compté dans le journal, sans texte d'erreur ; les autres matchs, l'état et le journal sont enregistrés |
 | Routine absente ou en échec | « apply » de secours à 15:00 : faim appliquée, aucun pari, message « Kairos n'a pas donné signe de vie aujourd'hui » |
 | Fichier de décisions invalide | rejeté en entier, journalisé ; même traitement que l'absence |
 | Match reporté | pari en attente ; remboursé après 3 jours |
