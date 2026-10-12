@@ -1,7 +1,11 @@
 from datetime import date
 
-from kairos.metrics import (TROPHIES, check_diploma, current_streak, equity_cents, rank, stats, update_sources,
+import pytest
+
+from kairos.config import DIPLOMA_MIN_CLV_BETS
+from kairos.metrics import (TROPHIES, check_diploma, clv_values, current_streak, equity_cents, rank, stats, update_sources,
                             update_trophies)
+from kairos.scoring import clv
 from kairos.store import new_state
 
 
@@ -54,7 +58,7 @@ def test_stats():
 def test_diploma_once_at_day_56():
     s = new_state(date(2026, 10, 1))
     good_fc = [fc(0.1, 0.2) for _ in range(5)]
-    good_bets = [b("won", 100, 300, odds=2.5, closing=2.2) for _ in range(3)]
+    good_bets = [b("won", 100, 300, odds=2.5, closing=2.2) for _ in range(5)]
     assert check_diploma(s, good_bets, good_fc, date(2026, 11, 24)) is None
     assert check_diploma(s, good_bets, good_fc, date(2026, 11, 25)) == "obtenu"
     assert check_diploma(s, good_bets, good_fc, date(2026, 11, 26)) is None
@@ -226,7 +230,7 @@ def test_stats_clv_average():
 def test_diploma_manque_for_each_failing_condition():
     day = date(2026, 11, 25)
     good_fc = [fc(0.1, 0.2) for _ in range(5)]
-    good_bets = [b("won", 100, 300, odds=2.5, closing=2.2) for _ in range(3)]
+    good_bets = [b("won", 100, 300, odds=2.5, closing=2.2) for _ in range(5)]
 
     def fresh(**changes):
         s = new_state(date(2026, 10, 1))
@@ -237,7 +241,7 @@ def test_diploma_manque_for_each_failing_condition():
     assert check_diploma(fresh(), good_bets, [], day) == "manqué"
     assert check_diploma(fresh(), good_bets, [fc(0.1, 0.1) for _ in range(5)], day) == "manqué"
     assert check_diploma(fresh(), good_bets, [fc(0.2, 0.1) for _ in range(5)], day) == "manqué"
-    assert check_diploma(fresh(), [b("won", 100, 300, odds=2.5) for _ in range(3)], good_fc, day) == "manqué"
+    assert check_diploma(fresh(), [b("won", 100, 300, odds=2.5) for _ in range(5)], good_fc, day) == "manqué"
     assert check_diploma(fresh(), good_bets, good_fc, day) == "obtenu"
 
 
@@ -287,3 +291,68 @@ def test_update_sources_zero_mean_stays_test_despite_float_drift():
     update_sources(sources, forecasts)
     assert sources["d"]["uses"] == 10 and sources["d"]["score"] == 0.0
     assert sources["d"]["status"] == "test"
+
+
+# --- Décisions utilisateur U4 et revue finale : un seul ensemble de CLV, minimum de 5 paris, moyenne exacte ---
+
+DAY56 = date(2026, 11, 25)
+POS = b("won", 100, 300, odds=2.5, closing=2.2)
+NEG = b("lost", 100, 0, odds=2.0, closing=2.2)
+
+
+def void_bet(odds, closing):
+    return b("void", 100, 100, odds=odds, closing=closing)
+
+
+def test_clv_values_keep_open_bets_and_skip_void_and_unknown_closing():
+    bets = [b("won", odds=2.5, closing=2.2), b("lost", odds=2.0, closing=2.1), b("open", odds=2.2, closing=2.0),
+            void_bet(2.5, 1.5), b("open", odds=2.2), b("won", odds=2.0)]
+    assert clv_values(bets) == [clv(2.5, 2.2), clv(2.0, 2.1), clv(2.2, 2.0)]
+    assert clv_values([]) == []
+
+
+def test_stats_clv_comes_from_the_shared_set():
+    bets = [b("won", 200, 436, odds=2.27, closing=2.05), void_bet(2.5, 2.0), b("open", 300, None, odds=2.4, closing=2.5)]
+    st = stats(bets)
+    assert (st["clv_total"], st["clv_beats"]) == (2, 1)
+    assert st["clv_avg"] == pytest.approx((clv(2.27, 2.05) + clv(2.4, 2.5)) / 2)
+    assert st["bets"] == 1  # le ROI et le nombre de paris restent calculés sur les paris réglés
+
+
+def test_clv_10_trophy_ignores_void_bets_but_counts_open_ones():
+    today = date(2026, 10, 20)
+    nine = clv_bets("+" * 9)
+    assert "clv_10" not in update_trophies(new_state(date(2026, 10, 1)), nine + [void_bet(2.0, 1.9)], {}, today)
+    assert "clv_10" in update_trophies(new_state(date(2026, 10, 1)), nine + [b("open", odds=2.0, closing=1.9)], {}, today)
+
+
+def test_diploma_needs_at_least_five_bets_with_known_closing_odds():
+    assert DIPLOMA_MIN_CLV_BETS == 5
+    good_fc = [fc(0.1, 0.2) for _ in range(5)]
+    assert check_diploma(new_state(date(2026, 10, 1)), [POS] * 4, good_fc, DAY56) == "manqué"
+    assert check_diploma(new_state(date(2026, 10, 1)), [POS] * 5, good_fc, DAY56) == "obtenu"
+    # des paris sans cote de clôture ne comptent pas dans l'échantillon
+    assert check_diploma(new_state(date(2026, 10, 1)), [POS] * 4 + [b("won", odds=2.5)] * 6, good_fc, DAY56) == "manqué"
+
+
+def test_diploma_clv_ignores_void_bets():
+    good_fc = [fc(0.1, 0.2) for _ in range(5)]
+    # 3 + 2 paris annulés : l'échantillon est de 3, sous le minimum
+    assert check_diploma(new_state(date(2026, 10, 1)), [POS] * 3 + [void_bet(2.5, 2.2)] * 2, good_fc, DAY56) == "manqué"
+    # 5 positifs + 5 annulés négatifs : la part est 5/5 sans les annulés (elle serait 5/10 avec)
+    assert check_diploma(new_state(date(2026, 10, 1)), [POS] * 5 + [void_bet(2.0, 2.2)] * 5, good_fc, DAY56) == "obtenu"
+
+
+def test_diploma_counts_open_bets_with_closing_odds():
+    good_fc = [fc(0.1, 0.2) for _ in range(5)]
+    open_pos = b("open", odds=2.5, closing=2.2)
+    assert check_diploma(new_state(date(2026, 10, 1)), [open_pos] * 5, good_fc, DAY56) == "obtenu"
+
+
+def test_diploma_skill_mean_is_exact_so_a_zero_mean_misses():
+    # moyenne exacte 0 : la somme en flottants dérive vers le positif et donnerait « obtenu »
+    drift = [fc(0.1, 0.2), fc(0.2, 0.4), fc(0.3, 0.0)] * 3 + [fc(0.1, 0.1)]
+    assert sum(float(f["rps_market"] - f["rps_kairos"]) for f in drift) > 0  # la dérive est bien réelle
+    assert check_diploma(new_state(date(2026, 10, 1)), [POS] * 5, drift, DAY56) == "manqué"
+    better = drift + [fc(0.1, 0.2)]
+    assert check_diploma(new_state(date(2026, 10, 1)), [POS] * 5, better, DAY56) == "obtenu"

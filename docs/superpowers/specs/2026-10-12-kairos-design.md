@@ -27,7 +27,7 @@ Kairos est un agent IA autonome qui vit d'une cagnotte fictive de 100 CHF : chaq
 | Paris par jour | 3 au maximum |
 | Exposition | mises en cours ≤ 15 % de la cagnotte |
 | Mort | cagnotte < 40,00 CHF (5 % de l'avoir n'atteignent plus la mise minimale de 2,00 CHF, donc plus de mise possible) et aucun pari en cours |
-| Diplôme | au jour 56 : vivant, cagnotte ≥ 100,00 CHF, prévisions meilleures que le marché en moyenne (score de compétence > 0) et CLV positive sur ≥ 55 % des paris |
+| Diplôme | au jour 56 : vivant, cagnotte ≥ 100,00 CHF, prévisions meilleures que le marché en moyenne (score de compétence > 0) et CLV positive sur ≥ 55 % des paris, jugée sur au moins 5 paris dont la cote de clôture est connue (en dessous : « manqué ») |
 
 Après le jour 56, la simulation continue jusqu'à la mort ; le diplôme est un jalon, obtenu ou non une seule fois. Pas de résurrection. Une « génération 2 » éventuelle repartirait de zéro avec le carnet de leçons de la génération 1 (hors périmètre de cette spec).
 
@@ -132,6 +132,7 @@ Kairos ne fixe pas ses mises : le code les calcule à partir de sa probabilité.
 - **Leçons** : rédigées par Kairos le dimanche, chacune avec le nombre de cas qui l'appuient ; plafond de 15 imposé par la validation.
 - **Rang** : r = 0,5 × (part des 30 dernières prévisions qui battent le marché) + 0,5 × (part des 20 derniers paris à CLV positive). Bronze < 0,45 ≤ Argent < 0,55 ≤ Or < 0,62 ≤ Platine ; chaque palier sauf Platine est coupé en I, II, III par tiers.
 - **Trophées** : premier pari gagné ; séries de 3 et de 5 ; première source gardée ; 10 paris à CLV positive ; 4 semaines de survie ; diplômé.
+- **Ensemble de CLV** : la page, le trophée « 10 paris à CLV positive » et le diplôme calculent la CLV sur le même ensemble, les paris non annulés dont la cote de clôture est connue (les paris en cours en font partie, car la CLV est connue au coup d'envoi). Le diplôme juge la CLV sur au moins 5 de ces paris (`DIPLOMA_MIN_CLV_BETS`) : en dessous, il est « manqué ». La moyenne du score de compétence du diplôme est calculée en fractions exactes, et le diplôme est décidé avant les trophées pour que « diplômé » porte la date du jour 56.
 
 ## 9. Page et message
 

@@ -2,7 +2,7 @@ from datetime import date
 from fractions import Fraction
 from math import floor
 
-from kairos.config import DIPLOMA_CLV_SHARE, DIPLOMA_DAY, SOURCE_MIN_USES, START_BANKROLL_CENTS
+from kairos.config import DIPLOMA_CLV_SHARE, DIPLOMA_DAY, DIPLOMA_MIN_CLV_BETS, SOURCE_MIN_USES, START_BANKROLL_CENTS
 from kairos.scoring import clv
 from kairos.store import day_number
 
@@ -34,12 +34,14 @@ def _exact_skill(f: dict) -> Fraction:
     return Fraction(repr(f["rps_market"])) - Fraction(repr(f["rps_kairos"]))
 
 
-def skill(f: dict) -> float:
-    return float(_exact_skill(f))
-
-
 def bet_clv(b: dict) -> float | None:
     return clv(b["odds_median"], b["closing_odds"]) if b.get("closing_odds") else None
+
+
+def clv_values(bets: list) -> list[float]:
+    # Un seul ensemble de CLV pour la page, le trophée et le diplôme : les paris non annulés dont la cote de
+    # clôture est connue. Les paris ouverts en font partie, car la CLV est connue au coup d'envoi, avant le règlement.
+    return [c for b in bets if b["status"] != "void" and (c := bet_clv(b)) is not None]
 
 
 def equity_cents(state: dict, bets: list) -> int:
@@ -127,7 +129,7 @@ def update_trophies(state: dict, bets: list, sources: dict, today: date) -> list
         award("serie_5")
     if any(m.get("status") == "kept" for m in sources.values()):
         award("source_gardee")
-    if sum(1 for b in bets if (c := bet_clv(b)) is not None and c > 0) >= 10:
+    if sum(1 for c in clv_values(bets) if c > 0) >= 10:
         award("clv_10")
     if state["alive"] and day_number(state, today) >= 28:
         award("survie_4_semaines")
@@ -140,10 +142,10 @@ def check_diploma(state: dict, bets: list, forecasts: list, today: date) -> str 
     if state.get("diploma") is not None or day_number(state, today) < DIPLOMA_DAY:
         return None
     scored = settled_forecasts(forecasts)
-    mean_skill = sum(skill(f) for f in scored) / len(scored) if scored else 0.0
-    clvs = [c for c in (bet_clv(b) for b in bets) if c is not None]
-    clv_share = sum(1 for c in clvs if c > 0) / len(clvs) if clvs else 0.0
-    ok = state["alive"] and equity_cents(state, bets) >= START_BANKROLL_CENTS and mean_skill > 0 and clv_share >= DIPLOMA_CLV_SHARE
+    mean_skill = sum((_exact_skill(f) for f in scored), Fraction(0)) / len(scored) if scored else Fraction(0)
+    clvs = clv_values(bets)
+    clv_ok = len(clvs) >= DIPLOMA_MIN_CLV_BETS and sum(1 for c in clvs if c > 0) / len(clvs) >= DIPLOMA_CLV_SHARE
+    ok = state["alive"] and equity_cents(state, bets) >= START_BANKROLL_CENTS and mean_skill > 0 and clv_ok
     state["diploma"] = "obtenu" if ok else "manqué"
     return state["diploma"]
 
@@ -152,7 +154,7 @@ def stats(bets: list) -> dict:
     done = _settled_bets(bets)
     staked = sum(b["stake_cents"] for b in done)
     returned = sum(b["payout_cents"] for b in done)
-    clvs = [c for c in (bet_clv(b) for b in done) if c is not None]
+    clvs = clv_values(bets)
     return {
         "bets": len(done),
         "won": sum(1 for b in done if b["status"] == "won"),
