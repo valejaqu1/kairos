@@ -1,0 +1,4 @@
+[
+  {"key": "soccer_epl", "group": "Soccer", "title": "EPL", "active": true},
+  {"key": "soccer_switzerland_superleague", "group": "Soccer", "title": "Switzerland Superleague", "active": true}
+]
