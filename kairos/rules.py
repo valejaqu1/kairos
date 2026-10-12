@@ -123,10 +123,9 @@ def register_sources(dec: dict, sources: dict, today: date) -> str | None:
     return sid
 
 
-def accept_forecasts(dec: dict, events: dict, model: dict, sources: dict, today: date, now: datetime, stored_forecasts=()):
+def accept_forecasts(dec: dict, events: dict, model: dict, sources: dict, today: date, now: datetime):
     accepted, rejected = [], []
     seen = set()
-    already = {f["event_id"] for f in stored_forecasts}
     cutoff = now + timedelta(minutes=KICKOFF_MARGIN_MIN)  # la même marge que pour les paris
     for f in dec["forecasts"][:MAX_FORECASTS_PER_DAY]:
         eid = str(f.get("event_id"))
@@ -145,10 +144,6 @@ def accept_forecasts(dec: dict, events: dict, model: dict, sources: dict, today:
         if parse_ts(ev["commence_time"]) <= cutoff:
             rejected.append((eid, "match commencé"))
             continue
-        if eid in already:
-            # Un match compte une fois dans le score de compétence, le rang et les sources : la première prévision est gardée.
-            rejected.append((eid, "déjà prévu"))
-            continue
         if eid in seen:
             rejected.append((eid, "doublon"))
             continue
@@ -162,6 +157,21 @@ def accept_forecasts(dec: dict, events: dict, model: dict, sources: dict, today:
             "outcome": None, "rps_kairos": None, "rps_market": None, "rps_model": None, "void": False,
         })
     return accepted, rejected
+
+
+def merge_forecasts(forecasts: list, accepted: list) -> list[str]:
+    """Ajoute les prévisions acceptées. Une nouvelle prévision remplace l'ancienne, pas encore notée, du même match :
+    un match ne compte qu'une fois dans le score de compétence, le rang et les sources. Une prévision notée (match joué)
+    ou annulée n'est jamais touchée. Renvoie les identifiants des matchs dont la prévision a été remplacée."""
+    revised = {f["event_id"] for f in accepted}
+
+    def is_replaced(f: dict) -> bool:
+        return f["event_id"] in revised and f.get("outcome") is None and not f.get("void")
+
+    replaced = [f["event_id"] for f in forecasts if is_replaced(f)]
+    forecasts[:] = [f for f in forecasts if not is_replaced(f)]
+    forecasts.extend(accepted)
+    return replaced
 
 
 def stake_cents(p: float, odds: float, equity_cents: int) -> int:

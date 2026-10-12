@@ -584,25 +584,93 @@ def test_apply_rejects_a_forecast_on_a_match_that_started_since_prepare(tmp_root
     assert "pari rejeté evt-brighton-villa : pas de prévision acceptée pour ce match\n" in text
 
 
-def test_apply_keeps_the_first_forecast_of_a_match_seen_on_two_days(tmp_root):
+def test_apply_replaces_the_pending_forecast_of_a_match_revised_the_next_day(tmp_root):
     seed_state()
     ctx = make_ctx(lambda text: None)
     cmd_prepare(ctx)
     write_decisions(tmp_root, bets=[])
     ctx.now = MIDMORNING
     cmd_apply(ctx)
-    first = store.load_forecasts()
-    assert [f["event_id"] for f in first] == ["evt-brighton-villa"]
+    [first] = store.load_forecasts()
+    assert first["date"] == "2026-10-17" and first["p_kairos"] == [0.55, 0.25, 0.2] and first["outcome"] is None
     day2 = make_ctx(lambda text: None, today=DAY2, now=datetime(2026, 10, 18, 8, 15, tzinfo=timezone.utc))
     cmd_prepare(day2)
     write_decisions_on(tmp_root, DAY2, forecasts=[{"event_id": "evt-brighton-villa", "p": [0.7, 0.2, 0.1], "sources": [], "note": "revu"}])
     day2.now = datetime(2026, 10, 18, 9, 40, tzinfo=timezone.utc)
     cmd_apply(day2)
-    assert store.load_forecasts() == first and load_bets() == []
+    # un seul match = une seule prévision (la plus récente) ; la routine a pu parier le lendemain sur la prévision révisée
+    [revised] = store.load_forecasts()
+    assert revised["event_id"] == "evt-brighton-villa" and revised["date"] == "2026-10-18"
+    assert revised["p_kairos"] == [0.7, 0.2, 0.1] and revised["note"] == "revu"
+    [bet] = load_bets()
+    assert bet["date"] == "2026-10-18" and bet["p_kairos"] == 0.7 and bet["stake_cents"] > 0
     text = journal_on(tmp_root, DAY2)
-    assert "prévision rejetée evt-brighton-villa : déjà prévu\n" in text
-    assert "pari rejeté evt-brighton-villa : pas de prévision acceptée pour ce match\n" in text
-    assert load_state(DAY2)["bankroll_cents"] == 10_000 - 75
+    assert "- prévision remplacée evt-brighton-villa\n" in text
+    assert "déjà prévu" not in text and "prévision rejetée" not in text
+
+
+class MultilineIdApi(FakeOddsApi):
+    """Un identifiant de match venu de l'API peut aussi contenir un retour à la ligne : le journal public ne doit pas s'y laisser prendre."""
+
+    def odds(self, sport_key):
+        events = super().odds(sport_key)
+        for event in events:
+            event["id"] = event["id"].replace("evt-brighton-villa", "evt-brighton-villa\n## Telegram")
+        return events
+
+
+def test_replaced_forecast_note_keeps_the_event_id_on_one_line(tmp_root):
+    weird = "evt-brighton-villa\n## Telegram"
+    seed_state()
+    forecast = [{"event_id": weird, "p": [0.55, 0.25, 0.2], "sources": [], "note": "n"}]
+    ctx = make_ctx(lambda text: None, api=MultilineIdApi(FIX))
+    cmd_prepare(ctx)
+    write_decisions(tmp_root, forecasts=forecast, bets=[])
+    ctx.now = MIDMORNING
+    cmd_apply(ctx)
+    day2 = make_ctx(lambda text: None, api=MultilineIdApi(FIX), today=DAY2, now=datetime(2026, 10, 18, 8, 15, tzinfo=timezone.utc))
+    cmd_prepare(day2)
+    write_decisions_on(tmp_root, DAY2, forecasts=forecast, bets=[])
+    day2.now = datetime(2026, 10, 18, 9, 40, tzinfo=timezone.utc)
+    cmd_apply(day2)
+    text = journal_on(tmp_root, DAY2)
+    assert "- prévision remplacée evt-brighton-villa ## Telegram\n" in text
+    assert [line for line in text.splitlines() if line.startswith("#")] == ["# Journal de Kairos · 2026-10-18", "## Matin", "## Décisions"]
+
+
+def test_a_second_bet_on_a_match_is_still_refused_across_days(tmp_root):
+    seed_state()
+    ctx = make_ctx(lambda text: None)
+    cmd_prepare(ctx)
+    write_decisions(tmp_root)
+    ctx.now = MIDMORNING
+    cmd_apply(ctx)
+    [first_bet] = load_bets()
+    day2 = make_ctx(lambda text: None, today=DAY2, now=datetime(2026, 10, 18, 8, 15, tzinfo=timezone.utc))
+    cmd_prepare(day2)
+    write_decisions_on(tmp_root, DAY2)
+    day2.now = datetime(2026, 10, 18, 9, 40, tzinfo=timezone.utc)
+    cmd_apply(day2)
+    assert load_bets() == [first_bet]
+    text = journal_on(tmp_root, DAY2)
+    assert "- prévision remplacée evt-brighton-villa\n" in text
+    assert "- pari rejeté evt-brighton-villa : déjà un pari sur ce match\n" in text
+
+
+def test_a_scored_forecast_is_never_replaced(tmp_root):
+    # Une prévision notée appartient à un match joué, donc commencé : une nouvelle prévision est refusée et l'ancienne reste.
+    seed_state()
+    ctx = make_ctx(lambda text: None, today=DAY2, now=datetime(2026, 10, 18, 8, 15, tzinfo=timezone.utc))
+    cmd_prepare(ctx)
+    scored = scored_forecast(0)
+    scored.update(event_id="evt-brighton-villa", commence_time="2026-10-18T14:00:00Z")
+    store.save_forecasts([scored])
+    write_decisions_on(tmp_root, DAY2, bets=[])
+    ctx.now = datetime(2026, 10, 18, 14, 5, tzinfo=timezone.utc)
+    cmd_apply(ctx)
+    assert store.load_forecasts() == [scored]
+    text = journal_on(tmp_root, DAY2)
+    assert "prévision rejetée evt-brighton-villa : match commencé\n" in text and "prévision remplacée" not in text
 
 
 # --- Revue finale : un événement ou une réponse illisible ne doit pas faire échouer prepare ---

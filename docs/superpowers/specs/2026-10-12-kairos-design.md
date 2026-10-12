@@ -82,7 +82,7 @@ site/                    page publiée (HTML + data.json)
 3. **market** : probabilités du marché sans marge (`penaltyblog.implied`) à partir des cotes médianes.
 4. **settle** : récupère les scores des championnats avec paris ou prévisions en attente, règle les paris (gagné : mise × cote simulée ; perdu : 0 ; annulé ou reporté de plus de 3 jours : remboursé) et note les prévisions.
 5. **hunger** : retire 0,25 CHF × jours écoulés depuis la dernière faim payée ; déclare la mort selon §3.
-6. **rules** : valide chaque proposition (match connu, coup d'envoi futur avec la même marge de 10 minutes pour les prévisions et les paris, probabilités cohérentes, une seule prévision par match et par pari ouvert : la première est gardée, seuil de valeur), calcule la mise, applique les plafonds, place les paris acceptés, journalise les rejets avec leur raison.
+6. **rules** : valide chaque proposition (match connu, coup d'envoi futur avec la même marge de 10 minutes pour les prévisions et les paris, probabilités cohérentes, seuil de valeur), calcule la mise, applique les plafonds, place les paris acceptés, journalise les rejets avec leur raison. Une nouvelle prévision sur un match qui n'a pas commencé remplace la précédente, tant qu'elle n'est pas notée (journal : « prévision remplacée »), donc un match ne compte qu'une fois dans le score, le rang et les sources ; un match n'a jamais qu'un pari, d'un jour à l'autre aussi.
 7. **metrics** : RPS (ranked probability score) de Kairos, du marché et du modèle sur chaque prévision réglée ; CLV par pari = cote prise / cote de clôture − 1 (cotes brutes, sans décote) ; score des sources ; rang ; trophées ; état du diplôme.
 8. **site** : construit `site/data.json` et la page à partir de la maquette validée (`maquette-kairos.html`), y compris l'état « mort ».
 9. **notify** : envoie sur Telegram le message de Kairos suivi d'une ligne automatique (cagnotte, faim, paris du jour).
@@ -133,7 +133,7 @@ Les textes écrits par l'IA sont bornés par la validation du fichier : identifi
 
 ## 8. Apprentissage
 
-- **Prévisions sur tous les matchs analysés** (environ 10 par jour), pas seulement les paris : environ 300 points de mesure par mois.
+- **Prévisions sur tous les matchs analysés** (environ 10 par jour), pas seulement les paris : environ 300 points de mesure par mois. Kairos peut réviser la prévision d'un match tant qu'il n'a pas commencé : la dernière remplace l'ancienne, une prévision notée ne change jamais.
 - **Score de compétence** = RPS du marché − RPS de Kairos, moyenné. Positif : il voit mieux que le marché.
 - **Sources** : score = score de compétence moyen des prévisions qui la citent. Statut calculé par le code : « gardée » si ≥ 10 utilisations et score > 0 ; « jetée » si ≥ 10 utilisations et score < 0 ; sinon « en test ». Kairos n'utilise plus une source jetée.
 - **Leçons** : rédigées par Kairos le dimanche, chacune avec le nombre de cas qui l'appuient ; plafond de 15 imposé par la validation.

@@ -138,7 +138,7 @@ def cmd_apply(ctx: Context) -> None:
     from kairos.hunger import check_death
     from kairos.metrics import check_diploma, equity_cents, update_sources, update_trophies
     from kairos.notify import compose_daily, compose_death, compose_diploma
-    from kairos.rules import LESSONS_HEADER, accept_forecasts, place_bets, register_sources, update_lessons, validate_decisions
+    from kairos.rules import LESSONS_HEADER, accept_forecasts, merge_forecasts, place_bets, register_sources, update_lessons, validate_decisions
     from kairos.site import build_site_data, write_site
 
     today = ctx.today.isoformat()
@@ -167,11 +167,12 @@ def cmd_apply(ctx: Context) -> None:
                 new_source = register_sources(dec, sources, ctx.today)
                 if new_source:
                     notes.append(f"nouvelle source en test : {new_source}")
-                accepted, rejected = accept_forecasts(dec, events, model, sources, ctx.today, ctx.now, forecasts)
-                forecasts.extend(accepted)
+                accepted, rejected = accept_forecasts(dec, events, model, sources, ctx.today, ctx.now)
+                replaced = merge_forecasts(forecasts, accepted)
                 placed, rejected_bets = place_bets(dec, {f["event_id"]: f for f in accepted}, events, state, bets, ctx.now, ctx.today)
                 lessons, lesson_notes = update_lessons(lessons, dec.get("lessons"), ctx.today)
                 notes += [f"{len(accepted)} prévision(s), {len(placed)} pari(s) placé(s)"]
+                notes += [f"prévision remplacée {_note_id(eid)}" for eid in replaced]
                 notes += [f"prévision rejetée {_note_id(eid)} : {why}" for eid, why in rejected]
                 notes += [f"pari rejeté {_note_id(eid)} : {why}" for eid, why in rejected_bets]
                 notes += lesson_notes

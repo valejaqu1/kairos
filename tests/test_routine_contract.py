@@ -100,10 +100,14 @@ def test_routine_keeps_the_four_absolute_rules_verbatim():
     assert tuple(lines[start + 2:start + 6]) == ABSOLUTE_RULES and lines[start + 1] == lines[start + 6] == ""
 
 
-def test_routine_forecasts_only_unstarted_matches_never_forecast_before():
+def test_routine_forecasts_only_unstarted_matches_and_may_revise_them():
+    text = (ROOT / "ROUTINE.md").read_text()
     step3 = _routine_step(3)
     assert "parmi ceux qui n'ont pas commencé" in step3 and "« match commencé »" in step3
-    assert "tout match déjà présent dans `state/forecasts.json`, noté ou non" in step3 and "« déjà prévu »" in step3
+    assert "Tu peux réviser la prévision d'un match qui n'a pas commencé : la nouvelle remplace l'ancienne" in step3
+    assert "« prévision remplacée »" in step3 and "une prévision déjà notée ne change jamais" in step3
+    assert "un match qui a déjà un pari ouvert n'en reçoit pas un second, même un autre jour" in step3
+    assert "déjà prévu" not in text  # l'ancienne règle « première prévision gardée » n'existe plus
     step1 = _routine_step(1)
     assert "toutes les prévisions pas encore notées" in step1 and "date -u +%FT%TZ" in step1
 
@@ -142,6 +146,7 @@ def test_setup_puts_secrets_variable_and_pages_before_the_first_push_to_main():
 def test_setup_documents_the_lock_the_schedules_the_credit_budget_and_outages():
     text = (ROOT / "docs" / "SETUP.md").read_text()
     for needle in ("KAIROS_CODE_FINGERPRINT", "scripts/empreinte-code.sh", "Chaque mise à jour du code exige une nouvelle valeur",
+                   "tout le dépôt sauf les dossiers de données", "autre que `index.html` et `data.json`",
                    "permission « Workflows »", "15:10 à Zurich en été et 14:10 en hiver", "13:10 UTC",
                    "12 à 15 crédits par jour", "500 par mois", "Sous 50 crédits", "Après 3 jours sans `prepare`", "daysFrom=3"):
         assert needle in text, needle

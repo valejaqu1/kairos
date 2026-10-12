@@ -113,13 +113,17 @@ def test_bankroll_is_conserved_over_five_calendar_days(tmp_root, tmp_path_factor
     assert [b["stake_cents"] for b in load_bets()] == [490, 490, 490]
     assert load_state(D1)["bankroll_cents"] == START - 3 * 490
 
-    # Jour 2 : A est gagné ; B est déjà prévu (rejeté) ; nouveau pari sur D
+    # Jour 2 : A est gagné ; B est reprévu (la nouvelle prévision remplace celle du jour 1) ; nouveau pari sur D
     sim.set_market([B, D], [SCORES["A"]])
     sim.run(cmd_prepare, D2, 8, 15)
     assert {b["event_id"]: b["status"] for b in load_bets()} == {"evt-a": "won", "evt-b": "open", "evt-c": "open"}
     sim.decide(D2, bets=[(D, "2")], forecasts=[(B, [0.60, 0.20, 0.20]), (D, [0.20, 0.35, 0.45])])
     sim.run(cmd_apply, D2, 9, 40)
-    assert [f["event_id"] for f in store.load_forecasts()] == ["evt-a", "evt-b", "evt-c", "evt-d"]
+    forecasts = store.load_forecasts()
+    assert sorted(f["event_id"] for f in forecasts) == ["evt-a", "evt-b", "evt-c", "evt-d"]  # B n'y figure qu'une fois
+    (b_forecast,) = [f for f in forecasts if f["event_id"] == "evt-b"]
+    assert b_forecast["date"] == "2026-10-18" and b_forecast["p_kairos"] == [0.6, 0.2, 0.2]
+    assert "- prévision remplacée evt-b\n" in (tmp_root / "journal" / "2026-10-18.md").read_text(encoding="utf-8")
 
     # Jour 3 (19 octobre) : aucun passage, la faim sera rattrapée au jour 4
 
@@ -147,6 +151,10 @@ def test_bankroll_is_conserved_over_five_calendar_days(tmp_root, tmp_path_factor
     assert bets["evt-c"]["payout_cents"] == bets["evt-c"]["stake_cents"]
     assert bets["evt-d"]["payout_cents"] == round(bets["evt-d"]["stake_cents"] * bets["evt-d"]["odds_sim"]) > bets["evt-d"]["stake_cents"]
     assert bets["evt-e"]["payout_cents"] is None
+    final = store.load_forecasts()
+    assert len({f["event_id"] for f in final}) == len(final)  # un match, une prévision, y compris B reprévu le jour 2
+    (b_final,) = [f for f in final if f["event_id"] == "evt-b"]
+    assert b_final["date"] == "2026-10-18" and b_final["outcome"] == 2  # la prévision révisée est celle qui a été notée
     state = load_state(D5)
     assert state["hunger_total_cents"] == 100 and state["alive"] is True
     assert [h["date"] for h in state["history"]] == ["2026-10-17", "2026-10-18", "2026-10-20", "2026-10-21"]

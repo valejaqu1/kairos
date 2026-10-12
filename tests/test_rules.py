@@ -1,6 +1,6 @@
 from datetime import date, datetime, timezone
 
-from kairos.rules import (LESSONS_HEADER, accept_forecasts, place_bets, register_sources, stake_cents,
+from kairos.rules import (LESSONS_HEADER, accept_forecasts, merge_forecasts, place_bets, register_sources, stake_cents,
                           update_lessons, validate_decisions)
 from kairos.store import new_state
 
@@ -399,18 +399,43 @@ def test_accept_forecasts_rejects_a_match_that_has_started_or_is_about_to():
     assert rej == [("past", "match commencé"), ("now", "match commencé"), ("edge", "match commencé")]
 
 
-def test_accept_forecasts_keeps_the_first_forecast_of_a_match_across_days():
-    events = {"e1": event("e1"), "e3": event("e3")}
-    stored = [{"event_id": "e1", "date": "2026-10-16", "outcome": None, "void": False},
-              {"event_id": "old", "date": "2026-10-15", "outcome": 1, "void": False}]
-    acc, rej = accept_forecasts(dec(forecasts=[fc(event_id="e1"), fc(event_id="e3")]), events, {}, {}, TODAY, NOW, stored)
-    assert [f["event_id"] for f in acc] == ["e3"] and rej == [("e1", "déjà prévu")]
-    # une prévision déjà notée ou annulée empêche aussi de reprévoir le match
-    scored = [{"event_id": "e1", "outcome": 0, "void": False}]
-    voided = [{"event_id": "e1", "outcome": None, "void": True}]
-    for known in (scored, voided):
-        acc, rej = accept_forecasts(dec(forecasts=[fc()]), events, {}, {}, TODAY, NOW, known)
-        assert acc == [] and rej == [("e1", "déjà prévu")]
+def pending(eid, day="2026-10-16", **extra):
+    return {"event_id": eid, "date": day, "outcome": None, "void": False, **extra}
+
+
+def test_accept_forecasts_does_not_look_at_earlier_forecasts_of_the_same_match():
+    # La révision d'une prévision en attente est permise : l'ancienne sera remplacée par merge_forecasts.
+    acc, rej = accept_forecasts(dec(forecasts=[fc()]), EV, {}, {}, TODAY, NOW)
+    assert [f["event_id"] for f in acc] == ["e1"] and rej == []
+
+
+def test_merge_forecasts_replaces_the_pending_forecast_of_the_same_match():
+    scored = {"event_id": "e0", "date": "2026-10-10", "outcome": 1, "void": False, "rps_kairos": 0.1}
+    other = pending("e2")
+    forecasts = [scored, pending("e1", p_kairos=[0.4, 0.3, 0.3]), other]
+    new = pending("e1", day="2026-10-17", p_kairos=[0.5, 0.3, 0.2])
+    assert merge_forecasts(forecasts, [new]) == ["e1"]
+    assert forecasts == [scored, other, new]
+    assert [f for f in forecasts if f["event_id"] == "e1"] == [new]  # une seule prévision pour le match
+    assert forecasts[0] is scored and scored["outcome"] == 1
+
+
+def test_merge_forecasts_reports_every_replacement_and_adds_the_new_matches():
+    forecasts = [pending("e1"), pending("e2"), pending("e3")]
+    accepted = [pending("e3", day="2026-10-17"), pending("e4", day="2026-10-17"), pending("e1", day="2026-10-17")]
+    assert merge_forecasts(forecasts, accepted) == ["e1", "e3"]
+    assert [(f["event_id"], f["date"]) for f in forecasts] == [
+        ("e2", "2026-10-16"), ("e3", "2026-10-17"), ("e4", "2026-10-17"), ("e1", "2026-10-17")]
+    assert merge_forecasts(forecasts, []) == [] and len(forecasts) == 4
+
+
+def test_merge_forecasts_leaves_scored_and_void_forecasts_alone():
+    scored = {"event_id": "e1", "outcome": 0, "void": False}
+    void = {"event_id": "e1", "outcome": None, "void": True}  # match reporté puis annulé, l'événement peut revenir
+    forecasts = [scored, void]
+    new = pending("e1", day="2026-10-17")
+    assert merge_forecasts(forecasts, [new]) == []
+    assert forecasts[0] is scored and forecasts[1] is void and forecasts[2] is new
 
 
 def test_place_bets_rejects_a_match_already_bet_on_an_earlier_day():
