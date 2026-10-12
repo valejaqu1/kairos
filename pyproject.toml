@@ -1,0 +1,18 @@
+[project]
+name = "kairos"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["penaltyblog>=1.13,<2", "pandas>=2.2", "requests>=2.32"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pyyaml>=6"]
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["kairos"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
