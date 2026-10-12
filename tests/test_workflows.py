@@ -180,6 +180,7 @@ LOCKED_FILES = ["kairos/x.txt", "tests/x.txt", "docs/x.md", "scripts/x.sh", "sit
                 "pyproject.toml", "ROUTINE.md", "README.md", ".gitignore", "data/team_aliases.json"]
 DATA_FILES = ["state/kairos.json", "decisions/2026-10-17.json", "journal/2026-10-17.md", "memory/lessons.md", "site/index.html",
               "site/data.json", "data/odds/2026-10-17.json", "data/model/2026-10-17.json"]
+PAGE = "<!doctype html><title>Kairos</title>\n"  # le gabarit ; apply publie site/index.html en le copiant tel quel
 
 
 def lock_step(name):
@@ -224,7 +225,9 @@ def test_lock_step_is_the_same_in_the_four_workflows_and_names_the_mismatch():
     run = runs["prepare.yml"]
     assert "Code non validé : empreinte $actual, attendue ${KAIROS_CODE_FINGERPRINT:-(vide)}" in run
     assert "Code non validé : site/ ne doit contenir que index.html et data.json, trouvé :" in run
-    assert run.count("exit 1") == 2 and run.rstrip().endswith("exit 1\nfi")
+    assert "if [ -e site/index.html ] && ! cmp -s site/index.html site_template/index.html; then\n" in run
+    assert 'echo "Page non conforme au gabarit"\n' in run
+    assert run.count("exit 1") == 3 and run.rstrip().endswith("exit 1\nfi")
 
 
 def test_fingerprint_command_is_identical_in_the_workflows_and_the_script():
@@ -260,6 +263,8 @@ def locked_repo(tmp_path):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(rel, encoding="utf-8")
     shutil.copy2(SCRIPT, repo / "scripts" / SCRIPT.name)
+    for rel in ("site_template/index.html", "site/index.html"):  # la page publiée est celle du gabarit
+        (repo / rel).write_text(PAGE, encoding="utf-8")
     git(repo.parent, "init", "-q", str(repo))
     git(repo, "add", "-A")
     git(repo, "commit", "-q", "-m", "init")
@@ -327,6 +332,8 @@ def test_lock_covers_every_tracked_file_except_the_data_dirs(tmp_path):
     repo = locked_repo(tmp_path)
     good = independent_fingerprint(repo)
     for rel in DATA_FILES:
+        if rel == "site/index.html":
+            continue  # hors empreinte aussi, mais son contenu doit être celui du gabarit : test dédié plus bas
         commit_file(repo, rel)
         assert passes(repo, good), rel
     assert passes(repo, good, ALL)
@@ -379,6 +386,48 @@ def test_lock_refuses_anything_in_site_but_index_and_data_json(tmp_path):
     assert passes(repo, good, ALL)
     commit_file(repo, "site/evil.js")
     assert fails(repo, good, ALL)
+
+
+@needs_sha256sum
+def test_lock_refuses_a_published_page_that_differs_from_the_template(tmp_path):
+    # Après l'annonce de la mort, apply n'écrit rien et le déploiement publie le site/ de main tel quel.
+    repo = locked_repo(tmp_path)
+    good = independent_fingerprint(repo)
+    assert passes(repo, good, ALL)  # page conforme au gabarit
+    refused = "Page non conforme au gabarit\n"
+    for content in ("<script>fetch('https://evil.example')</script>\n", PAGE.rstrip("\n"), PAGE + "\n", ""):
+        commit_file(repo, "site/index.html", content)
+        assert independent_fingerprint(repo) == good  # site/ est hors empreinte : seul le contrôle de la page peut réagir
+        done = run_lock(repo, good)
+        assert (done.returncode, done.stdout) == (1, refused), repr(content)
+        assert fails(repo, good, ALL)
+        wrong = run_lock(repo, "0" * 64)  # l'empreinte reste contrôlée en premier
+        assert wrong.stdout.startswith("Code non validé : empreinte ")
+        commit_file(repo, "site/index.html", PAGE)
+        assert passes(repo, good), repr(content)
+    # l'ordre des contrôles : le nom des fichiers de site/ est vérifié avant le contenu de la page
+    commit_file(repo, "site/index.html", "autre")
+    commit_file(repo, "site/evil.js")
+    done = run_lock(repo, good)
+    assert done.returncode == 1 and done.stdout.startswith("Code non validé : site/ ne doit contenir que ")
+    git(repo, "rm", "-q", "-f", "site/evil.js")
+    commit_file(repo, "site/index.html", PAGE)
+    assert passes(repo, good, ALL)
+    # absente : avant le premier apply, site/ est vide
+    git(repo, "rm", "-q", "-f", "site/index.html")
+    git(repo, "commit", "-q", "-m", "site vide")
+    assert passes(repo, good, ALL)
+    commit_file(repo, "site/data.json")
+    assert passes(repo, good, ALL)
+    # la référence est le gabarit du dépôt, pas un contenu figé : quand le gabarit change, l'ancienne page est refusée
+    commit_file(repo, "site_template/index.html", "<!doctype html><title>Kairos 2</title>\n")
+    good = independent_fingerprint(repo)
+    assert passes(repo, good, ALL)  # toujours pas de page
+    commit_file(repo, "site/index.html", PAGE)
+    done = run_lock(repo, good)
+    assert (done.returncode, done.stdout) == (1, refused)
+    commit_file(repo, "site/index.html", "<!doctype html><title>Kairos 2</title>\n")
+    assert passes(repo, good, ALL)
 
 
 @needs_sha256sum

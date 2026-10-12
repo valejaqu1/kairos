@@ -23,6 +23,10 @@ jobs:
             echo "Code non validé : site/ ne doit contenir que index.html et data.json, trouvé : $(printf '%s' "$extra" | tr '\n' ' ')"
             exit 1
           fi
+          if [ -e site/index.html ] && ! cmp -s site/index.html site_template/index.html; then
+            echo "Page non conforme au gabarit"
+            exit 1
+          fi
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
