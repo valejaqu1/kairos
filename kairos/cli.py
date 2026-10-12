@@ -139,7 +139,7 @@ def cmd_apply(ctx: Context) -> None:
                 new_source = register_sources(dec, sources, ctx.today)
                 if new_source:
                     notes.append(f"nouvelle source en test : {new_source}")
-                accepted, rejected = accept_forecasts(dec, events, model, sources, ctx.today)
+                accepted, rejected = accept_forecasts(dec, events, model, sources, ctx.today, ctx.now, forecasts)
                 forecasts.extend(accepted)
                 placed, rejected_bets = place_bets(dec, {f["event_id"]: f for f in accepted}, events, state, bets, ctx.now, ctx.today)
                 lessons, lesson_notes = update_lessons(lessons, dec.get("lessons"), ctx.today)

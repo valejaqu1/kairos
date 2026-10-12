@@ -547,3 +547,52 @@ def test_diploma_trophy_is_dated_the_day_the_diploma_is_decided(tmp_root):
     state = load_state(TODAY)
     assert state["diploma"] == "obtenu" and state["trophies"]["diplome"] == "2026-10-17"
     assert sent[1].startswith("Jour 56 : Kairos décroche son diplôme.")
+
+
+# --- Revue finale : prévisions sur des matchs commencés et sur un match déjà prévu ---
+
+DAY2 = date(2026, 10, 18)
+
+
+def write_decisions_on(root, day, **changes):
+    (root / "decisions").mkdir(exist_ok=True)
+    dec = valid_decisions(date=day.isoformat(), **changes)
+    (root / "decisions" / f"{day.isoformat()}.json").write_text(json.dumps(dec), encoding="utf-8")
+
+
+def journal_on(root, day):
+    return (root / "journal" / f"{day.isoformat()}.md").read_text(encoding="utf-8")
+
+
+def test_apply_rejects_a_forecast_on_a_match_that_started_since_prepare(tmp_root):
+    seed_state()
+    ctx = make_ctx(lambda text: None, today=DAY2, now=datetime(2026, 10, 18, 8, 15, tzinfo=timezone.utc))
+    cmd_prepare(ctx)
+    write_decisions_on(tmp_root, DAY2)
+    ctx.now = datetime(2026, 10, 18, 14, 5, tzinfo=timezone.utc)  # coup d'envoi 14:00, après le prepare du matin
+    cmd_apply(ctx)
+    assert store.load_forecasts() == [] and load_bets() == []
+    text = journal_on(tmp_root, DAY2)
+    assert "prévision rejetée evt-brighton-villa : match commencé\n" in text
+    assert "pari rejeté evt-brighton-villa : pas de prévision acceptée pour ce match\n" in text
+
+
+def test_apply_keeps_the_first_forecast_of_a_match_seen_on_two_days(tmp_root):
+    seed_state()
+    ctx = make_ctx(lambda text: None)
+    cmd_prepare(ctx)
+    write_decisions(tmp_root, bets=[])
+    ctx.now = MIDMORNING
+    cmd_apply(ctx)
+    first = store.load_forecasts()
+    assert [f["event_id"] for f in first] == ["evt-brighton-villa"]
+    day2 = make_ctx(lambda text: None, today=DAY2, now=datetime(2026, 10, 18, 8, 15, tzinfo=timezone.utc))
+    cmd_prepare(day2)
+    write_decisions_on(tmp_root, DAY2, forecasts=[{"event_id": "evt-brighton-villa", "p": [0.7, 0.2, 0.1], "sources": [], "note": "revu"}])
+    day2.now = datetime(2026, 10, 18, 9, 40, tzinfo=timezone.utc)
+    cmd_apply(day2)
+    assert store.load_forecasts() == first and load_bets() == []
+    text = journal_on(tmp_root, DAY2)
+    assert "prévision rejetée evt-brighton-villa : déjà prévu\n" in text
+    assert "pari rejeté evt-brighton-villa : pas de prévision acceptée pour ce match\n" in text
+    assert load_state(DAY2)["bankroll_cents"] == 10_000 - 75

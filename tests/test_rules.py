@@ -42,7 +42,7 @@ def test_accept_forecasts_normalises_and_filters_sources():
         {"event_id": "zz", "p": [0.5, 0.3, 0.2], "sources": []},
         {"event_id": "e2", "p": [0.9, 0.3, 0.2], "sources": []},
     ])
-    acc, rej = accept_forecasts(d, EV, {"e1": [0.45, 0.27, 0.28]}, sources, TODAY)
+    acc, rej = accept_forecasts(d, EV, {"e1": [0.45, 0.27, 0.28]}, sources, TODAY, NOW)
     assert len(acc) == 1
     f = acc[0]
     assert abs(sum(f["p_kairos"]) - 1) < 1e-3
@@ -137,7 +137,7 @@ def test_free_text_is_truncated_to_limits():
     register_sources(dec(new_source={"id": "src", "description": "d" * 250, "url": "u" * 350}), sources, TODAY)
     assert len(sources["src"]["description"]) == 200 and len(sources["src"]["url"]) == 300
     acc, _ = accept_forecasts(dec(forecasts=[{"event_id": "e1", "p": [0.5, 0.3, 0.2], "sources": [], "note": "n" * 350}]),
-                              EV, {}, {}, TODAY)
+                              EV, {}, {}, TODAY, NOW)
     assert len(acc[0]["note"]) == 300
     placed, _ = place_bets(dec(bets=[{"event_id": "e1", "selection": "1", "reasoning": "r" * 450}]),
                            {"e1": {"p_kairos": [0.55, 0.25, 0.20]}}, EV, new_state(date(2026, 10, 1)), [], NOW, TODAY)
@@ -148,12 +148,12 @@ def test_free_text_is_truncated_to_limits():
 
 def test_accept_forecasts_rejects_invalid_probability_types():
     bad = [None, [0.5, 0.5], "0.5,0.3,0.2", ["a", 0.3, 0.2], [-0.1, 0.6, 0.5], [1.2, 0.0, 0.0]]
-    acc, rej = accept_forecasts(dec(forecasts=[{"event_id": "e1", "p": p, "sources": []} for p in bad]), EV, {}, {}, TODAY)
+    acc, rej = accept_forecasts(dec(forecasts=[{"event_id": "e1", "p": p, "sources": []} for p in bad]), EV, {}, {}, TODAY, NOW)
     assert acc == [] and rej == [("e1", "probabilités invalides")] * len(bad)
     acc, rej = accept_forecasts(dec(forecasts=[
         {"event_id": "e1", "p": [0, 0.5, 0.5], "sources": []},
         {"event_id": "e2", "p": [0.5, 0.3, 0.1], "sources": []},
-    ]), EV, {}, {}, TODAY)
+    ]), EV, {}, {}, TODAY, NOW)
     assert [f["event_id"] for f in acc] == ["e1"] and acc[0]["p_kairos"] == [0.0, 0.5, 0.5]
     assert rej == [("e2", "les probabilités ne somment pas à 1")]
 
@@ -162,13 +162,13 @@ def test_probability_sum_tolerance_window():
     ids = ["lo_ok", "lo_no", "hi_ok", "hi_no"]
     events = {i: event(i) for i in ids}
     ps = {"lo_ok": [0.5, 0.3, 0.185], "lo_no": [0.5, 0.3, 0.175], "hi_ok": [0.5, 0.3, 0.215], "hi_no": [0.5, 0.3, 0.225]}
-    acc, rej = accept_forecasts(dec(forecasts=[{"event_id": i, "p": ps[i], "sources": []} for i in ids]), events, {}, {}, TODAY)
+    acc, rej = accept_forecasts(dec(forecasts=[{"event_id": i, "p": ps[i], "sources": []} for i in ids]), events, {}, {}, TODAY, NOW)
     assert [f["event_id"] for f in acc] == ["lo_ok", "hi_ok"]
     assert rej == [("lo_no", "les probabilités ne somment pas à 1"), ("hi_no", "les probabilités ne somment pas à 1")]
 
 
 def test_accept_forecasts_normalises_to_four_decimals():
-    acc, _ = accept_forecasts(dec(forecasts=[{"event_id": "e1", "p": [0.5, 0.3, 0.21], "sources": []}]), EV, {}, {}, TODAY)
+    acc, _ = accept_forecasts(dec(forecasts=[{"event_id": "e1", "p": [0.5, 0.3, 0.21], "sources": []}]), EV, {}, {}, TODAY, NOW)
     assert acc[0]["p_kairos"] == [0.495, 0.297, 0.2079]
 
 
@@ -176,7 +176,7 @@ def test_accept_forecasts_keeps_first_ten_and_ignores_non_string_sources():
     events = {f"m{i}": event(f"m{i}") for i in range(11)}
     d = dec(forecasts=[{"event_id": f"m{i}", "p": [0.5, 0.3, 0.2], "sources": ["compos", ["compos"], {"x": 1}, 5]}
                        for i in range(11)])
-    acc, rej = accept_forecasts(d, events, {}, {"compos": {"status": "kept"}}, TODAY)
+    acc, rej = accept_forecasts(d, events, {}, {"compos": {"status": "kept"}}, TODAY, NOW)
     assert len(acc) == 10 and rej == [] and acc[-1]["event_id"] == "m9"
     assert all(f["sources"] == ["compos"] for f in acc)
 
@@ -308,7 +308,7 @@ def test_validate_decisions_rejects_non_object_elements():
 
 def test_accept_forecasts_rejects_boolean_probabilities():
     d = dec(forecasts=[{"event_id": "e1", "p": [True, False, False], "sources": []}])
-    acc, rej = accept_forecasts(d, EV, {}, {}, TODAY)
+    acc, rej = accept_forecasts(d, EV, {}, {}, TODAY, NOW)
     assert acc == [] and rej == [("e1", "probabilités invalides")]
 
 
@@ -369,16 +369,54 @@ def test_update_lessons_matches_removals_after_normalisation():
 
 
 def test_accept_forecasts_rejects_a_second_forecast_for_the_same_event():
-    acc, rej = accept_forecasts(dec(forecasts=[fc(), fc()]), EV, {}, {}, TODAY)
+    acc, rej = accept_forecasts(dec(forecasts=[fc(), fc()]), EV, {}, {}, TODAY, NOW)
     assert len(acc) == 1 and rej == [("e1", "doublon")]
-    acc, rej = accept_forecasts(dec(forecasts=[fc(p=[0.9, 0.3, 0.2]), fc()]), EV, {}, {}, TODAY)
+    acc, rej = accept_forecasts(dec(forecasts=[fc(p=[0.9, 0.3, 0.2]), fc()]), EV, {}, {}, TODAY, NOW)
     assert len(acc) == 1 and rej == [("e1", "les probabilités ne somment pas à 1")]
 
 
 def test_accept_forecasts_dedupes_then_caps_sources_in_order():
     sources = {k: {"status": "kept"} for k in ["s1", "s2", "s3", "s4", "s5", "s6", "s7"]}
     acc, _ = accept_forecasts(dec(forecasts=[fc(sources=["s3", "s1", "s3", "s2", "s1", "s4", "s5", "s6", "s7"])]),
-                              EV, {}, sources, TODAY)
+                              EV, {}, sources, TODAY, NOW)
     assert acc[0]["sources"] == ["s3", "s1", "s2", "s4", "s5"]
-    acc, _ = accept_forecasts(dec(forecasts=[fc(sources=["s1", "s1"])]), EV, {}, sources, TODAY)
+    acc, _ = accept_forecasts(dec(forecasts=[fc(sources=["s1", "s1"])]), EV, {}, sources, TODAY, NOW)
     assert acc[0]["sources"] == ["s1"]
+
+
+# --- Revue finale : prévisions sur des matchs commencés et sur un match déjà prévu un jour précédent ---
+
+
+def test_accept_forecasts_rejects_a_match_that_has_started_or_is_about_to():
+    events = {"past": event("past", commence_time="2026-10-17T09:00:00Z"),
+              "now": event("now", commence_time="2026-10-17T09:30:00Z"),
+              "edge": event("edge", commence_time="2026-10-17T09:40:00Z"),
+              "just_after": event("just_after", commence_time="2026-10-17T09:40:01Z"),
+              "future": event("future", commence_time="2026-10-18T14:00:00Z")}
+    d = dec(forecasts=[fc(event_id=eid) for eid in events])
+    acc, rej = accept_forecasts(d, events, {}, {}, TODAY, NOW)
+    assert [f["event_id"] for f in acc] == ["just_after", "future"]
+    assert rej == [("past", "match commencé"), ("now", "match commencé"), ("edge", "match commencé")]
+
+
+def test_accept_forecasts_keeps_the_first_forecast_of_a_match_across_days():
+    events = {"e1": event("e1"), "e3": event("e3")}
+    stored = [{"event_id": "e1", "date": "2026-10-16", "outcome": None, "void": False},
+              {"event_id": "old", "date": "2026-10-15", "outcome": 1, "void": False}]
+    acc, rej = accept_forecasts(dec(forecasts=[fc(event_id="e1"), fc(event_id="e3")]), events, {}, {}, TODAY, NOW, stored)
+    assert [f["event_id"] for f in acc] == ["e3"] and rej == [("e1", "déjà prévu")]
+    # une prévision déjà notée ou annulée empêche aussi de reprévoir le match
+    scored = [{"event_id": "e1", "outcome": 0, "void": False}]
+    voided = [{"event_id": "e1", "outcome": None, "void": True}]
+    for known in (scored, voided):
+        acc, rej = accept_forecasts(dec(forecasts=[fc()]), events, {}, {}, TODAY, NOW, known)
+        assert acc == [] and rej == [("e1", "déjà prévu")]
+
+
+def test_place_bets_rejects_a_match_already_bet_on_an_earlier_day():
+    s = new_state(date(2026, 10, 1))
+    s["bankroll_cents"] = 9_580
+    earlier = [{"date": "2026-10-16", "status": "open", "event_id": "e1", "stake_cents": 420}]
+    placed, rej = place_bets(dec(bets=[bet()]), {"e1": {"p_kairos": [0.55, 0.25, 0.20]}}, EV, s, earlier, NOW, TODAY)
+    assert placed == [] and rej == [("e1", "déjà un pari sur ce match")]
+    assert s["bankroll_cents"] == 9_580 and len(earlier) == 1

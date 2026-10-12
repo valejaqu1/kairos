@@ -88,9 +88,11 @@ def register_sources(dec: dict, sources: dict, today: date) -> str | None:
     return sid
 
 
-def accept_forecasts(dec: dict, events: dict, model: dict, sources: dict, today: date):
+def accept_forecasts(dec: dict, events: dict, model: dict, sources: dict, today: date, now: datetime, stored_forecasts=()):
     accepted, rejected = [], []
     seen = set()
+    already = {f["event_id"] for f in stored_forecasts}
+    cutoff = now + timedelta(minutes=KICKOFF_MARGIN_MIN)  # la même marge que pour les paris
     for f in dec["forecasts"][:MAX_FORECASTS_PER_DAY]:
         eid = str(f.get("event_id"))
         ev = events.get(eid)
@@ -104,6 +106,13 @@ def accept_forecasts(dec: dict, events: dict, model: dict, sources: dict, today:
         total = sum(p)
         if not 0.98 <= total <= 1.02:
             rejected.append((eid, "les probabilités ne somment pas à 1"))
+            continue
+        if parse_ts(ev["commence_time"]) <= cutoff:
+            rejected.append((eid, "match commencé"))
+            continue
+        if eid in already:
+            # Un match compte une fois dans le score de compétence, le rang et les sources : la première prévision est gardée.
+            rejected.append((eid, "déjà prévu"))
             continue
         if eid in seen:
             rejected.append((eid, "doublon"))
