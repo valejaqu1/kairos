@@ -1,10 +1,18 @@
 from datetime import date
+from fractions import Fraction
+from math import floor
 
 from kairos.config import DIPLOMA_CLV_SHARE, DIPLOMA_DAY, SOURCE_MIN_USES, START_BANKROLL_CENTS
 from kairos.scoring import clv
 from kairos.store import day_number
 
-TIERS = (("Bronze", 0.0, 0.45), ("Argent", 0.45, 0.55), ("Or", 0.55, 0.62))
+# Seuils en fractions exactes : une moyenne de deux ratios tombe pile sur un seuil (0,45 ; 0,55 ; 0,62)
+PLATINE = Fraction(62, 100)
+TIERS = (
+    ("Bronze", Fraction(0), Fraction(45, 100)),
+    ("Argent", Fraction(45, 100), Fraction(55, 100)),
+    ("Or", Fraction(55, 100), PLATINE),
+)
 DIVISIONS = ("I", "II", "III")
 TROPHIES = {
     "premier_gain": "Premier pari gagné",
@@ -21,8 +29,13 @@ def settled_forecasts(forecasts: list) -> list:
     return [f for f in forecasts if f.get("outcome") is not None]
 
 
+def _exact_skill(f: dict) -> Fraction:
+    # rps est arrondi à 6 décimales : la différence se calcule sur ces décimales, sans dérive binaire
+    return Fraction(repr(f["rps_market"])) - Fraction(repr(f["rps_kairos"]))
+
+
 def skill(f: dict) -> float:
-    return f["rps_market"] - f["rps_kairos"]
+    return float(_exact_skill(f))
 
 
 def bet_clv(b: dict) -> float | None:
@@ -34,16 +47,17 @@ def equity_cents(state: dict, bets: list) -> int:
 
 
 def update_sources(sources: dict, forecasts: list) -> None:
-    per_source: dict[str, list[float]] = {}
+    per_source: dict[str, list[Fraction]] = {}
     for f in settled_forecasts(forecasts):
         for sid in f.get("sources", []):
-            per_source.setdefault(sid, []).append(skill(f))
+            per_source.setdefault(sid, []).append(_exact_skill(f))
     for sid, meta in sources.items():
         values = per_source.get(sid, [])
         meta["uses"] = len(values)
-        meta["score"] = round(sum(values) / len(values), 4) if values else None
-        if len(values) >= SOURCE_MIN_USES:
-            meta["status"] = "kept" if meta["score"] > 0 else "dropped"
+        mean = sum(values) / len(values) if values else None  # moyenne non arrondie, pour la décision
+        meta["score"] = round(float(mean), 4) if mean is not None else None
+        if mean is not None and len(values) >= SOURCE_MIN_USES and mean != 0:
+            meta["status"] = "kept" if mean > 0 else "dropped"
         else:
             meta["status"] = "test"
 
@@ -58,22 +72,23 @@ def rank(forecasts: list, bets: list) -> dict:
     recent_clv = [c for c in (bet_clv(b) for b in _settled_bets(bets)) if c is not None][-20:]
     parts = []
     if recent_fc:
-        parts.append(sum(1 for f in recent_fc if skill(f) > 0) / len(recent_fc))
+        parts.append(Fraction(sum(1 for f in recent_fc if _exact_skill(f) > 0), len(recent_fc)))
     if recent_clv:
-        parts.append(sum(1 for c in recent_clv if c > 0) / len(recent_clv))
-    score = sum(parts) / len(parts) if parts else 0.0
-    if score >= 0.62:
-        return {"tier": "Platine", "division": None, "score": round(score, 3), "progress": 1.0, "next": None}
+        parts.append(Fraction(sum(1 for c in recent_clv if c > 0), len(recent_clv)))
+    score = sum(parts) / len(parts) if parts else Fraction(0)
+    if score >= PLATINE:
+        return {"tier": "Platine", "division": None, "score": round(float(score), 3), "progress": 1.0, "next": None}
     for i, (name, lo, hi) in enumerate(TIERS):
         if score < hi:
             third = (hi - lo) / 3
-            idx = min(2, int((score - lo) // third))
+            idx = min(2, floor((score - lo) * 3 / (hi - lo)))
             progress = (score - (lo + idx * third)) / third
             if idx < 2:
                 nxt = f"{name} {DIVISIONS[idx + 1]}"
             else:
                 nxt = "Platine" if i == len(TIERS) - 1 else f"{TIERS[i + 1][0]} I"
-            return {"tier": name, "division": DIVISIONS[idx], "score": round(score, 3), "progress": round(progress, 3), "next": nxt}
+            return {"tier": name, "division": DIVISIONS[idx], "score": round(float(score), 3),
+                    "progress": round(float(progress), 3), "next": nxt}
     raise AssertionError("unreachable")
 
 

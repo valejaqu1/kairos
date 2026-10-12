@@ -90,7 +90,7 @@ def test_update_sources_edge_cases():
     forecasts = ([fc(0.1, 0.1, ["z"]) for _ in range(10)] + [fc(0.1, 0.2, ["p9"]) for _ in range(9)]
                  + [fc_unsettled(["u"]) for _ in range(10)])
     update_sources(sources, forecasts)
-    assert sources["z"]["score"] == 0.0 and sources["z"]["status"] == "dropped"
+    assert sources["z"]["score"] == 0.0 and sources["z"]["status"] == "test"
     assert sources["p9"]["uses"] == 9 and sources["p9"]["status"] == "test"
     assert sources["n"]["uses"] == 0 and sources["n"]["score"] is None and sources["n"]["status"] == "test"
     assert sources["u"]["uses"] == 0 and sources["u"]["status"] == "test"
@@ -250,3 +250,40 @@ def test_diploma_clv_share_boundary():
     assert check_diploma(new_state(date(2026, 10, 1)), [pos] * 10 + [neg] * 10, good_fc, day) == "manqué"
     assert check_diploma(new_state(date(2026, 10, 1)), [pos] * 10 + [zero] * 10, good_fc, day) == "manqué"
     assert check_diploma(new_state(date(2026, 10, 1)), [pos] * 11 + [neg] * 9, good_fc, day) == "obtenu"
+
+
+def test_rank_two_part_tie_at_045_is_argent_i():
+    # (1/5 + 7/10) / 2 = 0,45 exactement : palier Argent, division I
+    fcs = [fc(0.1, 0.2)] + [fc(0.2, 0.1) for _ in range(4)]
+    r = rank(fcs, clv_bets("+" * 7 + "-" * 3))
+    assert (r["tier"], r["division"], r["next"], r["score"], r["progress"]) == ("Argent", "I", "Argent II", 0.45, 0.0)
+
+
+def test_rank_two_part_tie_at_055_is_or_i():
+    # (3/20 + 19/20) / 2 = 0,55 exactement : palier Or, division I
+    fcs = [fc(0.1, 0.2) for _ in range(3)] + [fc(0.2, 0.1) for _ in range(17)]
+    r = rank(fcs, clv_bets("+" * 19 + "-"))
+    assert (r["tier"], r["division"], r["next"], r["score"], r["progress"]) == ("Or", "I", "Or II", 0.55, 0.0)
+
+
+def test_rank_division_ties_are_exact():
+    # 29/60 : frontière exacte entre Argent I et Argent II ; 31/60 : entre Argent II et Argent III
+    r = rank([fc(0.1, 0.2) for _ in range(29)] + [fc(0.2, 0.1)], clv_bets("-" * 10))
+    assert (r["tier"], r["division"], r["progress"]) == ("Argent", "II", 0.0)
+    r = rank([fc(0.1, 0.2) for _ in range(10)] + [fc(0.2, 0.1) for _ in range(20)], clv_bets("+" * 7 + "-" * 3))
+    assert (r["tier"], r["division"], r["progress"]) == ("Argent", "III", 0.0)
+
+
+def test_same_day_settlements_are_sorted_by_kickoff():
+    early_won = b("won", 100, 200, settled="2026-10-20", kickoff="2026-10-19T12:00:00Z")
+    late_lost = b("lost", settled="2026-10-20", kickoff="2026-10-19T18:00:00Z")
+    assert current_streak([late_lost, early_won]) == 0
+
+
+def test_update_sources_zero_mean_stays_test_despite_float_drift():
+    # moyenne exacte 0 : la somme en flottants dérive vers une moyenne positive, la décision reste « test »
+    sources = {"d": {"status": "test"}}
+    forecasts = [fc(0.1, 0.2, ["d"]), fc(0.2, 0.4, ["d"]), fc(0.3, 0.0, ["d"])] * 3 + [fc(0.1, 0.1, ["d"])]
+    update_sources(sources, forecasts)
+    assert sources["d"]["uses"] == 10 and sources["d"]["score"] == 0.0
+    assert sources["d"]["status"] == "test"
