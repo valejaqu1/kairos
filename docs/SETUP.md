@@ -34,8 +34,8 @@ Actions → check-api → Run workflow. Le résumé doit afficher `OK` pour les 
 
 1. Toi : connecte GitHub à https://claude.ai/code avec accès au dépôt `valejaqu1/kairos`.
 2. Toi : sur https://claude.ai/code, crée un environnement cloud nommé `kairos`, sans variable d'environnement ni secret. L'accès réseau se règle dans les réglages de l'environnement : Edit environment → Network access → **Full**.
-3. Claude crée la routine après ton accord : dépôt `valejaqu1/kairos`, environnement `kairos`, tous les jours à 11:07 (Europe/Zurich), et non à 11:00 : les exécutions pile à l'heure peuvent partir avec quelques minutes de retard. Retirer tous les connecteurs, qui sont inclus par défaut dans le formulaire. Consigne : « Lis ROUTINE.md à la racine du dépôt et exécute-le pour la date du jour à Zurich. Pousse directement sur la branche main, jamais sur une branche claude/. »
+3. Claude crée la routine après ton accord. Elle utilise le dépôt `valejaqu1/kairos` et l'environnement `kairos`. Elle s'exécute tous les jours à 11:07 (Europe/Zurich), et non à 11:00 : les exécutions pile à l'heure peuvent partir avec quelques minutes de retard. Vérifie que le fuseau affiché est Europe/Zurich, car les heures de routine sont saisies dans le fuseau du compte. Elle n'a aucun connecteur : retire-les tous, ils sont inclus par défaut dans le formulaire. Sa consigne est : « Lis ROUTINE.md à la racine du dépôt et exécute-le pour la date du jour à Zurich. Pousse directement sur la branche main, jamais sur une branche claude/. »
 
 ## 7. Premier jour
 
-Lance à la main Actions → prepare → Run workflow, puis la routine (« Run now »), puis vérifie : un fichier `decisions/<date>.json`, un commit « apply », le message Telegram et la page https://valejaqu1.github.io/kairos/.
+Lance à la main Actions → prepare → Run workflow. Attends que `prepare` soit terminé (coche verte, et le commit « prepare » visible sur `main`) avant de lancer la routine (« Run now »). Puis vérifie : un fichier `decisions/<date>.json`, un commit « apply », le message Telegram et la page https://valejaqu1.github.io/kairos/.
