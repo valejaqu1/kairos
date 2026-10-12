@@ -44,3 +44,19 @@ def test_append_journal_adds_sections(tmp_root):
     assert text.startswith("# Journal de Kairos · 2026-10-13")
     assert "## Matin\n\n- faim : 0,25" in text
     assert "## Décisions\n\n- 1 pari" in text
+
+
+def test_gitignore_keeps_temp_files_of_an_interrupted_write_out_of_the_state_commit():
+    # write_json écrit dans un fichier « .tmp » avant de le renommer ; `git add -A` ne doit jamais le valider.
+    import shutil
+    import subprocess
+    from pathlib import Path
+
+    import pytest
+
+    root = Path(__file__).resolve().parent.parent
+    if shutil.which("git") is None or not (root / ".git").exists():
+        pytest.skip("pas de dépôt git")
+    for leftover in ("state/tmpab12cd.tmp", "data/odds/tmpxy.tmp"):
+        assert subprocess.run(["git", "check-ignore", "-q", leftover], cwd=root).returncode == 0, leftover  # 0 = ignoré
+    assert "*.tmp" in (root / ".gitignore").read_text().splitlines()
