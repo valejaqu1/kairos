@@ -174,6 +174,9 @@ DATA_DIRS = ["state", "decisions", "journal", "memory", "site", "data/odds", "da
 FINGERPRINT_COMMAND = (r"""git ls-tree -r --full-tree HEAD | awk -F'\t' '$2 !~ /^"?(state|decisions|journal|memory|site|data\/odds|data\/model)\//'"""
                        r""" | sha256sum | cut -d' ' -f1""")
 LOCKED_JOBS = {"prepare.yml": "prepare", "apply.yml": "apply", "closing.yml": "closing", "check.yml": "check"}
+# Le job qui publie la page porte la même étape : il télécharge main de nouveau après apply et ne doit publier que la page validée.
+DEPLOY = "apply.yml:deploy"
+LOCK_SITES = {**LOCKED_JOBS, DEPLOY: "deploy"}
 LOCK_NAME = "Verrou du code"
 # Un fichier suivi dans chaque dossier ou à la racine : tous verrouillés, sauf ceux des dossiers de données.
 LOCKED_FILES = ["kairos/x.txt", "tests/x.txt", "docs/x.md", "scripts/x.sh", "site_template/x.txt", ".github/x.txt", ".claude/x.txt",
@@ -184,13 +187,13 @@ PAGE = "<!doctype html><title>Kairos</title>\n"  # le gabarit ; apply publie sit
 
 
 def lock_step(name):
-    data, _ = load(name)
-    steps = data["jobs"][LOCKED_JOBS[name]]["steps"]
+    data, _ = load(name.split(":")[0])
+    steps = data["jobs"][LOCK_SITES[name]]["steps"]
     (step,) = [s for s in steps if s.get("name") == LOCK_NAME]
     return steps, step
 
 
-def test_lock_step_follows_checkout_and_precedes_setup_and_install():
+def test_lock_step_follows_checkout_and_precedes_setup_install_and_publication():
     for name in LOCKED_JOBS:
         steps, lock = lock_step(name)
         checkout = next(i for i, s in enumerate(steps) if str(s.get("uses", "")).startswith("actions/checkout"))
@@ -198,6 +201,13 @@ def test_lock_step_follows_checkout_and_precedes_setup_and_install():
         install = next(i for i, s in enumerate(steps) if s.get("run", "").startswith("pip install"))
         position = steps.index(lock)
         assert position == checkout + 1 < setup < install, name
+    # le job de publication : le verrou suit le checkout de main et précède tout ce qui configure, assemble ou déploie la page
+    steps, lock = lock_step(DEPLOY)
+    (checkout,) = checkout_steps("apply.yml", "deploy")
+    publishing = [i for i, s in enumerate(steps) if str(s.get("uses", "")).startswith(
+        ("actions/configure-pages", "actions/upload-pages-artifact", "actions/deploy-pages"))]
+    position = steps.index(lock)
+    assert position == steps.index(checkout) + 1 and len(publishing) == 3 and all(position < i for i in publishing)
 
 
 def test_locked_workflows_restore_no_dependency_cache():
@@ -211,7 +221,7 @@ def test_locked_workflows_restore_no_dependency_cache():
 
 
 def test_lock_step_reads_the_repository_variable_and_holds_no_secret():
-    for name in LOCKED_JOBS:
+    for name in LOCK_SITES:
         _, lock = lock_step(name)
         assert lock["env"] == {"KAIROS_CODE_FINGERPRINT": "${{ vars.KAIROS_CODE_FINGERPRINT }}"}, name
         assert set(lock) == {"name", "env", "run"}, name
@@ -219,9 +229,9 @@ def test_lock_step_reads_the_repository_variable_and_holds_no_secret():
             assert not SECRET_REF.search(text), (name, text)
 
 
-def test_lock_step_is_the_same_in_the_four_workflows_and_names_the_mismatch():
-    runs = {name: lock_step(name)[1]["run"] for name in LOCKED_JOBS}
-    assert len(set(runs.values())) == 1
+def test_lock_step_is_the_same_in_the_five_places_and_names_the_mismatch():
+    runs = {name: lock_step(name)[1]["run"] for name in LOCK_SITES}
+    assert len(runs) == 5 and len(set(runs.values())) == 1  # quatre workflows à clés + le job qui publie la page
     run = runs["prepare.yml"]
     assert "Code non validé : empreinte $actual, attendue ${KAIROS_CODE_FINGERPRINT:-(vide)}" in run
     assert "Code non validé : site/ ne doit contenir que index.html et data.json, trouvé :" in run
@@ -235,7 +245,7 @@ def test_lock_step_is_the_same_in_the_four_workflows_and_names_the_mismatch():
 def test_fingerprint_command_is_identical_in_the_workflows_and_the_script():
     script = SCRIPT.read_text(encoding="utf-8")
     assert script.count(FINGERPRINT_COMMAND) == 1
-    for name in LOCKED_JOBS:
+    for name in LOCK_SITES:
         assert lock_step(name)[1]["run"].count(FINGERPRINT_COMMAND) == 1, name
 
 
@@ -243,7 +253,7 @@ def test_the_excluded_set_is_exactly_the_data_the_workflows_and_the_routine_writ
     # git entoure de guillemets les chemins non ASCII (« "memory/le\303\247ons.md" ») : le guillemet initial est facultatif
     pattern = re.compile(r"awk -F'\\t' '\$2 !~ /\^\"\?\((?P<dirs>[^)]+)\)\\//'")
     links = re.compile(r"awk -F'\\t' '\$1 ~ /\^120000 / && \$2 ~ /\^\"\?\((?P<dirs>[^)]+)\)\\//'")  # même liste pour le contrôle des liens
-    runs = [lock_step(name)[1]["run"] for name in LOCKED_JOBS]
+    runs = [lock_step(name)[1]["run"] for name in LOCK_SITES]
     for text in runs + [SCRIPT.read_text(encoding="utf-8")]:
         (match,) = pattern.finditer(text)
         assert match.group("dirs").replace("\\/", "/").split("|") == DATA_DIRS
@@ -319,12 +329,12 @@ def commit_link(repo, rel, target="../kairos/x.txt"):
 
 
 def lock_codes(repo, value, workflows=("prepare.yml",)):
-    """Code de sortie de l'étape de verrou. Les boucles n'exécutent que prepare.yml (les quatre étapes sont identiques,
+    """Code de sortie de l'étape de verrou. Les boucles n'exécutent que prepare.yml (les cinq étapes sont identiques,
     un autre test le vérifie) ; `workflows=ALL` les exécute toutes aux points de contrôle."""
     return {workflow: run_lock(repo, value, workflow).returncode for workflow in workflows}
 
 
-ALL = tuple(sorted(LOCKED_JOBS))
+ALL = tuple(sorted(LOCK_SITES))
 
 
 def passes(repo, value, workflows=("prepare.yml",)):
@@ -336,7 +346,7 @@ def fails(repo, value, workflows=("prepare.yml",)):
 
 
 needs_sha256sum = pytest.mark.skipif(shutil.which("sha256sum") is None, reason="sha256sum absent")
-EVERY_WORKFLOW = pytest.mark.parametrize("workflow", sorted(LOCKED_JOBS))
+EVERY_WORKFLOW = pytest.mark.parametrize("workflow", sorted(LOCK_SITES))
 
 
 @needs_sha256sum
