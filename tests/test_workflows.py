@@ -171,7 +171,7 @@ import pytest
 
 SCRIPT = WF.parent.parent / "scripts" / "empreinte-code.sh"
 DATA_DIRS = ["state", "decisions", "journal", "memory", "site", "data/odds", "data/model"]
-FINGERPRINT_COMMAND = (r"""git ls-tree -r --full-tree HEAD | awk -F'\t' '$2 !~ /^(state|decisions|journal|memory|site|data\/odds|data\/model)\//'"""
+FINGERPRINT_COMMAND = (r"""git ls-tree -r --full-tree HEAD | awk -F'\t' '$2 !~ /^"?(state|decisions|journal|memory|site|data\/odds|data\/model)\//'"""
                        r""" | sha256sum | cut -d' ' -f1""")
 LOCKED_JOBS = {"prepare.yml": "prepare", "apply.yml": "apply", "closing.yml": "closing", "check.yml": "check"}
 LOCK_NAME = "Verrou du code"
@@ -238,7 +238,8 @@ def test_fingerprint_command_is_identical_in_the_workflows_and_the_script():
 
 
 def test_the_excluded_set_is_exactly_the_data_the_workflows_and_the_routine_write():
-    pattern = re.compile(r"awk -F'\\t' '\$2 !~ /\^\((?P<dirs>[^)]+)\)\\//'")
+    # git entoure de guillemets les chemins non ASCII (« "memory/le\303\247ons.md" ») : le guillemet initial est facultatif
+    pattern = re.compile(r"awk -F'\\t' '\$2 !~ /\^\"\?\((?P<dirs>[^)]+)\)\\//'")
     texts = [lock_step(name)[1]["run"] for name in LOCKED_JOBS] + [SCRIPT.read_text(encoding="utf-8")]
     for text in texts:
         (match,) = pattern.finditer(text)
@@ -266,16 +267,24 @@ def locked_repo(tmp_path):
     for rel in ("site_template/index.html", "site/index.html"):  # la page publiée est celle du gabarit
         (repo / rel).write_text(PAGE, encoding="utf-8")
     git(repo.parent, "init", "-q", str(repo))
+    git(repo, "config", "core.quotePath", "true")  # le réglage par défaut des exécuteurs GitHub, quel que soit celui du poste
     git(repo, "add", "-A")
     git(repo, "commit", "-q", "-m", "init")
     return repo
 
 
+def ls_tree(repo, *options):
+    return subprocess.run(["git", "-C", str(repo), "ls-tree", "-r", *options, "--full-tree", "HEAD"], check=True, capture_output=True).stdout
+
+
 def independent_fingerprint(repo):
-    # Calculé en Python (re, hashlib), pas avec le pipeline awk | sha256sum qu'on teste.
-    listing = subprocess.run(["git", "-C", str(repo), "ls-tree", "-r", "--full-tree", "HEAD"], check=True, capture_output=True, text=True).stdout
+    # Calculé en Python (re, hashlib), pas avec le pipeline awk | sha256sum qu'on teste. Le texte haché est la sortie de git
+    # (chemins entre guillemets si besoin) ; le choix des lignes exclues se fait sur les chemins bruts de `ls-tree -z`.
+    lines = ls_tree(repo).decode("ascii").splitlines(keepends=True)
+    paths = [entry.split(b"\t", 1)[1].decode("utf-8") for entry in ls_tree(repo, "-z").split(b"\0")[:-1]]
+    assert len(lines) == len(paths)
     excluded = re.compile("^(" + "|".join(DATA_DIRS) + ")/")
-    kept = [line for line in listing.splitlines(keepends=True) if not excluded.match(line.split("\t", 1)[1])]
+    kept = [line for line, path in zip(lines, paths) if not excluded.match(path)]
     return hashlib.sha256("".join(kept).encode()).hexdigest()
 
 
@@ -364,6 +373,35 @@ def test_a_new_root_file_is_locked_but_a_new_data_file_is_not(tmp_path):
         assert passes(repo, good), rel
     commit_file(repo, "requests.py", "encore")
     assert fails(repo, good, ALL)
+
+
+@needs_sha256sum
+def test_non_ascii_file_names_in_the_data_dirs_do_not_change_the_fingerprint(tmp_path):
+    # git cite « "memory/le\303\247ons.md" » (guillemets, octal) : sans guillemet facultatif dans l'exclusion, le carnet de leçons
+    # écrit par la routine casserait le verrou.
+    repo = locked_repo(tmp_path)
+    good = independent_fingerprint(repo)
+    names = ["state/état.json", "decisions/décisions-été.json", "journal/jeudi-à-Zürich.md", "memory/leçons.md",
+             "data/odds/cotes-é.json", "data/model/modèle-ü.json", "state/é/profond/x.json", "memory/日本語.md"]
+    for rel in names:
+        commit_file(repo, rel)
+    listing = ls_tree(repo).decode("ascii")
+    assert '"memory/le\\303\\247ons.md"' in listing and '"state/\\303\\251/profond/x.json"' in listing  # la prémisse : git cite bien ces chemins
+    assert independent_fingerprint(repo) == good
+    assert passes(repo, good, ALL)
+    # hors des dossiers de données, un nom non ASCII ou un guillemet dans le nom ne soustrait rien au verrou
+    for rel in ("kairos/é.py", "docs/leçons.md", "état/x.md", "xstate/x.py", "'memory/x.md", 'tests/"state/x.py', '"state/x.py',
+                '"memory/x.md', '"decisions"/x.json'):
+        commit_file(repo, rel)
+        assert independent_fingerprint(repo) != good, rel
+        assert fails(repo, good), rel
+        good = independent_fingerprint(repo)
+        assert passes(repo, good), rel
+    # site/ : le nom non ASCII est hors empreinte mais refusé par le contrôle des fichiers de site/
+    commit_file(repo, "site/é.html")
+    assert independent_fingerprint(repo) == good
+    done = run_lock(repo, good)
+    assert done.returncode == 1 and done.stdout.startswith("Code non validé : site/ ne doit contenir que ")
 
 
 @needs_sha256sum

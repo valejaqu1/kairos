@@ -24,7 +24,7 @@ jobs:
         env:
           KAIROS_CODE_FINGERPRINT: ${{ vars.KAIROS_CODE_FINGERPRINT }}
         run: |
-          actual=$(git ls-tree -r --full-tree HEAD | awk -F'\t' '$2 !~ /^(state|decisions|journal|memory|site|data\/odds|data\/model)\//' | sha256sum | cut -d' ' -f1)
+          actual=$(git ls-tree -r --full-tree HEAD | awk -F'\t' '$2 !~ /^"?(state|decisions|journal|memory|site|data\/odds|data\/model)\//' | sha256sum | cut -d' ' -f1)
           if [ -z "${KAIROS_CODE_FINGERPRINT:-}" ] || [ "$actual" != "$KAIROS_CODE_FINGERPRINT" ]; then
             echo "Code non validé : empreinte $actual, attendue ${KAIROS_CODE_FINGERPRINT:-(vide)}"
             exit 1
