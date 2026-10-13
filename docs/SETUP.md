@@ -26,7 +26,7 @@ Dans le dépôt `valejaqu1/kairos` : Settings → Secrets and variables → Acti
 
 ## 4. Variable du verrou de code (toi, avec la valeur de Claude)
 
-La routine peut pousser sur `main`. Sans précaution, une routine piégée par une page web pourrait modifier le code que les workflows exécutent avec tes clés. Chaque workflow qui porte une clé commence donc par une étape « Verrou du code » : elle calcule l'empreinte de tout le dépôt sauf les dossiers de données (`state/`, `decisions/`, `journal/`, `memory/`, `site/`, `data/odds/`, `data/model/`) et refuse de continuer si elle ne correspond pas à la variable `KAIROS_CODE_FINGERPRINT`, que la routine ne peut pas modifier. Elle refuse aussi tout fichier de `site/` autre que `index.html` et `data.json`.
+La routine peut pousser sur `main`. Sans précaution, une routine piégée par une page web pourrait modifier le code que les workflows exécutent avec tes clés. Chaque workflow qui porte une clé commence donc par une étape « Verrou du code » : elle calcule l'empreinte de tout le dépôt sauf les dossiers de données (`state/`, `decisions/`, `journal/`, `memory/`, `site/`, `data/odds/`, `data/model/`) et refuse de continuer si elle ne correspond pas à la variable `KAIROS_CODE_FINGERPRINT`, que la routine ne peut pas modifier. Elle refuse aussi tout fichier de `site/` autre que `index.html` et `data.json`, une page `site/index.html` qui n'est pas identique à `site_template/index.html` (le gabarit, lui, est dans l'empreinte) et tout lien symbolique dans les dossiers de données. Les workflows qui portent une clé n'utilisent aucun cache de dépendances.
 
 1. Claude lance `scripts/empreinte-code.sh` sur la branche qui partira sur `main` et te donne la valeur (64 caractères hexadécimaux).
 2. Dans le dépôt : Settings → Secrets and variables → Actions → onglet **Variables** → New repository variable. Nom : `KAIROS_CODE_FINGERPRINT`, valeur : celle de Claude, collée telle quelle.
@@ -37,9 +37,16 @@ La routine peut pousser sur `main`. Sans précaution, une routine piégée par u
 
 Settings → Pages → Build and deployment → Source : **GitHub Actions**.
 
-## 6. Intégration GitHub de Claude (toi)
+## 6. Intégration GitHub de Claude (toi, avec Claude)
 
 Vérifie que l'intégration GitHub de Claude ne peut pas modifier les workflows : dans GitHub, Settings → Applications → Installed GitHub Apps → Claude, la permission « Workflows » (écriture sur `.github/workflows`) ne doit pas être accordée au dépôt ; sinon une routine piégée pourrait retirer le verrou de l'étape 4.
+
+**Si la permission « Workflows » se révèle accordée** (et que tu ne peux pas la retirer), deux issues :
+
+- **Protéger `.github/**` par une règle GitHub (ruleset)** qui interdit de modifier ces fichiers, par exemple une règle de restriction de chemins de fichiers sur `.github/**` (Settings → Rules → Rulesets). Les workflows sont alors changés à la main, par toi, en désactivant la règle le temps du changement.
+- **Accepter le risque résiduel en connaissance de cause** : une routine piégée pourrait retirer le verrou et exécuter du code avec tes clés. Note ce choix, il vaut jusqu'à ce que la permission soit retirée.
+
+Cette vérification, et le choix entre les deux issues, se font ensemble avec Claude à la mise en route : dis-lui ce que tu vois dans les réglages de l'intégration et dans les règles du dépôt (l'offre GitHub du dépôt détermine les règles disponibles) avant de passer à l'étape 7.
 
 ## 7. Mettre le code sur `main` (Claude, avec ton accord)
 
