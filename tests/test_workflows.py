@@ -226,8 +226,10 @@ def test_lock_step_is_the_same_in_the_four_workflows_and_names_the_mismatch():
     assert "Code non validé : empreinte $actual, attendue ${KAIROS_CODE_FINGERPRINT:-(vide)}" in run
     assert "Code non validé : site/ ne doit contenir que index.html et data.json, trouvé :" in run
     assert "if [ -e site/index.html ] && ! cmp -s site/index.html site_template/index.html; then\n" in run
+    assert "awk -F'\\t' '$1 ~ /^120000 / && $2 ~ /^\"?(" in run
+    assert 'echo "Lien symbolique interdit dans les données : $(printf \'%s\' "$links" | tr \'\\n\' \' \')"\n' in run
     assert 'echo "Page non conforme au gabarit"\n' in run
-    assert run.count("exit 1") == 3 and run.rstrip().endswith("exit 1\nfi")
+    assert run.count("exit 1") == 4 and run.rstrip().endswith("exit 1\nfi")
 
 
 def test_fingerprint_command_is_identical_in_the_workflows_and_the_script():
@@ -240,9 +242,13 @@ def test_fingerprint_command_is_identical_in_the_workflows_and_the_script():
 def test_the_excluded_set_is_exactly_the_data_the_workflows_and_the_routine_write():
     # git entoure de guillemets les chemins non ASCII (« "memory/le\303\247ons.md" ») : le guillemet initial est facultatif
     pattern = re.compile(r"awk -F'\\t' '\$2 !~ /\^\"\?\((?P<dirs>[^)]+)\)\\//'")
-    texts = [lock_step(name)[1]["run"] for name in LOCKED_JOBS] + [SCRIPT.read_text(encoding="utf-8")]
-    for text in texts:
+    links = re.compile(r"awk -F'\\t' '\$1 ~ /\^120000 / && \$2 ~ /\^\"\?\((?P<dirs>[^)]+)\)\\//'")  # même liste pour le contrôle des liens
+    runs = [lock_step(name)[1]["run"] for name in LOCKED_JOBS]
+    for text in runs + [SCRIPT.read_text(encoding="utf-8")]:
         (match,) = pattern.finditer(text)
+        assert match.group("dirs").replace("\\/", "/").split("|") == DATA_DIRS
+    for text in runs:
+        (match,) = links.finditer(text)
         assert match.group("dirs").replace("\\/", "/").split("|") == DATA_DIRS
 
 
@@ -299,6 +305,17 @@ def commit_file(repo, rel, content="changé"):
     path.write_text(content, encoding="utf-8")
     git(repo, "add", "-A")
     git(repo, "commit", "-q", "-m", f"change {rel}")
+
+
+def commit_link(repo, rel, target="../kairos/x.txt"):
+    """Remplace (ou crée) rel par un lien symbolique suivi par git (mode 120000)."""
+    path = repo / rel
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.is_symlink() or path.exists():
+        path.unlink()
+    path.symlink_to(target)
+    git(repo, "add", "-A")
+    git(repo, "commit", "-q", "-m", f"lien {rel}")
 
 
 def lock_codes(repo, value, workflows=("prepare.yml",)):
@@ -466,6 +483,50 @@ def test_lock_refuses_a_published_page_that_differs_from_the_template(tmp_path):
     assert (done.returncode, done.stdout) == (1, refused)
     commit_file(repo, "site/index.html", "<!doctype html><title>Kairos 2</title>\n")
     assert passes(repo, good, ALL)
+
+
+@needs_sha256sum
+def test_lock_refuses_a_symlink_in_the_data_dirs(tmp_path):
+    # store.write_text et shutil.copyfile suivent les liens : un lien commité dans un dossier de données pourrait rediriger une écriture
+    # vers un fichier suivi du code. Hors des dossiers de données, un lien fait partie de l'empreinte, donc de ce que l'utilisateur valide.
+    repo = locked_repo(tmp_path)
+    good = independent_fingerprint(repo)
+    refused = "Lien symbolique interdit dans les données : "
+    existing = [rel for rel in DATA_FILES if rel != "site/index.html"] + ["site/index.html"]
+    new = ["state/lien", "decisions/sub/lien.json", "journal/dossier", "memory/liën.md", "data/odds/lien", "data/model/x/y/lien"]
+    for rel in [*existing, *new]:  # fichier suivi remplacé par un lien, ou lien nouveau
+        commit_link(repo, rel)
+        assert independent_fingerprint(repo) == good, rel  # hors empreinte : seul le contrôle des liens peut réagir
+        done = run_lock(repo, good)
+        assert done.returncode == 1 and done.stdout.startswith(refused), (rel, done.stdout)
+        assert fails(repo, good, ALL), rel
+        git(repo, "rm", "-q", "-f", rel)
+        git(repo, "commit", "-q", "-m", f"retire {rel}")
+        if rel == "site/index.html":
+            commit_file(repo, rel, PAGE)
+        assert passes(repo, good), rel
+    commit_link(repo, "memory/liën.md")
+    assert 'memory/li\\303\\253n.md' in run_lock(repo, good).stdout  # le chemin cité est celui que git affiche
+    git(repo, "rm", "-q", "-f", "memory/liën.md")
+    git(repo, "commit", "-q", "-m", "retire")
+    # l'ordre des contrôles : empreinte, puis noms de site/, puis liens, puis page
+    commit_link(repo, "state/lien")
+    commit_file(repo, "site/index.html", "autre")
+    assert run_lock(repo, good).stdout.startswith(refused)
+    assert run_lock(repo, "0" * 64).stdout.startswith("Code non validé : empreinte ")
+    commit_file(repo, "site/evil.js")
+    assert run_lock(repo, good).stdout.startswith("Code non validé : site/ ne doit contenir que ")
+    git(repo, "rm", "-q", "-f", "site/evil.js", "state/lien")
+    git(repo, "commit", "-q", "-m", "retire")
+    assert run_lock(repo, good).stdout == "Page non conforme au gabarit\n"
+    commit_file(repo, "site/index.html", PAGE)
+    assert passes(repo, good, ALL)
+    # ailleurs, un lien est du code : refusé tant que l'empreinte n'est pas revalidée, accepté ensuite
+    for rel in ("docs/lien", "kairos/lien.py", "lien-racine"):
+        commit_link(repo, rel)
+        assert fails(repo, good), rel
+        good = independent_fingerprint(repo)
+        assert passes(repo, good, ALL), rel
 
 
 @needs_sha256sum

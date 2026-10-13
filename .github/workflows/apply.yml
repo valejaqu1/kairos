@@ -35,6 +35,11 @@ jobs:
             echo "Code non validé : site/ ne doit contenir que index.html et data.json, trouvé : $(printf '%s' "$extra" | tr '\n' ' ')"
             exit 1
           fi
+          links=$(git ls-tree -r --full-tree HEAD | awk -F'\t' '$1 ~ /^120000 / && $2 ~ /^"?(state|decisions|journal|memory|site|data\/odds|data\/model)\//' | cut -f2)
+          if [ -n "$links" ]; then
+            echo "Lien symbolique interdit dans les données : $(printf '%s' "$links" | tr '\n' ' ')"
+            exit 1
+          fi
           if [ -e site/index.html ] && ! cmp -s site/index.html site_template/index.html; then
             echo "Page non conforme au gabarit"
             exit 1
