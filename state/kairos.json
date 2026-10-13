@@ -1,0 +1,24 @@
+{
+  "alive": true,
+  "applied_decisions": [],
+  "bankroll_cents": 10000,
+  "death_announced": false,
+  "death_date": null,
+  "diploma": null,
+  "diploma_announced": false,
+  "generation": 1,
+  "history": [],
+  "hunger_paid_through": "2026-10-13",
+  "hunger_today": {
+    "cents": 0,
+    "date": "2026-10-13"
+  },
+  "hunger_total_cents": 0,
+  "last_message": null,
+  "last_message_date": null,
+  "last_run": "2026-10-13T08:32:49.376640+00:00",
+  "name": "Kairos",
+  "silent_notified": null,
+  "start_date": "2026-10-13",
+  "trophies": {}
+}
