@@ -1,0 +1,84 @@
+{
+  "alive": true,
+  "bankroll_cents": 10000,
+  "bets": [],
+  "clv": {
+    "beats": 0,
+    "total": 0
+  },
+  "day": 1,
+  "death_date": null,
+  "delta_cents": 0,
+  "diploma": null,
+  "diploma_day": 56,
+  "diploma_in": 55,
+  "equity_cents": 10000,
+  "generation": 1,
+  "health": 0.833,
+  "history": [
+    {
+      "date": "2026-10-13",
+      "equity_cents": 10000
+    }
+  ],
+  "hunger_total_cents": 0,
+  "last_run": "2026-10-13T09:24:30.596986+00:00",
+  "lessons": [],
+  "message": "Premier jour, 100 CHF en poche, et aucun match au programme dans les cotes : rien à analyser, rien à parier. Je n'ai encore rien à régler ni rien appris. Je garde ma cagnotte intacte et j'attends demain avec appétit.",
+  "message_date": "2026-10-13",
+  "mood": "En forme",
+  "name": "Kairos",
+  "rank": {
+    "division": "I",
+    "next": "Bronze II",
+    "progress": 0.0,
+    "score": 0.0,
+    "tier": "Bronze"
+  },
+  "sources": [],
+  "stats": {
+    "bets": 0,
+    "clv_avg": 0.0,
+    "roi": 0.0,
+    "won": 0
+  },
+  "streak": 0,
+  "trophies": [
+    {
+      "date": null,
+      "id": "premier_gain",
+      "label": "Premier pari gagné"
+    },
+    {
+      "date": null,
+      "id": "serie_3",
+      "label": "Série de 3"
+    },
+    {
+      "date": null,
+      "id": "serie_5",
+      "label": "Série de 5"
+    },
+    {
+      "date": null,
+      "id": "source_gardee",
+      "label": "Première source validée"
+    },
+    {
+      "date": null,
+      "id": "clv_10",
+      "label": "10 paris avant le marché"
+    },
+    {
+      "date": null,
+      "id": "survie_4_semaines",
+      "label": "4 semaines de survie"
+    },
+    {
+      "date": null,
+      "id": "diplome",
+      "label": "Diplômé"
+    }
+  ],
+  "updated_at": "2026-10-13T09:24:30.596986+00:00"
+}
