@@ -1,0 +1,74 @@
+{
+  "events": [
+    {
+      "away": "Levante",
+      "commence_time": "2026-10-16T19:00:00Z",
+      "event_id": "19ee731602634e5c9e3106630e087464",
+      "home": "Deportivo La Coruña",
+      "median": {
+        "1": 2.08,
+        "2": 3.55,
+        "X": 3.5
+      },
+      "n_books": 21,
+      "p_market": [
+        0.4647,
+        0.2696,
+        0.2656
+      ],
+      "sim": {
+        "1": 1.98,
+        "2": 3.37,
+        "X": 3.32
+      },
+      "sport_key": "soccer_spain_la_liga"
+    },
+    {
+      "away": "Sassuolo",
+      "commence_time": "2026-10-16T18:45:00Z",
+      "event_id": "7d3160040958fe21778fd5ee485666c3",
+      "home": "Frosinone",
+      "median": {
+        "1": 2.5,
+        "2": 2.63,
+        "X": 3.635
+      },
+      "n_books": 24,
+      "p_market": [
+        0.3813,
+        0.2572,
+        0.3615
+      ],
+      "sim": {
+        "1": 2.38,
+        "2": 2.5,
+        "X": 3.45
+      },
+      "sport_key": "soccer_italy_serie_a"
+    },
+    {
+      "away": "1. FC Köln",
+      "commence_time": "2026-10-16T18:30:00Z",
+      "event_id": "947bd5d924835af090d9cdc7bbdf10f6",
+      "home": "Eintracht Frankfurt",
+      "median": {
+        "1": 1.94,
+        "2": 3.43,
+        "X": 4.09
+      },
+      "n_books": 23,
+      "p_market": [
+        0.4984,
+        0.2277,
+        0.2739
+      ],
+      "sim": {
+        "1": 1.84,
+        "2": 3.26,
+        "X": 3.89
+      },
+      "sport_key": "soccer_germany_bundesliga"
+    }
+  ],
+  "fetched_at": "2026-10-15T09:12:58.627415+00:00"
+}

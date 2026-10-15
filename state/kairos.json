@@ -3,7 +3,7 @@
   "applied_decisions": [
     "2026-10-13"
   ],
-  "bankroll_cents": 9975,
+  "bankroll_cents": 9950,
   "death_announced": false,
   "death_date": null,
   "diploma": null,
@@ -19,15 +19,15 @@
       "equity_cents": 9975
     }
   ],
-  "hunger_paid_through": "2026-10-14",
+  "hunger_paid_through": "2026-10-15",
   "hunger_today": {
     "cents": 25,
-    "date": "2026-10-14"
+    "date": "2026-10-15"
   },
-  "hunger_total_cents": 25,
+  "hunger_total_cents": 50,
   "last_message": null,
   "last_message_date": "2026-10-14",
-  "last_run": "2026-10-14T17:59:36.528339+00:00",
+  "last_run": "2026-10-15T09:12:58.627415+00:00",
   "name": "Kairos",
   "silent_notified": "2026-10-14",
   "start_date": "2026-10-13",
