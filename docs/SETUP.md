@@ -60,13 +60,29 @@ Actions → check-api → Run workflow. Le résumé doit afficher `OK` pour les 
 
 ## 9. Environnement cloud et routine
 
-1. Toi : connecte GitHub à https://claude.ai/code avec accès au dépôt `valejaqu1/kairos`.
+1. Toi : connecte GitHub à https://claude.ai/code et donne à l'application GitHub « Claude » l'accès au dépôt : https://github.com/settings/installations → Claude → Configure → Repository access → ajoute `valejaqu1/kairos` → Save. Un dépôt créé après l'installation de l'application n'y est pas ajouté tout seul ; sans cet accès, la routine écrit ses décisions mais son push est refusé (erreur 403).
 2. Toi : sur https://claude.ai/code, crée un environnement cloud nommé `kairos`, sans variable d'environnement ni secret. L'accès réseau se règle dans les réglages de l'environnement : Edit environment → Network access → **Full**.
 3. Claude crée la routine après ton accord. Elle utilise le dépôt `valejaqu1/kairos` et l'environnement `kairos`. Elle s'exécute tous les jours à 11:07 (Europe/Zurich), et non à 11:00 : les exécutions pile à l'heure peuvent partir avec quelques minutes de retard. Vérifie que le fuseau affiché est Europe/Zurich, car les heures de routine sont saisies dans le fuseau du compte. Elle n'a aucun connecteur : retire-les tous, ils sont inclus par défaut dans le formulaire. Sa consigne est : « Lis ROUTINE.md à la racine du dépôt et exécute-le pour la date du jour à Zurich. Pousse directement sur la branche main, jamais sur une branche claude/. »
 
 ## 10. Premier jour
 
 Lance à la main Actions → prepare → Run workflow. Attends que `prepare` soit terminé (coche verte, et le commit « prepare » visible sur `main`) avant de lancer la routine (« Run now »). Puis vérifie : un fichier `decisions/<date>.json`, un commit « apply », le message Telegram et la page https://valejaqu1.github.io/kairos/.
+
+## 11. Horloge externe (toi, guidé par Claude)
+
+Les horaires automatiques de GitHub (`schedule`) partent souvent avec des heures de retard sur un dépôt gratuit, voire pas du tout : `prepare` arrive alors après la routine, qui s'arrête faute de cotes, et les cotes de clôture ne sont presque jamais relevées. Un service gratuit lance donc les workflows à l'heure ; les horaires GitHub restent en secours (un second `prepare` le même jour ne relève pas les cotes une deuxième fois).
+
+1. **Clé GitHub limitée.** https://github.com/settings/personal-access-tokens/new → nom `kairos-horloge`, expiration 1 an, Repository access : *Only select repositories* → `valejaqu1/kairos`, Permissions → Repository permissions → **Actions : Read and write** (rien d'autre). Generate token, puis copie-la. Elle ne sert qu'à lancer les workflows de Kairos : elle ne lit ni le code ni les secrets.
+2. **Compte gratuit** sur https://cron-job.org, puis trois tâches (Create cronjob). Pour chacune, onglet *Advanced* : méthode **POST** ; en-têtes `Authorization: Bearer <ta clé>`, `Accept: application/vnd.github+json`, `X-GitHub-Api-Version: 2022-11-28`, `Content-Type: application/json` ; corps `{"ref":"main"}` ; fuseau **UTC**.
+
+| Tâche | URL | Horaire (UTC) |
+|---|---|---|
+| Kairos prepare | `https://api.github.com/repos/valejaqu1/kairos/actions/workflows/prepare.yml/dispatches` | tous les jours à 08:15 |
+| Kairos closing | `https://api.github.com/repos/valejaqu1/kairos/actions/workflows/closing.yml/dispatches` | minutes 7 et 37, de 7 h à 21 h |
+| Kairos apply secours | `https://api.github.com/repos/valejaqu1/kairos/actions/workflows/apply.yml/dispatches` | tous les jours à 13:10 |
+
+3. Teste chaque tâche avec *Test run* : GitHub répond **204** et un run apparaît dans l'onglet Actions du dépôt.
+4. Avant l'expiration de la clé (1 an), crée-en une nouvelle et remplace-la dans les trois tâches.
 
 ## À savoir ensuite
 

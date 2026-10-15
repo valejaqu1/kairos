@@ -147,6 +147,34 @@ def test_daily_message_carries_the_days_full_hunger_after_two_prepares(tmp_root)
     assert "faim −0,00" not in sent[0]
 
 
+class CountingApi(FakeOddsApi):
+    def __init__(self, fixtures):
+        super().__init__(fixtures)
+        self.odds_calls = 0
+
+    def odds(self, sport_key):
+        self.odds_calls += 1
+        return super().odds(sport_key)
+
+
+def test_second_prepare_the_same_day_does_not_fetch_odds_again(tmp_root):
+    # L'horloge externe et l'horaire GitHub (souvent en retard) peuvent lancer prepare deux fois :
+    # le second passage ne doit ni dépenser de crédits ni changer les cotes que la routine a lues.
+    seed_state()
+    api = CountingApi(FIX)
+    ctx = make_ctx([].append, api=api)
+    cmd_prepare(ctx)
+    first_calls = api.odds_calls
+    odds_before = (tmp_root / "data" / "odds" / "2026-10-17.json").read_bytes()
+    model_before = (tmp_root / "data" / "model" / "2026-10-17.json").read_bytes()
+    ctx.now = MIDMORNING
+    cmd_prepare(ctx)
+    assert first_calls > 0 and api.odds_calls == first_calls
+    assert (tmp_root / "data" / "odds" / "2026-10-17.json").read_bytes() == odds_before
+    assert (tmp_root / "data" / "model" / "2026-10-17.json").read_bytes() == model_before
+    assert "cotes du jour déjà relevées" in (tmp_root / "journal" / "2026-10-17.md").read_text()
+
+
 def test_prepare_does_not_reuse_hunger_recorded_on_another_day(tmp_root):
     seed_state(hunger_paid_through="2026-10-16", hunger_today={"date": "2026-10-16", "cents": 700})
     cmd_prepare(make_ctx(lambda text: None))

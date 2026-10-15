@@ -47,11 +47,7 @@ def _notify(ctx: Context, text: str, notes: list[str]) -> bool:
 
 def cmd_prepare(ctx: Context) -> None:
     from kairos.hunger import apply_hunger, check_death
-    from kairos.market import no_vig
-    from kairos.model import fetch_results, fit_model, predict_events
-    from kairos.odds import summarize_event, within_lookahead
     from kairos.settle import parse_scores, score_forecasts, settle_bets, sports_to_check
-    from kairos.teams import load_aliases
 
     state, bets, forecasts = store.load_state(ctx.today), store.load_bets(), store.load_forecasts()
     notes = []
@@ -72,6 +68,27 @@ def cmd_prepare(ctx: Context) -> None:
     prior_cents = prior["cents"] if isinstance(prior, dict) and prior.get("date") == ctx.today.isoformat() else 0
     state["hunger_today"] = {"date": ctx.today.isoformat(), "cents": prior_cents + hunger}
     notes.append(f"{len(settled)} pari(s) réglé(s), {scored} prévision(s) notée(s), faim −{hunger / 100:.2f} CHF")
+
+    # Un second passage le même jour (horloge externe puis horaire GitHub en retard) ne relève pas les cotes
+    # une deuxième fois : il dépenserait des crédits et changerait les matchs que la routine a déjà lus.
+    if store.read_json(f"data/odds/{ctx.today.isoformat()}.json", None) is None:
+        _refresh_odds_and_model(ctx, bets, notes)
+    else:
+        notes.append("cotes du jour déjà relevées : rien à refaire")
+
+    check_death(state, bets, ctx.today)
+    state["last_run"] = ctx.now.isoformat()
+    store.save_state(state)
+    store.save_bets(bets)
+    store.save_forecasts(forecasts)
+    store.append_journal(ctx.today, "Matin", notes)
+
+
+def _refresh_odds_and_model(ctx: Context, bets: list, notes: list) -> None:
+    from kairos.market import no_vig
+    from kairos.model import fetch_results, fit_model, predict_events
+    from kairos.odds import summarize_event, within_lookahead
+    from kairos.teams import load_aliases
 
     open_keys = {b["sport_key"] for b in bets if b["status"] == "open"}
     events, skipped = [], 0
@@ -125,13 +142,6 @@ def cmd_prepare(ctx: Context) -> None:
             preds.update({e["event_id"]: None for e in league_events})
     store.write_json(f"data/model/{ctx.today.isoformat()}.json", {"events": preds, "unmatched": sorted(set(unmatched))})
     notes.append(f"{len(events)} match(s) dans les 48 h, {len(set(unmatched))} équipe(s) non reconnue(s)")
-
-    check_death(state, bets, ctx.today)
-    state["last_run"] = ctx.now.isoformat()
-    store.save_state(state)
-    store.save_bets(bets)
-    store.save_forecasts(forecasts)
-    store.append_journal(ctx.today, "Matin", notes)
 
 
 def cmd_apply(ctx: Context) -> None:
