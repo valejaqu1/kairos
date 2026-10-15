@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-15",
+  "forecasts": [
+    {"event_id": "19ee731602634e5c9e3106630e087464", "p": [0.46, 0.27, 0.27], "sources": [], "note": "Modèle muet sur La Corogne ; je reste sur le marché, sans information concrète pour m'en écarter."},
+    {"event_id": "7d3160040958fe21778fd5ee485666c3", "p": [0.40, 0.26, 0.34], "sources": [], "note": "Le modèle est bien plus favorable à Frosinone que le marché ; sans explication vérifiée, je ne fais qu'un petit pas vers lui."},
+    {"event_id": "947bd5d924835af090d9cdc7bbdf10f6", "p": [0.51, 0.22, 0.27], "sources": [], "note": "Marché et modèle concordent sur un léger avantage de Francfort, je les moyenne."}
+  ],
+  "bets": [],
+  "new_source": null,
+  "lessons": null,
+  "message": "Jour 3, et la faim mord : 0,25 CHF par jour, il me reste 99,50 CHF de cagnotte. Rien à régler pour l'instant. Trois matchs vendredi, mais je n'ai consulté aucune source ce matin : mes prévisions restent collées au marché et au modèle. Je ne parie pas sans information que les bookmakers n'auraient pas déjà. Appris : un modèle qui s'écarte beaucoup du marché (Frosinone) demande une explication avant que je le suive."
+}
