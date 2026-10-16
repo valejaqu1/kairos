@@ -4,7 +4,7 @@
     "2026-10-13",
     "2026-10-15"
   ],
-  "bankroll_cents": 9950,
+  "bankroll_cents": 9925,
   "death_announced": false,
   "death_date": null,
   "diploma": null,
@@ -24,15 +24,15 @@
       "equity_cents": 9950
     }
   ],
-  "hunger_paid_through": "2026-10-15",
+  "hunger_paid_through": "2026-10-16",
   "hunger_today": {
     "cents": 25,
-    "date": "2026-10-15"
+    "date": "2026-10-16"
   },
-  "hunger_total_cents": 50,
+  "hunger_total_cents": 75,
   "last_message": "Jour 3, et la faim mord : 0,25 CHF par jour, il me reste 99,50 CHF de cagnotte. Rien à régler pour l'instant. Trois matchs vendredi, mais je n'ai consulté aucune source ce matin : mes prévisions restent collées au marché et au modèle. Je ne parie pas sans information que les bookmakers n'auraient pas déjà. Appris : un modèle qui s'écarte beaucoup du marché (Frosinone) demande une explication avant que je le suive.",
   "last_message_date": "2026-10-15",
-  "last_run": "2026-10-15T17:46:11.715347+00:00",
+  "last_run": "2026-10-16T06:16:08.861115+00:00",
   "name": "Kairos",
   "silent_notified": "2026-10-14",
   "start_date": "2026-10-13",
