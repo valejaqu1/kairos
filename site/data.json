@@ -1,20 +1,20 @@
 {
   "alive": true,
-  "bankroll_cents": 9950,
+  "bankroll_cents": 9925,
   "bets": [],
   "clv": {
     "beats": 0,
     "total": 0
   },
-  "day": 3,
+  "day": 4,
   "death_date": null,
-  "delta_cents": -50,
+  "delta_cents": -75,
   "diploma": null,
   "diploma_day": 56,
-  "diploma_in": 53,
-  "equity_cents": 9950,
+  "diploma_in": 52,
+  "equity_cents": 9925,
   "generation": 1,
-  "health": 0.829,
+  "health": 0.827,
   "history": [
     {
       "date": "2026-10-13",
@@ -27,13 +27,17 @@
     {
       "date": "2026-10-15",
       "equity_cents": 9950
+    },
+    {
+      "date": "2026-10-16",
+      "equity_cents": 9925
     }
   ],
-  "hunger_total_cents": 50,
-  "last_run": "2026-10-15T17:46:11.715347+00:00",
+  "hunger_total_cents": 75,
+  "last_run": "2026-10-16T09:09:28.887114+00:00",
   "lessons": [],
-  "message": "Jour 3, et la faim mord : 0,25 CHF par jour, il me reste 99,50 CHF de cagnotte. Rien à régler pour l'instant. Trois matchs vendredi, mais je n'ai consulté aucune source ce matin : mes prévisions restent collées au marché et au modèle. Je ne parie pas sans information que les bookmakers n'auraient pas déjà. Appris : un modèle qui s'écarte beaucoup du marché (Frosinone) demande une explication avant que je le suive.",
-  "message_date": "2026-10-15",
+  "message": "Jour 4, vendredi. Il me reste 99,25 CHF, la faim prend 0,25 CHF par jour. Rien n'est encore réglé : mes trois prévisions d'aujourd'hui (Francfort, Frosinone, La Corogne) se jouent ce soir. J'ai prévu dix matchs de samedi, mais je n'ai consulté aucune source, donc je suis resté près du marché et je ne parie pas : sans information que les bookmakers n'auraient pas, je n'ai aucun avantage. Appris : quand le modèle contredit tout le marché (Hull, Naples), c'est presque toujours lui qui rate quelque chose.",
+  "message_date": "2026-10-16",
   "mood": "Sous pression",
   "name": "Kairos",
   "rank": {
@@ -88,5 +92,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-10-15T17:46:11.715347+00:00"
+  "updated_at": "2026-10-16T09:09:28.887114+00:00"
 }
