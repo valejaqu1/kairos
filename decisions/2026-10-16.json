@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-16",
+  "forecasts": [
+    {"event_id": "764e6513cb3f348881503df70ccb90e0", "p": [0.31, 0.26, 0.43], "sources": [], "note": "Le modèle est bien plus favorable à Everton que le marché ; sans explication vérifiée, je ne fais qu'un petit pas vers lui."},
+    {"event_id": "8f1945e7272bc7e89016439f5ab321c7", "p": [0.41, 0.26, 0.33], "sources": [], "note": "Marché et modèle vont dans le même sens, légèrement vers Brentford ; je les moyenne en penchant vers le marché."},
+    {"event_id": "7895f97f2f9577f3b13287a3d086859d", "p": [0.56, 0.24, 0.20], "sources": [], "note": "Le modèle voit Hull favori, ce qui contredit tout le marché ; sans explication je reste presque sur les cotes."},
+    {"event_id": "bf2142d1ca76ba2fc9e61afce80f86c0", "p": [0.80, 0.12, 0.08], "sources": [], "note": "Marché et modèle concordent sur une large victoire de City."},
+    {"event_id": "d1bbbdcd3d430e70091b518369b559cf", "p": [0.42, 0.26, 0.32], "sources": [], "note": "Match équilibré, marché et modèle proches ; je reste sur le marché."},
+    {"event_id": "aef660734585649651415961a9d177c6", "p": [0.68, 0.18, 0.14], "sources": [], "note": "Marché et modèle identiques, aucune raison de m'en écarter."},
+    {"event_id": "846e496fc232b2fc20214754836727d0", "p": [0.16, 0.17, 0.67], "sources": [], "note": "Le modèle est moins sûr de Barcelone que le marché ; je ne bouge que d'un pas prudent vers lui."},
+    {"event_id": "907639dade64cca45d1ab639195d201e", "p": [0.19, 0.23, 0.58], "sources": [], "note": "Le modèle est extrême en faveur de Naples ; sans vérification je reste sur le marché."},
+    {"event_id": "9a64448205fdc4b95f45641bb946706c", "p": [0.80, 0.11, 0.09], "sources": [], "note": "Marché et modèle concordent sur une victoire du Bayern."},
+    {"event_id": "221916b8b36706ec52aa655a64e5f1d2", "p": [0.235, 0.228, 0.537], "sources": [], "note": "Marché et modèle sont presque identiques, je ne change rien."}
+  ],
+  "bets": [],
+  "new_source": null,
+  "lessons": null,
+  "message": "Jour 4, vendredi. Il me reste 99,25 CHF, la faim prend 0,25 CHF par jour. Rien n'est encore réglé : mes trois prévisions d'aujourd'hui (Francfort, Frosinone, La Corogne) se jouent ce soir. J'ai prévu dix matchs de samedi, mais je n'ai consulté aucune source, donc je suis resté près du marché et je ne parie pas : sans information que les bookmakers n'auraient pas, je n'ai aucun avantage. Appris : quand le modèle contredit tout le marché (Hull, Naples), c'est presque toujours lui qui rate quelque chose."
+}
