@@ -384,5 +384,305 @@
     "sources": [],
     "sport_key": "soccer_germany_bundesliga",
     "void": false
+  },
+  {
+    "away": "Sunderland",
+    "commence_time": "2026-10-18T13:00:00Z",
+    "date": "2026-10-17",
+    "event_id": "dfd5d6648be46426e418801584d46a68",
+    "home": "Bournemouth",
+    "note": "Marché et modèle vont dans le même sens, léger pas vers le modèle.",
+    "outcome": null,
+    "p_kairos": [
+      0.47,
+      0.27,
+      0.26
+    ],
+    "p_market": [
+      0.459,
+      0.2685,
+      0.2726
+    ],
+    "p_model": [
+      0.4879,
+      0.2813,
+      0.2308
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [],
+    "sport_key": "soccer_epl",
+    "void": false
+  },
+  {
+    "away": "Crystal Palace",
+    "commence_time": "2026-10-18T13:00:00Z",
+    "date": "2026-10-17",
+    "event_id": "9fc08b390a49c4434f7cf631a0bb88fb",
+    "home": "Brighton and Hove Albion",
+    "note": "Marché et modèle concordent sur une victoire de Brighton.",
+    "outcome": null,
+    "p_kairos": [
+      0.64,
+      0.2,
+      0.16
+    ],
+    "p_market": [
+      0.6463,
+      0.1955,
+      0.1583
+    ],
+    "p_model": [
+      0.6306,
+      0.2342,
+      0.1352
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [],
+    "sport_key": "soccer_epl",
+    "void": false
+  },
+  {
+    "away": "Manchester United",
+    "commence_time": "2026-10-18T13:00:00Z",
+    "date": "2026-10-17",
+    "event_id": "676b3b0b609e9cf565da450786618d26",
+    "home": "Leeds United",
+    "note": "Le modèle voit United un peu mieux que le marché ; je ne fais qu'un petit pas vers lui.",
+    "outcome": null,
+    "p_kairos": [
+      0.39,
+      0.27,
+      0.34
+    ],
+    "p_market": [
+      0.4097,
+      0.2625,
+      0.3278
+    ],
+    "p_model": [
+      0.3452,
+      0.2823,
+      0.3725
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [],
+    "sport_key": "soccer_epl",
+    "void": false
+  },
+  {
+    "away": "Arsenal",
+    "commence_time": "2026-10-18T15:30:00Z",
+    "date": "2026-10-17",
+    "event_id": "f696a248965373d9071dc0662e5c58a8",
+    "home": "Nottingham Forest",
+    "note": "Arsenal favori au marché comme au modèle, sans info nouvelle je reste sur les cotes.",
+    "outcome": null,
+    "p_kairos": [
+      0.16,
+      0.25,
+      0.59
+    ],
+    "p_market": [
+      0.1599,
+      0.24,
+      0.6001
+    ],
+    "p_model": [
+      0.1647,
+      0.2945,
+      0.5408
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [],
+    "sport_key": "soccer_epl",
+    "void": false
+  },
+  {
+    "away": "Athletic Bilbao",
+    "commence_time": "2026-10-17T19:00:00Z",
+    "date": "2026-10-17",
+    "event_id": "f00cd1ea41fa39149729d14ebc07aa6c",
+    "home": "Valencia",
+    "note": "Le modèle contredit nettement le marché ; sans explication vérifiée je ne bouge que peu.",
+    "outcome": null,
+    "p_kairos": [
+      0.31,
+      0.285,
+      0.405
+    ],
+    "p_market": [
+      0.2938,
+      0.2859,
+      0.4203
+    ],
+    "p_model": [
+      0.4271,
+      0.2885,
+      0.2844
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Inter Milan",
+    "commence_time": "2026-10-17T16:00:00Z",
+    "date": "2026-10-17",
+    "event_id": "bfefc309177723410230fee52f650315",
+    "home": "Bologna",
+    "note": "Marché et modèle concordent sur une victoire d'Inter.",
+    "outcome": null,
+    "p_kairos": [
+      0.16,
+      0.22,
+      0.62
+    ],
+    "p_market": [
+      0.1541,
+      0.2241,
+      0.6217
+    ],
+    "p_model": [
+      0.167,
+      0.1887,
+      0.6442
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "Sevilla",
+    "commence_time": "2026-10-18T19:00:00Z",
+    "date": "2026-10-17",
+    "event_id": "eccd63bf768e2f2a358b871d3f33a63d",
+    "home": "Real Madrid",
+    "note": "Marché et modèle concordent sur une large victoire du Real.",
+    "outcome": null,
+    "p_kairos": [
+      0.79,
+      0.13,
+      0.08
+    ],
+    "p_market": [
+      0.7967,
+      0.1297,
+      0.0735
+    ],
+    "p_model": [
+      0.7717,
+      0.1483,
+      0.08
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Genoa",
+    "commence_time": "2026-10-17T18:45:00Z",
+    "date": "2026-10-17",
+    "event_id": "18d478f469da3bcc654dd4555b85c7e3",
+    "home": "AS Roma",
+    "note": "Le modèle est plus favorable à la Roma que le marché ; je fais un pas mesuré vers lui.",
+    "outcome": null,
+    "p_kairos": [
+      0.65,
+      0.22,
+      0.13
+    ],
+    "p_market": [
+      0.629,
+      0.2233,
+      0.1477
+    ],
+    "p_model": [
+      0.7185,
+      0.1828,
+      0.0987
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "SC Paderborn",
+    "commence_time": "2026-10-17T13:30:00Z",
+    "date": "2026-10-17",
+    "event_id": "9a422e1aad1053828eaf629a58d901de",
+    "home": "Werder Bremen",
+    "note": "Le modèle voit plus de nuls que le marché ; je reste près des cotes.",
+    "outcome": null,
+    "p_kairos": [
+      0.54,
+      0.23,
+      0.23
+    ],
+    "p_market": [
+      0.5502,
+      0.2264,
+      0.2234
+    ],
+    "p_model": [
+      0.4854,
+      0.3273,
+      0.1873
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [],
+    "sport_key": "soccer_germany_bundesliga",
+    "void": false
+  },
+  {
+    "away": "Alavés",
+    "commence_time": "2026-10-18T14:15:00Z",
+    "date": "2026-10-17",
+    "event_id": "aabe899ecc4c19a1fafe5440151b62e4",
+    "home": "Celta Vigo",
+    "note": "Marché et modèle dans le même sens, léger pas vers le modèle.",
+    "outcome": null,
+    "p_kairos": [
+      0.46,
+      0.285,
+      0.255
+    ],
+    "p_market": [
+      0.4399,
+      0.2909,
+      0.2692
+    ],
+    "p_model": [
+      0.5061,
+      0.2745,
+      0.2193
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
   }
 ]
