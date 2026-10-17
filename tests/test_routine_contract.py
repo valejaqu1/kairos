@@ -162,3 +162,19 @@ def test_third_party_notice_carries_the_mit_license_and_the_readme_links_to_it()
         assert clause in notice, clause
     assert "(THIRD_PARTY_NOTICES.md)" in (ROOT / "README.md").read_text(encoding="utf-8")
     assert "© 2024 Sports Betting Claude Contributors" in (ROOT / ".claude" / "skills" / "kairos-analyste" / "SKILL.md").read_text(encoding="utf-8")
+
+
+def _step(n: int) -> str:
+    # Les règles absolues sont aussi numérotées : on ne cherche que dans la section des étapes.
+    steps = (ROOT / "ROUTINE.md").read_text().split("## Étapes", 1)[1]
+    return next(line for line in steps.splitlines() if line.startswith(f"{n}. "))
+
+
+def test_routine_makes_web_research_mandatory_and_bootstraps_sources():
+    # Avec un registre de sources vide, la routine lisait « n'utilise que les sources du registre » comme
+    # « ne cherche rien » : elle doit chercher, et déclarer une source par jour tant que le registre est maigre.
+    step4 = _step(4)
+    assert "La recherche web est obligatoire" in step4
+    assert "WebSearch" in step4
+    assert "moins de 5 sources" in step4
+    assert "dès aujourd'hui" in step4
