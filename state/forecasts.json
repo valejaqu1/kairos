@@ -6,7 +6,7 @@
     "event_id": "19ee731602634e5c9e3106630e087464",
     "home": "Deportivo La Coruña",
     "note": "Modèle muet sur La Corogne ; je reste sur le marché, sans information concrète pour m'en écarter.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.46,
       0.27,
@@ -18,8 +18,8 @@
       0.2656
     ],
     "p_model": null,
-    "rps_kairos": null,
-    "rps_market": null,
+    "rps_kairos": 0.14225,
+    "rps_market": 0.143271,
     "rps_model": null,
     "sources": [],
     "sport_key": "soccer_spain_la_liga",
@@ -32,7 +32,7 @@
     "event_id": "7d3160040958fe21778fd5ee485666c3",
     "home": "Frosinone",
     "note": "Le modèle est bien plus favorable à Frosinone que le marché ; sans explication vérifiée, je ne fais qu'un petit pas vers lui.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.4,
       0.26,
@@ -48,9 +48,9 @@
       0.2522,
       0.2708
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.2378,
+    "rps_market": 0.256736,
+    "rps_model": 0.173431,
     "sources": [],
     "sport_key": "soccer_italy_serie_a",
     "void": false
@@ -62,7 +62,7 @@
     "event_id": "947bd5d924835af090d9cdc7bbdf10f6",
     "home": "Eintracht Frankfurt",
     "note": "Marché et modèle concordent sur un léger avantage de Francfort, je les moyenne.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.51,
       0.22,
@@ -78,9 +78,9 @@
       0.2005,
       0.2622
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.1565,
+    "rps_market": 0.163312,
+    "rps_model": 0.14142,
     "sources": [],
     "sport_key": "soccer_germany_bundesliga",
     "void": false
