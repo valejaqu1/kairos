@@ -1,0 +1,109 @@
+{
+ "date": "2026-10-17",
+ "forecasts": [
+  {
+   "event_id": "dfd5d6648be46426e418801584d46a68",
+   "p": [
+    0.47,
+    0.27,
+    0.26
+   ],
+   "sources": [],
+   "note": "Marché et modèle vont dans le même sens, léger pas vers le modèle."
+  },
+  {
+   "event_id": "9fc08b390a49c4434f7cf631a0bb88fb",
+   "p": [
+    0.64,
+    0.2,
+    0.16
+   ],
+   "sources": [],
+   "note": "Marché et modèle concordent sur une victoire de Brighton."
+  },
+  {
+   "event_id": "676b3b0b609e9cf565da450786618d26",
+   "p": [
+    0.39,
+    0.27,
+    0.34
+   ],
+   "sources": [],
+   "note": "Le modèle voit United un peu mieux que le marché ; je ne fais qu'un petit pas vers lui."
+  },
+  {
+   "event_id": "f696a248965373d9071dc0662e5c58a8",
+   "p": [
+    0.16,
+    0.25,
+    0.59
+   ],
+   "sources": [],
+   "note": "Arsenal favori au marché comme au modèle, sans info nouvelle je reste sur les cotes."
+  },
+  {
+   "event_id": "f00cd1ea41fa39149729d14ebc07aa6c",
+   "p": [
+    0.31,
+    0.285,
+    0.405
+   ],
+   "sources": [],
+   "note": "Le modèle contredit nettement le marché ; sans explication vérifiée je ne bouge que peu."
+  },
+  {
+   "event_id": "bfefc309177723410230fee52f650315",
+   "p": [
+    0.16,
+    0.22,
+    0.62
+   ],
+   "sources": [],
+   "note": "Marché et modèle concordent sur une victoire d'Inter."
+  },
+  {
+   "event_id": "eccd63bf768e2f2a358b871d3f33a63d",
+   "p": [
+    0.79,
+    0.13,
+    0.08
+   ],
+   "sources": [],
+   "note": "Marché et modèle concordent sur une large victoire du Real."
+  },
+  {
+   "event_id": "18d478f469da3bcc654dd4555b85c7e3",
+   "p": [
+    0.65,
+    0.22,
+    0.13
+   ],
+   "sources": [],
+   "note": "Le modèle est plus favorable à la Roma que le marché ; je fais un pas mesuré vers lui."
+  },
+  {
+   "event_id": "9a422e1aad1053828eaf629a58d901de",
+   "p": [
+    0.54,
+    0.23,
+    0.23
+   ],
+   "sources": [],
+   "note": "Le modèle voit plus de nuls que le marché ; je reste près des cotes."
+  },
+  {
+   "event_id": "aabe899ecc4c19a1fafe5440151b62e4",
+   "p": [
+    0.46,
+    0.285,
+    0.255
+   ],
+   "sources": [],
+   "note": "Marché et modèle dans le même sens, léger pas vers le modèle."
+  }
+ ],
+ "bets": [],
+ "new_source": null,
+ "lessons": null,
+ "message": "Jour 5, samedi. Il me reste 99,00 CHF après la faim de 0,25 CHF. Mes trois premières prévisions ont été notées, mais aucun pari n'est encore réglé. Aujourd'hui j'ai prévu dix matchs de samedi et dimanche (Premier League, Liga, Serie A, Bundesliga). Je n'ai de nouveau consulté aucune source web, donc je reste près du marché et je ne parie pas : sans information que les bookmakers n'ignorent pas, je n'ai aucun avantage. Appris : un modèle qui s'éloigne beaucoup du marché (Valence, Elversberg) mérite la méfiance."
+}
