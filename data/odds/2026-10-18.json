@@ -1,0 +1,419 @@
+{
+  "events": [
+    {
+      "away": "Sunderland",
+      "commence_time": "2026-10-18T13:00:00Z",
+      "event_id": "dfd5d6648be46426e418801584d46a68",
+      "home": "Bournemouth",
+      "median": {
+        "1": 2.14,
+        "2": 3.5,
+        "X": 3.4
+      },
+      "n_books": 25,
+      "p_market": [
+        0.4516,
+        0.2784,
+        0.2701
+      ],
+      "sim": {
+        "1": 2.03,
+        "2": 3.32,
+        "X": 3.23
+      },
+      "sport_key": "soccer_epl"
+    },
+    {
+      "away": "Crystal Palace",
+      "commence_time": "2026-10-18T13:00:00Z",
+      "event_id": "9fc08b390a49c4434f7cf631a0bb88fb",
+      "home": "Brighton and Hove Albion",
+      "median": {
+        "1": 1.49,
+        "2": 6.2,
+        "X": 4.7
+      },
+      "n_books": 25,
+      "p_market": [
+        0.6572,
+        0.1962,
+        0.1466
+      ],
+      "sim": {
+        "1": 1.42,
+        "2": 5.89,
+        "X": 4.46
+      },
+      "sport_key": "soccer_epl"
+    },
+    {
+      "away": "Manchester United",
+      "commence_time": "2026-10-18T13:00:00Z",
+      "event_id": "676b3b0b609e9cf565da450786618d26",
+      "home": "Leeds United",
+      "median": {
+        "1": 2.38,
+        "2": 2.87,
+        "X": 3.6
+      },
+      "n_books": 25,
+      "p_market": [
+        0.4046,
+        0.2627,
+        0.3328
+      ],
+      "sim": {
+        "1": 2.26,
+        "2": 2.73,
+        "X": 3.42
+      },
+      "sport_key": "soccer_epl"
+    },
+    {
+      "away": "Arsenal",
+      "commence_time": "2026-10-18T15:30:00Z",
+      "event_id": "f696a248965373d9071dc0662e5c58a8",
+      "home": "Nottingham Forest",
+      "median": {
+        "1": 6.27,
+        "2": 1.56,
+        "X": 4.0
+      },
+      "n_books": 25,
+      "p_market": [
+        0.1438,
+        0.2311,
+        0.6251
+      ],
+      "sim": {
+        "1": 5.96,
+        "2": 1.48,
+        "X": 3.8
+      },
+      "sport_key": "soccer_epl"
+    },
+    {
+      "away": "Coventry City",
+      "commence_time": "2026-10-19T19:00:00Z",
+      "event_id": "9baaf4e48b041cfef04e70e42532502e",
+      "home": "Tottenham Hotspur",
+      "median": {
+        "1": 1.49,
+        "2": 6.23,
+        "X": 4.65
+      },
+      "n_books": 25,
+      "p_market": [
+        0.6568,
+        0.1979,
+        0.1454
+      ],
+      "sim": {
+        "1": 1.42,
+        "2": 5.92,
+        "X": 4.42
+      },
+      "sport_key": "soccer_epl"
+    },
+    {
+      "away": "Real Racing Club de Santander",
+      "commence_time": "2026-10-18T12:00:00Z",
+      "event_id": "1f566f17c50fe5162724ec2863d2207b",
+      "home": "CA Osasuna",
+      "median": {
+        "1": 2.0,
+        "2": 3.65,
+        "X": 3.7
+      },
+      "n_books": 21,
+      "p_market": [
+        0.4853,
+        0.2555,
+        0.2592
+      ],
+      "sim": {
+        "1": 1.9,
+        "2": 3.47,
+        "X": 3.52
+      },
+      "sport_key": "soccer_spain_la_liga"
+    },
+    {
+      "away": "Alavés",
+      "commence_time": "2026-10-18T14:15:00Z",
+      "event_id": "aabe899ecc4c19a1fafe5440151b62e4",
+      "home": "Celta Vigo",
+      "median": {
+        "1": 2.22,
+        "2": 3.4,
+        "X": 3.2
+      },
+      "n_books": 21,
+      "p_market": [
+        0.4314,
+        0.2934,
+        0.2752
+      ],
+      "sim": {
+        "1": 2.11,
+        "2": 3.23,
+        "X": 3.04
+      },
+      "sport_key": "soccer_spain_la_liga"
+    },
+    {
+      "away": "Real Sociedad",
+      "commence_time": "2026-10-18T16:30:00Z",
+      "event_id": "1051298b4aca6f07113309bff598a5c1",
+      "home": "Málaga",
+      "median": {
+        "1": 3.35,
+        "2": 2.15,
+        "X": 3.54
+      },
+      "n_books": 21,
+      "p_market": [
+        0.2831,
+        0.2672,
+        0.4497
+      ],
+      "sim": {
+        "1": 3.18,
+        "2": 2.04,
+        "X": 3.36
+      },
+      "sport_key": "soccer_spain_la_liga"
+    },
+    {
+      "away": "Sevilla",
+      "commence_time": "2026-10-18T19:00:00Z",
+      "event_id": "eccd63bf768e2f2a358b871d3f33a63d",
+      "home": "Real Madrid",
+      "median": {
+        "1": 1.22,
+        "2": 12.0,
+        "X": 6.76
+      },
+      "n_books": 21,
+      "p_market": [
+        0.8062,
+        0.1261,
+        0.0677
+      ],
+      "sim": {
+        "1": 1.16,
+        "2": 11.4,
+        "X": 6.42
+      },
+      "sport_key": "soccer_spain_la_liga"
+    },
+    {
+      "away": "Rayo Vallecano",
+      "commence_time": "2026-10-19T19:00:00Z",
+      "event_id": "4a88bc4de574d43ef34677fd8d78722f",
+      "home": "Getafe",
+      "median": {
+        "1": 2.9,
+        "2": 2.65,
+        "X": 2.97
+      },
+      "n_books": 21,
+      "p_market": [
+        0.3252,
+        0.3171,
+        0.3577
+      ],
+      "sim": {
+        "1": 2.75,
+        "2": 2.52,
+        "X": 2.82
+      },
+      "sport_key": "soccer_spain_la_liga"
+    },
+    {
+      "away": "Lecce",
+      "commence_time": "2026-10-18T10:30:00Z",
+      "event_id": "367da93aa21a1e13eeafb94fd2263c75",
+      "home": "Udinese",
+      "median": {
+        "1": 1.825,
+        "2": 4.5,
+        "X": 3.535
+      },
+      "n_books": 24,
+      "p_market": [
+        0.5306,
+        0.2644,
+        0.205
+      ],
+      "sim": {
+        "1": 1.73,
+        "2": 4.27,
+        "X": 3.36
+      },
+      "sport_key": "soccer_italy_serie_a"
+    },
+    {
+      "away": "Como",
+      "commence_time": "2026-10-18T13:00:00Z",
+      "event_id": "3ea32a0aa44a5f0ef7fd088155430087",
+      "home": "Fiorentina",
+      "median": {
+        "1": 3.41,
+        "2": 2.06,
+        "X": 3.625
+      },
+      "n_books": 24,
+      "p_market": [
+        0.2749,
+        0.2578,
+        0.4673
+      ],
+      "sim": {
+        "1": 3.24,
+        "2": 1.96,
+        "X": 3.44
+      },
+      "sport_key": "soccer_italy_serie_a"
+    },
+    {
+      "away": "Atalanta BC",
+      "commence_time": "2026-10-18T16:00:00Z",
+      "event_id": "f9403dd597edbfaa73abdc974e55344c",
+      "home": "AC Milan",
+      "median": {
+        "1": 1.8,
+        "2": 4.3,
+        "X": 3.805
+      },
+      "n_books": 24,
+      "p_market": [
+        0.539,
+        0.2453,
+        0.2157
+      ],
+      "sim": {
+        "1": 1.71,
+        "2": 4.08,
+        "X": 3.61
+      },
+      "sport_key": "soccer_italy_serie_a"
+    },
+    {
+      "away": "Lazio",
+      "commence_time": "2026-10-18T18:45:00Z",
+      "event_id": "4c4026e2782f09d6f0ff2bde2a390513",
+      "home": "Juventus",
+      "median": {
+        "1": 1.62,
+        "2": 5.62,
+        "X": 3.9
+      },
+      "n_books": 24,
+      "p_market": [
+        0.6008,
+        0.2376,
+        0.1616
+      ],
+      "sim": {
+        "1": 1.54,
+        "2": 5.34,
+        "X": 3.7
+      },
+      "sport_key": "soccer_italy_serie_a"
+    },
+    {
+      "away": "Cagliari",
+      "commence_time": "2026-10-19T16:30:00Z",
+      "event_id": "ce94aca384a20f6af459366da6e1dd21",
+      "home": "Monza",
+      "median": {
+        "1": 2.41,
+        "2": 3.15,
+        "X": 3.155
+      },
+      "n_books": 24,
+      "p_market": [
+        0.3984,
+        0.3006,
+        0.3011
+      ],
+      "sim": {
+        "1": 2.29,
+        "2": 2.99,
+        "X": 3.0
+      },
+      "sport_key": "soccer_italy_serie_a"
+    },
+    {
+      "away": "Torino",
+      "commence_time": "2026-10-19T18:45:00Z",
+      "event_id": "07014d9adc65ca39710bd9f0c7c0d3f0",
+      "home": "Parma",
+      "median": {
+        "1": 3.295,
+        "2": 2.38,
+        "X": 3.05
+      },
+      "n_books": 24,
+      "p_market": [
+        0.2865,
+        0.3106,
+        0.4029
+      ],
+      "sim": {
+        "1": 3.13,
+        "2": 2.26,
+        "X": 2.9
+      },
+      "sport_key": "soccer_italy_serie_a"
+    },
+    {
+      "away": "SC Freiburg",
+      "commence_time": "2026-10-18T13:30:00Z",
+      "event_id": "096d800bcc95c547ef592cbef624d080",
+      "home": "Bayer Leverkusen",
+      "median": {
+        "1": 1.63,
+        "2": 4.7,
+        "X": 4.4
+      },
+      "n_books": 23,
+      "p_market": [
+        0.5965,
+        0.2088,
+        0.1947
+      ],
+      "sim": {
+        "1": 1.55,
+        "2": 4.46,
+        "X": 4.18
+      },
+      "sport_key": "soccer_germany_bundesliga"
+    },
+    {
+      "away": "TSG Hoffenheim",
+      "commence_time": "2026-10-18T15:30:00Z",
+      "event_id": "fd9b8c185737a15615aa0c9daaa3dfbf",
+      "home": "Borussia Monchengladbach",
+      "median": {
+        "1": 3.1,
+        "2": 2.07,
+        "X": 4.0
+      },
+      "n_books": 23,
+      "p_market": [
+        0.3035,
+        0.232,
+        0.4645
+      ],
+      "sim": {
+        "1": 2.94,
+        "2": 1.97,
+        "X": 3.8
+      },
+      "sport_key": "soccer_germany_bundesliga"
+    }
+  ],
+  "fetched_at": "2026-10-18T06:16:16.033108+00:00"
+}

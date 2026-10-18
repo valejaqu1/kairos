@@ -92,7 +92,7 @@
     "event_id": "764e6513cb3f348881503df70ccb90e0",
     "home": "Everton",
     "note": "Le modèle est bien plus favorable à Everton que le marché ; sans explication vérifiée, je ne fais qu'un petit pas vers lui.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.31,
       0.26,
@@ -108,9 +108,9 @@
       0.2774,
       0.3245
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.2105,
+    "rps_market": 0.1926,
+    "rps_model": 0.307499,
     "sources": [],
     "sport_key": "soccer_epl",
     "void": false
@@ -122,7 +122,7 @@
     "event_id": "8f1945e7272bc7e89016439f5ab321c7",
     "home": "Brentford",
     "note": "Marché et modèle vont dans le même sens, légèrement vers Brentford ; je les moyenne en penchant vers le marché.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.41,
       0.26,
@@ -138,9 +138,9 @@
       0.2747,
       0.2829
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.3085,
+    "rps_market": 0.298218,
+    "rps_model": 0.354975,
     "sources": [],
     "sport_key": "soccer_epl",
     "void": false
@@ -152,7 +152,7 @@
     "event_id": "7895f97f2f9577f3b13287a3d086859d",
     "home": "Fulham",
     "note": "Le modèle voit Hull favori, ce qui contredit tout le marché ; sans explication je reste presque sur les cotes.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.56,
       0.24,
@@ -168,9 +168,9 @@
       0.3418,
       0.3842
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.1168,
+    "rps_market": 0.110979,
+    "rps_model": 0.337343,
     "sources": [],
     "sport_key": "soccer_epl",
     "void": false
@@ -182,7 +182,7 @@
     "event_id": "bf2142d1ca76ba2fc9e61afce80f86c0",
     "home": "Manchester City",
     "note": "Marché et modèle concordent sur une large victoire de City.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.8,
       0.12,
@@ -198,9 +198,9 @@
       0.1114,
       0.0552
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.0232,
+    "rps_market": 0.024569,
+    "rps_model": 0.015401,
     "sources": [],
     "sport_key": "soccer_epl",
     "void": false
@@ -212,7 +212,7 @@
     "event_id": "d1bbbdcd3d430e70091b518369b559cf",
     "home": "Newcastle United",
     "note": "Match équilibré, marché et modèle proches ; je reste sur le marché.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.42,
       0.26,
@@ -228,9 +228,9 @@
       0.2635,
       0.3391
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.3194,
+    "rps_market": 0.32534,
+    "rps_model": 0.297358,
     "sources": [],
     "sport_key": "soccer_epl",
     "void": false
@@ -242,7 +242,7 @@
     "event_id": "aef660734585649651415961a9d177c6",
     "home": "Villarreal",
     "note": "Marché et modèle identiques, aucune raison de m'en écarter.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.68,
       0.18,
@@ -258,9 +258,9 @@
       0.1821,
       0.1404
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.241,
+    "rps_market": 0.23966,
+    "rps_model": 0.239359,
     "sources": [],
     "sport_key": "soccer_spain_la_liga",
     "void": false
@@ -272,7 +272,7 @@
     "event_id": "846e496fc232b2fc20214754836727d0",
     "home": "Real Betis",
     "note": "Le modèle est moins sûr de Barcelone que le marché ; je ne bouge que d'un pas prudent vers lui.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.16,
       0.17,
@@ -288,9 +288,9 @@
       0.2204,
       0.54
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.06725,
+    "rps_market": 0.05533,
+    "rps_model": 0.134434,
     "sources": [],
     "sport_key": "soccer_spain_la_liga",
     "void": false
@@ -302,7 +302,7 @@
     "event_id": "907639dade64cca45d1ab639195d201e",
     "home": "Venezia",
     "note": "Le modèle est extrême en faveur de Naples ; sans vérification je reste sur le marché.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.19,
       0.23,
@@ -318,9 +318,9 @@
       0.0903,
       0.8637
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.49625,
+    "rps_market": 0.489348,
+    "rps_model": 0.827865,
     "sources": [],
     "sport_key": "soccer_italy_serie_a",
     "void": false
@@ -332,7 +332,7 @@
     "event_id": "9a64448205fdc4b95f45641bb946706c",
     "home": "Bayern Munich",
     "note": "Marché et modèle concordent sur une victoire du Bayern.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.8,
       0.11,
@@ -348,9 +348,9 @@
       0.1304,
       0.1053
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.02405,
+    "rps_market": 0.022518,
+    "rps_model": 0.033287,
     "sources": [],
     "sport_key": "soccer_germany_bundesliga",
     "void": false
@@ -362,7 +362,7 @@
     "event_id": "221916b8b36706ec52aa655a64e5f1d2",
     "home": "Hamburger SV",
     "note": "Marché et modèle sont presque identiques, je ne change rien.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.235,
       0.228,
@@ -378,9 +378,9 @@
       0.2253,
       0.5447
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.436797,
+    "rps_market": 0.437601,
+    "rps_model": 0.444799,
     "sources": [],
     "sport_key": "soccer_germany_bundesliga",
     "void": false
@@ -512,7 +512,7 @@
     "event_id": "f00cd1ea41fa39149729d14ebc07aa6c",
     "home": "Valencia",
     "note": "Le modèle contredit nettement le marché ; sans explication vérifiée je ne bouge que peu.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.31,
       0.285,
@@ -528,9 +528,9 @@
       0.2885,
       0.2844
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.130063,
+    "rps_market": 0.131485,
+    "rps_model": 0.131649,
     "sources": [],
     "sport_key": "soccer_spain_la_liga",
     "void": false
@@ -542,7 +542,7 @@
     "event_id": "bfefc309177723410230fee52f650315",
     "home": "Bologna",
     "note": "Marché et modèle concordent sur une victoire d'Inter.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.16,
       0.22,
@@ -558,9 +558,9 @@
       0.1887,
       0.6442
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.085,
+    "rps_market": 0.083391,
+    "rps_model": 0.077206,
     "sources": [],
     "sport_key": "soccer_italy_serie_a",
     "void": false
@@ -602,7 +602,7 @@
     "event_id": "18d478f469da3bcc654dd4555b85c7e3",
     "home": "AS Roma",
     "note": "Le modèle est plus favorable à la Roma que le marché ; je fais un pas mesuré vers lui.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.65,
       0.22,
@@ -618,9 +618,9 @@
       0.1828,
       0.0987
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.0697,
+    "rps_market": 0.079728,
+    "rps_model": 0.044492,
     "sources": [],
     "sport_key": "soccer_italy_serie_a",
     "void": false
@@ -632,7 +632,7 @@
     "event_id": "9a422e1aad1053828eaf629a58d901de",
     "home": "Werder Bremen",
     "note": "Le modèle voit plus de nuls que le marché ; je reste près des cotes.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.54,
       0.23,
@@ -648,9 +648,9 @@
       0.3273,
       0.1873
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.17225,
+    "rps_market": 0.176314,
+    "rps_model": 0.135347,
     "sources": [],
     "sport_key": "soccer_germany_bundesliga",
     "void": false
