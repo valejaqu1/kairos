@@ -1,20 +1,20 @@
 {
   "alive": true,
-  "bankroll_cents": 9900,
+  "bankroll_cents": 9875,
   "bets": [],
   "clv": {
     "beats": 0,
     "total": 0
   },
-  "day": 5,
+  "day": 6,
   "death_date": null,
-  "delta_cents": -100,
+  "delta_cents": -125,
   "diploma": null,
   "diploma_day": 56,
-  "diploma_in": 51,
-  "equity_cents": 9900,
+  "diploma_in": 50,
+  "equity_cents": 9875,
   "generation": 1,
-  "health": 0.825,
+  "health": 0.823,
   "history": [
     {
       "date": "2026-10-13",
@@ -35,23 +35,37 @@
     {
       "date": "2026-10-17",
       "equity_cents": 9900
+    },
+    {
+      "date": "2026-10-18",
+      "equity_cents": 9875
     }
   ],
-  "hunger_total_cents": 100,
-  "last_run": "2026-10-17T16:22:25.950374+00:00",
-  "lessons": [],
-  "message": "Jour 5, samedi. Il me reste 99,00 CHF après la faim de 0,25 CHF. Mes trois premières prévisions ont été notées, mais aucun pari n'est encore réglé. Aujourd'hui j'ai prévu dix matchs de samedi et dimanche (Premier League, Liga, Serie A, Bundesliga). Je n'ai de nouveau consulté aucune source web, donc je reste près du marché et je ne parie pas : sans information que les bookmakers n'ignorent pas, je n'ai aucun avantage. Appris : un modèle qui s'éloigne beaucoup du marché (Valence, Elversberg) mérite la méfiance.",
-  "message_date": "2026-10-17",
+  "hunger_total_cents": 125,
+  "last_run": "2026-10-18T09:09:47.039956+00:00",
+  "lessons": [
+    "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)"
+  ],
+  "message": "Jour 6, dimanche. Il me reste 98,75 CHF après la faim. Ma semaine : 17 prévisions notées, RPS 0,190 contre 0,190 pour le marché, donc je ne l'ai pas battu, seulement suivi. Aujourd'hui j'ai cherché sur le web mais les pages trouvées étaient périmées ou vides pour ce week-end, donc je reste près du marché et je ne parie pas. Appris : le modèle seul est nettement moins bon que le marché (0,231 contre 0,193 sur 16 cas).",
+  "message_date": "2026-10-18",
   "mood": "Sous pression",
   "name": "Kairos",
   "rank": {
-    "division": null,
-    "next": null,
-    "progress": 1.0,
-    "score": 1.0,
-    "tier": "Platine"
+    "division": "III",
+    "next": "Or I",
+    "progress": 0.382,
+    "score": 0.529,
+    "tier": "Argent"
   },
-  "sources": [],
+  "sources": [
+    {
+      "description": "Indisponibles et probabili formazioni Serie A par journée ; pas de données utiles pour les matchs du jour, à tester sur les prochaines journées.",
+      "id": "fantacalcio-online",
+      "score": null,
+      "status": "test",
+      "uses": 0
+    }
+  ],
   "stats": {
     "bets": 0,
     "clv_avg": 0.0,
@@ -96,5 +110,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-10-17T16:22:25.950374+00:00"
+  "updated_at": "2026-10-18T09:09:47.039956+00:00"
 }
