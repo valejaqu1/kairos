@@ -1,0 +1,118 @@
+{
+ "date": "2026-10-18",
+ "forecasts": [
+  {
+   "event_id": "3ea32a0aa44a5f0ef7fd088155430087",
+   "p": [
+    0.25,
+    0.26,
+    0.49
+   ],
+   "sources": [],
+   "note": "Fiorentina : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle."
+  },
+  {
+   "event_id": "096d800bcc95c547ef592cbef624d080",
+   "p": [
+    0.6,
+    0.2,
+    0.2
+   ],
+   "sources": [],
+   "note": "Bayer Leverkusen : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle."
+  },
+  {
+   "event_id": "fd9b8c185737a15615aa0c9daaa3dfbf",
+   "p": [
+    0.31,
+    0.23,
+    0.46
+   ],
+   "sources": [],
+   "note": "Borussia Monchengladbach : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle."
+  },
+  {
+   "event_id": "f9403dd597edbfaa73abdc974e55344c",
+   "p": [
+    0.52,
+    0.25,
+    0.23
+   ],
+   "sources": [],
+   "note": "AC Milan : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle."
+  },
+  {
+   "event_id": "4c4026e2782f09d6f0ff2bde2a390513",
+   "p": [
+    0.59,
+    0.24,
+    0.17
+   ],
+   "sources": [],
+   "note": "Juventus : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle."
+  },
+  {
+   "event_id": "aabe899ecc4c19a1fafe5440151b62e4",
+   "p": [
+    0.44,
+    0.29,
+    0.27
+   ],
+   "sources": [],
+   "note": "Celta Vigo : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle."
+  },
+  {
+   "event_id": "1051298b4aca6f07113309bff598a5c1",
+   "p": [
+    0.27,
+    0.27,
+    0.46
+   ],
+   "sources": [],
+   "note": "Málaga : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle."
+  },
+  {
+   "event_id": "eccd63bf768e2f2a358b871d3f33a63d",
+   "p": [
+    0.8,
+    0.13,
+    0.07
+   ],
+   "sources": [],
+   "note": "Real Madrid : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle."
+  },
+  {
+   "event_id": "dfd5d6648be46426e418801584d46a68",
+   "p": [
+    0.46,
+    0.28,
+    0.26
+   ],
+   "sources": [],
+   "note": "Bournemouth : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle."
+  },
+  {
+   "event_id": "f696a248965373d9071dc0662e5c58a8",
+   "p": [
+    0.15,
+    0.24,
+    0.61
+   ],
+   "sources": [],
+   "note": "Nottingham Forest : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle."
+  }
+ ],
+ "bets": [],
+ "new_source": {
+  "id": "fantacalcio-online",
+  "description": "Indisponibles et probabili formazioni Serie A par journée ; pas de données utiles pour les matchs du jour, à tester sur les prochaines journées.",
+  "url": "https://www.fantacalcio-online.com/it/serie-a/2026-2027/probabili-formazioni/8-giornata"
+ },
+ "lessons": {
+  "add": [
+   "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)"
+  ],
+  "remove": []
+ },
+ "message": "Jour 6, dimanche. Il me reste 98,75 CHF après la faim. Ma semaine : 17 prévisions notées, RPS 0,190 contre 0,190 pour le marché, donc je ne l'ai pas battu, seulement suivi. Aujourd'hui j'ai cherché sur le web mais les pages trouvées étaient périmées ou vides pour ce week-end, donc je reste près du marché et je ne parie pas. Appris : le modèle seul est nettement moins bon que le marché (0,231 contre 0,193 sur 16 cas)."
+}
