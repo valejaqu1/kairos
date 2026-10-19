@@ -392,7 +392,7 @@
     "event_id": "9fc08b390a49c4434f7cf631a0bb88fb",
     "home": "Brighton and Hove Albion",
     "note": "Marché et modèle concordent sur une victoire de Brighton.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.64,
       0.2,
@@ -408,9 +408,9 @@
       0.2342,
       0.1352
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.0776,
+    "rps_market": 0.075065,
+    "rps_model": 0.077368,
     "sources": [],
     "sport_key": "soccer_epl",
     "void": false
@@ -422,7 +422,7 @@
     "event_id": "676b3b0b609e9cf565da450786618d26",
     "home": "Leeds United",
     "note": "Le modèle voit United un peu mieux que le marché ; je ne fais qu'un petit pas vers lui.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.39,
       0.27,
@@ -438,9 +438,9 @@
       0.2823,
       0.3725
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.13385,
+    "rps_market": 0.137653,
+    "rps_model": 0.12896,
     "sources": [],
     "sport_key": "soccer_epl",
     "void": false
@@ -572,7 +572,7 @@
     "event_id": "3ea32a0aa44a5f0ef7fd088155430087",
     "home": "Fiorentina",
     "note": "Fiorentina : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.25,
       0.26,
@@ -588,9 +588,9 @@
       0.211,
       0.6476
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.1613,
+    "rps_market": 0.17967,
+    "rps_model": 0.07209,
     "sources": [],
     "sport_key": "soccer_italy_serie_a",
     "void": false
@@ -602,7 +602,7 @@
     "event_id": "096d800bcc95c547ef592cbef624d080",
     "home": "Bayer Leverkusen",
     "note": "Bayer Leverkusen : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.6,
       0.2,
@@ -618,9 +618,9 @@
       0.1952,
       0.2006
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.1,
+    "rps_market": 0.10036,
+    "rps_model": 0.098449,
     "sources": [],
     "sport_key": "soccer_germany_bundesliga",
     "void": false
@@ -632,7 +632,7 @@
     "event_id": "fd9b8c185737a15615aa0c9daaa3dfbf",
     "home": "Borussia Monchengladbach",
     "note": "Borussia Monchengladbach : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.31,
       0.23,
@@ -648,9 +648,9 @@
       0.2268,
       0.4375
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.19385,
+    "rps_market": 0.189436,
+    "rps_model": 0.21455,
     "sources": [],
     "sport_key": "soccer_germany_bundesliga",
     "void": false
@@ -662,7 +662,7 @@
     "event_id": "f9403dd597edbfaa73abdc974e55344c",
     "home": "AC Milan",
     "note": "AC Milan : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.52,
       0.25,
@@ -678,9 +678,9 @@
       0.2902,
       0.2873
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.14165,
+    "rps_market": 0.129524,
+    "rps_model": 0.208024,
     "sources": [],
     "sport_key": "soccer_italy_serie_a",
     "void": false
@@ -692,7 +692,7 @@
     "event_id": "4c4026e2782f09d6f0ff2bde2a390513",
     "home": "Juventus",
     "note": "Juventus : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.59,
       0.24,
@@ -708,9 +708,9 @@
       0.277,
       0.2182
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.5185,
+    "rps_market": 0.531938,
+    "rps_model": 0.433017,
     "sources": [],
     "sport_key": "soccer_italy_serie_a",
     "void": false
@@ -722,7 +722,7 @@
     "event_id": "aabe899ecc4c19a1fafe5440151b62e4",
     "home": "Celta Vigo",
     "note": "Celta Vigo : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.44,
       0.29,
@@ -738,9 +738,9 @@
       0.2744,
       0.2192
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.19325,
+    "rps_market": 0.19952,
+    "rps_model": 0.145845,
     "sources": [],
     "sport_key": "soccer_spain_la_liga",
     "void": false
@@ -752,7 +752,7 @@
     "event_id": "1051298b4aca6f07113309bff598a5c1",
     "home": "Málaga",
     "note": "Málaga : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.27,
       0.27,
@@ -768,9 +768,9 @@
       0.2723,
       0.5483
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.18225,
+    "rps_market": 0.191488,
+    "rps_model": 0.118109,
     "sources": [],
     "sport_key": "soccer_spain_la_liga",
     "void": false
@@ -782,7 +782,7 @@
     "event_id": "eccd63bf768e2f2a358b871d3f33a63d",
     "home": "Real Madrid",
     "note": "Real Madrid : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.8,
       0.13,
@@ -798,9 +798,9 @@
       0.1486,
       0.0801
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.02245,
+    "rps_market": 0.021071,
+    "rps_model": 0.02936,
     "sources": [],
     "sport_key": "soccer_spain_la_liga",
     "void": false
@@ -812,7 +812,7 @@
     "event_id": "dfd5d6648be46426e418801584d46a68",
     "home": "Bournemouth",
     "note": "Bournemouth : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.46,
       0.28,
@@ -828,9 +828,9 @@
       0.2813,
       0.2309
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.1796,
+    "rps_market": 0.186821,
+    "rps_model": 0.157832,
     "sources": [],
     "sport_key": "soccer_epl",
     "void": false
@@ -842,7 +842,7 @@
     "event_id": "f696a248965373d9071dc0662e5c58a8",
     "home": "Nottingham Forest",
     "note": "Nottingham Forest : recherche web sans compositions exploitables pour ce match ; je reste sur le marché, avec un petit pas vers le modèle.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.15,
       0.24,
@@ -858,9 +858,9 @@
       0.2945,
       0.5408
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.0873,
+    "rps_market": 0.080614,
+    "rps_model": 0.118995,
     "sources": [],
     "sport_key": "soccer_epl",
     "void": false
