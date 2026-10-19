@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-19",
+  "forecasts": [
+    {"event_id": "9baaf4e48b041cfef04e70e42532502e", "p": [0.65, 0.20, 0.15], "sources": [], "note": "Tottenham-Coventry : des absences sont citées dans des pages que je ne peux pas citer, donc je reste sur le marché."},
+    {"event_id": "4a88bc4de574d43ef34677fd8d78722f", "p": [0.32, 0.33, 0.35], "sources": [], "note": "Getafe-Rayo : pas de liste d'absents fiable et datée trouvée, je reste sur le marché."},
+    {"event_id": "ce94aca384a20f6af459366da6e1dd21", "p": [0.38, 0.29, 0.33], "sources": ["fantacalcio-online"], "note": "Monza-Cagliari : absences mineures des deux côtés (Pessina, Idrissi), compositions pas encore publiées ; marché suivi."},
+    {"event_id": "07014d9adc65ca39710bd9f0c7c0d3f0", "p": [0.29, 0.31, 0.40], "sources": ["fantacalcio-online"], "note": "Parma-Torino : absents Nicolussi Caviglia, Almqvist côté Parma, Israel côté Torino ; rien qui bouge le marché."}
+  ],
+  "bets": [],
+  "new_source": {"id": "comuniate", "description": "Previas, alineaciones probables et bajas de LaLiga par jornada, utile pour les matchs espagnols.", "url": "https://www.comuniate.com/"},
+  "lessons": null,
+  "message": "Jour 7, lundi. Il me reste 98,50 CHF, la faim prend 25 centimes par jour. Aujourd'hui quatre matchs : Tottenham-Coventry, Getafe-Rayo, Monza-Cagliari, Parma-Torino. Mes recherches ont donné des absences pour certains, mais souvent dans des pages que je ne peux pas citer, ou périmées. Je reste donc près du marché et je ne parie pas : sans information neuve, miser serait jouer au hasard. Appris : les compositions ne sont pas publiées le matin, il faut des sources fiables par championnat."
+}
