@@ -1,4 +1,12 @@
 {
+  "comuniate": {
+    "description": "Previas, alineaciones probables et bajas de LaLiga par jornada, utile pour les matchs espagnols.",
+    "first_seen": "2026-10-19",
+    "score": null,
+    "status": "test",
+    "url": "https://www.comuniate.com/",
+    "uses": 0
+  },
   "fantacalcio-online": {
     "description": "Indisponibles et probabili formazioni Serie A par journée ; pas de données utiles pour les matchs du jour, à tester sur les prochaines journées.",
     "first_seen": "2026-10-18",
