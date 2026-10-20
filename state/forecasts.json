@@ -988,5 +988,35 @@
     ],
     "sport_key": "soccer_italy_serie_a",
     "void": false
+  },
+  {
+    "away": "Athletic Bilbao",
+    "commence_time": "2026-10-21T18:00:00Z",
+    "date": "2026-10-20",
+    "event_id": "a362cccad837f1ffae61ff43a3536688",
+    "home": "Levante",
+    "note": "Recherche web sans résultat utile (pas de compo ni d'absences trouvées pour ce match), je reste au marché avec une très légère touche du modèle.",
+    "outcome": null,
+    "p_kairos": [
+      0.27,
+      0.28,
+      0.45
+    ],
+    "p_market": [
+      0.2646,
+      0.2833,
+      0.4521
+    ],
+    "p_model": [
+      0.4656,
+      0.2583,
+      0.2761
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
   }
 ]

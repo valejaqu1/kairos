@@ -1,4 +1,12 @@
 {
+  "athletic-club-oficial": {
+    "description": "Site officiel de l'Athletic Club : communiqués, convocations et blessures, utile pour les matchs de l'Athletic.",
+    "first_seen": "2026-10-20",
+    "score": null,
+    "status": "test",
+    "url": "https://www.athletic-club.eus/",
+    "uses": 0
+  },
   "comuniate": {
     "description": "Previas, alineaciones probables et bajas de LaLiga par jornada, utile pour les matchs espagnols.",
     "first_seen": "2026-10-19",
@@ -10,9 +18,9 @@
   "fantacalcio-online": {
     "description": "Indisponibles et probabili formazioni Serie A par journée ; pas de données utiles pour les matchs du jour, à tester sur les prochaines journées.",
     "first_seen": "2026-10-18",
-    "score": null,
+    "score": -0.0041,
     "status": "test",
     "url": "https://www.fantacalcio-online.com/it/serie-a/2026-2027/probabili-formazioni/8-giornata",
-    "uses": 0
+    "uses": 2
   }
 }
