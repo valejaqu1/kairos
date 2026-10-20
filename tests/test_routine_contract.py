@@ -178,3 +178,11 @@ def test_routine_makes_web_research_mandatory_and_bootstraps_sources():
     assert "WebSearch" in step4
     assert "moins de 5 sources" in step4
     assert "dès aujourd'hui" in step4
+
+
+def test_routine_dates_every_search_and_reads_a_page_per_match():
+    # Des requêtes sans date ramenaient d'anciennes saisons, et la routine s'arrêtait aux résultats de recherche.
+    step4 = _step(4)
+    assert "la date du match" in step4
+    assert "au moins une page récente par match" in step4
+    assert "Écarte toute page qui ne parle pas du match de cette date" in step4
