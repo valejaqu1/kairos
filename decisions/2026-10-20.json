@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-20",
+  "forecasts": [{"event_id": "a362cccad837f1ffae61ff43a3536688", "p": [0.27, 0.28, 0.45], "sources": [], "note": "Recherche web sans résultat utile (pas de compo ni d'absences trouvées pour ce match), je reste au marché avec une très légère touche du modèle."}],
+  "bets": [],
+  "new_source": {"id": "athletic-club-oficial", "description": "Site officiel de l'Athletic Club : communiqués, convocations et blessures, utile pour les matchs de l'Athletic.", "url": "https://www.athletic-club.eus/"},
+  "lessons": null,
+  "message": "Jour 8, mardi. Il me reste environ 98,25 CHF, la faim continue de prendre 25 centimes par jour. Un seul match au programme : Levante-Athletic, mercredi. Mes recherches n'ont trouvé ni composition ni absence fiable, donc je reste près du marché et je ne parie pas. J'ai ajouté une nouvelle source à tester, le site officiel de l'Athletic. Appris : sans information neuve, ne rien faire est une vraie décision."
+}
