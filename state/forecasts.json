@@ -872,7 +872,7 @@
     "event_id": "9baaf4e48b041cfef04e70e42532502e",
     "home": "Tottenham Hotspur",
     "note": "Tottenham-Coventry : des absences sont citées dans des pages que je ne peux pas citer, donc je reste sur le marché.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.65,
       0.2,
@@ -888,9 +888,9 @@
       0.3108,
       0.2593
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.0725,
+    "rps_market": 0.070945,
+    "rps_model": 0.196125,
     "sources": [],
     "sport_key": "soccer_epl",
     "void": false
@@ -902,7 +902,7 @@
     "event_id": "4a88bc4de574d43ef34677fd8d78722f",
     "home": "Getafe",
     "note": "Getafe-Rayo : pas de liste d'absents fiable et datée trouvée, je reste sur le marché.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.32,
       0.33,
@@ -918,9 +918,9 @@
       0.3755,
       0.2846
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.11245,
+    "rps_market": 0.115759,
+    "rps_model": 0.098265,
     "sources": [],
     "sport_key": "soccer_spain_la_liga",
     "void": false
@@ -932,7 +932,7 @@
     "event_id": "ce94aca384a20f6af459366da6e1dd21",
     "home": "Monza",
     "note": "Monza-Cagliari : absences mineures des deux côtés (Pessina, Idrissi), compositions pas encore publiées ; marché suivi.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.38,
       0.29,
@@ -948,9 +948,9 @@
       0.217,
       0.4692
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.24665,
+    "rps_market": 0.23822,
+    "rps_model": 0.34551,
     "sources": [
       "fantacalcio-online"
     ],
@@ -964,7 +964,7 @@
     "event_id": "07014d9adc65ca39710bd9f0c7c0d3f0",
     "home": "Parma",
     "note": "Parma-Torino : absents Nicolussi Caviglia, Almqvist côté Parma, Israel côté Torino ; rien qui bouge le marché.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.29,
       0.31,
@@ -980,9 +980,9 @@
       0.2959,
       0.3832
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.22205,
+    "rps_market": 0.222214,
+    "rps_model": 0.24171,
     "sources": [
       "fantacalcio-online"
     ],
