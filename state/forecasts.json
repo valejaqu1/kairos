@@ -992,30 +992,32 @@
   {
     "away": "Athletic Bilbao",
     "commence_time": "2026-10-21T18:00:00Z",
-    "date": "2026-10-20",
+    "date": "2026-10-21",
     "event_id": "a362cccad837f1ffae61ff43a3536688",
     "home": "Levante",
-    "note": "Recherche web sans résultat utile (pas de compo ni d'absences trouvées pour ce match), je reste au marché avec une très légère touche du modèle.",
+    "note": "Retour de Nico Williams côté Athletic mais 4 absents dont Guruzeta, et doutes côté Levante (Sotelo) : ça s'équilibre, je reste au marché.",
     "outcome": null,
     "p_kairos": [
       0.27,
-      0.28,
-      0.45
+      0.285,
+      0.445
     ],
     "p_market": [
-      0.2646,
-      0.2833,
-      0.4521
+      0.2659,
+      0.287,
+      0.447
     ],
     "p_model": [
-      0.4656,
-      0.2583,
-      0.2761
+      0.4529,
+      0.272,
+      0.2751
     ],
     "rps_kairos": null,
     "rps_market": null,
     "rps_model": null,
-    "sources": [],
+    "sources": [
+      "comuniate"
+    ],
     "sport_key": "soccer_spain_la_liga",
     "void": false
   }
