@@ -495,3 +495,75 @@ def test_register_sources_stores_the_collapsed_description():
     sources = {}
     register_sources(dec(new_source={"id": "s", "description": "ligne un\n\nligne   deux", "url": "https://x"}), sources, TODAY)
     assert sources["s"]["description"] == "ligne un ligne deux"
+
+
+# Pari d'apprentissage : sans pari de valeur ce jour-là, Kairos peut miser le minimum sur sa meilleure conviction.
+LEARN_FC = {"p_kairos": [0.47, 0.30, 0.23]}  # marché 0.42 sur « 1 » : au-dessus du marché, valeur +2.5 %
+
+
+def learn(eid="e1", **kw):
+    return bet(event_id=eid, type="apprentissage", **kw)
+
+
+def test_learning_bet_is_placed_at_the_minimum_stake():
+    s = new_state(date(2026, 10, 1))
+    placed, rej = place_bets(dec(bets=[learn()]), {"e1": LEARN_FC}, EV, s, [], NOW, TODAY)
+    assert rej == []
+    assert [(b["event_id"], b["stake_cents"], b["kind"]) for b in placed] == [("e1", 200, "apprentissage")]
+    assert s["bankroll_cents"] == 10_000 - 200
+
+
+def test_learning_bet_needs_kairos_above_the_market():
+    s = new_state(date(2026, 10, 1))
+    for p_home in (0.42, 0.40):  # égal au marché, puis en dessous
+        placed, rej = place_bets(dec(bets=[learn()]), {"e1": {"p_kairos": [p_home, 0.30, 1 - p_home - 0.30]}}, EV, s, [], NOW, TODAY)
+        assert placed == [] and rej == [("e1", "pari d'apprentissage refusé : ta probabilité ne dépasse pas celle du marché")]
+    assert s["bankroll_cents"] == 10_000
+
+
+def test_only_one_learning_bet_per_day():
+    s = new_state(date(2026, 10, 1))
+    events = {i: event(i) for i in ("m1", "m2")}
+    fbe = {i: {"p_kairos": [0.45, 0.28, 0.27]} for i in events}
+    placed, rej = place_bets(dec(bets=[learn("m1"), learn("m2")]), fbe, events, s, [], NOW, TODAY)
+    assert [b["event_id"] for b in placed] == ["m1"]
+    assert rej == [("m2", "un seul pari d'apprentissage par jour")]
+
+
+def test_no_learning_bet_when_a_value_bet_is_placed_the_same_day():
+    s = new_state(date(2026, 10, 1))
+    events = {i: event(i) for i in ("m1", "m2")}
+    fbe = {"m1": {"p_kairos": [0.45, 0.28, 0.27]}, "m2": {"p_kairos": [0.55, 0.25, 0.20]}}
+    # Le pari d'apprentissage est proposé en premier : l'ordre ne doit pas lui donner la priorité.
+    placed, rej = place_bets(dec(bets=[learn("m1"), bet(event_id="m2")]), fbe, events, s, [], NOW, TODAY)
+    assert [(b["event_id"], b["kind"]) for b in placed] == [("m2", "valeur")]
+    assert rej == [("m1", "pas de pari d'apprentissage : un pari de valeur est placé aujourd'hui")]
+
+
+def test_a_real_value_bet_marked_learning_keeps_its_kelly_stake():
+    s = new_state(date(2026, 10, 1))
+    placed, _ = place_bets(dec(bets=[learn()]), {"e1": {"p_kairos": [0.55, 0.25, 0.20]}}, EV, s, [], NOW, TODAY)
+    assert [(b["stake_cents"], b["kind"]) for b in placed] == [(420, "valeur")]
+
+
+def test_learning_bet_takes_a_stake_kelly_finds_too_small():
+    # Valeur +9 % mais quart de Kelly sous 2 CHF : sans le marqueur, refusé ; avec, misé au minimum.
+    s = new_state(date(2026, 10, 1))
+    fc = {"e1": {"p_kairos": [0.50, 0.30, 0.20]}}
+    assert place_bets(dec(bets=[bet()]), fc, EV, s, [], NOW, TODAY) == ([], [("e1", "mise inférieure à 2 CHF")])
+    placed, _ = place_bets(dec(bets=[learn()]), fc, EV, s, [], NOW, TODAY)
+    assert [(b["stake_cents"], b["kind"]) for b in placed] == [(200, "apprentissage")]
+
+
+def test_learning_bet_respects_exposure_and_bankroll():
+    s = new_state(date(2026, 10, 1))
+    s["bankroll_cents"] = 4_100
+    open_bet = {"event_id": "old", "status": "open", "stake_cents": 600, "date": "2026-10-16"}
+    placed, rej = place_bets(dec(bets=[learn()]), {"e1": LEARN_FC}, EV, s, [open_bet], NOW, TODAY)
+    assert placed == [] and rej == [("e1", "exposition maximale atteinte")]
+
+
+def test_validate_decisions_checks_the_bet_type():
+    assert validate_decisions(dec(bets=[bet(type="apprentissage")]), TODAY) == []
+    assert validate_decisions(dec(bets=[bet(type="valeur")]), TODAY) == []
+    assert validate_decisions(dec(bets=[bet(type="fun")]), TODAY) == ["bets[0].type doit valoir « valeur » ou « apprentissage »"]

@@ -8,6 +8,7 @@ from kairos.odds import SEL_INDEX
 from kairos.store import parse_ts
 
 LESSONS_HEADER = "# Leçons de Kairos\n\n"
+BET_TYPES = ("valeur", "apprentissage")
 SOURCE_ID = re.compile(r"[a-z0-9-]{1,40}")  # fullmatch : un « $ » accepterait un retour à la ligne final
 
 
@@ -46,6 +47,8 @@ def _bet_errors(i: int, b: dict) -> list[str]:
         errors.append(f"bets[{i}].selection doit être un texte")
     if "reasoning" in b and not isinstance(b["reasoning"], str):
         errors.append(f"bets[{i}].reasoning doit être un texte")
+    if "type" in b and b["type"] not in BET_TYPES:
+        errors.append(f"bets[{i}].type doit valoir « valeur » ou « apprentissage »")
     return errors
 
 
@@ -184,9 +187,29 @@ def stake_cents(p: float, odds: float, equity_cents: int) -> int:
 
 
 def place_bets(dec: dict, forecasts_by_event: dict, events: dict, state: dict, bets: list, now: datetime, today: date):
-    placed, rejected = [], []
+    placed, rejected, learning = [], [], []
     open_stakes = sum(b["stake_cents"] for b in bets if b["status"] == "open")
     placed_today = sum(1 for b in bets if b["date"] == today.isoformat())
+
+    def record(prop: dict, eid: str, sel: str, ev: dict, odds: float, p: float, stake: int, kind: str) -> None:
+        nonlocal open_stakes
+        state["bankroll_cents"] -= stake
+        open_stakes += stake
+        placed.append({
+            "id": f"{today.isoformat()}-{eid}-{sel}", "date": today.isoformat(), "event_id": eid, "sport_key": ev["sport_key"],
+            "home": ev["home"], "away": ev["away"], "commence_time": ev["commence_time"], "selection": sel,
+            "odds_median": ev["median"][sel], "odds_sim": odds, "stake_cents": stake, "p_kairos": p,
+            "p_market": ev["p_market"][SEL_INDEX[sel]], "status": "open", "payout_cents": None, "closing_odds": None,
+            "settled_date": None, "reasoning": str(prop.get("reasoning", ""))[:400], "kind": kind,
+        })
+
+    def limit_error(stake: int) -> str | None:
+        if open_stakes + stake > MAX_EXPOSURE_SHARE * (state["bankroll_cents"] + open_stakes):
+            return "exposition maximale atteinte"
+        if stake > state["bankroll_cents"]:
+            return "cagnotte insuffisante"
+        return None
+
     for prop in dec["bets"]:
         eid, sel = str(prop.get("event_id")), prop.get("selection")
         if placed_today + len(placed) >= MAX_BETS_PER_DAY:
@@ -209,27 +232,36 @@ def place_bets(dec: dict, forecasts_by_event: dict, events: dict, state: dict, b
         if odds < MIN_BET_ODDS:
             rejected.append((eid, "cote inférieure à 1,10"))
             continue
-        equity = state["bankroll_cents"] + open_stakes
-        stake = stake_cents(p, odds, equity)
+        stake = stake_cents(p, odds, state["bankroll_cents"] + open_stakes)
         if stake == 0:
+            if prop.get("type") == "apprentissage":
+                learning.append((prop, eid, sel, ev, odds, p))  # décidé après les paris de valeur, quel que soit l'ordre
+                continue
             edge = p * odds - 1
             rejected.append((eid, f"valeur insuffisante ({edge:+.1%})" if edge < VALUE_THRESHOLD else "mise inférieure à 2 CHF"))
             continue
-        if open_stakes + stake > MAX_EXPOSURE_SHARE * equity:
-            rejected.append((eid, "exposition maximale atteinte"))
+        error = limit_error(stake)
+        if error:
+            rejected.append((eid, error))
             continue
-        if stake > state["bankroll_cents"]:
-            rejected.append((eid, "cagnotte insuffisante"))
-            continue
-        state["bankroll_cents"] -= stake
-        open_stakes += stake
-        placed.append({
-            "id": f"{today.isoformat()}-{eid}-{sel}", "date": today.isoformat(), "event_id": eid, "sport_key": ev["sport_key"],
-            "home": ev["home"], "away": ev["away"], "commence_time": ev["commence_time"], "selection": sel,
-            "odds_median": ev["median"][sel], "odds_sim": odds, "stake_cents": stake, "p_kairos": p,
-            "p_market": ev["p_market"][SEL_INDEX[sel]], "status": "open", "payout_cents": None, "closing_odds": None,
-            "settled_date": None, "reasoning": str(prop.get("reasoning", ""))[:400],
-        })
+        record(prop, eid, sel, ev, odds, p, stake, "valeur")
+
+    # Pari d'apprentissage : seulement les jours sans pari de valeur, un seul, à la mise minimale, et seulement si
+    # Kairos se voit plus haut que le marché. Il garde Kairos actif et rend sa CLV mesurable.
+    value_today = bool(placed) or any(b["date"] == today.isoformat() and b.get("kind") != "apprentissage" for b in bets)
+    learning_today = any(b["date"] == today.isoformat() and b.get("kind") == "apprentissage" for b in bets)
+    for prop, eid, sel, ev, odds, p in learning:
+        if value_today:
+            rejected.append((eid, "pas de pari d'apprentissage : un pari de valeur est placé aujourd'hui"))
+        elif learning_today:
+            rejected.append((eid, "un seul pari d'apprentissage par jour"))
+        elif p <= ev["p_market"][SEL_INDEX[sel]]:
+            rejected.append((eid, "pari d'apprentissage refusé : ta probabilité ne dépasse pas celle du marché"))
+        elif error := limit_error(MIN_STAKE_CENTS):
+            rejected.append((eid, error))
+        else:
+            record(prop, eid, sel, ev, odds, p, MIN_STAKE_CENTS, "apprentissage")
+            learning_today = True
     bets.extend(placed)
     return placed, rejected
 

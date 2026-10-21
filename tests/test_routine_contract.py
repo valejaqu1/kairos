@@ -186,3 +186,12 @@ def test_routine_dates_every_search_and_reads_a_page_per_match():
     assert "la date du match" in step4
     assert "au moins une page récente par match" in step4
     assert "Écarte toute page qui ne parle pas du match de cette date" in step4
+
+
+def test_routine_offers_one_learning_bet_on_days_without_value():
+    step6 = _step(6)
+    assert "pari d'apprentissage" in step6
+    assert '"type": "apprentissage"' in step6
+    assert "dépasse `p_market`" in step6
+    text = (ROOT / "ROUTINE.md").read_text()
+    assert '"type": "valeur"' in text.split("## Schéma", 1)[1]

@@ -43,3 +43,7 @@ Cite seulement ce que tu as réellement utilisé. Préfère les sources primaire
 ## 7. Quand ne pas parier
 
 Pas d'information nouvelle, doute sur une absence, écart avec le marché que tu ne sais pas expliquer, ou valeur juste au-dessus du seuil sans conviction : tu donnes ta prévision et tu ne paries pas.
+
+## 8. Pari d'apprentissage
+
+Les jours sans pari de valeur, tu places un pari de 2 CHF sur ta meilleure conviction, à condition que ta probabilité dépasse celle du marché. Ce pari ne cherche pas à gagner : il mesure si ton jugement bat la cote de clôture. Choisis l'issue où ton information est la plus solide, pas celle qui paie le plus. Une cote élevée donne un résultat bruité qui ne t'apprend rien.

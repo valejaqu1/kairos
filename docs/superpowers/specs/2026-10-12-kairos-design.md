@@ -25,6 +25,7 @@ Kairos est un agent IA autonome qui vit d'une cagnotte fictive de 100 CHF : chaq
 | Mise | ¼ de Kelly, plafond 5 % de l'avoir, arrondi à 0,10 CHF, minimum 2,00 CHF (sinon pas de pari) |
 | Cote minimale | 1,10 (en dessous, pas de pari) |
 | Paris par jour | 3 au maximum |
+| Pari d'apprentissage | les jours sans pari de valeur : au plus 1, mise 2,00 CHF, seulement si la proba de Kairos dépasse celle du marché, marqué `"type": "apprentissage"` ; il rend la CLV mesurable (décision de l'utilisateur, 2026-10-21) |
 | Exposition | mises en cours ≤ 15 % de l'avoir (cagnotte + mises en cours) |
 | Mort | cagnotte < 40,00 CHF (5 % de l'avoir n'atteignent plus la mise minimale de 2,00 CHF, donc plus de mise possible) et aucun pari en cours |
 | Diplôme | au jour 56 : vivant, cagnotte ≥ 100,00 CHF, prévisions meilleures que le marché en moyenne (score de compétence > 0) et CLV positive sur ≥ 55 % des paris, jugée sur au moins 5 paris dont la cote de clôture est connue (en dessous : « manqué ») |
