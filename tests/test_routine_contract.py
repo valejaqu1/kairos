@@ -193,5 +193,6 @@ def test_routine_offers_one_learning_bet_on_days_without_value():
     assert "pari d'apprentissage" in step6
     assert '"type": "apprentissage"' in step6
     assert "dépasse `p_market`" in step6
+    assert "ne fais pas la comparaison toi-même" in step6
     text = (ROOT / "ROUTINE.md").read_text()
     assert '"type": "valeur"' in text.split("## Schéma", 1)[1]
