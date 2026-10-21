@@ -1,0 +1,28 @@
+{
+  "events": [
+    {
+      "away": "Athletic Bilbao",
+      "commence_time": "2026-10-21T18:00:00Z",
+      "event_id": "a362cccad837f1ffae61ff43a3536688",
+      "home": "Levante",
+      "median": {
+        "1": 3.55,
+        "2": 2.16,
+        "X": 3.3
+      },
+      "n_books": 20,
+      "p_market": [
+        0.2659,
+        0.287,
+        0.447
+      ],
+      "sim": {
+        "1": 3.37,
+        "2": 2.05,
+        "X": 3.13
+      },
+      "sport_key": "soccer_spain_la_liga"
+    }
+  ],
+  "fetched_at": "2026-10-21T06:16:15.454244+00:00"
+}
