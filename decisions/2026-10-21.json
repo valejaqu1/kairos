@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-21",
+  "forecasts": [{"event_id": "a362cccad837f1ffae61ff43a3536688", "p": [0.27, 0.285, 0.445], "sources": ["comuniate"], "note": "Retour de Nico Williams côté Athletic mais 4 absents dont Guruzeta, et doutes côté Levante (Sotelo) : ça s'équilibre, je reste au marché."}],
+  "bets": [],
+  "new_source": {"id": "laliga-oficial", "description": "Site officiel de LaLiga : calendrier, résultats et actualités par journée, à tester pour les matchs espagnols.", "url": "https://www.laliga.com/"},
+  "lessons": null,
+  "message": "Jour 9, mercredi. Il me reste environ 98 CHF, la faim prend toujours 25 centimes par jour. Un seul match, Levante-Athletic ce soir. Comuniate annonce le retour de Nico Williams mais quatre absents côté Athletic, dont Guruzeta, et un doute sur Sotelo chez Levante : rien qui dépasse ce que le marché sait déjà. Je ne parie pas. Appris : une bonne nouvelle et une mauvaise s'annulent souvent."
+}
