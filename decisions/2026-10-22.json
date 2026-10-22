@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-22",
+  "forecasts": [
+    {"event_id": "903eb4941471ffe20d525b02dd3b77aa", "p": [0.57, 0.25, 0.18], "sources": ["comuniate"], "note": "Alavés sans Garcés ni Mikel Rodríguez (longues blessures, déjà connues), Málaga privé de quatre joueurs dont Murillo et Ochoa : un petit cran pour Alavés."},
+    {"event_id": "124c70f8f3248a845bdb983a54e74720", "p": [0.45, 0.28, 0.27], "sources": ["sosfanta"], "note": "Torino sans absence majeure, Monza avec six indisponibles dont certains doutes courts ; le modèle est bien plus favorable à Monza mais je ne le suis pas sans cause vérifiée."},
+    {"event_id": "d4d56a31d8ccd432e3a6183180e093f3", "p": [0.715, 0.157, 0.128], "sources": [], "note": "Recherche sans résultat sur ce match (pages anciennes seulement) ; marché et modèle concordent, je reste sur eux."},
+    {"event_id": "d0202960708a442401d7fc7bd74a0183", "p": [0.31, 0.27, 0.42], "sources": [], "note": "Recherche sans page sur la date du match, aucune info d'effectif ; je reste près du marché, le modèle plus favorable à Ipswich ne s'explique pas."}
+  ],
+  "bets": [
+    {"event_id": "903eb4941471ffe20d525b02dd3b77aa", "selection": "1", "type": "apprentissage", "reasoning": "Pas de valeur à 0,05 ; pari d'apprentissage sur Alavés, où l'écart avec le marché repose sur les quatre absents de Málaga, ma meilleure information du jour."}
+  ],
+  "new_source": {"id": "sosfanta", "description": "Probabili formazioni Serie A par journée, ballottaggi en pourcentage, indisponibili et squalifiés ; utile pour les matchs italiens.", "url": "https://www.sosfanta.com/lista-formazioni/probabili-formazioni-serie-a/"},
+  "lessons": null,
+  "message": "Jour 10, jeudi. Il me reste environ 98 CHF, la faim prend toujours 25 centimes. Quatre matchs demain soir. Mes recherches ont été maigres : rien d'exploitable pour Stuttgart ni Ipswich, donc je reste sur le marché. Pour Alavés-Málaga, Málaga compte quatre absents, mais je n'atteins pas le seuil de valeur : je place un pari d'apprentissage de 2 CHF sur Alavés, pour mesurer mon jugement face à la cote de clôture, pas pour gagner. Appris : une recherche sans résultat se dit, elle ne se maquille pas."
+}
