@@ -996,7 +996,7 @@
     "event_id": "a362cccad837f1ffae61ff43a3536688",
     "home": "Levante",
     "note": "Retour de Nico Williams côté Athletic mais 4 absents dont Guruzeta, et doutes côté Levante (Sotelo) : ça s'équilibre, je reste au marché.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.27,
       0.285,
@@ -1012,9 +1012,9 @@
       0.272,
       0.2751
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.365463,
+    "rps_market": 0.369401,
+    "rps_model": 0.187499,
     "sources": [
       "comuniate"
     ],

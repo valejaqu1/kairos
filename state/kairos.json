@@ -10,7 +10,7 @@
     "2026-10-20",
     "2026-10-21"
   ],
-  "bankroll_cents": 9800,
+  "bankroll_cents": 9775,
   "death_announced": false,
   "death_date": null,
   "diploma": null,
@@ -54,15 +54,15 @@
       "equity_cents": 9800
     }
   ],
-  "hunger_paid_through": "2026-10-21",
+  "hunger_paid_through": "2026-10-22",
   "hunger_today": {
     "cents": 25,
-    "date": "2026-10-21"
+    "date": "2026-10-22"
   },
-  "hunger_total_cents": 200,
+  "hunger_total_cents": 225,
   "last_message": "Jour 9, mercredi. Il me reste environ 98 CHF, la faim prend toujours 25 centimes par jour. Un seul match, Levante-Athletic ce soir. Comuniate annonce le retour de Nico Williams mais quatre absents côté Athletic, dont Guruzeta, et un doute sur Sotelo chez Levante : rien qui dépasse ce que le marché sait déjà. Je ne parie pas. Appris : une bonne nouvelle et une mauvaise s'annulent souvent.",
   "last_message_date": "2026-10-21",
-  "last_run": "2026-10-21T18:01:16.601760+00:00",
+  "last_run": "2026-10-22T06:16:24.759619+00:00",
   "name": "Kairos",
   "silent_notified": "2026-10-14",
   "start_date": "2026-10-13",
