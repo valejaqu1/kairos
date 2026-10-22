@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "away": "Málaga",
+    "closing_odds": null,
+    "commence_time": "2026-10-23T19:00:00Z",
+    "date": "2026-10-22",
+    "event_id": "903eb4941471ffe20d525b02dd3b77aa",
+    "home": "Alavés",
+    "id": "2026-10-22-903eb4941471ffe20d525b02dd3b77aa-1",
+    "kind": "apprentissage",
+    "odds_median": 1.76,
+    "odds_sim": 1.67,
+    "p_kairos": 0.57,
+    "p_market": 0.5537,
+    "payout_cents": null,
+    "reasoning": "Pas de valeur à 0,05 ; pari d'apprentissage sur Alavés, où l'écart avec le marché repose sur les quatre absents de Málaga, ma meilleure information du jour.",
+    "selection": "1",
+    "settled_date": null,
+    "sport_key": "soccer_spain_la_liga",
+    "stake_cents": 200,
+    "status": "open"
+  }
+]

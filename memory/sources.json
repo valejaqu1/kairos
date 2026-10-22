@@ -10,10 +10,10 @@
   "comuniate": {
     "description": "Previas, alineaciones probables et bajas de LaLiga par jornada, utile pour les matchs espagnols.",
     "first_seen": "2026-10-19",
-    "score": null,
+    "score": 0.0039,
     "status": "test",
     "url": "https://www.comuniate.com/",
-    "uses": 0
+    "uses": 1
   },
   "fantacalcio-online": {
     "description": "Indisponibles et probabili formazioni Serie A par journée ; pas de données utiles pour les matchs du jour, à tester sur les prochaines journées.",
@@ -29,6 +29,14 @@
     "score": null,
     "status": "test",
     "url": "https://www.laliga.com/",
+    "uses": 0
+  },
+  "sosfanta": {
+    "description": "Probabili formazioni Serie A par journée, ballottaggi en pourcentage, indisponibili et squalifiés ; utile pour les matchs italiens.",
+    "first_seen": "2026-10-22",
+    "score": null,
+    "status": "test",
+    "url": "https://www.sosfanta.com/lista-formazioni/probabili-formazioni-serie-a/",
     "uses": 0
   }
 }

@@ -1020,5 +1020,129 @@
     ],
     "sport_key": "soccer_spain_la_liga",
     "void": false
+  },
+  {
+    "away": "Málaga",
+    "commence_time": "2026-10-23T19:00:00Z",
+    "date": "2026-10-22",
+    "event_id": "903eb4941471ffe20d525b02dd3b77aa",
+    "home": "Alavés",
+    "note": "Alavés sans Garcés ni Mikel Rodríguez (longues blessures, déjà connues), Málaga privé de quatre joueurs dont Murillo et Ochoa : un petit cran pour Alavés.",
+    "outcome": null,
+    "p_kairos": [
+      0.57,
+      0.25,
+      0.18
+    ],
+    "p_market": [
+      0.5537,
+      0.2564,
+      0.1898
+    ],
+    "p_model": [
+      0.7145,
+      0.1968,
+      0.0887
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Monza",
+    "commence_time": "2026-10-23T18:45:00Z",
+    "date": "2026-10-22",
+    "event_id": "124c70f8f3248a845bdb983a54e74720",
+    "home": "Torino",
+    "note": "Torino sans absence majeure, Monza avec six indisponibles dont certains doutes courts ; le modèle est bien plus favorable à Monza mais je ne le suis pas sans cause vérifiée.",
+    "outcome": null,
+    "p_kairos": [
+      0.45,
+      0.28,
+      0.27
+    ],
+    "p_market": [
+      0.4479,
+      0.2791,
+      0.273
+    ],
+    "p_model": [
+      0.4019,
+      0.1909,
+      0.4071
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sosfanta"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "Borussia Monchengladbach",
+    "commence_time": "2026-10-23T18:30:00Z",
+    "date": "2026-10-22",
+    "event_id": "d4d56a31d8ccd432e3a6183180e093f3",
+    "home": "VfB Stuttgart",
+    "note": "Recherche sans résultat sur ce match (pages anciennes seulement) ; marché et modèle concordent, je reste sur eux.",
+    "outcome": null,
+    "p_kairos": [
+      0.715,
+      0.157,
+      0.128
+    ],
+    "p_market": [
+      0.7159,
+      0.1565,
+      0.1276
+    ],
+    "p_model": [
+      0.7185,
+      0.1614,
+      0.1201
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [],
+    "sport_key": "soccer_germany_bundesliga",
+    "void": false
+  },
+  {
+    "away": "Nottingham Forest",
+    "commence_time": "2026-10-23T19:00:00Z",
+    "date": "2026-10-22",
+    "event_id": "d0202960708a442401d7fc7bd74a0183",
+    "home": "Ipswich Town",
+    "note": "Recherche sans page sur la date du match, aucune info d'effectif ; je reste près du marché, le modèle plus favorable à Ipswich ne s'explique pas.",
+    "outcome": null,
+    "p_kairos": [
+      0.31,
+      0.27,
+      0.42
+    ],
+    "p_market": [
+      0.3046,
+      0.2689,
+      0.4265
+    ],
+    "p_model": [
+      0.418,
+      0.2551,
+      0.3269
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [],
+    "sport_key": "soccer_epl",
+    "void": false
   }
 ]

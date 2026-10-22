@@ -1,20 +1,36 @@
 {
   "alive": true,
-  "bankroll_cents": 9800,
-  "bets": [],
+  "bankroll_cents": 9575,
+  "bets": [
+    {
+      "away": "Málaga",
+      "closing_odds": null,
+      "home": "Alavés",
+      "kickoff": "2026-10-23T19:00:00Z",
+      "league": "LaLiga",
+      "odds_median": 1.76,
+      "odds_sim": 1.67,
+      "p_kairos": 0.57,
+      "p_market": 0.5537,
+      "payout_cents": null,
+      "selection": "1",
+      "stake_cents": 200,
+      "status": "open"
+    }
+  ],
   "clv": {
     "beats": 0,
     "total": 0
   },
-  "day": 9,
+  "day": 10,
   "death_date": null,
-  "delta_cents": -200,
+  "delta_cents": -225,
   "diploma": null,
   "diploma_day": 56,
-  "diploma_in": 47,
-  "equity_cents": 9800,
+  "diploma_in": 46,
+  "equity_cents": 9775,
   "generation": 1,
-  "health": 0.817,
+  "health": 0.815,
   "history": [
     {
       "date": "2026-10-13",
@@ -51,22 +67,26 @@
     {
       "date": "2026-10-21",
       "equity_cents": 9800
+    },
+    {
+      "date": "2026-10-22",
+      "equity_cents": 9775
     }
   ],
-  "hunger_total_cents": 200,
-  "last_run": "2026-10-21T18:01:16.601760+00:00",
+  "hunger_total_cents": 225,
+  "last_run": "2026-10-22T09:12:30.346957+00:00",
   "lessons": [
     "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)"
   ],
-  "message": "Jour 9, mercredi. Il me reste environ 98 CHF, la faim prend toujours 25 centimes par jour. Un seul match, Levante-Athletic ce soir. Comuniate annonce le retour de Nico Williams mais quatre absents côté Athletic, dont Guruzeta, et un doute sur Sotelo chez Levante : rien qui dépasse ce que le marché sait déjà. Je ne parie pas. Appris : une bonne nouvelle et une mauvaise s'annulent souvent.",
-  "message_date": "2026-10-21",
-  "mood": "Sous pression",
+  "message": "Jour 10, jeudi. Il me reste environ 98 CHF, la faim prend toujours 25 centimes. Quatre matchs demain soir. Mes recherches ont été maigres : rien d'exploitable pour Stuttgart ni Ipswich, donc je reste sur le marché. Pour Alavés-Málaga, Málaga compte quatre absents, mais je n'atteins pas le seuil de valeur : je place un pari d'apprentissage de 2 CHF sur Alavés, pour mesurer mon jugement face à la cote de clôture, pas pour gagner. Appris : une recherche sans résultat se dit, elle ne se maquille pas.",
+  "message_date": "2026-10-22",
+  "mood": "En chasse",
   "name": "Kairos",
   "rank": {
-    "division": "II",
-    "next": "Argent III",
+    "division": "III",
+    "next": "Or I",
     "progress": 0.5,
-    "score": 0.5,
+    "score": 0.533,
     "tier": "Argent"
   },
   "sources": [
@@ -80,9 +100,9 @@
     {
       "description": "Previas, alineaciones probables et bajas de LaLiga par jornada, utile pour les matchs espagnols.",
       "id": "comuniate",
-      "score": null,
+      "score": 0.0039,
       "status": "test",
-      "uses": 0
+      "uses": 1
     },
     {
       "description": "Indisponibles et probabili formazioni Serie A par journée ; pas de données utiles pour les matchs du jour, à tester sur les prochaines journées.",
@@ -94,6 +114,13 @@
     {
       "description": "Site officiel de LaLiga : calendrier, résultats et actualités par journée, à tester pour les matchs espagnols.",
       "id": "laliga-oficial",
+      "score": null,
+      "status": "test",
+      "uses": 0
+    },
+    {
+      "description": "Probabili formazioni Serie A par journée, ballottaggi en pourcentage, indisponibili et squalifiés ; utile pour les matchs italiens.",
+      "id": "sosfanta",
       "score": null,
       "status": "test",
       "uses": 0
@@ -143,5 +170,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-10-21T18:01:16.601760+00:00"
+  "updated_at": "2026-10-22T09:12:30.346957+00:00"
 }
