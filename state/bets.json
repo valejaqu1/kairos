@@ -19,5 +19,26 @@
     "sport_key": "soccer_spain_la_liga",
     "stake_cents": 200,
     "status": "open"
+  },
+  {
+    "away": "Bologna",
+    "closing_odds": null,
+    "commence_time": "2026-10-24T13:00:00Z",
+    "date": "2026-10-23",
+    "event_id": "b7f0880e3da978f9481f7cb5697e2aa5",
+    "home": "Cagliari",
+    "id": "2026-10-23-b7f0880e3da978f9481f7cb5697e2aa5-1",
+    "kind": "apprentissage",
+    "odds_median": 3.1,
+    "odds_sim": 2.94,
+    "p_kairos": 0.325,
+    "p_market": 0.302,
+    "payout_cents": null,
+    "reasoning": "Aucun pari n'atteint 0,05 de valeur ; pari d'apprentissage sur Cagliari, où mon écart avec le marché repose sur les quatre ou cinq absents de Bologna, ma meilleure information du jour.",
+    "selection": "1",
+    "settled_date": null,
+    "sport_key": "soccer_italy_serie_a",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]

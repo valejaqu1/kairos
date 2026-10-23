@@ -1144,5 +1144,133 @@
     "sources": [],
     "sport_key": "soccer_epl",
     "void": false
+  },
+  {
+    "away": "AS Roma",
+    "commence_time": "2026-10-24T16:00:00Z",
+    "date": "2026-10-23",
+    "event_id": "0b4894e9fb123ef3045269f97e339eba",
+    "home": "Napoli",
+    "note": "Roma sans Dybala, Koné ni Svilar (Gollini dans les buts) mais Napoli sans Buongiorno ni Neres : les absences s'équilibrent, je reste sur le marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.34,
+      0.28,
+      0.38
+    ],
+    "p_market": [
+      0.3377,
+      0.2817,
+      0.3806
+    ],
+    "p_model": [
+      0.2823,
+      0.2822,
+      0.4355
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sosfanta"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "Elche CF",
+    "commence_time": "2026-10-24T12:00:00Z",
+    "date": "2026-10-23",
+    "event_id": "734ad601156f5f4e6bc42317e5141516",
+    "home": "Rayo Vallecano",
+    "note": "Une tribune de Vallecas sera fermée pour ce match, effet minime ; le modèle est plus bas mais sans cause vérifiée, je reste près du marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.54,
+      0.25,
+      0.21
+    ],
+    "p_market": [
+      0.5515,
+      0.2432,
+      0.2053
+    ],
+    "p_model": [
+      0.4816,
+      0.272,
+      0.2464
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Sassuolo",
+    "commence_time": "2026-10-24T13:00:00Z",
+    "date": "2026-10-23",
+    "event_id": "08ffd99b2249c81d8a7410598f32b9b0",
+    "home": "Como",
+    "note": "Sassuolo avec plusieurs blessés (Idzes, Boloca) et Kean incertain, mais le marché le sait déjà : écart négligeable.",
+    "outcome": null,
+    "p_kairos": [
+      0.65,
+      0.195,
+      0.155
+    ],
+    "p_market": [
+      0.6516,
+      0.1957,
+      0.1527
+    ],
+    "p_model": [
+      0.6662,
+      0.1927,
+      0.1411
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sosfanta"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "Bologna",
+    "commence_time": "2026-10-24T13:00:00Z",
+    "date": "2026-10-23",
+    "event_id": "b7f0880e3da978f9481f7cb5697e2aa5",
+    "home": "Cagliari",
+    "note": "Bologna privé d'Orsolini, Holm, Piccoli et Idrissi : je remonte légèrement Cagliari, peu au-dessus du marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.325,
+      0.305,
+      0.37
+    ],
+    "p_market": [
+      0.302,
+      0.3105,
+      0.3874
+    ],
+    "p_model": [
+      0.3331,
+      0.2828,
+      0.3841
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sosfanta"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
   }
 ]
