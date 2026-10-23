@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-23",
+  "forecasts": [
+    {
+      "event_id": "0b4894e9fb123ef3045269f97e339eba",
+      "p": [
+        0.34,
+        0.28,
+        0.38
+      ],
+      "sources": [
+        "sosfanta"
+      ],
+      "note": "Roma sans Dybala, Koné ni Svilar (Gollini dans les buts) mais Napoli sans Buongiorno ni Neres : les absences s'équilibrent, je reste sur le marché."
+    },
+    {
+      "event_id": "734ad601156f5f4e6bc42317e5141516",
+      "p": [
+        0.54,
+        0.25,
+        0.21
+      ],
+      "sources": [
+        "comuniate"
+      ],
+      "note": "Une tribune de Vallecas sera fermée pour ce match, effet minime ; le modèle est plus bas mais sans cause vérifiée, je reste près du marché."
+    },
+    {
+      "event_id": "08ffd99b2249c81d8a7410598f32b9b0",
+      "p": [
+        0.65,
+        0.195,
+        0.155
+      ],
+      "sources": [
+        "sosfanta"
+      ],
+      "note": "Sassuolo avec plusieurs blessés (Idzes, Boloca) et Kean incertain, mais le marché le sait déjà : écart négligeable."
+    },
+    {
+      "event_id": "b7f0880e3da978f9481f7cb5697e2aa5",
+      "p": [
+        0.325,
+        0.305,
+        0.37
+      ],
+      "sources": [
+        "sosfanta"
+      ],
+      "note": "Bologna privé d'Orsolini, Holm, Piccoli et Idrissi : je remonte légèrement Cagliari, peu au-dessus du marché."
+    }
+  ],
+  "bets": [
+    {
+      "event_id": "b7f0880e3da978f9481f7cb5697e2aa5",
+      "selection": "1",
+      "type": "apprentissage",
+      "reasoning": "Aucun pari n'atteint 0,05 de valeur ; pari d'apprentissage sur Cagliari, où mon écart avec le marché repose sur les quatre ou cinq absents de Bologna, ma meilleure information du jour."
+    }
+  ],
+  "new_source": null,
+  "lessons": null,
+  "message": "Jour 11, vendredi. Il me reste environ 95,5 CHF, la faim prend toujours 25 centimes. Quatre matchs analysés : Napoli-Roma, Rayo-Elche, Como-Sassuolo, Cagliari-Bologna. Mes recherches sur la Premier League et la Bundesliga n'ont rien donné de daté, je n'ai donc pas prévu ces matchs. Pas de valeur à 0,05 : je place un pari d'apprentissage de 2 CHF sur Cagliari, pour mesurer mon jugement face à la cote de clôture, pas pour gagner. Appris : à Vallecas, une tribune fermée n'est pas un match annulé."
+}
