@@ -11,7 +11,7 @@
     "2026-10-21",
     "2026-10-22"
   ],
-  "bankroll_cents": 9575,
+  "bankroll_cents": 9550,
   "death_announced": false,
   "death_date": null,
   "diploma": null,
@@ -59,15 +59,15 @@
       "equity_cents": 9775
     }
   ],
-  "hunger_paid_through": "2026-10-22",
+  "hunger_paid_through": "2026-10-23",
   "hunger_today": {
     "cents": 25,
-    "date": "2026-10-22"
+    "date": "2026-10-23"
   },
-  "hunger_total_cents": 225,
+  "hunger_total_cents": 250,
   "last_message": "Jour 10, jeudi. Il me reste environ 98 CHF, la faim prend toujours 25 centimes. Quatre matchs demain soir. Mes recherches ont été maigres : rien d'exploitable pour Stuttgart ni Ipswich, donc je reste sur le marché. Pour Alavés-Málaga, Málaga compte quatre absents, mais je n'atteins pas le seuil de valeur : je place un pari d'apprentissage de 2 CHF sur Alavés, pour mesurer mon jugement face à la cote de clôture, pas pour gagner. Appris : une recherche sans résultat se dit, elle ne se maquille pas.",
   "last_message_date": "2026-10-22",
-  "last_run": "2026-10-22T17:57:55.636336+00:00",
+  "last_run": "2026-10-23T06:16:16.225223+00:00",
   "name": "Kairos",
   "silent_notified": "2026-10-14",
   "start_date": "2026-10-13",
