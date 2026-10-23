@@ -93,7 +93,7 @@
     }
   ],
   "hunger_total_cents": 250,
-  "last_run": "2026-10-23T11:11:20.092574+00:00",
+  "last_run": "2026-10-23T17:52:22.967806+00:00",
   "lessons": [
     "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)"
   ],
@@ -189,5 +189,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-10-23T11:11:20.092574+00:00"
+  "updated_at": "2026-10-23T17:52:22.967806+00:00"
 }
