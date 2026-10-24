@@ -12,13 +12,13 @@
     "odds_sim": 1.67,
     "p_kairos": 0.57,
     "p_market": 0.5537,
-    "payout_cents": null,
+    "payout_cents": 0,
     "reasoning": "Pas de valeur à 0,05 ; pari d'apprentissage sur Alavés, où l'écart avec le marché repose sur les quatre absents de Málaga, ma meilleure information du jour.",
     "selection": "1",
-    "settled_date": null,
+    "settled_date": "2026-10-24",
     "sport_key": "soccer_spain_la_liga",
     "stake_cents": 200,
-    "status": "open"
+    "status": "lost"
   },
   {
     "away": "Bologna",

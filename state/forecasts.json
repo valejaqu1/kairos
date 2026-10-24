@@ -1028,7 +1028,7 @@
     "event_id": "903eb4941471ffe20d525b02dd3b77aa",
     "home": "Alavés",
     "note": "Alavés sans Garcés ni Mikel Rodríguez (longues blessures, déjà connues), Málaga privé de quatre joueurs dont Murillo et Ochoa : un petit cran pour Alavés.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.57,
       0.25,
@@ -1044,9 +1044,9 @@
       0.1968,
       0.0887
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.17865,
+    "rps_market": 0.171323,
+    "rps_model": 0.259189,
     "sources": [
       "comuniate"
     ],
@@ -1060,7 +1060,7 @@
     "event_id": "124c70f8f3248a845bdb983a54e74720",
     "home": "Torino",
     "note": "Torino sans absence majeure, Monza avec six indisponibles dont certains doutes courts ; le modèle est bien plus favorable à Monza mais je ne le suis pas sans cause vérifiée.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.45,
       0.28,
@@ -1076,9 +1076,9 @@
       0.1909,
       0.4071
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.1877,
+    "rps_market": 0.189672,
+    "rps_model": 0.261768,
     "sources": [
       "sosfanta"
     ],
@@ -1092,7 +1092,7 @@
     "event_id": "d4d56a31d8ccd432e3a6183180e093f3",
     "home": "VfB Stuttgart",
     "note": "Recherche sans résultat sur ce match (pages anciennes seulement) ; marché et modèle concordent, je reste sur eux.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.715,
       0.157,
@@ -1108,9 +1108,9 @@
       0.1614,
       0.1201
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.635804,
+    "rps_market": 0.636797,
+    "rps_model": 0.645233,
     "sources": [],
     "sport_key": "soccer_germany_bundesliga",
     "void": false
@@ -1122,7 +1122,7 @@
     "event_id": "d0202960708a442401d7fc7bd74a0183",
     "home": "Ipswich Town",
     "note": "Recherche sans page sur la date du match, aucune info d'effectif ; je reste près du marché, le modèle plus favorable à Ipswich ne s'explique pas.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.31,
       0.27,
@@ -1138,9 +1138,9 @@
       0.2551,
       0.3269
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.13625,
+    "rps_market": 0.137342,
+    "rps_model": 0.140794,
     "sources": [],
     "sport_key": "soccer_epl",
     "void": false
