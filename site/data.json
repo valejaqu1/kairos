@@ -19,7 +19,7 @@
     },
     {
       "away": "Bologna",
-      "closing_odds": null,
+      "closing_odds": 2.95,
       "home": "Cagliari",
       "kickoff": "2026-10-24T13:00:00Z",
       "league": "Serie A",
@@ -49,8 +49,8 @@
     }
   ],
   "clv": {
-    "beats": 1,
-    "total": 1
+    "beats": 2,
+    "total": 2
   },
   "day": 12,
   "death_date": null,
@@ -112,7 +112,7 @@
     }
   ],
   "hunger_total_cents": 275,
-  "last_run": "2026-10-24T11:11:21.317362+00:00",
+  "last_run": "2026-10-24T16:34:12.081271+00:00",
   "lessons": [
     "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)"
   ],
@@ -166,7 +166,7 @@
   ],
   "stats": {
     "bets": 1,
-    "clv_avg": 0.1,
+    "clv_avg": 0.0754,
     "roi": -1.0,
     "won": 0
   },
@@ -208,5 +208,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-10-24T11:11:21.317362+00:00"
+  "updated_at": "2026-10-24T16:34:12.081271+00:00"
 }
