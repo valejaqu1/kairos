@@ -40,5 +40,26 @@
     "sport_key": "soccer_italy_serie_a",
     "stake_cents": 200,
     "status": "open"
+  },
+  {
+    "away": "AC Milan",
+    "closing_odds": null,
+    "commence_time": "2026-10-25T19:45:00Z",
+    "date": "2026-10-24",
+    "event_id": "3564688383b255192409c9deb8e526ed",
+    "home": "Udinese",
+    "id": "2026-10-24-3564688383b255192409c9deb8e526ed-X",
+    "kind": "apprentissage",
+    "odds_median": 3.85,
+    "odds_sim": 3.66,
+    "p_kairos": 0.25,
+    "p_market": 0.2397,
+    "payout_cents": null,
+    "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur le nul d'Udinese-Milan, où les absences du Milan sont clairement attribuées, mon information la plus solide du jour.",
+    "selection": "X",
+    "settled_date": null,
+    "sport_key": "soccer_italy_serie_a",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]

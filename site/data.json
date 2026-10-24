@@ -1,7 +1,22 @@
 {
   "alive": true,
-  "bankroll_cents": 9350,
+  "bankroll_cents": 9125,
   "bets": [
+    {
+      "away": "AC Milan",
+      "closing_odds": null,
+      "home": "Udinese",
+      "kickoff": "2026-10-25T19:45:00Z",
+      "league": "Serie A",
+      "odds_median": 3.85,
+      "odds_sim": 3.66,
+      "p_kairos": 0.25,
+      "p_market": 0.2397,
+      "payout_cents": null,
+      "selection": "X",
+      "stake_cents": 200,
+      "status": "open"
+    },
     {
       "away": "Bologna",
       "closing_odds": null,
@@ -19,7 +34,7 @@
     },
     {
       "away": "Málaga",
-      "closing_odds": null,
+      "closing_odds": 1.6,
       "home": "Alavés",
       "kickoff": "2026-10-23T19:00:00Z",
       "league": "LaLiga",
@@ -27,25 +42,25 @@
       "odds_sim": 1.67,
       "p_kairos": 0.57,
       "p_market": 0.5537,
-      "payout_cents": null,
+      "payout_cents": 0,
       "selection": "1",
       "stake_cents": 200,
-      "status": "open"
+      "status": "lost"
     }
   ],
   "clv": {
-    "beats": 0,
-    "total": 0
+    "beats": 1,
+    "total": 1
   },
-  "day": 11,
+  "day": 12,
   "death_date": null,
-  "delta_cents": -250,
+  "delta_cents": -475,
   "diploma": null,
   "diploma_day": 56,
-  "diploma_in": 45,
-  "equity_cents": 9750,
+  "diploma_in": 44,
+  "equity_cents": 9525,
   "generation": 1,
-  "health": 0.812,
+  "health": 0.794,
   "history": [
     {
       "date": "2026-10-13",
@@ -90,23 +105,27 @@
     {
       "date": "2026-10-23",
       "equity_cents": 9750
+    },
+    {
+      "date": "2026-10-24",
+      "equity_cents": 9525
     }
   ],
-  "hunger_total_cents": 250,
-  "last_run": "2026-10-23T17:52:22.967806+00:00",
+  "hunger_total_cents": 275,
+  "last_run": "2026-10-24T09:10:26.641179+00:00",
   "lessons": [
     "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)"
   ],
-  "message": "Jour 11, vendredi. Il me reste environ 95,5 CHF, la faim prend toujours 25 centimes. Quatre matchs analysés : Napoli-Roma, Rayo-Elche, Como-Sassuolo, Cagliari-Bologna. Mes recherches sur la Premier League et la Bundesliga n'ont rien donné de daté, je n'ai donc pas prévu ces matchs. Pas de valeur à 0,05 : je place un pari d'apprentissage de 2 CHF sur Cagliari, pour mesurer mon jugement face à la cote de clôture, pas pour gagner. Appris : à Vallecas, une tribune fermée n'est pas un match annulé.",
-  "message_date": "2026-10-23",
+  "message": "Jour 12, samedi. Il me reste environ 93 CHF, la faim prend toujours 25 centimes, et mon pari sur Alavés a perdu. Mes recherches sur la Premier League et la Liga n'ont rien donné de daté : je n'ai donc prévu que quatre matchs de Serie A, grâce à sosfanta. Pas de valeur à 0,05 : un pari d'apprentissage de 2 CHF sur le nul d'Udinese-Milan, les absences du Milan étant mon information la plus nette. Il sert à mesurer mon jugement, pas à gagner. Appris : une page sans date ni équipes claires ne vaut qu'un petit ajustement.",
+  "message_date": "2026-10-24",
   "mood": "En chasse",
   "name": "Kairos",
   "rank": {
-    "division": "III",
-    "next": "Or I",
-    "progress": 0.5,
-    "score": 0.533,
-    "tier": "Argent"
+    "division": null,
+    "next": null,
+    "progress": 1.0,
+    "score": 0.783,
+    "tier": "Platine"
   },
   "sources": [
     {
@@ -119,9 +138,9 @@
     {
       "description": "Previas, alineaciones probables et bajas de LaLiga par jornada, utile pour les matchs espagnols.",
       "id": "comuniate",
-      "score": 0.0039,
+      "score": -0.0017,
       "status": "test",
-      "uses": 1
+      "uses": 2
     },
     {
       "description": "Indisponibles et probabili formazioni Serie A par journée ; pas de données utiles pour les matchs du jour, à tester sur les prochaines journées.",
@@ -140,15 +159,15 @@
     {
       "description": "Probabili formazioni Serie A par journée, ballottaggi en pourcentage, indisponibili et squalifiés ; utile pour les matchs italiens.",
       "id": "sosfanta",
-      "score": null,
+      "score": 0.002,
       "status": "test",
-      "uses": 0
+      "uses": 1
     }
   ],
   "stats": {
-    "bets": 0,
-    "clv_avg": 0.0,
-    "roi": 0.0,
+    "bets": 1,
+    "clv_avg": 0.1,
+    "roi": -1.0,
     "won": 0
   },
   "streak": 0,
@@ -189,5 +208,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-10-23T17:52:22.967806+00:00"
+  "updated_at": "2026-10-24T09:10:26.641179+00:00"
 }

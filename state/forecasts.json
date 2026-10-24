@@ -1272,5 +1272,133 @@
     ],
     "sport_key": "soccer_italy_serie_a",
     "void": false
+  },
+  {
+    "away": "Parma",
+    "commence_time": "2026-10-24T18:45:00Z",
+    "date": "2026-10-24",
+    "event_id": "b27cb3ea731fa3f18d05e6a627bdf984",
+    "home": "Lazio",
+    "note": "Plusieurs doutes côté Lazio (Marusic, Rovella, Gudmundsson) mais la page ne dit pas clairement qui est de quelle équipe : je reste près du marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.65,
+      0.21,
+      0.14
+    ],
+    "p_market": [
+      0.6714,
+      0.2091,
+      0.1195
+    ],
+    "p_model": [
+      0.5698,
+      0.2831,
+      0.1471
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sosfanta"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "AC Milan",
+    "commence_time": "2026-10-25T19:45:00Z",
+    "date": "2026-10-24",
+    "event_id": "3564688383b255192409c9deb8e526ed",
+    "home": "Udinese",
+    "note": "Milan sans Gabbia, Alaba, Chukwueze ni Saelemaekers, absences lourdes que le marché connaît sans doute ; je retire un peu au Milan, rien sur l'Udinese.",
+    "outcome": null,
+    "p_kairos": [
+      0.19,
+      0.25,
+      0.56
+    ],
+    "p_market": [
+      0.1795,
+      0.2397,
+      0.5808
+    ],
+    "p_model": [
+      0.246,
+      0.2464,
+      0.5075
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sosfanta"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "Juventus",
+    "commence_time": "2026-10-25T17:00:00Z",
+    "date": "2026-10-24",
+    "event_id": "63af660d4d0d52f8ac7685172ef939c4",
+    "home": "Lecce",
+    "note": "Juventus très diminuée selon la page, mais l'attribution des colonnes est supposée : petit ajustement seulement.",
+    "outcome": null,
+    "p_kairos": [
+      0.125,
+      0.22,
+      0.655
+    ],
+    "p_market": [
+      0.1157,
+      0.2099,
+      0.6744
+    ],
+    "p_model": [
+      0.1674,
+      0.2446,
+      0.5879
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sosfanta"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "Fiorentina",
+    "commence_time": "2026-10-25T11:30:00Z",
+    "date": "2026-10-24",
+    "event_id": "c9b6c7048d8dc33dae618f67f462f67a",
+    "home": "Inter Milan",
+    "note": "Inter avec cinq absents et la Fiorentina presque complète, mais le modèle est plus haut que le marché : je reste proche de celui-ci.",
+    "outcome": null,
+    "p_kairos": [
+      0.71,
+      0.17,
+      0.12
+    ],
+    "p_market": [
+      0.7258,
+      0.1619,
+      0.1123
+    ],
+    "p_model": [
+      0.8128,
+      0.1134,
+      0.0739
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sosfanta"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
   }
 ]
