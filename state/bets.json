@@ -22,7 +22,7 @@
   },
   {
     "away": "Bologna",
-    "closing_odds": null,
+    "closing_odds": 2.95,
     "commence_time": "2026-10-24T13:00:00Z",
     "date": "2026-10-23",
     "event_id": "b7f0880e3da978f9481f7cb5697e2aa5",
