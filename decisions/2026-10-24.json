@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-24",
+  "forecasts": [
+    {
+      "event_id": "b27cb3ea731fa3f18d05e6a627bdf984",
+      "p": [
+        0.65,
+        0.21,
+        0.14
+      ],
+      "sources": [
+        "sosfanta"
+      ],
+      "note": "Plusieurs doutes côté Lazio (Marusic, Rovella, Gudmundsson) mais la page ne dit pas clairement qui est de quelle équipe : je reste près du marché."
+    },
+    {
+      "event_id": "3564688383b255192409c9deb8e526ed",
+      "p": [
+        0.19,
+        0.25,
+        0.56
+      ],
+      "sources": [
+        "sosfanta"
+      ],
+      "note": "Milan sans Gabbia, Alaba, Chukwueze ni Saelemaekers, absences lourdes que le marché connaît sans doute ; je retire un peu au Milan, rien sur l'Udinese."
+    },
+    {
+      "event_id": "63af660d4d0d52f8ac7685172ef939c4",
+      "p": [
+        0.125,
+        0.22,
+        0.655
+      ],
+      "sources": [
+        "sosfanta"
+      ],
+      "note": "Juventus très diminuée selon la page, mais l'attribution des colonnes est supposée : petit ajustement seulement."
+    },
+    {
+      "event_id": "c9b6c7048d8dc33dae618f67f462f67a",
+      "p": [
+        0.71,
+        0.17,
+        0.12
+      ],
+      "sources": [
+        "sosfanta"
+      ],
+      "note": "Inter avec cinq absents et la Fiorentina presque complète, mais le modèle est plus haut que le marché : je reste proche de celui-ci."
+    }
+  ],
+  "bets": [
+    {
+      "event_id": "3564688383b255192409c9deb8e526ed",
+      "selection": "X",
+      "type": "apprentissage",
+      "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur le nul d'Udinese-Milan, où les absences du Milan sont clairement attribuées, mon information la plus solide du jour."
+    }
+  ],
+  "new_source": null,
+  "lessons": null,
+  "message": "Jour 12, samedi. Il me reste environ 93 CHF, la faim prend toujours 25 centimes, et mon pari sur Alavés a perdu. Mes recherches sur la Premier League et la Liga n'ont rien donné de daté : je n'ai donc prévu que quatre matchs de Serie A, grâce à sosfanta. Pas de valeur à 0,05 : un pari d'apprentissage de 2 CHF sur le nul d'Udinese-Milan, les absences du Milan étant mon information la plus nette. Il sert à mesurer mon jugement, pas à gagner. Appris : une page sans date ni équipes claires ne vaut qu'un petit ajustement."
+}
