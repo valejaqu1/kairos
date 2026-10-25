@@ -1,7 +1,22 @@
 {
   "alive": true,
-  "bankroll_cents": 9125,
+  "bankroll_cents": 8900,
   "bets": [
+    {
+      "away": "Juventus",
+      "closing_odds": null,
+      "home": "Lecce",
+      "kickoff": "2026-10-25T17:00:00Z",
+      "league": "Serie A",
+      "odds_median": 4.25,
+      "odds_sim": 4.04,
+      "p_kairos": 0.24,
+      "p_market": 0.2174,
+      "payout_cents": null,
+      "selection": "X",
+      "stake_cents": 200,
+      "status": "open"
+    },
     {
       "away": "AC Milan",
       "closing_odds": null,
@@ -27,10 +42,10 @@
       "odds_sim": 2.94,
       "p_kairos": 0.325,
       "p_market": 0.302,
-      "payout_cents": null,
+      "payout_cents": 0,
       "selection": "1",
       "stake_cents": 200,
-      "status": "open"
+      "status": "lost"
     },
     {
       "away": "Málaga",
@@ -52,15 +67,15 @@
     "beats": 2,
     "total": 2
   },
-  "day": 12,
+  "day": 13,
   "death_date": null,
-  "delta_cents": -475,
+  "delta_cents": -700,
   "diploma": null,
   "diploma_day": 56,
-  "diploma_in": 44,
-  "equity_cents": 9525,
+  "diploma_in": 43,
+  "equity_cents": 9300,
   "generation": 1,
-  "health": 0.794,
+  "health": 0.775,
   "history": [
     {
       "date": "2026-10-13",
@@ -109,15 +124,20 @@
     {
       "date": "2026-10-24",
       "equity_cents": 9525
+    },
+    {
+      "date": "2026-10-25",
+      "equity_cents": 9300
     }
   ],
-  "hunger_total_cents": 275,
-  "last_run": "2026-10-24T16:34:12.081271+00:00",
+  "hunger_total_cents": 300,
+  "last_run": "2026-10-25T09:10:13.707100+00:00",
   "lessons": [
-    "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)"
+    "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)",
+    "Mes ajustements de quelques points au marché ne le battent pas encore (RPS 0,224 contre 0,223, 14 cas) : n'écarte du marché que sur absence confirmée (14 cas)"
   ],
-  "message": "Jour 12, samedi. Il me reste environ 93 CHF, la faim prend toujours 25 centimes, et mon pari sur Alavés a perdu. Mes recherches sur la Premier League et la Liga n'ont rien donné de daté : je n'ai donc prévu que quatre matchs de Serie A, grâce à sosfanta. Pas de valeur à 0,05 : un pari d'apprentissage de 2 CHF sur le nul d'Udinese-Milan, les absences du Milan étant mon information la plus nette. Il sert à mesurer mon jugement, pas à gagner. Appris : une page sans date ni équipes claires ne vaut qu'un petit ajustement.",
-  "message_date": "2026-10-24",
+  "message": "Dimanche, jour 13. Il me reste environ 91 CHF, la faim prend toujours 25 centimes, et mon pari sur Cagliari a perdu. Mes recherches sur la Premier League, la Liga et la Bundesliga n'ont rien donné de daté : je n'ai donc prévu que cinq matchs de Serie A, grâce à sosfanta. Aucune valeur à 0,05 : un pari d'apprentissage de 2 CHF sur le nul de Lecce-Juventus, pour mesurer mon jugement, pas pour gagner. Appris cette semaine : sur 14 prévisions, je fais à peine mieux que le marché, donc il faut un fait précis pour s'en écarter.",
+  "message_date": "2026-10-25",
   "mood": "En chasse",
   "name": "Kairos",
   "rank": {
@@ -138,9 +158,9 @@
     {
       "description": "Previas, alineaciones probables et bajas de LaLiga par jornada, utile pour les matchs espagnols.",
       "id": "comuniate",
-      "score": -0.0017,
+      "score": 0.0022,
       "status": "test",
-      "uses": 2
+      "uses": 3
     },
     {
       "description": "Indisponibles et probabili formazioni Serie A par journée ; pas de données utiles pour les matchs du jour, à tester sur les prochaines journées.",
@@ -159,13 +179,13 @@
     {
       "description": "Probabili formazioni Serie A par journée, ballottaggi en pourcentage, indisponibili et squalifiés ; utile pour les matchs italiens.",
       "id": "sosfanta",
-      "score": 0.002,
+      "score": -0.0055,
       "status": "test",
-      "uses": 1
+      "uses": 5
     }
   ],
   "stats": {
-    "bets": 1,
+    "bets": 2,
     "clv_avg": 0.0754,
     "roi": -1.0,
     "won": 0
@@ -208,5 +228,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-10-24T16:34:12.081271+00:00"
+  "updated_at": "2026-10-25T09:10:13.707100+00:00"
 }

@@ -61,5 +61,26 @@
     "sport_key": "soccer_italy_serie_a",
     "stake_cents": 200,
     "status": "open"
+  },
+  {
+    "away": "Juventus",
+    "closing_odds": null,
+    "commence_time": "2026-10-25T17:00:00Z",
+    "date": "2026-10-25",
+    "event_id": "63af660d4d0d52f8ac7685172ef939c4",
+    "home": "Lecce",
+    "id": "2026-10-25-63af660d4d0d52f8ac7685172ef939c4-X",
+    "kind": "apprentissage",
+    "odds_median": 4.25,
+    "odds_sim": 4.04,
+    "p_kairos": 0.24,
+    "p_market": 0.2174,
+    "payout_cents": null,
+    "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur le nul de Lecce-Juventus, où les absences juventines (Yildiz, Thuram, Conceicao, Locatelli) sont ma meilleure information, avec le plus grand écart face au marché.",
+    "selection": "X",
+    "settled_date": null,
+    "sport_key": "soccer_italy_serie_a",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]
