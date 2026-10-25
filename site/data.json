@@ -4,7 +4,7 @@
   "bets": [
     {
       "away": "Juventus",
-      "closing_odds": null,
+      "closing_odds": 4.2,
       "home": "Lecce",
       "kickoff": "2026-10-25T17:00:00Z",
       "league": "Serie A",
@@ -64,8 +64,8 @@
     }
   ],
   "clv": {
-    "beats": 2,
-    "total": 2
+    "beats": 3,
+    "total": 3
   },
   "day": 13,
   "death_date": null,
@@ -131,7 +131,7 @@
     }
   ],
   "hunger_total_cents": 300,
-  "last_run": "2026-10-25T12:11:11.476676+00:00",
+  "last_run": "2026-10-25T17:03:05.952805+00:00",
   "lessons": [
     "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)",
     "Mes ajustements de quelques points au marché ne le battent pas encore (RPS 0,224 contre 0,223, 14 cas) : n'écarte du marché que sur absence confirmée (14 cas)"
@@ -186,7 +186,7 @@
   ],
   "stats": {
     "bets": 2,
-    "clv_avg": 0.0754,
+    "clv_avg": 0.054233333333333335,
     "roi": -1.0,
     "won": 0
   },
@@ -228,5 +228,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-10-25T12:11:11.476676+00:00"
+  "updated_at": "2026-10-25T17:03:05.952805+00:00"
 }
