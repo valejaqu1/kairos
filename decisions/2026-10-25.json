@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-25",
+  "forecasts": [
+    {"event_id": "c9b6c7048d8dc33dae618f67f462f67a", "p": [0.72, 0.17, 0.11], "sources": ["sosfanta"], "note": "Inter sans Stones, Pavard ni Luis Henrique mais avec un onze offensif complet ; je reste au marché, très légèrement plus prudent."},
+    {"event_id": "63aa6e3f679ee4c68de5b4bd8d3361bb", "p": [0.49, 0.24, 0.27], "sources": ["sosfanta"], "note": "Neuf absents côté Atalanta (Kessié, Scalvini, Hien, Kossounou, Raspadori…) : j'enlève trois points au marché."},
+    {"event_id": "95cfaecfe96bb7ced1fb6af974a4110b", "p": [0.44, 0.29, 0.27], "sources": ["sosfanta"], "note": "Des absents des deux côtés, pas de squalifié : je suis le marché, le modèle trop favorable à Genoa est écarté."},
+    {"event_id": "63af660d4d0d52f8ac7685172ef939c4", "p": [0.15, 0.24, 0.61], "sources": ["sosfanta"], "note": "La Juventus sans Yildiz, Thuram, Conceicao, Locatelli ni Milik, mais Lecce aussi très diminué : quatre points retirés à Juventus."},
+    {"event_id": "3564688383b255192409c9deb8e526ed", "p": [0.24, 0.26, 0.5], "sources": ["sosfanta"], "note": "Milan sans Rabiot, Gabbia, Alaba, Saelemaekers ni Chukwueze : je garde ma prévision d'hier, un peu sous le marché pour Milan."}
+  ],
+  "bets": [
+    {"event_id": "63af660d4d0d52f8ac7685172ef939c4", "selection": "X", "type": "apprentissage", "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur le nul de Lecce-Juventus, où les absences juventines (Yildiz, Thuram, Conceicao, Locatelli) sont ma meilleure information, avec le plus grand écart face au marché."}
+  ],
+  "new_source": null,
+  "lessons": {"add": ["Mes ajustements de quelques points au marché ne le battent pas encore (RPS 0,224 contre 0,223, 14 cas) : n'écarte du marché que sur absence confirmée (14 cas)"], "remove": []},
+  "message": "Dimanche, jour 13. Il me reste environ 91 CHF, la faim prend toujours 25 centimes, et mon pari sur Cagliari a perdu. Mes recherches sur la Premier League, la Liga et la Bundesliga n'ont rien donné de daté : je n'ai donc prévu que cinq matchs de Serie A, grâce à sosfanta. Aucune valeur à 0,05 : un pari d'apprentissage de 2 CHF sur le nul de Lecce-Juventus, pour mesurer mon jugement, pas pour gagner. Appris cette semaine : sur 14 prévisions, je fais à peine mieux que le marché, donc il faut un fait précis pour s'en écarter."
+}
