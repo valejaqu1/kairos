@@ -1152,7 +1152,7 @@
     "event_id": "0b4894e9fb123ef3045269f97e339eba",
     "home": "Napoli",
     "note": "Roma sans Dybala, Koné ni Svilar (Gollini dans les buts) mais Napoli sans Buongiorno ni Neres : les absences s'équilibrent, je reste sur le marché.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.34,
       0.28,
@@ -1168,9 +1168,9 @@
       0.2822,
       0.4355
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.13,
+    "rps_market": 0.129449,
+    "rps_model": 0.134677,
     "sources": [
       "sosfanta"
     ],
@@ -1184,7 +1184,7 @@
     "event_id": "734ad601156f5f4e6bc42317e5141516",
     "home": "Rayo Vallecano",
     "note": "Une tribune de Vallecas sera fermée pour ce match, effet minime ; le modèle est plus bas mais sans cause vérifiée, je reste près du marché.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.54,
       0.25,
@@ -1200,9 +1200,9 @@
       0.272,
       0.2464
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.45785,
+    "rps_market": 0.46785,
+    "rps_model": 0.399926,
     "sources": [
       "comuniate"
     ],
@@ -1216,7 +1216,7 @@
     "event_id": "08ffd99b2249c81d8a7410598f32b9b0",
     "home": "Como",
     "note": "Sassuolo avec plusieurs blessés (Idzes, Boloca) et Kean incertain, mais le marché le sait déjà : écart négligeable.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.65,
       0.195,
@@ -1232,9 +1232,9 @@
       0.1927,
       0.1411
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.073262,
+    "rps_market": 0.07235,
+    "rps_model": 0.065666,
     "sources": [
       "sosfanta"
     ],
@@ -1248,7 +1248,7 @@
     "event_id": "b7f0880e3da978f9481f7cb5697e2aa5",
     "home": "Cagliari",
     "note": "Bologna privé d'Orsolini, Holm, Piccoli et Idrissi : je remonte légèrement Cagliari, peu au-dessus du marché.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.325,
       0.305,
@@ -1264,9 +1264,9 @@
       0.2828,
       0.3841
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.251262,
+    "rps_market": 0.23318,
+    "rps_model": 0.245144,
     "sources": [
       "sosfanta"
     ],
@@ -1280,7 +1280,7 @@
     "event_id": "b27cb3ea731fa3f18d05e6a627bdf984",
     "home": "Lazio",
     "note": "Plusieurs doutes côté Lazio (Marusic, Rovella, Gudmundsson) mais la page ne dit pas clairement qui est de quelle équipe : je reste près du marché.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.65,
       0.21,
@@ -1296,9 +1296,9 @@
       0.2831,
       0.1471
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.07105,
+    "rps_market": 0.061129,
+    "rps_model": 0.103355,
     "sources": [
       "sosfanta"
     ],

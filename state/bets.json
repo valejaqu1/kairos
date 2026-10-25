@@ -33,13 +33,13 @@
     "odds_sim": 2.94,
     "p_kairos": 0.325,
     "p_market": 0.302,
-    "payout_cents": null,
+    "payout_cents": 0,
     "reasoning": "Aucun pari n'atteint 0,05 de valeur ; pari d'apprentissage sur Cagliari, où mon écart avec le marché repose sur les quatre ou cinq absents de Bologna, ma meilleure information du jour.",
     "selection": "1",
-    "settled_date": null,
+    "settled_date": "2026-10-25",
     "sport_key": "soccer_italy_serie_a",
     "stake_cents": 200,
-    "status": "open"
+    "status": "lost"
   },
   {
     "away": "AC Milan",
