@@ -34,9 +34,17 @@
   "sosfanta": {
     "description": "Probabili formazioni Serie A par journée, ballottaggi en pourcentage, indisponibili et squalifiés ; utile pour les matchs italiens.",
     "first_seen": "2026-10-22",
-    "score": -0.0055,
-    "status": "test",
+    "score": -0.0064,
+    "status": "dropped",
     "url": "https://www.sosfanta.com/lista-formazioni/probabili-formazioni-serie-a/",
-    "uses": 5
+    "uses": 10
+  },
+  "sportaragon": {
+    "description": "Alineaciones probables, bajas et dudas des matchs de LaLiga par journée, avec contexte du classement.",
+    "first_seen": "2026-10-26",
+    "score": null,
+    "status": "test",
+    "url": "https://www.sportaragon.com/futbol-aragon/",
+    "uses": 0
   }
 }

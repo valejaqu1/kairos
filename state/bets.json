@@ -82,5 +82,26 @@
     "sport_key": "soccer_italy_serie_a",
     "stake_cents": 200,
     "status": "lost"
+  },
+  {
+    "away": "CA Osasuna",
+    "closing_odds": null,
+    "commence_time": "2026-10-26T20:00:00Z",
+    "date": "2026-10-26",
+    "event_id": "85e464708d03287f24590e1478aeca31",
+    "home": "Sevilla",
+    "id": "2026-10-26-85e464708d03287f24590e1478aeca31-2",
+    "kind": "apprentissage",
+    "odds_median": 4.4,
+    "odds_sim": 4.18,
+    "p_kairos": 0.22,
+    "p_market": 0.2091,
+    "payout_cents": null,
+    "reasoning": "Aucun pari n'atteint 0,05 de valeur ; pari d'apprentissage sur Osasuna, où mon écart avec le marché repose sur les absences de Herrando et Del Castillo, une information modeste.",
+    "selection": "2",
+    "settled_date": null,
+    "sport_key": "soccer_spain_la_liga",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]
