@@ -1312,7 +1312,7 @@
     "event_id": "c9b6c7048d8dc33dae618f67f462f67a",
     "home": "Inter Milan",
     "note": "Inter sans Stones, Pavard ni Luis Henrique mais avec un onze offensif complet ; je reste au marché, très légèrement plus prudent.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.72,
       0.17,
@@ -1328,9 +1328,9 @@
       0.1134,
       0.0739
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.04525,
+    "rps_market": 0.042494,
+    "rps_model": 0.020271,
     "sources": [
       "sosfanta"
     ],
@@ -1344,7 +1344,7 @@
     "event_id": "63aa6e3f679ee4c68de5b4bd8d3361bb",
     "home": "Atalanta BC",
     "note": "Neuf absents côté Atalanta (Kessié, Scalvini, Hien, Kossounou, Raspadori…) : j'enlève trois points au marché.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.49,
       0.24,
@@ -1360,9 +1360,9 @@
       0.2411,
       0.3805
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.1565,
+    "rps_market": 0.168362,
+    "rps_model": 0.143983,
     "sources": [
       "sosfanta"
     ],
@@ -1376,7 +1376,7 @@
     "event_id": "95cfaecfe96bb7ced1fb6af974a4110b",
     "home": "Genoa",
     "note": "Des absents des deux côtés, pas de squalifié : je suis le marché, le modèle trop favorable à Genoa est écarté.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.44,
       0.29,
@@ -1392,9 +1392,9 @@
       0.2173,
       0.1988
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.19325,
+    "rps_market": 0.190101,
+    "rps_model": 0.106392,
     "sources": [
       "sosfanta"
     ],
@@ -1408,7 +1408,7 @@
     "event_id": "63af660d4d0d52f8ac7685172ef939c4",
     "home": "Lecce",
     "note": "La Juventus sans Yildiz, Thuram, Conceicao, Locatelli ni Milik, mais Lecce aussi très diminué : quatre points retirés à Juventus.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.15,
       0.24,
@@ -1424,9 +1424,9 @@
       0.2446,
       0.588
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.0873,
+    "rps_market": 0.06908,
+    "rps_model": 0.098883,
     "sources": [
       "sosfanta"
     ],
@@ -1440,7 +1440,7 @@
     "event_id": "3564688383b255192409c9deb8e526ed",
     "home": "Udinese",
     "note": "Milan sans Rabiot, Gabbia, Alaba, Saelemaekers ni Chukwueze : je garde ma prévision d'hier, un peu sous le marché pour Milan.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.24,
       0.26,
@@ -1456,9 +1456,9 @@
       0.2464,
       0.5075
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.1538,
+    "rps_market": 0.129684,
+    "rps_model": 0.151487,
     "sources": [
       "sosfanta"
     ],

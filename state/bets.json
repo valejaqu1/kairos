@@ -54,13 +54,13 @@
     "odds_sim": 3.66,
     "p_kairos": 0.25,
     "p_market": 0.2397,
-    "payout_cents": null,
+    "payout_cents": 0,
     "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur le nul d'Udinese-Milan, où les absences du Milan sont clairement attribuées, mon information la plus solide du jour.",
     "selection": "X",
-    "settled_date": null,
+    "settled_date": "2026-10-26",
     "sport_key": "soccer_italy_serie_a",
     "stake_cents": 200,
-    "status": "open"
+    "status": "lost"
   },
   {
     "away": "Juventus",
@@ -75,12 +75,12 @@
     "odds_sim": 4.04,
     "p_kairos": 0.24,
     "p_market": 0.2174,
-    "payout_cents": null,
+    "payout_cents": 0,
     "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur le nul de Lecce-Juventus, où les absences juventines (Yildiz, Thuram, Conceicao, Locatelli) sont ma meilleure information, avec le plus grand écart face au marché.",
     "selection": "X",
-    "settled_date": null,
+    "settled_date": "2026-10-26",
     "sport_key": "soccer_italy_serie_a",
     "stake_cents": 200,
-    "status": "open"
+    "status": "lost"
   }
 ]
