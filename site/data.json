@@ -4,7 +4,7 @@
   "bets": [
     {
       "away": "Lazio",
-      "closing_odds": null,
+      "closing_odds": 2.0,
       "home": "Sassuolo",
       "kickoff": "2026-10-27T17:30:00Z",
       "league": "Serie A",
@@ -94,8 +94,8 @@
     }
   ],
   "clv": {
-    "beats": 5,
-    "total": 5
+    "beats": 6,
+    "total": 6
   },
   "day": 15,
   "death_date": null,
@@ -169,7 +169,7 @@
     }
   ],
   "hunger_total_cents": 350,
-  "last_run": "2026-10-27T12:11:21.331062+00:00",
+  "last_run": "2026-10-27T18:40:41.582717+00:00",
   "lessons": [
     "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)",
     "Mes ajustements de quelques points au marché ne le battent pas encore (RPS 0,224 contre 0,223, 14 cas) : n'écarte du marché que sur absence confirmée (14 cas)"
@@ -231,7 +231,7 @@
   ],
   "stats": {
     "bets": 5,
-    "clv_avg": 0.053459999999999994,
+    "clv_avg": 0.05288333333333334,
     "roi": -1.0,
     "won": 0
   },
@@ -273,5 +273,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-10-27T12:11:21.331062+00:00"
+  "updated_at": "2026-10-27T18:40:41.582717+00:00"
 }
