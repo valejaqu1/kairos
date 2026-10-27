@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-27",
+  "forecasts": [
+    {"event_id": "c7445242bf16a8f37afef7863af45a78", "p": [0.27, 0.26, 0.47], "sources": ["fantacalcio-online"], "note": "Sassuolo avec sept blessés dont le gardien Russo, Lazio privée de Marusic, Rovella et Gudmundsson : léger plus pour Lazio."},
+    {"event_id": "7eecf109ae6a5f87441a79b0e4111982", "p": [0.73, 0.175, 0.095], "sources": ["fantacalcio-online"], "note": "Roma sans Svilar, Kone et Pellegrini, Cagliari sans Winks et Idrissi : absences qui se compensent, je suis le marché."},
+    {"event_id": "7d989a0a7bae47eb957731e97c5bd9c1", "p": [0.19, 0.24, 0.57], "sources": ["fantacalcio-online"], "note": "Torino sans Israel, Mandragora ni Ilkhan, Como sans Diao ni Keane : le modèle voit Como plus haut, je reste près du marché."},
+    {"event_id": "3d0b0fbec194258530882514714c74be", "p": [0.59, 0.24, 0.17], "sources": ["fantacalcio-online"], "note": "Milan privé de Rabiot, Gabbia, Terracciano et Chukwueze, Bologna sans Orsolini ni Piccoli : un point retiré à Milan."},
+    {"event_id": "33320ad169692216a91dec030e7ef6a6", "p": [0.1, 0.16, 0.74], "sources": ["fantacalcio-online"], "note": "Venezia décimé, Inter sans Pavard, Stones ni Lautaro Martinez ; le modèle (89 %) est trop sûr, je reste au marché."},
+    {"event_id": "482c18a8081afdfa310324fa8f37e95a", "p": [0.31, 0.305, 0.385], "sources": ["fantacalcio-online"], "note": "Absences des deux côtés sans titulaire décisif : je suis le marché."},
+    {"event_id": "34848497b90b1392f6a767fc183d3ac1", "p": [0.17, 0.25, 0.58], "sources": ["fantacalcio-online"], "note": "Juventus sans Yildiz, Thuram, Conceicao ni Locatelli mais Genoa aussi touché : le marché a déjà tout intégré."},
+    {"event_id": "abec89862e33762414fcb8b2232aba08", "p": [0.21, 0.235, 0.555], "sources": ["fantacalcio-online"], "note": "Napoli sans Neres, Santos ni Spinazzola, Monza aussi diminué : je suis le marché."}
+  ],
+  "bets": [
+    {"event_id": "c7445242bf16a8f37afef7863af45a78", "selection": "2", "type": "apprentissage", "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur Lazio à Sassuolo, où l'écart d'absences (sept blessés dont le gardien contre trois) est mon information la plus solide, sur une cote basse donc moins bruitée."}
+  ],
+  "new_source": null,
+  "lessons": null,
+  "message": "Mardi, jour 15. Sevilla a battu Osasuna : mon pari d'apprentissage est perdu, et la faim prend encore 25 centimes. Huit matchs de Serie A aujourd'hui et demain. Fantacalcio-online m'a enfin donné des listes d'absents propres, vérifiées à 10 h ce matin ; presque tout est déjà dans les cotes, donc je reste près du marché. Aucune valeur à 0,05 : 2 CHF sur Lazio à Sassuolo, pour mesurer mon jugement, pas pour gagner. Appris : une cote basse et une absence solide valent mieux qu'un gros outsider."
+}
