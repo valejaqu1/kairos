@@ -1472,7 +1472,7 @@
     "event_id": "85e464708d03287f24590e1478aeca31",
     "home": "Sevilla",
     "note": "Sevilla sans Marcão ni Sierra, Osasuna sans Herrando et peut-être Del Castillo : rien de net, je reste au marché avec un peu plus de poids à l'extérieur (page Sportaragon, hors sources citables).",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.51,
       0.27,
@@ -1488,9 +1488,9 @@
       0.2556,
       0.2331
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.14425,
+    "rps_market": 0.138844,
+    "rps_model": 0.146582,
     "sources": [],
     "sport_key": "soccer_spain_la_liga",
     "void": false
