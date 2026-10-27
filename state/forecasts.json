@@ -1498,31 +1498,31 @@
   {
     "away": "Lazio",
     "commence_time": "2026-10-27T17:30:00Z",
-    "date": "2026-10-26",
+    "date": "2026-10-27",
     "event_id": "c7445242bf16a8f37afef7863af45a78",
     "home": "Sassuolo",
-    "note": "Sassuolo privé de quatre joueurs, Lazio sans Rovella, Gudmundsson et Marusic : les absences se compensent, je suis le marché.",
+    "note": "Sassuolo avec sept blessés dont le gardien Russo, Lazio privée de Marusic, Rovella et Gudmundsson : léger plus pour Lazio.",
     "outcome": null,
     "p_kairos": [
-      0.29,
+      0.27,
       0.26,
-      0.45
+      0.47
     ],
     "p_market": [
-      0.2871,
-      0.2615,
-      0.4514
+      0.2809,
+      0.2604,
+      0.4587
     ],
     "p_model": [
-      0.3034,
-      0.2665,
-      0.4302
+      0.2981,
+      0.2628,
+      0.4391
     ],
     "rps_kairos": null,
     "rps_market": null,
     "rps_model": null,
     "sources": [
-      "sosfanta"
+      "fantacalcio-online"
     ],
     "sport_key": "soccer_italy_serie_a",
     "void": false
@@ -1530,31 +1530,31 @@
   {
     "away": "Cagliari",
     "commence_time": "2026-10-27T19:45:00Z",
-    "date": "2026-10-26",
+    "date": "2026-10-27",
     "event_id": "7eecf109ae6a5f87441a79b0e4111982",
     "home": "AS Roma",
-    "note": "Roma sans Svilar (Gollini) et Pellegrini, Winks douteux côté Cagliari ; la page est confuse, je ne bouge presque pas du marché.",
+    "note": "Roma sans Svilar, Kone et Pellegrini, Cagliari sans Winks et Idrissi : absences qui se compensent, je suis le marché.",
     "outcome": null,
     "p_kairos": [
-      0.72,
-      0.185,
+      0.73,
+      0.175,
       0.095
     ],
     "p_market": [
-      0.7296,
-      0.1766,
-      0.0938
+      0.7387,
+      0.1708,
+      0.0905
     ],
     "p_model": [
-      0.6856,
-      0.205,
-      0.1095
+      0.6988,
+      0.1927,
+      0.1084
     ],
     "rps_kairos": null,
     "rps_market": null,
     "rps_model": null,
     "sources": [
-      "sosfanta"
+      "fantacalcio-online"
     ],
     "sport_key": "soccer_italy_serie_a",
     "void": false
@@ -1562,31 +1562,191 @@
   {
     "away": "Como",
     "commence_time": "2026-10-27T19:45:00Z",
-    "date": "2026-10-26",
+    "date": "2026-10-27",
     "event_id": "7d989a0a7bae47eb957731e97c5bd9c1",
     "home": "Torino",
-    "note": "Kean incertain côté Como, Torino sans Ilkhan ; sources contradictoires, donc écart minimal avec le marché.",
+    "note": "Torino sans Israel, Mandragora ni Ilkhan, Como sans Diao ni Keane : le modèle voit Como plus haut, je reste près du marché.",
     "outcome": null,
     "p_kairos": [
-      0.21,
-      0.25,
-      0.54
+      0.19,
+      0.24,
+      0.57
     ],
     "p_market": [
-      0.2015,
-      0.2475,
-      0.551
+      0.1834,
+      0.2361,
+      0.5805
     ],
     "p_model": [
-      0.1526,
-      0.1953,
-      0.6521
+      0.1503,
+      0.1943,
+      0.6554
     ],
     "rps_kairos": null,
     "rps_market": null,
     "rps_model": null,
     "sources": [
-      "sosfanta"
+      "fantacalcio-online"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "Bologna",
+    "commence_time": "2026-10-28T17:30:00Z",
+    "date": "2026-10-27",
+    "event_id": "3d0b0fbec194258530882514714c74be",
+    "home": "AC Milan",
+    "note": "Milan privé de Rabiot, Gabbia, Terracciano et Chukwueze, Bologna sans Orsolini ni Piccoli : un point retiré à Milan.",
+    "outcome": null,
+    "p_kairos": [
+      0.59,
+      0.24,
+      0.17
+    ],
+    "p_market": [
+      0.6048,
+      0.2314,
+      0.1638
+    ],
+    "p_model": [
+      0.5236,
+      0.2509,
+      0.2255
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "fantacalcio-online"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "Inter Milan",
+    "commence_time": "2026-10-28T17:30:00Z",
+    "date": "2026-10-27",
+    "event_id": "33320ad169692216a91dec030e7ef6a6",
+    "home": "Venezia",
+    "note": "Venezia décimé, Inter sans Pavard, Stones ni Lautaro Martinez ; le modèle (89 %) est trop sûr, je reste au marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.1,
+      0.16,
+      0.74
+    ],
+    "p_market": [
+      0.1114,
+      0.1531,
+      0.7355
+    ],
+    "p_model": [
+      0.0364,
+      0.0731,
+      0.8905
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "fantacalcio-online"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "Udinese",
+    "commence_time": "2026-10-28T17:30:00Z",
+    "date": "2026-10-27",
+    "event_id": "482c18a8081afdfa310324fa8f37e95a",
+    "home": "Parma",
+    "note": "Absences des deux côtés sans titulaire décisif : je suis le marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.31,
+      0.305,
+      0.385
+    ],
+    "p_market": [
+      0.3172,
+      0.3043,
+      0.3784
+    ],
+    "p_model": [
+      0.276,
+      0.2928,
+      0.4311
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "fantacalcio-online"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "Juventus",
+    "commence_time": "2026-10-28T19:45:00Z",
+    "date": "2026-10-27",
+    "event_id": "34848497b90b1392f6a767fc183d3ac1",
+    "home": "Genoa",
+    "note": "Juventus sans Yildiz, Thuram, Conceicao ni Locatelli mais Genoa aussi touché : le marché a déjà tout intégré.",
+    "outcome": null,
+    "p_kairos": [
+      0.17,
+      0.25,
+      0.58
+    ],
+    "p_market": [
+      0.1698,
+      0.248,
+      0.5822
+    ],
+    "p_model": [
+      0.1892,
+      0.2424,
+      0.5683
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "fantacalcio-online"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "Napoli",
+    "commence_time": "2026-10-28T19:45:00Z",
+    "date": "2026-10-27",
+    "event_id": "abec89862e33762414fcb8b2232aba08",
+    "home": "Monza",
+    "note": "Napoli sans Neres, Santos ni Spinazzola, Monza aussi diminué : je suis le marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.21,
+      0.235,
+      0.555
+    ],
+    "p_market": [
+      0.2098,
+      0.2357,
+      0.5544
+    ],
+    "p_model": [
+      0.2161,
+      0.1746,
+      0.6094
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "fantacalcio-online"
     ],
     "sport_key": "soccer_italy_serie_a",
     "void": false

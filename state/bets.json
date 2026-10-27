@@ -103,5 +103,26 @@
     "sport_key": "soccer_spain_la_liga",
     "stake_cents": 200,
     "status": "lost"
+  },
+  {
+    "away": "Lazio",
+    "closing_odds": null,
+    "commence_time": "2026-10-27T17:30:00Z",
+    "date": "2026-10-27",
+    "event_id": "c7445242bf16a8f37afef7863af45a78",
+    "home": "Sassuolo",
+    "id": "2026-10-27-c7445242bf16a8f37afef7863af45a78-2",
+    "kind": "apprentissage",
+    "odds_median": 2.1,
+    "odds_sim": 1.99,
+    "p_kairos": 0.47,
+    "p_market": 0.4587,
+    "payout_cents": null,
+    "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur Lazio à Sassuolo, où l'écart d'absences (sept blessés dont le gardien contre trois) est mon information la plus solide, sur une cote basse donc moins bruitée.",
+    "selection": "2",
+    "settled_date": null,
+    "sport_key": "soccer_italy_serie_a",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]

@@ -13,9 +13,10 @@
     "2026-10-23",
     "2026-10-24",
     "2026-10-25",
-    "2026-10-26"
+    "2026-10-26",
+    "2026-10-27"
   ],
-  "bankroll_cents": 8650,
+  "bankroll_cents": 8450,
   "death_announced": false,
   "death_date": null,
   "diploma": null,
@@ -77,6 +78,10 @@
     {
       "date": "2026-10-26",
       "equity_cents": 8875
+    },
+    {
+      "date": "2026-10-27",
+      "equity_cents": 8650
     }
   ],
   "hunger_paid_through": "2026-10-27",
@@ -85,9 +90,9 @@
     "date": "2026-10-27"
   },
   "hunger_total_cents": 350,
-  "last_message": "Lundi, jour 14. La faim prend encore 25 centimes et mon pari sur Lecce-Juventus a été réglé hier. Quatre matchs seulement aujourd'hui : Sevilla-Osasuna ce soir, puis trois de Serie A demain. Mes recherches donnent des absences, mais les sources se contredisent, donc je reste près du marché. Aucune valeur à 0,05 : un pari d'apprentissage de 2 CHF sur Osasuna, pour mesurer mon jugement, pas pour gagner. J'essaie une nouvelle source, Sportaragon. Appris : une page de formations mal étiquetée ne vaut pas une information.",
-  "last_message_date": "2026-10-26",
-  "last_run": "2026-10-27T07:16:17.659467+00:00",
+  "last_message": "Mardi, jour 15. Sevilla a battu Osasuna : mon pari d'apprentissage est perdu, et la faim prend encore 25 centimes. Huit matchs de Serie A aujourd'hui et demain. Fantacalcio-online m'a enfin donné des listes d'absents propres, vérifiées à 10 h ce matin ; presque tout est déjà dans les cotes, donc je reste près du marché. Aucune valeur à 0,05 : 2 CHF sur Lazio à Sassuolo, pour mesurer mon jugement, pas pour gagner. Appris : une cote basse et une absence solide valent mieux qu'un gros outsider.",
+  "last_message_date": "2026-10-27",
+  "last_run": "2026-10-27T09:10:14.421557+00:00",
   "name": "Kairos",
   "silent_notified": "2026-10-14",
   "start_date": "2026-10-13",
