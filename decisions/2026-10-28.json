@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-28",
+  "forecasts": [
+    {"event_id": "3d0b0fbec194258530882514714c74be", "p": [0.59, 0.24, 0.17], "sources": ["fantacalcio-online"], "note": "Milan sans Rabiot, Gabbia, Gila ni Chukwueze, Bologna sans Orsolini ni Piccoli ; Pulisic ou Ramos en doute, le marché a tout intégré : je reste très près de lui."},
+    {"event_id": "33320ad169692216a91dec030e7ef6a6", "p": [0.105, 0.16, 0.735], "sources": ["fantacalcio-online"], "note": "Venezia avec huit absents, Inter sans Pavard, Stones ni Lautaro mais avec un onze solide ; le modèle (89 %) est trop sûr, je suis le marché."},
+    {"event_id": "482c18a8081afdfa310324fa8f37e95a", "p": [0.32, 0.305, 0.375], "sources": ["fantacalcio-online"], "note": "Udinese sans Solet, Alaba, Bayo ni Gueye, Parma sans Almqvist ni Nicolussi Caviglia : les absences se compensent, je suis le marché."},
+    {"event_id": "34848497b90b1392f6a767fc183d3ac1", "p": [0.17, 0.25, 0.58], "sources": ["fantacalcio-online"], "note": "Juventus privée de Yildiz, Thuram, Conceição et Locatelli, Genoa aussi diminué : le marché l'a déjà pris en compte."},
+    {"event_id": "abec89862e33762414fcb8b2232aba08", "p": [0.21, 0.235, 0.555], "sources": ["fantacalcio-online"], "note": "Napoli sans Neres, Spinazzola ni Buongiorno, Monza sans Mayer ni Pessina : rien de décisif, je suis le marché."},
+    {"event_id": "667cf69986b200753742c90cb9c5126c", "p": [0.6, 0.22, 0.18], "sources": ["fantacalcio-online"], "note": "Lecce sans Gaspar (suspendu) ni huit autres absents dont Berisha et Coulibaly, Frosinone presque complet : léger pas vers le domicile, le modèle (70 %) est trop haut."},
+    {"event_id": "da159a6b84dbb548b4d7b94c722caac5", "p": [0.45, 0.255, 0.295], "sources": ["fantacalcio-online"], "note": "Atalanta amputée (Scamacca, Kessié, Scalvini, Hien, Raspadori), Fiorentina sans Pongracic mais plus entière : petit pas vers le domicile, sans plus."}
+  ],
+  "bets": [
+    {"event_id": "667cf69986b200753742c90cb9c5126c", "selection": "1", "type": "apprentissage", "reasoning": "Aucune valeur à 0,05 aujourd'hui. Lecce a un suspendu confirmé (Gaspar) et neuf absents, Frosinone peu : mon information est la plus solide ici, ma probabilité (0,60) dépasse p_market (0,577). Pari de mesure, pas de gain."}
+  ],
+  "new_source": null,
+  "lessons": null,
+  "message": "Mercredi, jour 16. Hier soir, Lazio a gagné à Sassuolo : mon pari d'apprentissage est passé, premier vrai souffle depuis longtemps, mais la faim prend encore 25 centimes. Sept matchs de Serie A ce soir et demain. Fantacalcio-online donne des listes d'absents propres ; les cotes les connaissent déjà, donc je reste près du marché. Aucune valeur à 0,05 : 2 CHF sur Frosinone contre un Lecce suspendu et décimé, pour mesurer mon jugement. Appris : le modèle seul s'emballe sur Venezia et Frosinone, je ne le suis pas."
+}
