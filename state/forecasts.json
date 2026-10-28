@@ -1594,10 +1594,10 @@
   {
     "away": "Bologna",
     "commence_time": "2026-10-28T17:30:00Z",
-    "date": "2026-10-27",
+    "date": "2026-10-28",
     "event_id": "3d0b0fbec194258530882514714c74be",
     "home": "AC Milan",
-    "note": "Milan privé de Rabiot, Gabbia, Terracciano et Chukwueze, Bologna sans Orsolini ni Piccoli : un point retiré à Milan.",
+    "note": "Milan sans Rabiot, Gabbia, Gila ni Chukwueze, Bologna sans Orsolini ni Piccoli ; Pulisic ou Ramos en doute, le marché a tout intégré : je reste très près de lui.",
     "outcome": null,
     "p_kairos": [
       0.59,
@@ -1605,13 +1605,13 @@
       0.17
     ],
     "p_market": [
-      0.6048,
-      0.2314,
-      0.1638
+      0.5719,
+      0.2422,
+      0.1858
     ],
     "p_model": [
       0.5236,
-      0.2509,
+      0.251,
       0.2255
     ],
     "rps_kairos": null,
@@ -1626,20 +1626,20 @@
   {
     "away": "Inter Milan",
     "commence_time": "2026-10-28T17:30:00Z",
-    "date": "2026-10-27",
+    "date": "2026-10-28",
     "event_id": "33320ad169692216a91dec030e7ef6a6",
     "home": "Venezia",
-    "note": "Venezia décimé, Inter sans Pavard, Stones ni Lautaro Martinez ; le modèle (89 %) est trop sûr, je reste au marché.",
+    "note": "Venezia avec huit absents, Inter sans Pavard, Stones ni Lautaro mais avec un onze solide ; le modèle (89 %) est trop sûr, je suis le marché.",
     "outcome": null,
     "p_kairos": [
-      0.1,
+      0.105,
       0.16,
-      0.74
+      0.735
     ],
     "p_market": [
-      0.1114,
-      0.1531,
-      0.7355
+      0.1109,
+      0.1551,
+      0.734
     ],
     "p_model": [
       0.0364,
@@ -1658,25 +1658,25 @@
   {
     "away": "Udinese",
     "commence_time": "2026-10-28T17:30:00Z",
-    "date": "2026-10-27",
+    "date": "2026-10-28",
     "event_id": "482c18a8081afdfa310324fa8f37e95a",
     "home": "Parma",
-    "note": "Absences des deux côtés sans titulaire décisif : je suis le marché.",
+    "note": "Udinese sans Solet, Alaba, Bayo ni Gueye, Parma sans Almqvist ni Nicolussi Caviglia : les absences se compensent, je suis le marché.",
     "outcome": null,
     "p_kairos": [
-      0.31,
+      0.32,
       0.305,
-      0.385
+      0.375
     ],
     "p_market": [
-      0.3172,
-      0.3043,
-      0.3784
+      0.3414,
+      0.3034,
+      0.3553
     ],
     "p_model": [
       0.276,
       0.2928,
-      0.4311
+      0.4312
     ],
     "rps_kairos": null,
     "rps_market": null,
@@ -1690,10 +1690,10 @@
   {
     "away": "Juventus",
     "commence_time": "2026-10-28T19:45:00Z",
-    "date": "2026-10-27",
+    "date": "2026-10-28",
     "event_id": "34848497b90b1392f6a767fc183d3ac1",
     "home": "Genoa",
-    "note": "Juventus sans Yildiz, Thuram, Conceicao ni Locatelli mais Genoa aussi touché : le marché a déjà tout intégré.",
+    "note": "Juventus privée de Yildiz, Thuram, Conceição et Locatelli, Genoa aussi diminué : le marché l'a déjà pris en compte.",
     "outcome": null,
     "p_kairos": [
       0.17,
@@ -1701,14 +1701,14 @@
       0.58
     ],
     "p_market": [
-      0.1698,
-      0.248,
-      0.5822
+      0.1746,
+      0.2655,
+      0.5598
     ],
     "p_model": [
-      0.1892,
-      0.2424,
-      0.5683
+      0.1893,
+      0.2425,
+      0.5682
     ],
     "rps_kairos": null,
     "rps_market": null,
@@ -1722,10 +1722,10 @@
   {
     "away": "Napoli",
     "commence_time": "2026-10-28T19:45:00Z",
-    "date": "2026-10-27",
+    "date": "2026-10-28",
     "event_id": "abec89862e33762414fcb8b2232aba08",
     "home": "Monza",
-    "note": "Napoli sans Neres, Santos ni Spinazzola, Monza aussi diminué : je suis le marché.",
+    "note": "Napoli sans Neres, Spinazzola ni Buongiorno, Monza sans Mayer ni Pessina : rien de décisif, je suis le marché.",
     "outcome": null,
     "p_kairos": [
       0.21,
@@ -1733,14 +1733,78 @@
       0.555
     ],
     "p_market": [
-      0.2098,
+      0.2092,
       0.2357,
-      0.5544
+      0.5551
     ],
     "p_model": [
-      0.2161,
+      0.216,
       0.1746,
       0.6094
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "fantacalcio-online"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "Lecce",
+    "commence_time": "2026-10-29T17:30:00Z",
+    "date": "2026-10-28",
+    "event_id": "667cf69986b200753742c90cb9c5126c",
+    "home": "Frosinone",
+    "note": "Lecce sans Gaspar (suspendu) ni huit autres absents dont Berisha et Coulibaly, Frosinone presque complet : léger pas vers le domicile, le modèle (70 %) est trop haut.",
+    "outcome": null,
+    "p_kairos": [
+      0.6,
+      0.22,
+      0.18
+    ],
+    "p_market": [
+      0.5772,
+      0.2243,
+      0.1985
+    ],
+    "p_model": [
+      0.6968,
+      0.1642,
+      0.139
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "fantacalcio-online"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "Atalanta BC",
+    "commence_time": "2026-10-29T19:45:00Z",
+    "date": "2026-10-28",
+    "event_id": "da159a6b84dbb548b4d7b94c722caac5",
+    "home": "Fiorentina",
+    "note": "Atalanta amputée (Scamacca, Kessié, Scalvini, Hien, Raspadori), Fiorentina sans Pongracic mais plus entière : petit pas vers le domicile, sans plus.",
+    "outcome": null,
+    "p_kairos": [
+      0.45,
+      0.255,
+      0.295
+    ],
+    "p_market": [
+      0.4362,
+      0.2561,
+      0.3077
+    ],
+    "p_model": [
+      0.2615,
+      0.2408,
+      0.4976
     ],
     "rps_kairos": null,
     "rps_market": null,

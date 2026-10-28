@@ -18,10 +18,10 @@
   "fantacalcio-online": {
     "description": "Indisponibles et probabili formazioni Serie A par journée ; pas de données utiles pour les matchs du jour, à tester sur les prochaines journées.",
     "first_seen": "2026-10-18",
-    "score": -0.0041,
+    "score": -0.0015,
     "status": "test",
     "url": "https://www.fantacalcio-online.com/it/serie-a/2026-2027/probabili-formazioni/8-giornata",
-    "uses": 2
+    "uses": 5
   },
   "laliga-oficial": {
     "description": "Site officiel de LaLiga : calendrier, résultats et actualités par journée, à tester pour les matchs espagnols.",

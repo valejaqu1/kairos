@@ -124,5 +124,26 @@
     "sport_key": "soccer_italy_serie_a",
     "stake_cents": 200,
     "status": "won"
+  },
+  {
+    "away": "Lecce",
+    "closing_odds": null,
+    "commence_time": "2026-10-29T17:30:00Z",
+    "date": "2026-10-28",
+    "event_id": "667cf69986b200753742c90cb9c5126c",
+    "home": "Frosinone",
+    "id": "2026-10-28-667cf69986b200753742c90cb9c5126c-1",
+    "kind": "apprentissage",
+    "odds_median": 1.68,
+    "odds_sim": 1.6,
+    "p_kairos": 0.6,
+    "p_market": 0.5772,
+    "payout_cents": null,
+    "reasoning": "Aucune valeur à 0,05 aujourd'hui. Lecce a un suspendu confirmé (Gaspar) et neuf absents, Frosinone peu : mon information est la plus solide ici, ma probabilité (0,60) dépasse p_market (0,577). Pari de mesure, pas de gain.",
+    "selection": "1",
+    "settled_date": null,
+    "sport_key": "soccer_italy_serie_a",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]
