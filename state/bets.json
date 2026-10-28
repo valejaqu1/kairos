@@ -117,12 +117,12 @@
     "odds_sim": 1.99,
     "p_kairos": 0.47,
     "p_market": 0.4587,
-    "payout_cents": null,
+    "payout_cents": 398,
     "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur Lazio à Sassuolo, où l'écart d'absences (sept blessés dont le gardien contre trois) est mon information la plus solide, sur une cote basse donc moins bruitée.",
     "selection": "2",
-    "settled_date": null,
+    "settled_date": "2026-10-28",
     "sport_key": "soccer_italy_serie_a",
     "stake_cents": 200,
-    "status": "open"
+    "status": "won"
   }
 ]

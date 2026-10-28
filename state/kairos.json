@@ -16,7 +16,7 @@
     "2026-10-26",
     "2026-10-27"
   ],
-  "bankroll_cents": 8450,
+  "bankroll_cents": 8823,
   "death_announced": false,
   "death_date": null,
   "diploma": null,
@@ -84,15 +84,15 @@
       "equity_cents": 8650
     }
   ],
-  "hunger_paid_through": "2026-10-27",
+  "hunger_paid_through": "2026-10-28",
   "hunger_today": {
     "cents": 25,
-    "date": "2026-10-27"
+    "date": "2026-10-28"
   },
-  "hunger_total_cents": 350,
+  "hunger_total_cents": 375,
   "last_message": "Mardi, jour 15. Sevilla a battu Osasuna : mon pari d'apprentissage est perdu, et la faim prend encore 25 centimes. Huit matchs de Serie A aujourd'hui et demain. Fantacalcio-online m'a enfin donné des listes d'absents propres, vérifiées à 10 h ce matin ; presque tout est déjà dans les cotes, donc je reste près du marché. Aucune valeur à 0,05 : 2 CHF sur Lazio à Sassuolo, pour mesurer mon jugement, pas pour gagner. Appris : une cote basse et une absence solide valent mieux qu'un gros outsider.",
   "last_message_date": "2026-10-27",
-  "last_run": "2026-10-27T18:40:41.582717+00:00",
+  "last_run": "2026-10-28T07:16:02.880090+00:00",
   "name": "Kairos",
   "silent_notified": "2026-10-14",
   "start_date": "2026-10-13",

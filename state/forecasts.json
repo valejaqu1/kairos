@@ -1502,7 +1502,7 @@
     "event_id": "c7445242bf16a8f37afef7863af45a78",
     "home": "Sassuolo",
     "note": "Sassuolo avec sept blessés dont le gardien Russo, Lazio privée de Marusic, Rovella et Gudmundsson : léger plus pour Lazio.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.27,
       0.26,
@@ -1518,9 +1518,9 @@
       0.2628,
       0.4391
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.1769,
+    "rps_market": 0.185955,
+    "rps_model": 0.201736,
     "sources": [
       "fantacalcio-online"
     ],
@@ -1534,7 +1534,7 @@
     "event_id": "7eecf109ae6a5f87441a79b0e4111982",
     "home": "AS Roma",
     "note": "Roma sans Svilar, Kone et Pellegrini, Cagliari sans Winks et Idrissi : absences qui se compensent, je suis le marché.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.73,
       0.175,
@@ -1550,9 +1550,9 @@
       0.1927,
       0.1084
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.040962,
+    "rps_market": 0.038234,
+    "rps_model": 0.051247,
     "sources": [
       "fantacalcio-online"
     ],
@@ -1566,7 +1566,7 @@
     "event_id": "7d989a0a7bae47eb957731e97c5bd9c1",
     "home": "Torino",
     "note": "Torino sans Israel, Mandragora ni Ilkhan, Como sans Diao ni Keane : le modèle voit Como plus haut, je reste près du marché.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.19,
       0.24,
@@ -1582,9 +1582,9 @@
       0.1943,
       0.6554
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.1105,
+    "rps_market": 0.104808,
+    "rps_model": 0.07067,
     "sources": [
       "fantacalcio-online"
     ],

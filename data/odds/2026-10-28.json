@@ -1,0 +1,166 @@
+{
+  "events": [
+    {
+      "away": "Bologna",
+      "commence_time": "2026-10-28T17:30:00Z",
+      "event_id": "3d0b0fbec194258530882514714c74be",
+      "home": "AC Milan",
+      "median": {
+        "1": 1.695,
+        "2": 4.9,
+        "X": 3.815
+      },
+      "n_books": 24,
+      "p_market": [
+        0.5719,
+        0.2422,
+        0.1858
+      ],
+      "sim": {
+        "1": 1.61,
+        "2": 4.66,
+        "X": 3.62
+      },
+      "sport_key": "soccer_italy_serie_a"
+    },
+    {
+      "away": "Inter Milan",
+      "commence_time": "2026-10-28T17:30:00Z",
+      "event_id": "33320ad169692216a91dec030e7ef6a6",
+      "home": "Venezia",
+      "median": {
+        "1": 7.8,
+        "2": 1.335,
+        "X": 5.705
+      },
+      "n_books": 24,
+      "p_market": [
+        0.1109,
+        0.1551,
+        0.734
+      ],
+      "sim": {
+        "1": 7.41,
+        "2": 1.27,
+        "X": 5.42
+      },
+      "sport_key": "soccer_italy_serie_a"
+    },
+    {
+      "away": "Udinese",
+      "commence_time": "2026-10-28T17:30:00Z",
+      "event_id": "482c18a8081afdfa310324fa8f37e95a",
+      "home": "Parma",
+      "median": {
+        "1": 2.8,
+        "2": 2.695,
+        "X": 3.135
+      },
+      "n_books": 24,
+      "p_market": [
+        0.3414,
+        0.3034,
+        0.3553
+      ],
+      "sim": {
+        "1": 2.66,
+        "2": 2.56,
+        "X": 2.98
+      },
+      "sport_key": "soccer_italy_serie_a"
+    },
+    {
+      "away": "Juventus",
+      "commence_time": "2026-10-28T19:45:00Z",
+      "event_id": "34848497b90b1392f6a767fc183d3ac1",
+      "home": "Genoa",
+      "median": {
+        "1": 5.2,
+        "2": 1.73,
+        "X": 3.5
+      },
+      "n_books": 24,
+      "p_market": [
+        0.1746,
+        0.2655,
+        0.5598
+      ],
+      "sim": {
+        "1": 4.94,
+        "2": 1.64,
+        "X": 3.32
+      },
+      "sport_key": "soccer_italy_serie_a"
+    },
+    {
+      "away": "Napoli",
+      "commence_time": "2026-10-28T19:45:00Z",
+      "event_id": "abec89862e33762414fcb8b2232aba08",
+      "home": "Monza",
+      "median": {
+        "1": 4.425,
+        "2": 1.75,
+        "X": 3.95
+      },
+      "n_books": 24,
+      "p_market": [
+        0.2092,
+        0.2357,
+        0.5551
+      ],
+      "sim": {
+        "1": 4.2,
+        "2": 1.66,
+        "X": 3.75
+      },
+      "sport_key": "soccer_italy_serie_a"
+    },
+    {
+      "away": "Lecce",
+      "commence_time": "2026-10-29T17:30:00Z",
+      "event_id": "667cf69986b200753742c90cb9c5126c",
+      "home": "Frosinone",
+      "median": {
+        "1": 1.68,
+        "2": 4.6,
+        "X": 4.1
+      },
+      "n_books": 24,
+      "p_market": [
+        0.5772,
+        0.2243,
+        0.1985
+      ],
+      "sim": {
+        "1": 1.6,
+        "2": 4.37,
+        "X": 3.89
+      },
+      "sport_key": "soccer_italy_serie_a"
+    },
+    {
+      "away": "Atalanta BC",
+      "commence_time": "2026-10-29T19:45:00Z",
+      "event_id": "da159a6b84dbb548b4d7b94c722caac5",
+      "home": "Fiorentina",
+      "median": {
+        "1": 2.2,
+        "2": 3.065,
+        "X": 3.65
+      },
+      "n_books": 24,
+      "p_market": [
+        0.4362,
+        0.2561,
+        0.3077
+      ],
+      "sim": {
+        "1": 2.09,
+        "2": 2.91,
+        "X": 3.47
+      },
+      "sport_key": "soccer_italy_serie_a"
+    }
+  ],
+  "fetched_at": "2026-10-28T07:16:02.880090+00:00"
+}
