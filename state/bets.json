@@ -145,5 +145,26 @@
     "sport_key": "soccer_italy_serie_a",
     "stake_cents": 200,
     "status": "open"
+  },
+  {
+    "away": "Espanyol",
+    "closing_odds": null,
+    "commence_time": "2026-10-30T20:00:00Z",
+    "date": "2026-10-29",
+    "event_id": "00b03cb40c27ed23e2ecb18f062a5122",
+    "home": "Villarreal",
+    "id": "2026-10-29-00b03cb40c27ed23e2ecb18f062a5122-X",
+    "kind": "apprentissage",
+    "odds_median": 5.0,
+    "odds_sim": 4.75,
+    "p_kairos": 0.185,
+    "p_market": 0.1798,
+    "payout_cents": null,
+    "reasoning": "Pas de valeur à 0,05 ; pari d'apprentissage sur le nul à Villarreal, où l'écart avec le marché est minime et repose sur les absences de Gueye et Akhomach, mon information la plus solide du jour.",
+    "selection": "X",
+    "settled_date": null,
+    "sport_key": "soccer_spain_la_liga",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]
