@@ -127,7 +127,7 @@
   },
   {
     "away": "Lecce",
-    "closing_odds": null,
+    "closing_odds": 1.74,
     "commence_time": "2026-10-29T17:30:00Z",
     "date": "2026-10-28",
     "event_id": "667cf69986b200753742c90cb9c5126c",
