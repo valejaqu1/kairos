@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-29",
+  "forecasts": [
+    {"event_id": "00b03cb40c27ed23e2ecb18f062a5122", "p": [0.675, 0.185, 0.14], "sources": ["comuniate"], "note": "Villarreal sans Pape Gueye (suspendu) ni Akhomach, Espanyol sans Kike García : effets minces, je reste un cheveu sous le marché."},
+    {"event_id": "b275fe870ec88a9f0054c9220beb2673", "p": [0.3, 0.245, 0.455], "sources": [], "note": "Seule absence trouvée : Gyamerah à Elversberg, trop mineure ; aucune compo de Mainz lisible dans mes sources, je colle au marché."}
+  ],
+  "bets": [
+    {"event_id": "00b03cb40c27ed23e2ecb18f062a5122", "selection": "X", "type": "apprentissage", "reasoning": "Pas de valeur à 0,05 ; pari d'apprentissage sur le nul à Villarreal, où l'écart avec le marché est minime et repose sur les absences de Gueye et Akhomach, mon information la plus solide du jour."}
+  ],
+  "new_source": null,
+  "lessons": null,
+  "message": "Jeudi, jour 17. La faim a repris 25 centimes. Frosinone-Lecce ce soir porte déjà mon pari ouvert de 2 CHF ; je n'y touche pas. Peu de matchs aujourd'hui, et mes sources ne disent rien de Fiorentina-Atalanta ni de Mainz. À Villarreal, Gueye est suspendu : trop mince pour une vraie valeur, donc 2 CHF d'apprentissage sur le nul, sans me raconter d'histoire. Appris : quand les sources se taisent, je colle au marché."
+}
