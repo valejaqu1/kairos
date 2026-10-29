@@ -1598,7 +1598,7 @@
     "event_id": "3d0b0fbec194258530882514714c74be",
     "home": "AC Milan",
     "note": "Milan sans Rabiot, Gabbia, Gila ni Chukwueze, Bologna sans Orsolini ni Piccoli ; Pulisic ou Ramos en doute, le marché a tout intégré : je reste très près de lui.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.59,
       0.24,
@@ -1614,9 +1614,9 @@
       0.251,
       0.2255
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.5185,
+    "rps_market": 0.494914,
+    "rps_model": 0.437081,
     "sources": [
       "fantacalcio-online"
     ],
@@ -1630,7 +1630,7 @@
     "event_id": "33320ad169692216a91dec030e7ef6a6",
     "home": "Venezia",
     "note": "Venezia avec huit absents, Inter sans Pavard, Stones ni Lautaro mais avec un onze solide ; le modèle (89 %) est trop sûr, je suis le marché.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.105,
       0.16,
@@ -1646,9 +1646,9 @@
       0.0731,
       0.8905
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.040625,
+    "rps_market": 0.041527,
+    "rps_model": 0.006658,
     "sources": [
       "fantacalcio-online"
     ],
@@ -1662,7 +1662,7 @@
     "event_id": "482c18a8081afdfa310324fa8f37e95a",
     "home": "Parma",
     "note": "Udinese sans Solet, Alaba, Bayo ni Gueye, Parma sans Almqvist ni Nicolussi Caviglia : les absences se compensent, je suis le marché.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.32,
       0.305,
@@ -1678,9 +1678,9 @@
       0.2928,
       0.4312
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.121512,
+    "rps_market": 0.12136,
+    "rps_model": 0.131055,
     "sources": [
       "fantacalcio-online"
     ],
@@ -1694,7 +1694,7 @@
     "event_id": "34848497b90b1392f6a767fc183d3ac1",
     "home": "Genoa",
     "note": "Juventus privée de Yildiz, Thuram, Conceição et Locatelli, Genoa aussi diminué : le marché l'a déjà pris en compte.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.17,
       0.25,
@@ -1710,9 +1710,9 @@
       0.2425,
       0.5682
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.51265,
+    "rps_market": 0.497387,
+    "rps_model": 0.490043,
     "sources": [
       "fantacalcio-online"
     ],
@@ -1726,7 +1726,7 @@
     "event_id": "abec89862e33762414fcb8b2232aba08",
     "home": "Monza",
     "note": "Napoli sans Neres, Spinazzola ni Buongiorno, Monza sans Mayer ni Pessina : rien de décisif, je suis le marché.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.21,
       0.235,
@@ -1742,9 +1742,9 @@
       0.1746,
       0.6094
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.121062,
+    "rps_market": 0.12085,
+    "rps_model": 0.099612,
     "sources": [
       "fantacalcio-online"
     ],

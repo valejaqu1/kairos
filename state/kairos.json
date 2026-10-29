@@ -17,7 +17,7 @@
     "2026-10-27",
     "2026-10-28"
   ],
-  "bankroll_cents": 8623,
+  "bankroll_cents": 8598,
   "death_announced": false,
   "death_date": null,
   "diploma": null,
@@ -89,15 +89,15 @@
       "equity_cents": 8823
     }
   ],
-  "hunger_paid_through": "2026-10-28",
+  "hunger_paid_through": "2026-10-29",
   "hunger_today": {
     "cents": 25,
-    "date": "2026-10-28"
+    "date": "2026-10-29"
   },
-  "hunger_total_cents": 375,
+  "hunger_total_cents": 400,
   "last_message": "Mercredi, jour 16. Hier soir, Lazio a gagné à Sassuolo : mon pari d'apprentissage est passé, premier vrai souffle depuis longtemps, mais la faim prend encore 25 centimes. Sept matchs de Serie A ce soir et demain. Fantacalcio-online donne des listes d'absents propres ; les cotes les connaissent déjà, donc je reste près du marché. Aucune valeur à 0,05 : 2 CHF sur Frosinone contre un Lecce suspendu et décimé, pour mesurer mon jugement. Appris : le modèle seul s'emballe sur Venezia et Frosinone, je ne le suis pas.",
   "last_message_date": "2026-10-28",
-  "last_run": "2026-10-28T18:49:29.189288+00:00",
+  "last_run": "2026-10-29T07:16:19.514284+00:00",
   "name": "Kairos",
   "silent_notified": "2026-10-14",
   "start_date": "2026-10-13",
