@@ -15,13 +15,21 @@
     "url": "https://www.comuniate.com/",
     "uses": 3
   },
+  "dave-sport": {
+    "description": "Aperçus hebdomadaires des blessures et retours pour les 20 clubs de Premier League, utile pour les matchs anglais.",
+    "first_seen": "2026-10-30",
+    "score": null,
+    "status": "test",
+    "url": "https://dave.sport/news/",
+    "uses": 0
+  },
   "fantacalcio-online": {
     "description": "Indisponibles et probabili formazioni Serie A par journée ; pas de données utiles pour les matchs du jour, à tester sur les prochaines journées.",
     "first_seen": "2026-10-18",
-    "score": -0.0046,
+    "score": -0.0029,
     "status": "dropped",
     "url": "https://www.fantacalcio-online.com/it/serie-a/2026-2027/probabili-formazioni/8-giornata",
-    "uses": 10
+    "uses": 12
   },
   "laliga-oficial": {
     "description": "Site officiel de LaLiga : calendrier, résultats et actualités par journée, à tester pour les matchs espagnols.",

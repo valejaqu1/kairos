@@ -1816,38 +1816,6 @@
     "void": false
   },
   {
-    "away": "Espanyol",
-    "commence_time": "2026-10-30T20:00:00Z",
-    "date": "2026-10-29",
-    "event_id": "00b03cb40c27ed23e2ecb18f062a5122",
-    "home": "Villarreal",
-    "note": "Villarreal sans Pape Gueye (suspendu) ni Akhomach, Espanyol sans Kike García : effets minces, je reste un cheveu sous le marché.",
-    "outcome": null,
-    "p_kairos": [
-      0.675,
-      0.185,
-      0.14
-    ],
-    "p_market": [
-      0.688,
-      0.1798,
-      0.1322
-    ],
-    "p_model": [
-      0.6549,
-      0.2108,
-      0.1342
-    ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
-    "sources": [
-      "comuniate"
-    ],
-    "sport_key": "soccer_spain_la_liga",
-    "void": false
-  },
-  {
     "away": "FSV Mainz 05",
     "commence_time": "2026-10-30T19:30:00Z",
     "date": "2026-10-29",
@@ -1871,6 +1839,38 @@
     "rps_model": null,
     "sources": [],
     "sport_key": "soccer_germany_bundesliga",
+    "void": false
+  },
+  {
+    "away": "Espanyol",
+    "commence_time": "2026-10-30T20:00:00Z",
+    "date": "2026-10-30",
+    "event_id": "00b03cb40c27ed23e2ecb18f062a5122",
+    "home": "Villarreal",
+    "note": "Comuniate confirme Gueye suspendu, Akhomach et Saliba blessés côté Villarreal, Kike García absent côté Espanyol : effets minces, je reste un cheveu sous le marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.675,
+      0.185,
+      0.14
+    ],
+    "p_market": [
+      0.6985,
+      0.1741,
+      0.1274
+    ],
+    "p_model": [
+      0.6549,
+      0.2109,
+      0.1342
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
     "void": false
   }
 ]
