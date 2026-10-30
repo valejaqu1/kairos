@@ -1758,7 +1758,7 @@
     "event_id": "667cf69986b200753742c90cb9c5126c",
     "home": "Frosinone",
     "note": "Lecce sans Gaspar (suspendu) ni huit autres absents dont Berisha et Coulibaly, Frosinone presque complet : léger pas vers le domicile, le modèle (70 %) est trop haut.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.6,
       0.22,
@@ -1774,9 +1774,9 @@
       0.1642,
       0.139
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.0962,
+    "rps_market": 0.109081,
+    "rps_model": 0.055626,
     "sources": [
       "fantacalcio-online"
     ],
@@ -1790,7 +1790,7 @@
     "event_id": "da159a6b84dbb548b4d7b94c722caac5",
     "home": "Fiorentina",
     "note": "Atalanta amputée (Scamacca, Kessié, Scalvini, Hien, Raspadori), Fiorentina sans Pongracic mais plus entière : petit pas vers le domicile, sans plus.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.45,
       0.255,
@@ -1806,9 +1806,9 @@
       0.2408,
       0.4976
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.144762,
+    "rps_market": 0.142475,
+    "rps_model": 0.158044,
     "sources": [
       "fantacalcio-online"
     ],

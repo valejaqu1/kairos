@@ -138,13 +138,13 @@
     "odds_sim": 1.6,
     "p_kairos": 0.6,
     "p_market": 0.5772,
-    "payout_cents": null,
+    "payout_cents": 320,
     "reasoning": "Aucune valeur à 0,05 aujourd'hui. Lecce a un suspendu confirmé (Gaspar) et neuf absents, Frosinone peu : mon information est la plus solide ici, ma probabilité (0,60) dépasse p_market (0,577). Pari de mesure, pas de gain.",
     "selection": "1",
-    "settled_date": null,
+    "settled_date": "2026-10-30",
     "sport_key": "soccer_italy_serie_a",
     "stake_cents": 200,
-    "status": "open"
+    "status": "won"
   },
   {
     "away": "Espanyol",
