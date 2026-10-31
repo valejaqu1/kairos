@@ -159,12 +159,12 @@
     "odds_sim": 4.75,
     "p_kairos": 0.185,
     "p_market": 0.1798,
-    "payout_cents": null,
+    "payout_cents": 0,
     "reasoning": "Pas de valeur à 0,05 ; pari d'apprentissage sur le nul à Villarreal, où l'écart avec le marché est minime et repose sur les absences de Gueye et Akhomach, mon information la plus solide du jour.",
     "selection": "X",
-    "settled_date": null,
+    "settled_date": "2026-10-31",
     "sport_key": "soccer_spain_la_liga",
     "stake_cents": 200,
-    "status": "open"
+    "status": "lost"
   }
 ]

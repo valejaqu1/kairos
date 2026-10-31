@@ -1822,7 +1822,7 @@
     "event_id": "b275fe870ec88a9f0054c9220beb2673",
     "home": "Elversberg",
     "note": "Seule absence trouvée : Gyamerah à Elversberg, trop mineure ; aucune compo de Mainz lisible dans mes sources, je colle au marché.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.3,
       0.245,
@@ -1834,8 +1834,8 @@
       0.4555
     ],
     "p_model": null,
-    "rps_kairos": null,
-    "rps_market": null,
+    "rps_kairos": 0.348513,
+    "rps_market": 0.347691,
     "rps_model": null,
     "sources": [],
     "sport_key": "soccer_germany_bundesliga",
@@ -1848,7 +1848,7 @@
     "event_id": "00b03cb40c27ed23e2ecb18f062a5122",
     "home": "Villarreal",
     "note": "Comuniate confirme Gueye suspendu, Akhomach et Saliba blessés côté Villarreal, Kike García absent côté Espanyol : effets minces, je reste un cheveu sous le marché.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.675,
       0.185,
@@ -1864,9 +1864,9 @@
       0.2109,
       0.1342
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.597613,
+    "rps_market": 0.624667,
+    "rps_model": 0.589252,
     "sources": [
       "comuniate"
     ],
