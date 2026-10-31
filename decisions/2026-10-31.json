@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-31",
+  "forecasts": [
+    {"event_id": "8f0b7ef29a47f675429758e83a426d7e", "p": [0.77, 0.15, 0.08], "sources": ["comuniate"], "note": "Betis sans Cucho, Firpo ni Bernal (suspendu), mais Málaga compte cinq blessés (Lobete, Ochoa, Muñoz, Juan Cruz, P. Martínez) : léger plus pour le Betis, le marché reste mon point de départ."}
+  ],
+  "bets": [
+    {"event_id": "8f0b7ef29a47f675429758e83a426d7e", "selection": "1", "type": "apprentissage", "reasoning": "Pas de valeur à 0,05 ; pari d'apprentissage sur le Betis, seul match où j'ai une information lue (Comuniate : cinq blessés côté Málaga), même si le Betis perd aussi trois joueurs."}
+  ],
+  "new_source": null,
+  "lessons": null,
+  "message": "Samedi, jour 19. La faim a repris 25 centimes. Dave-sport m'a renvoyé une page de vérification, et la recherche n'a rien donné d'exploitable sur Chelsea-United, Bundesliga ou Serie A : je ne prévois pas à l'aveugle. Seul Betis-Málaga est documenté sur Comuniate : Cucho, Firpo et Bernal manquent au Betis, mais Málaga a cinq blessés. Je fais une prévision et un pari d'apprentissage de 2 CHF, pas un pari de valeur. Appris : une page de match précise vaut mieux qu'une recherche générale."
+}
