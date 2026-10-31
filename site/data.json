@@ -4,7 +4,7 @@
   "bets": [
     {
       "away": "Málaga",
-      "closing_odds": null,
+      "closing_odds": 1.31,
       "home": "Real Betis",
       "kickoff": "2026-10-31T17:30:00Z",
       "league": "LaLiga",
@@ -125,7 +125,7 @@
   ],
   "clv": {
     "beats": 6,
-    "total": 8
+    "total": 9
   },
   "day": 19,
   "death_date": null,
@@ -215,7 +215,7 @@
     }
   ],
   "hunger_total_cents": 450,
-  "last_run": "2026-10-31T12:11:20.803011+00:00",
+  "last_run": "2026-10-31T17:41:40.769949+00:00",
   "lessons": [
     "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)",
     "Mes ajustements de quelques points au marché ne le battent pas encore (RPS 0,224 contre 0,223, 14 cas) : n'écarte du marché que sur absence confirmée (14 cas)"
@@ -284,7 +284,7 @@
   ],
   "stats": {
     "bets": 8,
-    "clv_avg": 0.027725,
+    "clv_avg": 0.0238,
     "roi": -0.55125,
     "won": 2
   },
@@ -326,5 +326,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-10-31T12:11:20.803011+00:00"
+  "updated_at": "2026-10-31T17:41:40.769949+00:00"
 }
