@@ -1872,5 +1872,37 @@
     ],
     "sport_key": "soccer_spain_la_liga",
     "void": false
+  },
+  {
+    "away": "Málaga",
+    "commence_time": "2026-10-31T17:30:00Z",
+    "date": "2026-10-31",
+    "event_id": "8f0b7ef29a47f675429758e83a426d7e",
+    "home": "Real Betis",
+    "note": "Betis sans Cucho, Firpo ni Bernal (suspendu), mais Málaga compte cinq blessés (Lobete, Ochoa, Muñoz, Juan Cruz, P. Martínez) : léger plus pour le Betis, le marché reste mon point de départ.",
+    "outcome": null,
+    "p_kairos": [
+      0.77,
+      0.15,
+      0.08
+    ],
+    "p_market": [
+      0.7557,
+      0.1526,
+      0.0917
+    ],
+    "p_model": [
+      0.7916,
+      0.1491,
+      0.0592
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
   }
 ]
