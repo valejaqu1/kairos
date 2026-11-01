@@ -201,12 +201,12 @@
     "odds_sim": 2.28,
     "p_kairos": 0.41,
     "p_market": 0.3989,
-    "payout_cents": null,
+    "payout_cents": 0,
     "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur Sevilla, où l'absence de Zaïd Romero côté Getafe est mon information la plus nette du jour.",
     "selection": "2",
-    "settled_date": null,
+    "settled_date": "2026-11-01",
     "sport_key": "soccer_spain_la_liga",
     "stake_cents": 200,
-    "status": "open"
+    "status": "lost"
   }
 ]

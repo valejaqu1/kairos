@@ -1912,7 +1912,7 @@
     "event_id": "ddcc9a51a2d7368e055d1abefacdb74e",
     "home": "Getafe",
     "note": "Getafe perd Zaïd Romero et n'a presque plus d'options en défense : j'ajoute un point à Sevilla, sans plus.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.28,
       0.31,
@@ -1928,9 +1928,9 @@
       0.3481,
       0.3174
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.34325,
+    "rps_market": 0.334816,
+    "rps_model": 0.271915,
     "sources": [
       "comuniate"
     ],
