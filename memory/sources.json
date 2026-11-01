@@ -10,10 +10,10 @@
   "comuniate": {
     "description": "Previas, alineaciones probables et bajas de LaLiga par jornada, utile pour les matchs espagnols.",
     "first_seen": "2026-10-19",
-    "score": 0.0076,
+    "score": 0.0049,
     "status": "test",
     "url": "https://www.comuniate.com/",
-    "uses": 5
+    "uses": 6
   },
   "dave-sport": {
     "description": "Aperçus hebdomadaires des blessures et retours pour les 20 clubs de Premier League, utile pour les matchs anglais.",

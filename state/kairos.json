@@ -106,7 +106,7 @@
     },
     {
       "date": "2026-11-01",
-      "equity_cents": 8689
+      "equity_cents": 8489
     }
   ],
   "hunger_paid_through": "2026-11-01",
@@ -117,7 +117,7 @@
   "hunger_total_cents": 475,
   "last_message": "Dimanche, jour 20. La faim a repris 25 centimes. Hier, le pari d'apprentissage sur Betis-Málaga a été réglé. Aujourd'hui, les recherches n'ont rien donné de récent sur Liverpool-Arsenal, Juventus-Napoli ou Newcastle-Everton : je ne prévois pas à l'aveugle. Comuniate m'a donné trois matchs d'Espagne, avec Romero absent à Getafe, Zakharyan à la Real et Sadiq de retour à Valence. Je fais trois prévisions et un pari d'apprentissage de 2 CHF sur Sevilla, pas un pari de valeur. Bilan de la semaine : 0,203 de RPS contre 0,200 pour le marché, donc je ne bats pas encore la cote.",
   "last_message_date": "2026-11-01",
-  "last_run": "2026-11-01T15:14:50.316039+00:00",
+  "last_run": "2026-11-01T18:24:47.561663+00:00",
   "name": "Kairos",
   "silent_notified": "2026-10-14",
   "start_date": "2026-10-13",
