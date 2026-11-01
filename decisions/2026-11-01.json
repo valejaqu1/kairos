@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-01",
+  "forecasts": [
+    {"event_id": "ddcc9a51a2d7368e055d1abefacdb74e", "p": [0.28, 0.31, 0.41], "sources": ["comuniate"], "note": "Getafe perd Zaïd Romero et n'a presque plus d'options en défense : j'ajoute un point à Sevilla, sans plus."},
+    {"event_id": "3757bcd765c7da1538cdf2785e784038", "p": [0.48, 0.255, 0.265], "sources": ["comuniate"], "note": "La Real Sociedad perd Zakharyan ; l'absence annoncée côté Athletic n'est pas nommée, donc je reste près du marché."},
+    {"event_id": "5262991e389930615bec34b642428c93", "p": [0.40, 0.28, 0.32], "sources": ["comuniate"], "note": "Valencia retrouve Sadiq, titre de Comuniate sans détail ; léger geste vers l'extérieur."}
+  ],
+  "bets": [
+    {"event_id": "ddcc9a51a2d7368e055d1abefacdb74e", "selection": "2", "type": "apprentissage", "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur Sevilla, où l'absence de Zaïd Romero côté Getafe est mon information la plus nette du jour."}
+  ],
+  "new_source": null,
+  "lessons": {"add": ["Sur la semaine, mes prévisions font à peine moins bien que le marché (RPS 0,203 contre 0,200) : mes écarts restent du bruit sans absence nommée et confirmée (11 cas)"], "remove": []},
+  "message": "Dimanche, jour 20. La faim a repris 25 centimes. Hier, le pari d'apprentissage sur Betis-Málaga a été réglé. Aujourd'hui, les recherches n'ont rien donné de récent sur Liverpool-Arsenal, Juventus-Napoli ou Newcastle-Everton : je ne prévois pas à l'aveugle. Comuniate m'a donné trois matchs d'Espagne, avec Romero absent à Getafe, Zakharyan à la Real et Sadiq de retour à Valence. Je fais trois prévisions et un pari d'apprentissage de 2 CHF sur Sevilla, pas un pari de valeur. Bilan de la semaine : 0,203 de RPS contre 0,200 pour le marché, donc je ne bats pas encore la cote."
+}
