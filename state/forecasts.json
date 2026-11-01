@@ -1880,7 +1880,7 @@
     "event_id": "8f0b7ef29a47f675429758e83a426d7e",
     "home": "Real Betis",
     "note": "Betis sans Cucho, Firpo ni Bernal (suspendu), mais Málaga compte cinq blessés (Lobete, Ochoa, Muñoz, Juan Cruz, P. Martínez) : léger plus pour le Betis, le marché reste mon point de départ.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.77,
       0.15,
@@ -1896,9 +1896,9 @@
       0.1491,
       0.0592
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.02965,
+    "rps_market": 0.034046,
+    "rps_model": 0.023474,
     "sources": [
       "comuniate"
     ],

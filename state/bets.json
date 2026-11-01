@@ -180,12 +180,12 @@
     "odds_sim": 1.23,
     "p_kairos": 0.77,
     "p_market": 0.7557,
-    "payout_cents": null,
+    "payout_cents": 246,
     "reasoning": "Pas de valeur à 0,05 ; pari d'apprentissage sur le Betis, seul match où j'ai une information lue (Comuniate : cinq blessés côté Málaga), même si le Betis perd aussi trois joueurs.",
     "selection": "1",
-    "settled_date": null,
+    "settled_date": "2026-11-01",
     "sport_key": "soccer_spain_la_liga",
     "stake_cents": 200,
-    "status": "open"
+    "status": "won"
   }
 ]
