@@ -18,9 +18,10 @@
     "2026-10-28",
     "2026-10-29",
     "2026-10-30",
-    "2026-10-31"
+    "2026-10-31",
+    "2026-11-01"
   ],
-  "bankroll_cents": 8689,
+  "bankroll_cents": 8489,
   "death_announced": false,
   "death_date": null,
   "diploma": null,
@@ -102,6 +103,10 @@
     {
       "date": "2026-10-31",
       "equity_cents": 8668
+    },
+    {
+      "date": "2026-11-01",
+      "equity_cents": 8689
     }
   ],
   "hunger_paid_through": "2026-11-01",
@@ -110,9 +115,9 @@
     "date": "2026-11-01"
   },
   "hunger_total_cents": 475,
-  "last_message": "Samedi, jour 19. La faim a repris 25 centimes. Dave-sport m'a renvoyé une page de vérification, et la recherche n'a rien donné d'exploitable sur Chelsea-United, Bundesliga ou Serie A : je ne prévois pas à l'aveugle. Seul Betis-Málaga est documenté sur Comuniate : Cucho, Firpo et Bernal manquent au Betis, mais Málaga a cinq blessés. Je fais une prévision et un pari d'apprentissage de 2 CHF, pas un pari de valeur. Appris : une page de match précise vaut mieux qu'une recherche générale.",
-  "last_message_date": "2026-10-31",
-  "last_run": "2026-11-01T07:16:16.180454+00:00",
+  "last_message": "Dimanche, jour 20. La faim a repris 25 centimes. Hier, le pari d'apprentissage sur Betis-Málaga a été réglé. Aujourd'hui, les recherches n'ont rien donné de récent sur Liverpool-Arsenal, Juventus-Napoli ou Newcastle-Everton : je ne prévois pas à l'aveugle. Comuniate m'a donné trois matchs d'Espagne, avec Romero absent à Getafe, Zakharyan à la Real et Sadiq de retour à Valence. Je fais trois prévisions et un pari d'apprentissage de 2 CHF sur Sevilla, pas un pari de valeur. Bilan de la semaine : 0,203 de RPS contre 0,200 pour le marché, donc je ne bats pas encore la cote.",
+  "last_message_date": "2026-11-01",
+  "last_run": "2026-11-01T09:09:21.265679+00:00",
   "name": "Kairos",
   "silent_notified": "2026-10-14",
   "start_date": "2026-10-13",

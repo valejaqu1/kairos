@@ -187,5 +187,26 @@
     "sport_key": "soccer_spain_la_liga",
     "stake_cents": 200,
     "status": "won"
+  },
+  {
+    "away": "Sevilla",
+    "closing_odds": null,
+    "commence_time": "2026-11-01T13:00:00Z",
+    "date": "2026-11-01",
+    "event_id": "ddcc9a51a2d7368e055d1abefacdb74e",
+    "home": "Getafe",
+    "id": "2026-11-01-ddcc9a51a2d7368e055d1abefacdb74e-2",
+    "kind": "apprentissage",
+    "odds_median": 2.4,
+    "odds_sim": 2.28,
+    "p_kairos": 0.41,
+    "p_market": 0.3989,
+    "payout_cents": null,
+    "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur Sevilla, où l'absence de Zaïd Romero côté Getafe est mon information la plus nette du jour.",
+    "selection": "2",
+    "settled_date": null,
+    "sport_key": "soccer_spain_la_liga",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]

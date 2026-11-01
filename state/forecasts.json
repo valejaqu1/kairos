@@ -1904,5 +1904,101 @@
     ],
     "sport_key": "soccer_spain_la_liga",
     "void": false
+  },
+  {
+    "away": "Sevilla",
+    "commence_time": "2026-11-01T13:00:00Z",
+    "date": "2026-11-01",
+    "event_id": "ddcc9a51a2d7368e055d1abefacdb74e",
+    "home": "Getafe",
+    "note": "Getafe perd Zaïd Romero et n'a presque plus d'options en défense : j'ajoute un point à Sevilla, sans plus.",
+    "outcome": null,
+    "p_kairos": [
+      0.28,
+      0.31,
+      0.41
+    ],
+    "p_market": [
+      0.2855,
+      0.3156,
+      0.3989
+    ],
+    "p_model": [
+      0.3344,
+      0.3481,
+      0.3174
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Real Sociedad",
+    "commence_time": "2026-11-01T20:00:00Z",
+    "date": "2026-11-01",
+    "event_id": "3757bcd765c7da1538cdf2785e784038",
+    "home": "Athletic Bilbao",
+    "note": "La Real Sociedad perd Zakharyan ; l'absence annoncée côté Athletic n'est pas nommée, donc je reste près du marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.48,
+      0.255,
+      0.265
+    ],
+    "p_market": [
+      0.4699,
+      0.2583,
+      0.2718
+    ],
+    "p_model": [
+      0.4422,
+      0.2466,
+      0.3112
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Valencia",
+    "commence_time": "2026-11-01T17:30:00Z",
+    "date": "2026-11-01",
+    "event_id": "5262991e389930615bec34b642428c93",
+    "home": "Elche CF",
+    "note": "Valencia retrouve Sadiq, titre de Comuniate sans détail ; léger geste vers l'extérieur.",
+    "outcome": null,
+    "p_kairos": [
+      0.4,
+      0.28,
+      0.32
+    ],
+    "p_market": [
+      0.4081,
+      0.2814,
+      0.3105
+    ],
+    "p_model": [
+      0.522,
+      0.2631,
+      0.2149
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
   }
 ]
