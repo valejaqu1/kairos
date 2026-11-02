@@ -1944,7 +1944,7 @@
     "event_id": "3757bcd765c7da1538cdf2785e784038",
     "home": "Athletic Bilbao",
     "note": "La Real Sociedad perd Zakharyan ; l'absence annoncée côté Athletic n'est pas nommée, donc je reste près du marché.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.48,
       0.255,
@@ -1960,9 +1960,9 @@
       0.2466,
       0.3112
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.170313,
+    "rps_market": 0.177441,
+    "rps_model": 0.203993,
     "sources": [
       "comuniate"
     ],
@@ -1976,7 +1976,7 @@
     "event_id": "5262991e389930615bec34b642428c93",
     "home": "Elche CF",
     "note": "Valencia retrouve Sadiq, titre de Comuniate sans détail ; léger geste vers l'extérieur.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.4,
       0.28,
@@ -1992,9 +1992,9 @@
       0.2631,
       0.2149
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.3112,
+    "rps_market": 0.320978,
+    "rps_model": 0.444433,
     "sources": [
       "comuniate"
     ],

@@ -1,0 +1,97 @@
+{
+  "events": [
+    {
+      "away": "Everton",
+      "commence_time": "2026-11-02T20:00:00Z",
+      "event_id": "0f552d9c6990c69474f50ff2fb54e9a3",
+      "home": "Newcastle United",
+      "median": {
+        "1": 2.19,
+        "2": 3.2,
+        "X": 3.55
+      },
+      "n_books": 25,
+      "p_market": [
+        0.4396,
+        0.265,
+        0.2954
+      ],
+      "sim": {
+        "1": 2.08,
+        "2": 3.04,
+        "X": 3.37
+      },
+      "sport_key": "soccer_epl"
+    },
+    {
+      "away": "CA Osasuna",
+      "commence_time": "2026-11-02T20:00:00Z",
+      "event_id": "7a2cd2744fdf15ea675423a6c23df46b",
+      "home": "Deportivo La Coruña",
+      "median": {
+        "1": 2.15,
+        "2": 3.5,
+        "X": 3.2
+      },
+      "n_books": 21,
+      "p_market": [
+        0.444,
+        0.2912,
+        0.2648
+      ],
+      "sim": {
+        "1": 2.04,
+        "2": 3.32,
+        "X": 3.04
+      },
+      "sport_key": "soccer_spain_la_liga"
+    },
+    {
+      "away": "Fiorentina",
+      "commence_time": "2026-11-02T17:30:00Z",
+      "event_id": "66608b64d462d1d3deabe573c8456d86",
+      "home": "Sassuolo",
+      "median": {
+        "1": 2.82,
+        "2": 2.35,
+        "X": 3.65
+      },
+      "n_books": 24,
+      "p_market": [
+        0.3363,
+        0.2564,
+        0.4073
+      ],
+      "sim": {
+        "1": 2.68,
+        "2": 2.23,
+        "X": 3.47
+      },
+      "sport_key": "soccer_italy_serie_a"
+    },
+    {
+      "away": "Parma",
+      "commence_time": "2026-11-02T19:45:00Z",
+      "event_id": "2e488800d615a94e5377c195810303c0",
+      "home": "Atalanta BC",
+      "median": {
+        "1": 1.5,
+        "2": 5.925,
+        "X": 4.5
+      },
+      "n_books": 24,
+      "p_market": [
+        0.6489,
+        0.2011,
+        0.15
+      ],
+      "sim": {
+        "1": 1.42,
+        "2": 5.63,
+        "X": 4.27
+      },
+      "sport_key": "soccer_italy_serie_a"
+    }
+  ],
+  "fetched_at": "2026-11-02T07:16:20.467727+00:00"
+}
