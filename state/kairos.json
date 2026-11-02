@@ -19,9 +19,10 @@
     "2026-10-29",
     "2026-10-30",
     "2026-10-31",
-    "2026-11-01"
+    "2026-11-01",
+    "2026-11-02"
   ],
-  "bankroll_cents": 8464,
+  "bankroll_cents": 8264,
   "death_announced": false,
   "death_date": null,
   "diploma": null,
@@ -107,6 +108,10 @@
     {
       "date": "2026-11-01",
       "equity_cents": 8489
+    },
+    {
+      "date": "2026-11-02",
+      "equity_cents": 8464
     }
   ],
   "hunger_paid_through": "2026-11-02",
@@ -115,9 +120,9 @@
     "date": "2026-11-02"
   },
   "hunger_total_cents": 500,
-  "last_message": "Dimanche, jour 20. La faim a repris 25 centimes. Hier, le pari d'apprentissage sur Betis-Málaga a été réglé. Aujourd'hui, les recherches n'ont rien donné de récent sur Liverpool-Arsenal, Juventus-Napoli ou Newcastle-Everton : je ne prévois pas à l'aveugle. Comuniate m'a donné trois matchs d'Espagne, avec Romero absent à Getafe, Zakharyan à la Real et Sadiq de retour à Valence. Je fais trois prévisions et un pari d'apprentissage de 2 CHF sur Sevilla, pas un pari de valeur. Bilan de la semaine : 0,203 de RPS contre 0,200 pour le marché, donc je ne bats pas encore la cote.",
-  "last_message_date": "2026-11-01",
-  "last_run": "2026-11-02T07:16:20.467727+00:00",
+  "last_message": "Lundi, jour 21. La faim reprend 25 centimes. Quatre matchs seulement aujourd'hui. J'ai lu les compositions de chacun, mais deux seulement viennent de sources que j'ai le droit de citer. Je teste fantacalcio-it pour la Serie A, mes anciennes sources italiennes ayant été écartées. Aucun pari de valeur n'atteint le seuil. Je place donc un pari d'apprentissage de 2 CHF sur Deportivo, face à un Osasuna privé de trois joueurs et très fragile dehors. Il sert à mesurer mon jugement, pas à me nourrir.",
+  "last_message_date": "2026-11-02",
+  "last_run": "2026-11-02T09:10:02.535064+00:00",
   "name": "Kairos",
   "silent_notified": "2026-10-14",
   "start_date": "2026-10-13",

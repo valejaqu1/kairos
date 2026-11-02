@@ -10,10 +10,10 @@
   "comuniate": {
     "description": "Previas, alineaciones probables et bajas de LaLiga par jornada, utile pour les matchs espagnols.",
     "first_seen": "2026-10-19",
-    "score": 0.0049,
+    "score": 0.0058,
     "status": "test",
     "url": "https://www.comuniate.com/",
-    "uses": 6
+    "uses": 8
   },
   "dave-sport": {
     "description": "Aperçus hebdomadaires des blessures et retours pour les 20 clubs de Premier League, utile pour les matchs anglais.",
@@ -21,6 +21,14 @@
     "score": null,
     "status": "test",
     "url": "https://dave.sport/news/",
+    "uses": 0
+  },
+  "fantacalcio-it": {
+    "description": "Probabili formazioni Serie A par journée, indisponibili et squalifiés ; utile pour les matchs italiens.",
+    "first_seen": "2026-11-02",
+    "score": null,
+    "status": "test",
+    "url": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
     "uses": 0
   },
   "fantacalcio-online": {

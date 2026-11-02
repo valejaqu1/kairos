@@ -208,5 +208,26 @@
     "sport_key": "soccer_spain_la_liga",
     "stake_cents": 200,
     "status": "lost"
+  },
+  {
+    "away": "CA Osasuna",
+    "closing_odds": null,
+    "commence_time": "2026-11-02T20:00:00Z",
+    "date": "2026-11-02",
+    "event_id": "7a2cd2744fdf15ea675423a6c23df46b",
+    "home": "Deportivo La Coruña",
+    "id": "2026-11-02-7a2cd2744fdf15ea675423a6c23df46b-1",
+    "kind": "apprentissage",
+    "odds_median": 2.15,
+    "odds_sim": 2.04,
+    "p_kairos": 0.46,
+    "p_market": 0.444,
+    "payout_cents": null,
+    "reasoning": "Aucune valeur à 0,05 aujourd'hui. Pari d'apprentissage : Osasuna amputé de trois joueurs et fragile dehors, ma probabilité dépasse légèrement celle du marché.",
+    "selection": "1",
+    "settled_date": null,
+    "sport_key": "soccer_spain_la_liga",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]

@@ -2000,5 +2000,125 @@
     ],
     "sport_key": "soccer_spain_la_liga",
     "void": false
+  },
+  {
+    "away": "CA Osasuna",
+    "commence_time": "2026-11-02T20:00:00Z",
+    "date": "2026-11-02",
+    "event_id": "7a2cd2744fdf15ea675423a6c23df46b",
+    "home": "Deportivo La Coruña",
+    "note": "Osasuna sans Oroz, Del Castillo ni Herrando et très fragile en déplacement (17 buts encaissés en 5), Deportivo sans Casadó mais déjà prévu par le marché : petit ajustement.",
+    "outcome": null,
+    "p_kairos": [
+      0.46,
+      0.29,
+      0.25
+    ],
+    "p_market": [
+      0.444,
+      0.2912,
+      0.2648
+    ],
+    "p_model": null,
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Fiorentina",
+    "commence_time": "2026-11-02T17:30:00Z",
+    "date": "2026-11-02",
+    "event_id": "66608b64d462d1d3deabe573c8456d86",
+    "home": "Sassuolo",
+    "note": "Thorstvedt suspendu côté Sassuolo, Pongračić absent côté Fiorentina : ça s'équilibre, je reste près du marché et loin du modèle.",
+    "outcome": null,
+    "p_kairos": [
+      0.36,
+      0.26,
+      0.38
+    ],
+    "p_market": [
+      0.3363,
+      0.2564,
+      0.4073
+    ],
+    "p_model": [
+      0.4362,
+      0.2387,
+      0.3251
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "fantacalcio-it"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "Parma",
+    "commence_time": "2026-11-02T19:45:00Z",
+    "date": "2026-11-02",
+    "event_id": "2e488800d615a94e5377c195810303c0",
+    "home": "Atalanta BC",
+    "note": "Dix absents à Bergame mais Parma en difficulté ; info lue hors de mes sources citables, donc simple prudence de 2 points.",
+    "outcome": null,
+    "p_kairos": [
+      0.63,
+      0.21,
+      0.16
+    ],
+    "p_market": [
+      0.6489,
+      0.2011,
+      0.15
+    ],
+    "p_model": [
+      0.5929,
+      0.2528,
+      0.1543
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
+  },
+  {
+    "away": "Everton",
+    "commence_time": "2026-11-02T20:00:00Z",
+    "date": "2026-11-02",
+    "event_id": "0f552d9c6990c69474f50ff2fb54e9a3",
+    "home": "Newcastle United",
+    "note": "Grealish écarté et Osula douteux, Branthwaite revenu : rien de net, je suis le marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.44,
+      0.27,
+      0.29
+    ],
+    "p_market": [
+      0.4396,
+      0.265,
+      0.2954
+    ],
+    "p_model": [
+      0.4135,
+      0.2896,
+      0.2969
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [],
+    "sport_key": "soccer_epl",
+    "void": false
   }
 ]
