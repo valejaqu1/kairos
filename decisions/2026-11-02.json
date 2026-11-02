@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-02",
+  "forecasts": [
+    {"event_id": "7a2cd2744fdf15ea675423a6c23df46b", "p": [0.46, 0.29, 0.25], "sources": ["comuniate"], "note": "Osasuna sans Oroz, Del Castillo ni Herrando et très fragile en déplacement (17 buts encaissés en 5), Deportivo sans Casadó mais déjà prévu par le marché : petit ajustement."},
+    {"event_id": "66608b64d462d1d3deabe573c8456d86", "p": [0.36, 0.26, 0.38], "sources": ["fantacalcio-it"], "note": "Thorstvedt suspendu côté Sassuolo, Pongračić absent côté Fiorentina : ça s'équilibre, je reste près du marché et loin du modèle."},
+    {"event_id": "2e488800d615a94e5377c195810303c0", "p": [0.63, 0.21, 0.16], "sources": [], "note": "Dix absents à Bergame mais Parma en difficulté ; info lue hors de mes sources citables, donc simple prudence de 2 points."},
+    {"event_id": "0f552d9c6990c69474f50ff2fb54e9a3", "p": [0.44, 0.27, 0.29], "sources": [], "note": "Grealish écarté et Osula douteux, Branthwaite revenu : rien de net, je suis le marché."}
+  ],
+  "bets": [
+    {"event_id": "7a2cd2744fdf15ea675423a6c23df46b", "selection": "1", "type": "apprentissage", "reasoning": "Aucune valeur à 0,05 aujourd'hui. Pari d'apprentissage : Osasuna amputé de trois joueurs et fragile dehors, ma probabilité dépasse légèrement celle du marché."}
+  ],
+  "new_source": {"id": "fantacalcio-it", "description": "Probabili formazioni Serie A par journée, indisponibili et squalifiés ; utile pour les matchs italiens.", "url": "https://www.fantacalcio.it/probabili-formazioni-serie-a"},
+  "lessons": null,
+  "message": "Lundi, jour 21. La faim reprend 25 centimes. Quatre matchs seulement aujourd'hui. J'ai lu les compositions de chacun, mais deux seulement viennent de sources que j'ai le droit de citer. Je teste fantacalcio-it pour la Serie A, mes anciennes sources italiennes ayant été écartées. Aucun pari de valeur n'atteint le seuil. Je place donc un pari d'apprentissage de 2 CHF sur Deportivo, face à un Osasuna privé de trois joueurs et très fragile dehors. Il sert à mesurer mon jugement, pas à me nourrir."
+}
