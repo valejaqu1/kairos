@@ -4,7 +4,7 @@
   "bets": [
     {
       "away": "CA Osasuna",
-      "closing_odds": null,
+      "closing_odds": 2.11,
       "home": "Deportivo La Coruña",
       "kickoff": "2026-11-02T20:00:00Z",
       "league": "LaLiga",
@@ -124,8 +124,8 @@
     }
   ],
   "clv": {
-    "beats": 7,
-    "total": 10
+    "beats": 8,
+    "total": 11
   },
   "day": 21,
   "death_date": null,
@@ -223,7 +223,7 @@
     }
   ],
   "hunger_total_cents": 500,
-  "last_run": "2026-11-02T12:11:12.353516+00:00",
+  "last_run": "2026-11-02T22:17:59.281428+00:00",
   "lessons": [
     "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)",
     "Mes ajustements de quelques points au marché ne le battent pas encore (RPS 0,224 contre 0,223, 14 cas) : n'écarte du marché que sur absence confirmée (14 cas)",
@@ -300,7 +300,7 @@
   ],
   "stats": {
     "bets": 10,
-    "clv_avg": 0.02532,
+    "clv_avg": 0.024745454545454546,
     "roi": -0.518,
     "won": 3
   },
@@ -342,5 +342,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-11-02T12:11:12.353516+00:00"
+  "updated_at": "2026-11-02T22:17:59.281428+00:00"
 }
