@@ -222,12 +222,12 @@
     "odds_sim": 2.04,
     "p_kairos": 0.46,
     "p_market": 0.444,
-    "payout_cents": null,
+    "payout_cents": 408,
     "reasoning": "Aucune valeur à 0,05 aujourd'hui. Pari d'apprentissage : Osasuna amputé de trois joueurs et fragile dehors, ma probabilité dépasse légèrement celle du marché.",
     "selection": "1",
-    "settled_date": null,
+    "settled_date": "2026-11-03",
     "sport_key": "soccer_spain_la_liga",
     "stake_cents": 200,
-    "status": "open"
+    "status": "won"
   }
 ]
