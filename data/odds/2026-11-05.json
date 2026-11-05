@@ -1,0 +1,97 @@
+{
+  "events": [
+    {
+      "away": "Coventry City",
+      "commence_time": "2026-11-06T20:00:00Z",
+      "event_id": "586bec023ee8ac2f0645d963bd2c9d25",
+      "home": "Everton",
+      "median": {
+        "1": 1.7,
+        "2": 4.72,
+        "X": 3.97
+      },
+      "n_books": 25,
+      "p_market": [
+        0.5715,
+        0.2337,
+        0.1947
+      ],
+      "sim": {
+        "1": 1.61,
+        "2": 4.48,
+        "X": 3.77
+      },
+      "sport_key": "soccer_epl"
+    },
+    {
+      "away": "Alavés",
+      "commence_time": "2026-11-06T20:00:00Z",
+      "event_id": "9dd0014685fd62d9b2890d7c33a8c9ab",
+      "home": "Sevilla",
+      "median": {
+        "1": 1.95,
+        "2": 4.1,
+        "X": 3.4
+      },
+      "n_books": 21,
+      "p_market": [
+        0.496,
+        0.2767,
+        0.2273
+      ],
+      "sim": {
+        "1": 1.85,
+        "2": 3.89,
+        "X": 3.23
+      },
+      "sport_key": "soccer_spain_la_liga"
+    },
+    {
+      "away": "Udinese",
+      "commence_time": "2026-11-06T19:45:00Z",
+      "event_id": "fa069801a5c9b49143447a1a1d173fd1",
+      "home": "Venezia",
+      "median": {
+        "1": 2.24,
+        "2": 3.12,
+        "X": 3.475
+      },
+      "n_books": 24,
+      "p_market": [
+        0.4281,
+        0.2697,
+        0.3021
+      ],
+      "sim": {
+        "1": 2.13,
+        "2": 2.96,
+        "X": 3.3
+      },
+      "sport_key": "soccer_italy_serie_a"
+    },
+    {
+      "away": "Borussia Monchengladbach",
+      "commence_time": "2026-11-06T19:30:00Z",
+      "event_id": "295076c39e49863cb54db085ac3cd340",
+      "home": "Hamburger SV",
+      "median": {
+        "1": 2.4,
+        "2": 2.75,
+        "X": 3.6
+      },
+      "n_books": 23,
+      "p_market": [
+        0.3971,
+        0.2589,
+        0.344
+      ],
+      "sim": {
+        "1": 2.28,
+        "2": 2.61,
+        "X": 3.42
+      },
+      "sport_key": "soccer_germany_bundesliga"
+    }
+  ],
+  "fetched_at": "2026-11-05T07:16:16.722347+00:00"
+}
