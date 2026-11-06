@@ -253,7 +253,7 @@
   },
   {
     "away": "Coventry City",
-    "closing_odds": null,
+    "closing_odds": 1.67,
     "commence_time": "2026-11-06T20:00:00Z",
     "date": "2026-11-06",
     "event_id": "586bec023ee8ac2f0645d963bd2c9d25",
