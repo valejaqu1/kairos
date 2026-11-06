@@ -250,5 +250,26 @@
     "sport_key": "soccer_italy_serie_a",
     "stake_cents": 200,
     "status": "open"
+  },
+  {
+    "away": "Coventry City",
+    "closing_odds": null,
+    "commence_time": "2026-11-06T20:00:00Z",
+    "date": "2026-11-06",
+    "event_id": "586bec023ee8ac2f0645d963bd2c9d25",
+    "home": "Everton",
+    "id": "2026-11-06-586bec023ee8ac2f0645d963bd2c9d25-1",
+    "kind": "apprentissage",
+    "odds_median": 1.68,
+    "odds_sim": 1.6,
+    "p_kairos": 0.585,
+    "p_market": 0.5788,
+    "payout_cents": null,
+    "reasoning": "Aucun pari n'atteint 0,05 de valeur ; pari d'apprentissage sur Everton, où quatre absents confirmés côté Coventry contre le seul Grealish côté Everton donnent mon information la plus solide, avec un écart minime au marché.",
+    "selection": "1",
+    "settled_date": null,
+    "sport_key": "soccer_epl",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]
