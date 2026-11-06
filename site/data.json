@@ -4,7 +4,7 @@
   "bets": [
     {
       "away": "Coventry City",
-      "closing_odds": null,
+      "closing_odds": 1.67,
       "home": "Everton",
       "kickoff": "2026-11-06T20:00:00Z",
       "league": "Premier League",
@@ -19,7 +19,7 @@
     },
     {
       "away": "Udinese",
-      "closing_odds": null,
+      "closing_odds": 2.32,
       "home": "Venezia",
       "kickoff": "2026-11-06T19:45:00Z",
       "league": "Serie A",
@@ -124,8 +124,8 @@
     }
   ],
   "clv": {
-    "beats": 8,
-    "total": 11
+    "beats": 9,
+    "total": 13
   },
   "day": 25,
   "death_date": null,
@@ -239,7 +239,7 @@
     }
   ],
   "hunger_total_cents": 600,
-  "last_run": "2026-11-06T12:11:12.716458+00:00",
+  "last_run": "2026-11-06T19:56:51.891365+00:00",
   "lessons": [
     "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)",
     "Mes ajustements de quelques points au marché ne le battent pas encore (RPS 0,224 contre 0,223, 14 cas) : n'écarte du marché que sur absence confirmée (14 cas)",
@@ -316,7 +316,7 @@
   ],
   "stats": {
     "bets": 11,
-    "clv_avg": 0.024745454545454546,
+    "clv_avg": 0.018746153846153846,
     "roi": -0.37636363636363634,
     "won": 4
   },
@@ -358,5 +358,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-11-06T12:11:12.716458+00:00"
+  "updated_at": "2026-11-06T19:56:51.891365+00:00"
 }
