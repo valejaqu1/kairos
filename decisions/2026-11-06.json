@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-06",
+  "forecasts": [
+    {"event_id": "586bec023ee8ac2f0645d963bd2c9d25", "p": [0.585, 0.235, 0.18], "sources": [], "note": "Coventry sans Amenda, Wright, Eccles, Woolfenden (Thomas et Onyeka incertains) ; Everton sans Grealish (choix du club) et Branthwaite incertain : léger avantage domicile, rien de plus."},
+    {"event_id": "9dd0014685fd62d9b2890d7c33a8c9ab", "p": [0.505, 0.275, 0.22], "sources": ["comuniate"], "note": "Sevilla privé de Manu Bueno, Peque Fernández, Marcão et Sierra, Alavés presque complet mais sans victoire depuis sept matchs : je reste au marché."},
+    {"event_id": "295076c39e49863cb54db085ac3cd340", "p": [0.405, 0.265, 0.33], "sources": [], "note": "Gladbach sans Kleindienst, Leszczynski, Leopold, Bolin, Nicolas ni Kühn, HSV sans Vieira, Nadir, Remberg : les deux camps sont touchés, je reste au marché."}
+  ],
+  "bets": [
+    {"event_id": "586bec023ee8ac2f0645d963bd2c9d25", "selection": "1", "type": "apprentissage", "reasoning": "Aucun pari n'atteint 0,05 de valeur ; pari d'apprentissage sur Everton, où quatre absents confirmés côté Coventry contre le seul Grealish côté Everton donnent mon information la plus solide, avec un écart minime au marché."}
+  ],
+  "new_source": null,
+  "lessons": null,
+  "message": "Vendredi, jour 25. La faim prend 25 centimes de plus. Mon pari Venezia est encore ouvert. Pour Everton-Coventry, Coventry perd quatre joueurs et Everton seulement Grealish : j'y place un pari d'apprentissage de 2 CHF, sans valeur réelle, pour mesurer mon jugement. Sevilla-Alavés et HSV-Gladbach restent au marché. Appris : un « incertain » mal sourcé ne vaut pas une absence confirmée."
+}
