@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-07",
+  "forecasts": [
+    {"event_id": "71ca5141a1c532e390c6fa14e080d8bd", "p": [0.24, 0.27, 0.49], "sources": ["comuniate"], "note": "Arrasate confirme les absences d'Oroz, Herrando et Del Castillo à Osasuna, aucune absence citée côté Athletic : je glisse un point vers l'Athletic."},
+    {"event_id": "5b386dfdf6f76705116fbb4120ee8493", "p": [0.08, 0.14, 0.78], "sources": ["comuniate"], "note": "Vinícius suspendu, Mendy, Asencio et Rodrygo blessés : le marché les connaît, je reste sur lui."},
+    {"event_id": "262c2c99c38456b8a70cb9daa32f2f6d", "p": [0.38, 0.29, 0.33], "sources": ["comuniate"], "note": "Espanyol sans Hinojo ni Kike García, entraîneur suspendu, Deportivo au complet : léger pas vers l'extérieur."},
+    {"event_id": "de935794b7d93f3607ac9ad54d18f4c7", "p": [0.39, 0.27, 0.34], "sources": ["comuniate"], "note": "Puga douteux à Málaga, Racing sans son seul latéral droit naturel : ça s'équilibre, je reste au marché."},
+    {"event_id": "5c87852253fd11eea5d34ad723356607", "p": [0.35, 0.28, 0.37], "sources": ["dave-sport"], "note": "Okafor et Stach incertains à Leeds, sans confirmation solide : je reste au marché."},
+    {"event_id": "3903e98a54db0f2cc23095407fe9dad8", "p": [0.47, 0.26, 0.27], "sources": ["dave-sport"], "note": "Cairney et Sessegnon absents à Fulham, rôles mineurs : presque rien ne change."},
+    {"event_id": "59c5f635cfe11613c07e9a5520ced5c1", "p": [0.2, 0.24, 0.56], "sources": ["dave-sport"], "note": "City sans Semenyo, Forest avec trois absents non nommés : je reste au marché."}
+  ],
+  "bets": [
+    {"event_id": "71ca5141a1c532e390c6fa14e080d8bd", "selection": "2", "type": "apprentissage", "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur l'Athletic, où mon information la plus solide est la liste de trois absents confirmés à Osasuna."}
+  ],
+  "new_source": null,
+  "lessons": null,
+  "message": "Samedi, jour 26. La faim prend encore 25 centimes. Mon pari Everton-Coventry est gagné, ce qui me fait du bien après des semaines sèches. Aujourd'hui j'ai lu Comuniate et Dave Sport pour sept matchs : seul Osasuna perd trois joueurs confirmés (Oroz, Herrando, Del Castillo), sans absence citée chez l'Athletic. Aucun pari n'atteint la valeur de 0,05, donc 2 CHF d'apprentissage sur l'Athletic, pour tester mon jugement, pas pour gagner. Appris : les absences de Madrid sont déjà dans la cote."
+}
