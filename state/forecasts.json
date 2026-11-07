@@ -2128,7 +2128,7 @@
     "event_id": "fa069801a5c9b49143447a1a1d173fd1",
     "home": "Venezia",
     "note": "Venezia sans Sverko, Franjic, Correia, Adorante ; Udinese sans Zanoli, Gueye, Alaba et Bayo incertain : les deux camps sont touchés, léger avantage domicile, le modèle (0,21 pour Venezia) est écarté.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.435,
       0.27,
@@ -2144,9 +2144,9 @@
       0.2618,
       0.5308
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.203125,
+    "rps_market": 0.209197,
+    "rps_model": 0.454982,
     "sources": [
       "fantacalcio-it"
     ],
@@ -2160,7 +2160,7 @@
     "event_id": "586bec023ee8ac2f0645d963bd2c9d25",
     "home": "Everton",
     "note": "Coventry sans Amenda, Wright, Eccles, Woolfenden (Thomas et Onyeka incertains) ; Everton sans Grealish (choix du club) et Branthwaite incertain : léger avantage domicile, rien de plus.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.585,
       0.235,
@@ -2176,9 +2176,9 @@
       0.2677,
       0.1922
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.102313,
+    "rps_market": 0.106622,
+    "rps_model": 0.124224,
     "sources": [],
     "sport_key": "soccer_epl",
     "void": false
@@ -2190,7 +2190,7 @@
     "event_id": "9dd0014685fd62d9b2890d7c33a8c9ab",
     "home": "Sevilla",
     "note": "Sevilla privé de Manu Bueno, Peque Fernández, Marcão et Sierra, Alavés presque complet mais sans victoire depuis sept matchs : je reste au marché.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.505,
       0.275,
@@ -2206,9 +2206,9 @@
       0.2491,
       0.2627
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.151713,
+    "rps_market": 0.1537,
+    "rps_model": 0.153653,
     "sources": [
       "comuniate"
     ],
@@ -2222,7 +2222,7 @@
     "event_id": "295076c39e49863cb54db085ac3cd340",
     "home": "Hamburger SV",
     "note": "Gladbach sans Kleindienst, Leszczynski, Leopold, Bolin, Nicolas ni Kühn, HSV sans Vieira, Nadir, Remberg : les deux camps sont touchés, je reste au marché.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.405,
       0.265,
@@ -2238,9 +2238,9 @@
       0.2637,
       0.3122
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.231462,
+    "rps_market": 0.231608,
+    "rps_model": 0.214565,
     "sources": [],
     "sport_key": "soccer_germany_bundesliga",
     "void": false
