@@ -18,10 +18,10 @@
   "dave-sport": {
     "description": "Aperçus hebdomadaires des blessures et retours pour les 20 clubs de Premier League, utile pour les matchs anglais.",
     "first_seen": "2026-10-30",
-    "score": null,
+    "score": 0.001,
     "status": "test",
     "url": "https://dave.sport/news/",
-    "uses": 0
+    "uses": 1
   },
   "fantacalcio-it": {
     "description": "Probabili formazioni Serie A par journée, indisponibili et squalifiés ; utile pour les matchs italiens.",
