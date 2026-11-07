@@ -2372,7 +2372,7 @@
     "event_id": "5c87852253fd11eea5d34ad723356607",
     "home": "Leeds United",
     "note": "Okafor et Stach incertains à Leeds, sans confirmation solide : je reste au marché.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.35,
       0.28,
@@ -2388,9 +2388,9 @@
       0.2981,
       0.2491
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.2797,
+    "rps_market": 0.280661,
+    "rps_model": 0.180739,
     "sources": [
       "dave-sport"
     ],
