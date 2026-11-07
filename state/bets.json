@@ -271,5 +271,26 @@
     "sport_key": "soccer_epl",
     "stake_cents": 200,
     "status": "won"
+  },
+  {
+    "away": "Athletic Bilbao",
+    "closing_odds": null,
+    "commence_time": "2026-11-07T17:30:00Z",
+    "date": "2026-11-07",
+    "event_id": "71ca5141a1c532e390c6fa14e080d8bd",
+    "home": "CA Osasuna",
+    "id": "2026-11-07-71ca5141a1c532e390c6fa14e080d8bd-2",
+    "kind": "apprentissage",
+    "odds_median": 2.05,
+    "odds_sim": 1.95,
+    "p_kairos": 0.49,
+    "p_market": 0.4692,
+    "payout_cents": null,
+    "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur l'Athletic, où mon information la plus solide est la liste de trois absents confirmés à Osasuna.",
+    "selection": "2",
+    "settled_date": null,
+    "sport_key": "soccer_spain_la_liga",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]

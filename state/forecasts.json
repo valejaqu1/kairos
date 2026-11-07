@@ -2244,5 +2244,221 @@
     "sources": [],
     "sport_key": "soccer_germany_bundesliga",
     "void": false
+  },
+  {
+    "away": "Athletic Bilbao",
+    "commence_time": "2026-11-07T17:30:00Z",
+    "date": "2026-11-07",
+    "event_id": "71ca5141a1c532e390c6fa14e080d8bd",
+    "home": "CA Osasuna",
+    "note": "Arrasate confirme les absences d'Oroz, Herrando et Del Castillo à Osasuna, aucune absence citée côté Athletic : je glisse un point vers l'Athletic.",
+    "outcome": null,
+    "p_kairos": [
+      0.24,
+      0.27,
+      0.49
+    ],
+    "p_market": [
+      0.2555,
+      0.2753,
+      0.4692
+    ],
+    "p_model": [
+      0.3854,
+      0.2858,
+      0.3288
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Real Madrid",
+    "commence_time": "2026-11-07T20:00:00Z",
+    "date": "2026-11-07",
+    "event_id": "5b386dfdf6f76705116fbb4120ee8493",
+    "home": "Valencia",
+    "note": "Vinícius suspendu, Mendy, Asencio et Rodrygo blessés : le marché les connaît, je reste sur lui.",
+    "outcome": null,
+    "p_kairos": [
+      0.08,
+      0.14,
+      0.78
+    ],
+    "p_market": [
+      0.0787,
+      0.1356,
+      0.7857
+    ],
+    "p_model": [
+      0.1574,
+      0.2367,
+      0.6059
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Deportivo La Coruña",
+    "commence_time": "2026-11-07T15:15:00Z",
+    "date": "2026-11-07",
+    "event_id": "262c2c99c38456b8a70cb9daa32f2f6d",
+    "home": "Espanyol",
+    "note": "Espanyol sans Hinojo ni Kike García, entraîneur suspendu, Deportivo au complet : léger pas vers l'extérieur.",
+    "outcome": null,
+    "p_kairos": [
+      0.38,
+      0.29,
+      0.33
+    ],
+    "p_market": [
+      0.4039,
+      0.2881,
+      0.3081
+    ],
+    "p_model": null,
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Real Racing Club de Santander",
+    "commence_time": "2026-11-07T13:00:00Z",
+    "date": "2026-11-07",
+    "event_id": "de935794b7d93f3607ac9ad54d18f4c7",
+    "home": "Málaga",
+    "note": "Puga douteux à Málaga, Racing sans son seul latéral droit naturel : ça s'équilibre, je reste au marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.39,
+      0.27,
+      0.34
+    ],
+    "p_market": [
+      0.3977,
+      0.2705,
+      0.3318
+    ],
+    "p_model": null,
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Tottenham Hotspur",
+    "commence_time": "2026-11-07T12:30:00Z",
+    "date": "2026-11-07",
+    "event_id": "5c87852253fd11eea5d34ad723356607",
+    "home": "Leeds United",
+    "note": "Okafor et Stach incertains à Leeds, sans confirmation solide : je reste au marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.35,
+      0.28,
+      0.37
+    ],
+    "p_market": [
+      0.3479,
+      0.2832,
+      0.3689
+    ],
+    "p_model": [
+      0.4528,
+      0.2981,
+      0.2491
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "dave-sport"
+    ],
+    "sport_key": "soccer_epl",
+    "void": false
+  },
+  {
+    "away": "Newcastle United",
+    "commence_time": "2026-11-07T15:00:00Z",
+    "date": "2026-11-07",
+    "event_id": "3903e98a54db0f2cc23095407fe9dad8",
+    "home": "Fulham",
+    "note": "Cairney et Sessegnon absents à Fulham, rôles mineurs : presque rien ne change.",
+    "outcome": null,
+    "p_kairos": [
+      0.47,
+      0.26,
+      0.27
+    ],
+    "p_market": [
+      0.4766,
+      0.2579,
+      0.2655
+    ],
+    "p_model": [
+      0.424,
+      0.2884,
+      0.2877
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "dave-sport"
+    ],
+    "sport_key": "soccer_epl",
+    "void": false
+  },
+  {
+    "away": "Manchester City",
+    "commence_time": "2026-11-07T17:30:00Z",
+    "date": "2026-11-07",
+    "event_id": "59c5f635cfe11613c07e9a5520ced5c1",
+    "home": "Nottingham Forest",
+    "note": "City sans Semenyo, Forest avec trois absents non nommés : je reste au marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.2,
+      0.24,
+      0.56
+    ],
+    "p_market": [
+      0.2024,
+      0.2343,
+      0.5634
+    ],
+    "p_model": [
+      0.1898,
+      0.2666,
+      0.5436
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "dave-sport"
+    ],
+    "sport_key": "soccer_epl",
+    "void": false
   }
 ]
