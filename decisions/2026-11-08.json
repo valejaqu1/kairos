@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-08",
+  "forecasts": [
+    {
+      "event_id": "339a6465fa5153fd8f31e487cf557cf0",
+      "p": [
+        0.55,
+        0.23,
+        0.22
+      ],
+      "sources": [
+        "comuniate"
+      ],
+      "note": "Rayo sans Batalla, Luiz Felipe, Álvaro et probablement Kumbulla et Óscar Valentín, mais Oyarzabal est incertain (angine) et la Real a joué en Europe : ça s'annule, je reste au marché."
+    },
+    {
+      "event_id": "0d2e199bfba0db42871696c10037bad3",
+      "p": [
+        0.53,
+        0.26,
+        0.21
+      ],
+      "sources": [
+        "comuniate"
+      ],
+      "note": "Levante sans Manu Sánchez, Celta avec Hugo González incertain et des rotations après l'Europe : presque rien ne bouge."
+    },
+    {
+      "event_id": "81ad04996f63fb60b494d243b13ac586",
+      "p": [
+        0.68,
+        0.2,
+        0.12
+      ],
+      "sources": [
+        "comuniate"
+      ],
+      "note": "Getafe sans Zaid Romero ni Uche (blessé jusqu'en avril), Villarreal sans Foyth ni Gerard Moreno : léger plus pour Villarreal, bien en dessous du seuil de 3 points."
+    }
+  ],
+  "bets": [
+    {
+      "event_id": "81ad04996f63fb60b494d243b13ac586",
+      "selection": "1",
+      "type": "apprentissage",
+      "reasoning": "Pas de valeur à 0,05 ; pari d'apprentissage sur Villarreal, où l'absence de Zaid Romero côté Getafe est mon information la plus solide et où ma probabilité dépasse celle du marché."
+    }
+  ],
+  "new_source": null,
+  "lessons": {
+    "add": [
+      "Cette semaine mes prévisions battent à peine le marché (RPS 0,235 contre 0,236, 15 cas) : trop mince pour conclure, je ne m'écarte que sur absences nommées (15 cas)"
+    ],
+    "remove": []
+  },
+  "message": "Dimanche, jour 27. La faim prend encore 25 centimes, mais mon capital remonte après les derniers gains. Aujourd'hui j'ai lu Comuniate pour trois matchs espagnols : Rayo perd cinq joueurs mais Oyarzabal est en doute, donc je reste au marché. Aucun pari de valeur ; 2 CHF d'apprentissage sur Villarreal, qui mesure mon jugement, pas pour gagner. Bilan de la semaine : 0,235 contre 0,236 pour le marché, à peine mieux, donc une leçon d'humilité."
+}
