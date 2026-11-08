@@ -2252,7 +2252,7 @@
     "event_id": "71ca5141a1c532e390c6fa14e080d8bd",
     "home": "CA Osasuna",
     "note": "Arrasate confirme les absences d'Oroz, Herrando et Del Castillo à Osasuna, aucune absence citée côté Athletic : je glisse un point vers l'Athletic.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.24,
       0.27,
@@ -2268,9 +2268,9 @@
       0.2858,
       0.3288
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.14885,
+    "rps_market": 0.142714,
+    "rps_model": 0.128321,
     "sources": [
       "comuniate"
     ],
@@ -2284,7 +2284,7 @@
     "event_id": "5b386dfdf6f76705116fbb4120ee8493",
     "home": "Valencia",
     "note": "Vinícius suspendu, Mendy, Asencio et Rodrygo blessés : le marché les connaît, je reste sur lui.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.08,
       0.14,
@@ -2300,9 +2300,9 @@
       0.2367,
       0.6059
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.0274,
+    "rps_market": 0.026059,
+    "rps_model": 0.090045,
     "sources": [
       "comuniate"
     ],
@@ -2316,7 +2316,7 @@
     "event_id": "262c2c99c38456b8a70cb9daa32f2f6d",
     "home": "Espanyol",
     "note": "Espanyol sans Hinojo ni Kike García, entraîneur suspendu, Deportivo au complet : léger pas vers l'extérieur.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.38,
       0.29,
@@ -2328,8 +2328,8 @@
       0.3081
     ],
     "p_model": null,
-    "rps_kairos": null,
-    "rps_market": null,
+    "rps_kairos": 0.12665,
+    "rps_market": 0.129,
     "rps_model": null,
     "sources": [
       "comuniate"
@@ -2344,7 +2344,7 @@
     "event_id": "de935794b7d93f3607ac9ad54d18f4c7",
     "home": "Málaga",
     "note": "Puga douteux à Málaga, Racing sans son seul latéral droit naturel : ça s'équilibre, je reste au marché.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.39,
       0.27,
@@ -2356,8 +2356,8 @@
       0.3318
     ],
     "p_model": null,
-    "rps_kairos": null,
-    "rps_market": null,
+    "rps_kairos": 0.29385,
+    "rps_market": 0.302328,
     "rps_model": null,
     "sources": [
       "comuniate"
@@ -2404,7 +2404,7 @@
     "event_id": "3903e98a54db0f2cc23095407fe9dad8",
     "home": "Fulham",
     "note": "Cairney et Sessegnon absents à Fulham, rôles mineurs : presque rien ne change.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.47,
       0.26,
@@ -2420,9 +2420,9 @@
       0.2884,
       0.2877
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.1469,
+    "rps_market": 0.148819,
+    "rps_model": 0.131245,
     "sources": [
       "dave-sport"
     ],
@@ -2436,7 +2436,7 @@
     "event_id": "59c5f635cfe11613c07e9a5520ced5c1",
     "home": "Nottingham Forest",
     "note": "City sans Semenyo, Forest avec trois absents non nommés : je reste au marché.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.2,
       0.24,
@@ -2452,9 +2452,9 @@
       0.2666,
       0.5436
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.4768,
+    "rps_market": 0.476736,
+    "rps_model": 0.475963,
     "sources": [
       "dave-sport"
     ],
