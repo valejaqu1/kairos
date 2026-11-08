@@ -295,7 +295,7 @@
   },
   {
     "away": "Getafe",
-    "closing_odds": null,
+    "closing_odds": 1.52,
     "commence_time": "2026-11-08T17:30:00Z",
     "date": "2026-11-08",
     "event_id": "81ad04996f63fb60b494d243b13ac586",
