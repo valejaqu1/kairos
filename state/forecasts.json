@@ -2460,5 +2460,101 @@
     ],
     "sport_key": "soccer_epl",
     "void": false
+  },
+  {
+    "away": "Rayo Vallecano",
+    "commence_time": "2026-11-08T15:15:00Z",
+    "date": "2026-11-08",
+    "event_id": "339a6465fa5153fd8f31e487cf557cf0",
+    "home": "Real Sociedad",
+    "note": "Rayo sans Batalla, Luiz Felipe, Álvaro et probablement Kumbulla et Óscar Valentín, mais Oyarzabal est incertain (angine) et la Real a joué en Europe : ça s'annule, je reste au marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.55,
+      0.23,
+      0.22
+    ],
+    "p_market": [
+      0.5531,
+      0.2306,
+      0.2163
+    ],
+    "p_model": [
+      0.5305,
+      0.2294,
+      0.24
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Levante",
+    "commence_time": "2026-11-08T17:30:00Z",
+    "date": "2026-11-08",
+    "event_id": "0d2e199bfba0db42871696c10037bad3",
+    "home": "Celta Vigo",
+    "note": "Levante sans Manu Sánchez, Celta avec Hugo González incertain et des rotations après l'Europe : presque rien ne bouge.",
+    "outcome": null,
+    "p_kairos": [
+      0.53,
+      0.26,
+      0.21
+    ],
+    "p_market": [
+      0.5279,
+      0.2582,
+      0.2139
+    ],
+    "p_model": [
+      0.528,
+      0.2564,
+      0.2156
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Getafe",
+    "commence_time": "2026-11-08T17:30:00Z",
+    "date": "2026-11-08",
+    "event_id": "81ad04996f63fb60b494d243b13ac586",
+    "home": "Villarreal",
+    "note": "Getafe sans Zaid Romero ni Uche (blessé jusqu'en avril), Villarreal sans Foyth ni Gerard Moreno : léger plus pour Villarreal, bien en dessous du seuil de 3 points.",
+    "outcome": null,
+    "p_kairos": [
+      0.68,
+      0.2,
+      0.12
+    ],
+    "p_market": [
+      0.6737,
+      0.2017,
+      0.1245
+    ],
+    "p_model": [
+      0.6042,
+      0.2603,
+      0.1355
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
   }
 ]
