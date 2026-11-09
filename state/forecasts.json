@@ -2468,7 +2468,7 @@
     "event_id": "339a6465fa5153fd8f31e487cf557cf0",
     "home": "Real Sociedad",
     "note": "Rayo sans Batalla, Luiz Felipe, Álvaro et probablement Kumbulla et Óscar Valentín, mais Oyarzabal est incertain (angine) et la Real a joué en Europe : ça s'annule, je reste au marché.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.55,
       0.23,
@@ -2484,9 +2484,9 @@
       0.2294,
       0.24
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.12545,
+    "rps_market": 0.123253,
+    "rps_model": 0.139039,
     "sources": [
       "comuniate"
     ],
@@ -2500,7 +2500,7 @@
     "event_id": "0d2e199bfba0db42871696c10037bad3",
     "home": "Celta Vigo",
     "note": "Levante sans Manu Sánchez, Celta avec Hugo González incertain et des rotations après l'Europe : presque rien ne bouge.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.53,
       0.26,
@@ -2516,9 +2516,9 @@
       0.2564,
       0.2156
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.1625,
+    "rps_market": 0.162216,
+    "rps_model": 0.162634,
     "sources": [
       "comuniate"
     ],
@@ -2532,7 +2532,7 @@
     "event_id": "81ad04996f63fb60b494d243b13ac586",
     "home": "Villarreal",
     "note": "Getafe sans Zaid Romero ni Uche (blessé jusqu'en avril), Villarreal sans Foyth ni Gerard Moreno : léger plus pour Villarreal, bien en dessous du seuil de 3 points.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.68,
       0.2,
@@ -2548,9 +2548,9 @@
       0.2603,
       0.1355
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.0584,
+    "rps_market": 0.060998,
+    "rps_model": 0.087509,
     "sources": [
       "comuniate"
     ],

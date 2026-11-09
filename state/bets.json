@@ -306,12 +306,12 @@
     "odds_sim": 1.38,
     "p_kairos": 0.68,
     "p_market": 0.6737,
-    "payout_cents": null,
+    "payout_cents": 276,
     "reasoning": "Pas de valeur à 0,05 ; pari d'apprentissage sur Villarreal, où l'absence de Zaid Romero côté Getafe est mon information la plus solide et où ma probabilité dépasse celle du marché.",
     "selection": "1",
-    "settled_date": null,
+    "settled_date": "2026-11-09",
     "sport_key": "soccer_spain_la_liga",
     "stake_cents": 200,
-    "status": "open"
+    "status": "won"
   }
 ]
