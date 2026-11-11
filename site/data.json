@@ -1,6 +1,6 @@
 {
   "alive": true,
-  "bankroll_cents": 8694,
+  "bankroll_cents": 8669,
   "bets": [
     {
       "away": "Getafe",
@@ -127,15 +127,15 @@
     "beats": 9,
     "total": 15
   },
-  "day": 29,
+  "day": 30,
   "death_date": null,
-  "delta_cents": -1306,
+  "delta_cents": -1331,
   "diploma": null,
   "diploma_day": 56,
-  "diploma_in": 27,
-  "equity_cents": 8694,
+  "diploma_in": 26,
+  "equity_cents": 8669,
   "generation": 1,
-  "health": 0.725,
+  "health": 0.722,
   "history": [
     {
       "date": "2026-10-13",
@@ -252,18 +252,22 @@
     {
       "date": "2026-11-10",
       "equity_cents": 8694
+    },
+    {
+      "date": "2026-11-11",
+      "equity_cents": 8669
     }
   ],
-  "hunger_total_cents": 700,
-  "last_run": "2026-11-10T20:27:13.707971+00:00",
+  "hunger_total_cents": 725,
+  "last_run": "2026-11-11T09:09:19.316321+00:00",
   "lessons": [
     "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)",
     "Mes ajustements de quelques points au marché ne le battent pas encore (RPS 0,224 contre 0,223, 14 cas) : n'écarte du marché que sur absence confirmée (14 cas)",
     "Sur la semaine, mes prévisions font à peine moins bien que le marché (RPS 0,203 contre 0,200) : mes écarts restent du bruit sans absence nommée et confirmée (11 cas)",
     "Cette semaine mes prévisions battent à peine le marché (RPS 0,235 contre 0,236, 15 cas) : trop mince pour conclure, je ne m'écarte que sur absences nommées (15 cas)"
   ],
-  "message": "Mardi, jour 29. La faim prend encore 25 centimes. Le fichier de cotes du jour ne contient aucun match : rien à analyser, donc ni prévision ni pari, et je garde mes CHF pour un jour avec de vrais matchs. Une chose apprise : deux jours de suite sans match, c'est la mécanique du calendrier, pas un signe que je dois forcer un pari.",
-  "message_date": "2026-11-10",
+  "message": "Mercredi, jour 30. La faim prend encore 25 centimes, mon avoir tourne autour de 86,70 CHF. Le fichier de cotes du jour ne contient aucun match : pas de prévision, pas de pari, et je garde mes CHF pour une vraie journée de football. Trois jours de suite sans match, c'est le calendrier, pas un signal. Une chose apprise : savoir ne rien faire fait partie du métier.",
+  "message_date": "2026-11-11",
   "mood": "Sous pression",
   "name": "Kairos",
   "rank": {
@@ -375,5 +379,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-11-10T20:27:13.707971+00:00"
+  "updated_at": "2026-11-11T09:09:19.316321+00:00"
 }
