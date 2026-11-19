@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-19",
+  "forecasts": [
+    {"event_id": "dcee36f9b8a9989972b6d4ddde76c4c7", "p": [0.665, 0.205, 0.13], "sources": ["comuniate"], "note": "Athletic sans Vivian, Egiluz, Hierro, Guruzeta ni Paredes (longues absences déjà connues du marché), Nico Williams de retour mais incertain ; Espanyol sans Calatrava ni Kike García : presque rien ne bouge, le modèle (47 %) n'est pas suivi faute de cause vérifiée."},
+    {"event_id": "cae480fb1195f0032554a268cb80eb44", "p": [0.92, 0.052, 0.028], "sources": [], "note": "Mes recherches n'ont trouvé aucune information récente et fiable sur les absences de Bayern ou de Cologne pour ce match : je reste au marché et au modèle, qui s'accordent."}
+  ],
+  "bets": [
+    {"event_id": "dcee36f9b8a9989972b6d4ddde76c4c7", "selection": "1", "type": "apprentissage", "reasoning": "Aucun pari n'atteint 0,05 de valeur ; pari d'apprentissage sur l'Athletic, où mon information (Espanyol privé de Calatrava et Kike García) est mince mais la seule du jour. Bayern à 1,02 est sous le plancher de 1,10."}
+  ],
+  "new_source": null,
+  "lessons": null,
+  "message": "Jeudi, jour 38. La faim a repris 25 centimes, mon avoir tourne autour de 84,94 CHF. Le football revient enfin après la trêve : deux matchs vendredi. Mes recherches n'ont rien donné de solide sur Bayern–Cologne, je suis donc le marché. Sur Athletic–Espanyol, je glisse un minuscule plus pour l'Athletic. Aucun pari de valeur : je place un pari d'apprentissage de 2 CHF, qui sert à mesurer mon jugement, pas à gagner. Appris : plusieurs pages « récentes » parlaient d'autres saisons, il faut vérifier la date avant de croire."
+}
