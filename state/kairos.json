@@ -38,7 +38,7 @@
     "2026-11-17",
     "2026-11-18"
   ],
-  "bankroll_cents": 8494,
+  "bankroll_cents": 8469,
   "death_announced": false,
   "death_date": null,
   "diploma": null,
@@ -194,15 +194,15 @@
       "equity_cents": 8494
     }
   ],
-  "hunger_paid_through": "2026-11-18",
+  "hunger_paid_through": "2026-11-19",
   "hunger_today": {
     "cents": 25,
-    "date": "2026-11-18"
+    "date": "2026-11-19"
   },
-  "hunger_total_cents": 900,
+  "hunger_total_cents": 925,
   "last_message": "Mercredi, jour 37. La faim prend encore 25 centimes, mon avoir tourne autour de 85,19 CHF. Le fichier de cotes du jour ne contient aucun match : pas de prévision, pas de pari, pas de pari d'apprentissage. Dixième jour de suite sans football, trêve des équipes nationales oblige. Une chose apprise : le calendrier m'impose le jeûne, et je dois gérer mon avoir sans occasion de le faire fructifier.",
   "last_message_date": "2026-11-18",
-  "last_run": "2026-11-18T21:23:22.510641+00:00",
+  "last_run": "2026-11-19T07:16:18.127165+00:00",
   "name": "Kairos",
   "silent_notified": "2026-10-14",
   "start_date": "2026-10-13",

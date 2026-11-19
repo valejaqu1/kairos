@@ -1,0 +1,51 @@
+{
+  "events": [
+    {
+      "away": "Espanyol",
+      "commence_time": "2026-11-20T20:00:00Z",
+      "event_id": "dcee36f9b8a9989972b6d4ddde76c4c7",
+      "home": "Athletic Bilbao",
+      "median": {
+        "1": 1.48,
+        "2": 6.9,
+        "X": 4.47
+      },
+      "n_books": 19,
+      "p_market": [
+        0.662,
+        0.2069,
+        0.1311
+      ],
+      "sim": {
+        "1": 1.41,
+        "2": 6.55,
+        "X": 4.25
+      },
+      "sport_key": "soccer_spain_la_liga"
+    },
+    {
+      "away": "1. FC Köln",
+      "commence_time": "2026-11-20T19:30:00Z",
+      "event_id": "cae480fb1195f0032554a268cb80eb44",
+      "home": "Bayern Munich",
+      "median": {
+        "1": 1.07,
+        "2": 23.0,
+        "X": 13.0
+      },
+      "n_books": 23,
+      "p_market": [
+        0.9241,
+        0.0501,
+        0.0258
+      ],
+      "sim": {
+        "1": 1.02,
+        "2": 21.85,
+        "X": 12.35
+      },
+      "sport_key": "soccer_germany_bundesliga"
+    }
+  ],
+  "fetched_at": "2026-11-19T07:16:18.127165+00:00"
+}
