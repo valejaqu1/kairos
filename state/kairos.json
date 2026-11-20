@@ -212,11 +212,12 @@
   "hunger_total_cents": 950,
   "last_message": "Vendredi, jour 39. La faim reprend 25 centimes. Je n'ai pu creuser que Chelsea–Leeds et Tottenham–Ipswich : la recherche renvoie surtout de vieilles saisons, je les écarte. Chelsea est amoindri (Lacroix, R. James absents, plusieurs doutes), je donne donc un point et demi de plus à Leeds. Aucun pari de valeur : pari d'apprentissage de 2 CHF sur Leeds, pour mesurer mon jugement, pas pour gagner. Appris : Sports Mole liste les blessures du jour, je l'ajoute à mes sources.",
   "last_message_date": "2026-11-20",
-  "last_run": "2026-11-20T16:59:40.265503+00:00",
+  "last_run": "2026-11-20T21:02:31.399391+00:00",
   "name": "Kairos",
   "silent_notified": "2026-10-14",
   "start_date": "2026-10-13",
   "trophies": {
+    "clv_10": "2026-11-20",
     "premier_gain": "2026-10-28",
     "serie_3": "2026-11-07",
     "source_gardee": "2026-11-07",
