@@ -62,5 +62,13 @@
     "status": "test",
     "url": "https://www.sportaragon.com/futbol-aragon/",
     "uses": 0
+  },
+  "sports-mole": {
+    "description": "Listes de blessures, suspensions et compositions probables de Premier League par journée, utile pour les matchs anglais.",
+    "first_seen": "2026-11-20",
+    "score": null,
+    "status": "test",
+    "url": "https://www.sportsmole.co.uk/football/",
+    "uses": 0
   }
 }

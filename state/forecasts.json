@@ -2618,5 +2618,69 @@
     "sources": [],
     "sport_key": "soccer_germany_bundesliga",
     "void": false
+  },
+  {
+    "away": "Leeds United",
+    "commence_time": "2026-11-21T15:00:00Z",
+    "date": "2026-11-20",
+    "event_id": "ac6cf70520a83c0949b4003bde53c709",
+    "home": "Chelsea",
+    "note": "Chelsea sans Lacroix ni R. James, Hato, João Pedro et Gittens en doute ; pas d'info côté Leeds, j'ajoute 1,5 point à l'extérieur.",
+    "outcome": null,
+    "p_kairos": [
+      0.495,
+      0.255,
+      0.25
+    ],
+    "p_market": [
+      0.5141,
+      0.2512,
+      0.2348
+    ],
+    "p_model": [
+      0.4814,
+      0.2637,
+      0.2549
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sports-mole"
+    ],
+    "sport_key": "soccer_epl",
+    "void": false
+  },
+  {
+    "away": "Ipswich Town",
+    "commence_time": "2026-11-21T15:00:00Z",
+    "date": "2026-11-20",
+    "event_id": "e67ee3a6f93bb90b8aefcf3dd204477c",
+    "home": "Tottenham Hotspur",
+    "note": "Tottenham sans Simons ni Odobert, Tel en doute, rien côté Ipswich ; le modèle (0,47) diverge mais sans cause vérifiée je reste près du marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.62,
+      0.22,
+      0.16
+    ],
+    "p_market": [
+      0.6339,
+      0.2068,
+      0.1592
+    ],
+    "p_model": [
+      0.4733,
+      0.2427,
+      0.2841
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sports-mole"
+    ],
+    "sport_key": "soccer_epl",
+    "void": false
   }
 ]
