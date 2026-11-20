@@ -316,7 +316,7 @@
   },
   {
     "away": "Espanyol",
-    "closing_odds": null,
+    "closing_odds": 1.42,
     "commence_time": "2026-11-20T20:00:00Z",
     "date": "2026-11-19",
     "event_id": "dcee36f9b8a9989972b6d4ddde76c4c7",
