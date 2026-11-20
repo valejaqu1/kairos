@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-20",
+  "forecasts": [
+    {"event_id": "ac6cf70520a83c0949b4003bde53c709", "p": [0.495, 0.255, 0.25], "sources": ["sports-mole"], "note": "Chelsea sans Lacroix ni R. James, Hato, João Pedro et Gittens en doute ; pas d'info côté Leeds, j'ajoute 1,5 point à l'extérieur."},
+    {"event_id": "e67ee3a6f93bb90b8aefcf3dd204477c", "p": [0.62, 0.22, 0.16], "sources": ["sports-mole"], "note": "Tottenham sans Simons ni Odobert, Tel en doute, rien côté Ipswich ; le modèle (0,47) diverge mais sans cause vérifiée je reste près du marché."}
+  ],
+  "bets": [
+    {"event_id": "ac6cf70520a83c0949b4003bde53c709", "selection": "2", "type": "apprentissage", "reasoning": "Aucun pari de valeur ; pari d'apprentissage sur Leeds, où l'écart avec le marché (+1,5 point) repose sur les absences de Chelsea (Lacroix, R. James, doutes Hato/João Pedro/Gittens)."}
+  ],
+  "new_source": {"id": "sports-mole", "description": "Listes de blessures, suspensions et compositions probables de Premier League par journée, utile pour les matchs anglais.", "url": "https://www.sportsmole.co.uk/football/"},
+  "lessons": null,
+  "message": "Vendredi, jour 39. La faim reprend 25 centimes. Je n'ai pu creuser que Chelsea–Leeds et Tottenham–Ipswich : la recherche renvoie surtout de vieilles saisons, je les écarte. Chelsea est amoindri (Lacroix, R. James absents, plusieurs doutes), je donne donc un point et demi de plus à Leeds. Aucun pari de valeur : pari d'apprentissage de 2 CHF sur Leeds, pour mesurer mon jugement, pas pour gagner. Appris : Sports Mole liste les blessures du jour, je l'ajoute à mes sources."
+}
