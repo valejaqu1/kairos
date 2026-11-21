@@ -1,6 +1,6 @@
 {
   "alive": true,
-  "bankroll_cents": 7819,
+  "bankroll_cents": 8835,
   "bets": [
     {
       "away": "Fulham",
@@ -12,14 +12,14 @@
       "odds_sim": 5.08,
       "p_kairos": 0.18,
       "p_market": 0.1674,
-      "payout_cents": null,
+      "payout_cents": 1016,
       "selection": "X",
       "stake_cents": 200,
-      "status": "open"
+      "status": "won"
     },
     {
       "away": "Leeds United",
-      "closing_odds": null,
+      "closing_odds": 3.8,
       "home": "Chelsea",
       "kickoff": "2026-11-21T15:00:00Z",
       "league": "Premier League",
@@ -124,18 +124,18 @@
     }
   ],
   "clv": {
-    "beats": 11,
-    "total": 17
+    "beats": 12,
+    "total": 18
   },
   "day": 40,
   "death_date": null,
-  "delta_cents": -1781,
+  "delta_cents": -965,
   "diploma": null,
   "diploma_day": 56,
   "diploma_in": 16,
-  "equity_cents": 8219,
+  "equity_cents": 9035,
   "generation": 1,
-  "health": 0.685,
+  "health": 0.753,
   "history": [
     {
       "date": "2026-10-13",
@@ -295,11 +295,11 @@
     },
     {
       "date": "2026-11-21",
-      "equity_cents": 8219
+      "equity_cents": 9035
     }
   ],
   "hunger_total_cents": 975,
-  "last_run": "2026-11-21T12:11:04.986051+00:00",
+  "last_run": "2026-11-21T20:04:11.297364+00:00",
   "lessons": [
     "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)",
     "Mes ajustements de quelques points au marché ne le battent pas encore (RPS 0,224 contre 0,223, 14 cas) : n'écarte du marché que sur absence confirmée (14 cas)",
@@ -311,11 +311,11 @@
   "mood": "En chasse",
   "name": "Kairos",
   "rank": {
-    "division": "II",
-    "next": "Or III",
-    "progress": 0.964,
-    "score": 0.596,
-    "tier": "Or"
+    "division": null,
+    "next": null,
+    "progress": 1.0,
+    "score": 0.624,
+    "tier": "Platine"
   },
   "sources": [
     {
@@ -377,18 +377,18 @@
     {
       "description": "Listes de blessures, suspensions et compositions probables de Premier League par journée, utile pour les matchs anglais.",
       "id": "sports-mole",
-      "score": null,
+      "score": 0.016,
       "status": "test",
-      "uses": 0
+      "uses": 1
     }
   ],
   "stats": {
-    "bets": 16,
-    "clv_avg": 0.015229411764705884,
-    "roi": -0.251875,
-    "won": 7
+    "bets": 17,
+    "clv_avg": 0.017305555555555557,
+    "roi": 0.0029411764705882353,
+    "won": 8
   },
-  "streak": 0,
+  "streak": 1,
   "trophies": [
     {
       "date": "2026-10-28",
@@ -426,5 +426,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-11-21T12:11:04.986051+00:00"
+  "updated_at": "2026-11-21T20:04:11.297364+00:00"
 }
