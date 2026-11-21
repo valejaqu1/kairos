@@ -2682,5 +2682,37 @@
     ],
     "sport_key": "soccer_epl",
     "void": false
+  },
+  {
+    "away": "Fulham",
+    "commence_time": "2026-11-21T12:30:00Z",
+    "date": "2026-11-21",
+    "event_id": "6ef39b0fd8839f6e93a3de32523e9807",
+    "home": "Manchester City",
+    "note": "Semenyo absent, Nunes et Khusanov incertains côté City : j'enlève un peu à City au profit du nul et de Fulham, sans plus.",
+    "outcome": null,
+    "p_kairos": [
+      0.69,
+      0.18,
+      0.13
+    ],
+    "p_market": [
+      0.715,
+      0.1674,
+      0.1176
+    ],
+    "p_model": [
+      0.6624,
+      0.2169,
+      0.1207
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sports-mole"
+    ],
+    "sport_key": "soccer_epl",
+    "void": false
   }
 ]

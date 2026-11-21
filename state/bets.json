@@ -355,5 +355,26 @@
     "sport_key": "soccer_epl",
     "stake_cents": 200,
     "status": "open"
+  },
+  {
+    "away": "Fulham",
+    "closing_odds": null,
+    "commence_time": "2026-11-21T12:30:00Z",
+    "date": "2026-11-21",
+    "event_id": "6ef39b0fd8839f6e93a3de32523e9807",
+    "home": "Manchester City",
+    "id": "2026-11-21-6ef39b0fd8839f6e93a3de32523e9807-X",
+    "kind": "apprentissage",
+    "odds_median": 5.35,
+    "odds_sim": 5.08,
+    "p_kairos": 0.18,
+    "p_market": 0.1674,
+    "payout_cents": null,
+    "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur le nul de City–Fulham, car les absences et doutes de City sont ma seule information confirmée, et elle est mince.",
+    "selection": "X",
+    "settled_date": null,
+    "sport_key": "soccer_epl",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]
