@@ -369,12 +369,12 @@
     "odds_sim": 5.08,
     "p_kairos": 0.18,
     "p_market": 0.1674,
-    "payout_cents": null,
+    "payout_cents": 1016,
     "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur le nul de City–Fulham, car les absences et doutes de City sont ma seule information confirmée, et elle est mince.",
     "selection": "X",
-    "settled_date": null,
+    "settled_date": "2026-11-21",
     "sport_key": "soccer_epl",
     "stake_cents": 200,
-    "status": "open"
+    "status": "won"
   }
 ]
