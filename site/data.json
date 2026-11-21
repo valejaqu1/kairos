@@ -4,7 +4,7 @@
   "bets": [
     {
       "away": "Fulham",
-      "closing_odds": null,
+      "closing_odds": 5.25,
       "home": "Manchester City",
       "kickoff": "2026-11-21T12:30:00Z",
       "league": "Premier League",
@@ -124,8 +124,8 @@
     }
   ],
   "clv": {
-    "beats": 10,
-    "total": 16
+    "beats": 11,
+    "total": 17
   },
   "day": 40,
   "death_date": null,
@@ -299,7 +299,7 @@
     }
   ],
   "hunger_total_cents": 975,
-  "last_run": "2026-11-21T09:09:15.293076+00:00",
+  "last_run": "2026-11-21T12:11:04.986051+00:00",
   "lessons": [
     "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)",
     "Mes ajustements de quelques points au marché ne le battent pas encore (RPS 0,224 contre 0,223, 14 cas) : n'écarte du marché que sur absence confirmée (14 cas)",
@@ -384,7 +384,7 @@
   ],
   "stats": {
     "bets": 16,
-    "clv_avg": 0.01499375,
+    "clv_avg": 0.015229411764705884,
     "roi": -0.251875,
     "won": 7
   },
@@ -426,5 +426,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-11-21T09:09:15.293076+00:00"
+  "updated_at": "2026-11-21T12:11:04.986051+00:00"
 }
