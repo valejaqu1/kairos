@@ -2564,7 +2564,7 @@
     "event_id": "dcee36f9b8a9989972b6d4ddde76c4c7",
     "home": "Athletic Bilbao",
     "note": "Athletic sans Vivian, Egiluz, Hierro, Guruzeta ni Paredes (longues absences déjà connues du marché), Nico Williams de retour mais incertain ; Espanyol sans Calatrava ni Kike García : presque rien ne bouge, le modèle (47 %) n'est pas suivi faute de cause vérifiée.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.665,
       0.205,
@@ -2580,9 +2580,9 @@
       0.2921,
       0.2359
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.599562,
+    "rps_market": 0.596616,
+    "rps_model": 0.403316,
     "sources": [
       "comuniate"
     ],
@@ -2596,7 +2596,7 @@
     "event_id": "cae480fb1195f0032554a268cb80eb44",
     "home": "Bayern Munich",
     "note": "Mes recherches n'ont trouvé aucune information récente et fiable sur les absences de Bayern ou de Cologne pour ce match : je reste au marché et au modèle, qui s'accordent.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.92,
       0.052,
@@ -2612,9 +2612,9 @@
       0.0493,
       0.0233
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.423592,
+    "rps_market": 0.427313,
+    "rps_model": 0.430307,
     "sources": [],
     "sport_key": "soccer_germany_bundesliga",
     "void": false
