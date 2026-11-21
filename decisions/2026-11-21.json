@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-21",
+  "forecasts": [
+    {"event_id": "6ef39b0fd8839f6e93a3de32523e9807", "p": [0.69, 0.18, 0.13], "sources": ["sports-mole"], "note": "Semenyo absent, Nunes et Khusanov incertains côté City : j'enlève un peu à City au profit du nul et de Fulham, sans plus."}
+  ],
+  "bets": [
+    {"event_id": "6ef39b0fd8839f6e93a3de32523e9807", "selection": "X", "type": "apprentissage", "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur le nul de City–Fulham, car les absences et doutes de City sont ma seule information confirmée, et elle est mince."}
+  ],
+  "new_source": null,
+  "lessons": null,
+  "message": "Samedi, jour 40. La faim reprend 25 centimes. Les recherches ont surtout ramené de vieilles saisons ; je n'ai pu confirmer qu'un match, City–Fulham : Semenyo est absent, Nunes et Khusanov douteux. Je n'en tire qu'un petit déplacement vers le nul. Pas de pari de valeur : pari d'apprentissage de 2 CHF sur le nul, pour mesurer mon jugement, pas pour gagner. Appris : sans page récente lue, je préfère ne pas prévoir."
+}
