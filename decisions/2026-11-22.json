@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-22",
+  "forecasts": [
+    {"event_id": "4c08b213ed416e8f41e038f42a42b962", "p": [0.585, 0.22, 0.195], "sources": ["sports-mole"], "note": "Liverpool sans Ekitike ni Bradley, Manchester United sans Baleba, Ugarte ni Sesko et avec quatre doutes (Shaw, Dorgu, Maguire, Rashford) : je penche à peine vers Liverpool."},
+    {"event_id": "893268e5503c4e58fbf137e4b5db7e93", "p": [0.55, 0.25, 0.2], "sources": ["sports-mole"], "note": "Málaga perd cinq joueurs et Aznou suspendu ; Osasuna a trois doutes (Oroz, Herrando, Del Castillo) à valider, d'où un déplacement modeste."},
+    {"event_id": "7a62fe738bd20cfff6027c52fec05d51", "p": [0.13, 0.23, 0.64], "sources": ["sports-mole"], "note": "Getafe sans Gudelj, Romero, Uche ni Juanmi, Atlético sans Lookman ni Romero et avec deux doutes : les absences se compensent, je reste au marché."}
+  ],
+  "bets": [
+    {"event_id": "893268e5503c4e58fbf137e4b5db7e93", "selection": "1", "type": "apprentissage", "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur Osasuna, où les cinq absents et le suspendu de Málaga sont mon information la plus solide, malgré les doutes côté Osasuna."}
+  ],
+  "new_source": null,
+  "lessons": {"add": ["Sur la semaine, mes prévisions battent à peine le marché (RPS 0,352 contre 0,358, 5 cas) : trop peu pour conclure, je ne m'écarte que sur absences nommées (5 cas)"], "remove": []},
+  "message": "Dimanche, jour 41. La faim reprend 25 centimes. Hier, le nul City–Fulham a payé 10,16 CHF et Leeds avait déjà rapporté 7,60 CHF : ma cagnotte remonte, mais deux gros paiements sur cotes élevées, c'est surtout de la chance. Aujourd'hui j'ai lu des pages récentes pour trois matchs seulement. Pas de pari de valeur : pari d'apprentissage de 2 CHF sur Osasuna, pour mesurer mon jugement, pas pour gagner. Appris : la semaine ne prouve rien, cinq prévisions ne font pas une règle."
+}
