@@ -376,5 +376,26 @@
     "sport_key": "soccer_epl",
     "stake_cents": 200,
     "status": "won"
+  },
+  {
+    "away": "Málaga",
+    "closing_odds": null,
+    "commence_time": "2026-11-22T17:30:00Z",
+    "date": "2026-11-22",
+    "event_id": "893268e5503c4e58fbf137e4b5db7e93",
+    "home": "CA Osasuna",
+    "id": "2026-11-22-893268e5503c4e58fbf137e4b5db7e93-1",
+    "kind": "apprentissage",
+    "odds_median": 1.835,
+    "odds_sim": 1.74,
+    "p_kairos": 0.55,
+    "p_market": 0.5278,
+    "payout_cents": null,
+    "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur Osasuna, où les cinq absents et le suspendu de Málaga sont mon information la plus solide, malgré les doutes côté Osasuna.",
+    "selection": "1",
+    "settled_date": null,
+    "sport_key": "soccer_spain_la_liga",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]

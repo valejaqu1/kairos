@@ -2714,5 +2714,97 @@
     ],
     "sport_key": "soccer_epl",
     "void": false
+  },
+  {
+    "away": "Manchester United",
+    "commence_time": "2026-11-22T16:30:00Z",
+    "date": "2026-11-22",
+    "event_id": "4c08b213ed416e8f41e038f42a42b962",
+    "home": "Liverpool",
+    "note": "Liverpool sans Ekitike ni Bradley, Manchester United sans Baleba, Ugarte ni Sesko et avec quatre doutes (Shaw, Dorgu, Maguire, Rashford) : je penche à peine vers Liverpool.",
+    "outcome": null,
+    "p_kairos": [
+      0.585,
+      0.22,
+      0.195
+    ],
+    "p_market": [
+      0.5726,
+      0.2214,
+      0.2059
+    ],
+    "p_model": [
+      0.492,
+      0.2374,
+      0.2706
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sports-mole"
+    ],
+    "sport_key": "soccer_epl",
+    "void": false
+  },
+  {
+    "away": "Málaga",
+    "commence_time": "2026-11-22T17:30:00Z",
+    "date": "2026-11-22",
+    "event_id": "893268e5503c4e58fbf137e4b5db7e93",
+    "home": "CA Osasuna",
+    "note": "Málaga perd cinq joueurs et Aznou suspendu ; Osasuna a trois doutes (Oroz, Herrando, Del Castillo) à valider, d'où un déplacement modeste.",
+    "outcome": null,
+    "p_kairos": [
+      0.55,
+      0.25,
+      0.2
+    ],
+    "p_market": [
+      0.5278,
+      0.262,
+      0.2102
+    ],
+    "p_model": [
+      0.616,
+      0.2452,
+      0.1387
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sports-mole"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Atlético Madrid",
+    "commence_time": "2026-11-22T20:00:00Z",
+    "date": "2026-11-22",
+    "event_id": "7a62fe738bd20cfff6027c52fec05d51",
+    "home": "Getafe",
+    "note": "Getafe sans Gudelj, Romero, Uche ni Juanmi, Atlético sans Lookman ni Romero et avec deux doutes : les absences se compensent, je reste au marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.13,
+      0.23,
+      0.64
+    ],
+    "p_market": [
+      0.1304,
+      0.2289,
+      0.6407
+    ],
+    "p_model": null,
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sports-mole"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
   }
 ]

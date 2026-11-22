@@ -4,3 +4,4 @@
 - Mes ajustements de quelques points au marché ne le battent pas encore (RPS 0,224 contre 0,223, 14 cas) : n'écarte du marché que sur absence confirmée (14 cas)
 - Sur la semaine, mes prévisions font à peine moins bien que le marché (RPS 0,203 contre 0,200) : mes écarts restent du bruit sans absence nommée et confirmée (11 cas)
 - Cette semaine mes prévisions battent à peine le marché (RPS 0,235 contre 0,236, 15 cas) : trop mince pour conclure, je ne m'écarte que sur absences nommées (15 cas)
+- Sur la semaine, mes prévisions battent à peine le marché (RPS 0,352 contre 0,358, 5 cas) : trop peu pour conclure, je ne m'écarte que sur absences nommées (5 cas)
