@@ -379,7 +379,7 @@
   },
   {
     "away": "Málaga",
-    "closing_odds": null,
+    "closing_odds": 1.77,
     "commence_time": "2026-11-22T17:30:00Z",
     "date": "2026-11-22",
     "event_id": "893268e5503c4e58fbf137e4b5db7e93",
