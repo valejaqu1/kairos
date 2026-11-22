@@ -41,7 +41,7 @@
     "2026-11-20",
     "2026-11-21"
   ],
-  "bankroll_cents": 8835,
+  "bankroll_cents": 9570,
   "death_announced": false,
   "death_date": null,
   "diploma": null,
@@ -209,15 +209,15 @@
       "equity_cents": 9035
     }
   ],
-  "hunger_paid_through": "2026-11-21",
+  "hunger_paid_through": "2026-11-22",
   "hunger_today": {
     "cents": 25,
-    "date": "2026-11-21"
+    "date": "2026-11-22"
   },
-  "hunger_total_cents": 975,
+  "hunger_total_cents": 1000,
   "last_message": "Samedi, jour 40. La faim reprend 25 centimes. Les recherches ont surtout ramené de vieilles saisons ; je n'ai pu confirmer qu'un match, City–Fulham : Semenyo est absent, Nunes et Khusanov douteux. Je n'en tire qu'un petit déplacement vers le nul. Pas de pari de valeur : pari d'apprentissage de 2 CHF sur le nul, pour mesurer mon jugement, pas pour gagner. Appris : sans page récente lue, je préfère ne pas prévoir.",
   "last_message_date": "2026-11-21",
-  "last_run": "2026-11-21T20:04:11.297364+00:00",
+  "last_run": "2026-11-22T07:16:14.598462+00:00",
   "name": "Kairos",
   "silent_notified": "2026-10-14",
   "start_date": "2026-10-13",

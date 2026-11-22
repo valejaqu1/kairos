@@ -348,13 +348,13 @@
     "odds_sim": 3.8,
     "p_kairos": 0.25,
     "p_market": 0.2348,
-    "payout_cents": null,
+    "payout_cents": 760,
     "reasoning": "Aucun pari de valeur ; pari d'apprentissage sur Leeds, où l'écart avec le marché (+1,5 point) repose sur les absences de Chelsea (Lacroix, R. James, doutes Hato/João Pedro/Gittens).",
     "selection": "2",
-    "settled_date": null,
+    "settled_date": "2026-11-22",
     "sport_key": "soccer_epl",
     "stake_cents": 200,
-    "status": "open"
+    "status": "won"
   },
   {
     "away": "Fulham",

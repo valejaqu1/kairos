@@ -2626,7 +2626,7 @@
     "event_id": "ac6cf70520a83c0949b4003bde53c709",
     "home": "Chelsea",
     "note": "Chelsea sans Lacroix ni R. James, Hato, João Pedro et Gittens en doute ; pas d'info côté Leeds, j'ajoute 1,5 point à l'extérieur.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.495,
       0.255,
@@ -2642,9 +2642,9 @@
       0.2637,
       0.2549
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.403763,
+    "rps_market": 0.424991,
+    "rps_model": 0.39346,
     "sources": [
       "sports-mole"
     ],
@@ -2658,7 +2658,7 @@
     "event_id": "e67ee3a6f93bb90b8aefcf3dd204477c",
     "home": "Tottenham Hotspur",
     "note": "Tottenham sans Simons ni Odobert, Tel en doute, rien côté Ipswich ; le modèle (0,47) diverge mais sans cause vérifiée je reste près du marché.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.62,
       0.22,
@@ -2674,9 +2674,9 @@
       0.2427,
       0.2841
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.085,
+    "rps_market": 0.079703,
+    "rps_model": 0.179034,
     "sources": [
       "sports-mole"
     ],
