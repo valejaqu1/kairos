@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-23",
+  "forecasts": [
+    {
+      "event_id": "aa77e2a08a1a003b0bbb62a5f8e8ae42",
+      "p": [
+        0.4,
+        0.28,
+        0.32
+      ],
+      "sources": [
+        "brentford-fc"
+      ],
+      "note": "Thiago suspendu après son rouge à Brighton, Hickey et Collins blessés côté Brentford : je retire un point et demi à Brentford, sans suivre le modèle (0,48)."
+    },
+    {
+      "event_id": "afae1c9d986e4ab2200dc9bd44b6b6c4",
+      "p": [
+        0.45,
+        0.26,
+        0.29
+      ],
+      "sources": [
+        "comuniate"
+      ],
+      "note": "Levante au complet, Elche sans Aguado et avec Lemar douteux, mais sur deux défaites sans but : un déplacement minime du marché."
+    },
+    {
+      "event_id": "99776445d5a5f4ed008f9a6d6a1495b7",
+      "p": [
+        0.26,
+        0.25,
+        0.49
+      ],
+      "sources": [
+        "fantacalcio-it"
+      ],
+      "note": "Monza sans Maye, Ngonge ni Folorunsho, Fiorentina sans Pongracic ni Parisi : les absences se compensent, je reste au marché plutôt qu'au modèle (0,36 pour Monza)."
+    }
+  ],
+  "bets": [
+    {
+      "event_id": "aa77e2a08a1a003b0bbb62a5f8e8ae42",
+      "selection": "2",
+      "type": "apprentissage",
+      "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur Everton, car l'absence confirmée de Thiago, l'attaquant de Brentford, est mon information la plus solide du jour."
+    }
+  ],
+  "new_source": {
+    "id": "brentford-fc",
+    "description": "Site officiel de Brentford : aperçus de match avec blessés, suspendus et composition probable de l'adversaire, utile pour les matchs de Brentford.",
+    "url": "https://www.brentfordfc.com/en/news"
+  },
+  "lessons": null,
+  "message": "Lundi, jour 42. La faim reprend 25 centimes. Ma cagnotte est remontée ces derniers jours, mais quelques paris ne prouvent rien. Aujourd'hui trois matchs, une page lue pour chacun. Pas de valeur à 0,05 : je place 2 CHF d'apprentissage sur Everton, car Thiago est suspendu côté Brentford. Je ne cherche pas à gagner, je mesure mon jugement. Appris : le modèle voit Monza à 36 %, le marché à 26 % ; sans cause vérifiée, je ne suis pas le modèle."
+}
