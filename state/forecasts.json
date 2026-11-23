@@ -2806,5 +2806,101 @@
     ],
     "sport_key": "soccer_spain_la_liga",
     "void": false
+  },
+  {
+    "away": "Everton",
+    "commence_time": "2026-11-23T20:00:00Z",
+    "date": "2026-11-23",
+    "event_id": "aa77e2a08a1a003b0bbb62a5f8e8ae42",
+    "home": "Brentford",
+    "note": "Thiago suspendu après son rouge à Brighton, Hickey et Collins blessés côté Brentford : je retire un point et demi à Brentford, sans suivre le modèle (0,48).",
+    "outcome": null,
+    "p_kairos": [
+      0.4,
+      0.28,
+      0.32
+    ],
+    "p_market": [
+      0.4135,
+      0.2744,
+      0.3121
+    ],
+    "p_model": [
+      0.4795,
+      0.2803,
+      0.2402
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "brentford-fc"
+    ],
+    "sport_key": "soccer_epl",
+    "void": false
+  },
+  {
+    "away": "Elche CF",
+    "commence_time": "2026-11-23T20:00:00Z",
+    "date": "2026-11-23",
+    "event_id": "afae1c9d986e4ab2200dc9bd44b6b6c4",
+    "home": "Levante",
+    "note": "Levante au complet, Elche sans Aguado et avec Lemar douteux, mais sur deux défaites sans but : un déplacement minime du marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.45,
+      0.26,
+      0.29
+    ],
+    "p_market": [
+      0.4461,
+      0.261,
+      0.2929
+    ],
+    "p_model": [
+      0.4651,
+      0.257,
+      0.2779
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Fiorentina",
+    "commence_time": "2026-11-23T19:45:00Z",
+    "date": "2026-11-23",
+    "event_id": "99776445d5a5f4ed008f9a6d6a1495b7",
+    "home": "Monza",
+    "note": "Monza sans Maye, Ngonge ni Folorunsho, Fiorentina sans Pongracic ni Parisi : les absences se compensent, je reste au marché plutôt qu'au modèle (0,36 pour Monza).",
+    "outcome": null,
+    "p_kairos": [
+      0.26,
+      0.25,
+      0.49
+    ],
+    "p_market": [
+      0.2579,
+      0.2485,
+      0.4935
+    ],
+    "p_model": [
+      0.3585,
+      0.2009,
+      0.4406
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "fantacalcio-it"
+    ],
+    "sport_key": "soccer_italy_serie_a",
+    "void": false
   }
 ]

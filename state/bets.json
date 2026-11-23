@@ -397,5 +397,26 @@
     "sport_key": "soccer_spain_la_liga",
     "stake_cents": 200,
     "status": "won"
+  },
+  {
+    "away": "Everton",
+    "closing_odds": null,
+    "commence_time": "2026-11-23T20:00:00Z",
+    "date": "2026-11-23",
+    "event_id": "aa77e2a08a1a003b0bbb62a5f8e8ae42",
+    "home": "Brentford",
+    "id": "2026-11-23-aa77e2a08a1a003b0bbb62a5f8e8ae42-2",
+    "kind": "apprentissage",
+    "odds_median": 3.05,
+    "odds_sim": 2.9,
+    "p_kairos": 0.32,
+    "p_market": 0.3121,
+    "payout_cents": null,
+    "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur Everton, car l'absence confirmée de Thiago, l'attaquant de Brentford, est mon information la plus solide du jour.",
+    "selection": "2",
+    "settled_date": null,
+    "sport_key": "soccer_epl",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]

@@ -7,6 +7,14 @@
     "url": "https://www.athletic-club.eus/",
     "uses": 0
   },
+  "brentford-fc": {
+    "description": "Site officiel de Brentford : aperçus de match avec blessés, suspendus et composition probable de l'adversaire, utile pour les matchs de Brentford.",
+    "first_seen": "2026-11-23",
+    "score": null,
+    "status": "test",
+    "url": "https://www.brentfordfc.com/en/news",
+    "uses": 0
+  },
   "comuniate": {
     "description": "Previas, alineaciones probables et bajas de LaLiga par jornada, utile pour les matchs espagnols.",
     "first_seen": "2026-10-19",
@@ -66,9 +74,9 @@
   "sports-mole": {
     "description": "Listes de blessures, suspensions et compositions probables de Premier League par journée, utile pour les matchs anglais.",
     "first_seen": "2026-11-20",
-    "score": 0.0107,
+    "score": 0.0086,
     "status": "test",
     "url": "https://www.sportsmole.co.uk/football/",
-    "uses": 3
+    "uses": 6
   }
 }
