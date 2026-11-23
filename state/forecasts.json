@@ -2722,7 +2722,7 @@
     "event_id": "4c08b213ed416e8f41e038f42a42b962",
     "home": "Liverpool",
     "note": "Liverpool sans Ekitike ni Bradley, Manchester United sans Baleba, Ugarte ni Sesko et avec quatre doutes (Shaw, Dorgu, Maguire, Rashford) : je penche à peine vers Liverpool.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.585,
       0.22,
@@ -2738,9 +2738,9 @@
       0.2374,
       0.2706
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.105125,
+    "rps_market": 0.112553,
+    "rps_model": 0.165644,
     "sources": [
       "sports-mole"
     ],
@@ -2754,7 +2754,7 @@
     "event_id": "893268e5503c4e58fbf137e4b5db7e93",
     "home": "CA Osasuna",
     "note": "Málaga perd cinq joueurs et Aznou suspendu ; Osasuna a trois doutes (Oroz, Herrando, Del Castillo) à valider, d'où un déplacement modeste.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.55,
       0.25,
@@ -2770,9 +2770,9 @@
       0.2452,
       0.1387
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.12125,
+    "rps_market": 0.133578,
+    "rps_model": 0.083361,
     "sources": [
       "sports-mole"
     ],
@@ -2786,7 +2786,7 @@
     "event_id": "7a62fe738bd20cfff6027c52fec05d51",
     "home": "Getafe",
     "note": "Getafe sans Gudelj, Romero, Uche ni Juanmi, Atlético sans Lookman ni Romero et avec deux doutes : les absences se compensent, je reste au marché.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.13,
       0.23,
@@ -2798,8 +2798,8 @@
       0.6407
     ],
     "p_model": null,
-    "rps_kairos": null,
-    "rps_market": null,
+    "rps_kairos": 0.07325,
+    "rps_market": 0.07305,
     "rps_model": null,
     "sources": [
       "sports-mole"

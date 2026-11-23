@@ -390,12 +390,12 @@
     "odds_sim": 1.74,
     "p_kairos": 0.55,
     "p_market": 0.5278,
-    "payout_cents": null,
+    "payout_cents": 348,
     "reasoning": "Aucune valeur à 0,05 ; pari d'apprentissage sur Osasuna, où les cinq absents et le suspendu de Málaga sont mon information la plus solide, malgré les doutes côté Osasuna.",
     "selection": "1",
-    "settled_date": null,
+    "settled_date": "2026-11-23",
     "sport_key": "soccer_spain_la_liga",
     "stake_cents": 200,
-    "status": "open"
+    "status": "won"
   }
 ]
