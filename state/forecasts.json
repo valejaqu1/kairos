@@ -2814,7 +2814,7 @@
     "event_id": "aa77e2a08a1a003b0bbb62a5f8e8ae42",
     "home": "Brentford",
     "note": "Thiago suspendu après son rouge à Brighton, Hickey et Collins blessés côté Brentford : je retire un point et demi à Brentford, sans suivre le modèle (0,48).",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.4,
       0.28,
@@ -2830,9 +2830,9 @@
       0.2803,
       0.2402
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.2312,
+    "rps_market": 0.220694,
+    "rps_model": 0.164308,
     "sources": [
       "brentford-fc"
     ],
@@ -2846,7 +2846,7 @@
     "event_id": "afae1c9d986e4ab2200dc9bd44b6b6c4",
     "home": "Levante",
     "note": "Levante au complet, Elche sans Aguado et avec Lemar douteux, mais sur deux défaites sans but : un déplacement minime du marché.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.45,
       0.26,
@@ -2862,9 +2862,9 @@
       0.257,
       0.2779
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.1433,
+    "rps_market": 0.142398,
+    "rps_model": 0.146773,
     "sources": [
       "comuniate"
     ],
@@ -2878,7 +2878,7 @@
     "event_id": "99776445d5a5f4ed008f9a6d6a1495b7",
     "home": "Monza",
     "note": "Monza sans Maye, Ngonge ni Folorunsho, Fiorentina sans Pongracic ni Parisi : les absences se compensent, je reste au marché plutôt qu'au modèle (0,36 pour Monza).",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.26,
       0.25,
@@ -2894,9 +2894,9 @@
       0.2009,
       0.4406
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.39385,
+    "rps_market": 0.397177,
+    "rps_model": 0.302825,
     "sources": [
       "fantacalcio-it"
     ],
