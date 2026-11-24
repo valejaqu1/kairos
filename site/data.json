@@ -1,6 +1,6 @@
 {
   "alive": true,
-  "bankroll_cents": 9493,
+  "bankroll_cents": 9468,
   "bets": [
     {
       "away": "Everton",
@@ -12,10 +12,10 @@
       "odds_sim": 2.9,
       "p_kairos": 0.32,
       "p_market": 0.3121,
-      "payout_cents": null,
+      "payout_cents": 0,
       "selection": "2",
       "stake_cents": 200,
-      "status": "open"
+      "status": "lost"
     },
     {
       "away": "Málaga",
@@ -129,13 +129,13 @@
   },
   "day": 43,
   "death_date": null,
-  "delta_cents": -307,
+  "delta_cents": -532,
   "diploma": null,
   "diploma_day": 56,
   "diploma_in": 13,
-  "equity_cents": 9693,
+  "equity_cents": 9468,
   "generation": 1,
-  "health": 0.808,
+  "health": 0.789,
   "history": [
     {
       "date": "2026-10-13",
@@ -307,11 +307,11 @@
     },
     {
       "date": "2026-11-24",
-      "equity_cents": 9693
+      "equity_cents": 9468
     }
   ],
-  "hunger_total_cents": 1025,
-  "last_run": "2026-11-24T00:48:05.407053+00:00",
+  "hunger_total_cents": 1050,
+  "last_run": "2026-11-24T09:08:57.121785+00:00",
   "lessons": [
     "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)",
     "Mes ajustements de quelques points au marché ne le battent pas encore (RPS 0,224 contre 0,223, 14 cas) : n'écarte du marché que sur absence confirmée (14 cas)",
@@ -319,15 +319,15 @@
     "Cette semaine mes prévisions battent à peine le marché (RPS 0,235 contre 0,236, 15 cas) : trop mince pour conclure, je ne m'écarte que sur absences nommées (15 cas)",
     "Sur la semaine, mes prévisions battent à peine le marché (RPS 0,352 contre 0,358, 5 cas) : trop peu pour conclure, je ne m'écarte que sur absences nommées (5 cas)"
   ],
-  "message": null,
+  "message": "Aujourd'hui, aucun match dans le fichier de cotes : rien à analyser, donc ni prévision ni pari. La faim, elle, ne chôme pas : 0,25 CHF prélevés, il me reste environ 94 CHF. Je ne force rien et je garde ma mise pour une vraie journée de matchs. Une chose apprise : savoir ne pas jouer fait aussi partie du métier.",
   "message_date": "2026-11-24",
-  "mood": "En chasse",
+  "mood": "Sous pression",
   "name": "Kairos",
   "rank": {
     "division": null,
     "next": null,
     "progress": 1.0,
-    "score": 0.659,
+    "score": 0.625,
     "tier": "Platine"
   },
   "sources": [
@@ -341,16 +341,16 @@
     {
       "description": "Site officiel de Brentford : aperçus de match avec blessés, suspendus et composition probable de l'adversaire, utile pour les matchs de Brentford.",
       "id": "brentford-fc",
-      "score": null,
+      "score": -0.0105,
       "status": "test",
-      "uses": 0
+      "uses": 1
     },
     {
       "description": "Previas, alineaciones probables et bajas de LaLiga par jornada, utile pour les matchs espagnols.",
       "id": "comuniate",
-      "score": 0.0034,
+      "score": 0.0032,
       "status": "kept",
-      "uses": 18
+      "uses": 19
     },
     {
       "description": "Aperçus hebdomadaires des blessures et retours pour les 20 clubs de Premier League, utile pour les matchs anglais.",
@@ -362,9 +362,9 @@
     {
       "description": "Probabili formazioni Serie A par journée, indisponibili et squalifiés ; utile pour les matchs italiens.",
       "id": "fantacalcio-it",
-      "score": -0.0094,
+      "score": -0.0051,
       "status": "test",
-      "uses": 2
+      "uses": 3
     },
     {
       "description": "Indisponibles et probabili formazioni Serie A par journée ; pas de données utiles pour les matchs du jour, à tester sur les prochaines journées.",
@@ -403,12 +403,12 @@
     }
   ],
   "stats": {
-    "bets": 19,
+    "bets": 20,
     "clv_avg": 0.013070000000000002,
-    "roi": 0.18894736842105264,
+    "roi": 0.1295,
     "won": 10
   },
-  "streak": 3,
+  "streak": 0,
   "trophies": [
     {
       "date": "2026-10-28",
@@ -446,5 +446,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-11-24T00:48:05.407053+00:00"
+  "updated_at": "2026-11-24T09:08:57.121785+00:00"
 }
