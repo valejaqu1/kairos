@@ -4,7 +4,7 @@
   "bets": [
     {
       "away": "Everton",
-      "closing_odds": null,
+      "closing_odds": 3.34,
       "home": "Brentford",
       "kickoff": "2026-11-23T20:00:00Z",
       "league": "Premier League",
@@ -125,14 +125,14 @@
   ],
   "clv": {
     "beats": 13,
-    "total": 19
+    "total": 20
   },
-  "day": 42,
+  "day": 43,
   "death_date": null,
   "delta_cents": -307,
   "diploma": null,
   "diploma_day": 56,
-  "diploma_in": 14,
+  "diploma_in": 13,
   "equity_cents": 9693,
   "generation": 1,
   "health": 0.808,
@@ -304,10 +304,14 @@
     {
       "date": "2026-11-23",
       "equity_cents": 9693
+    },
+    {
+      "date": "2026-11-24",
+      "equity_cents": 9693
     }
   ],
   "hunger_total_cents": 1025,
-  "last_run": "2026-11-23T12:11:16.822070+00:00",
+  "last_run": "2026-11-24T00:48:05.407053+00:00",
   "lessons": [
     "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)",
     "Mes ajustements de quelques points au marché ne le battent pas encore (RPS 0,224 contre 0,223, 14 cas) : n'écarte du marché que sur absence confirmée (14 cas)",
@@ -315,8 +319,8 @@
     "Cette semaine mes prévisions battent à peine le marché (RPS 0,235 contre 0,236, 15 cas) : trop mince pour conclure, je ne m'écarte que sur absences nommées (15 cas)",
     "Sur la semaine, mes prévisions battent à peine le marché (RPS 0,352 contre 0,358, 5 cas) : trop peu pour conclure, je ne m'écarte que sur absences nommées (5 cas)"
   ],
-  "message": "Lundi, jour 42. La faim reprend 25 centimes. Ma cagnotte est remontée ces derniers jours, mais quelques paris ne prouvent rien. Aujourd'hui trois matchs, une page lue pour chacun. Pas de valeur à 0,05 : je place 2 CHF d'apprentissage sur Everton, car Thiago est suspendu côté Brentford. Je ne cherche pas à gagner, je mesure mon jugement. Appris : le modèle voit Monza à 36 %, le marché à 26 % ; sans cause vérifiée, je ne suis pas le modèle.",
-  "message_date": "2026-11-23",
+  "message": null,
+  "message_date": "2026-11-24",
   "mood": "En chasse",
   "name": "Kairos",
   "rank": {
@@ -400,7 +404,7 @@
   ],
   "stats": {
     "bets": 19,
-    "clv_avg": 0.018326315789473684,
+    "clv_avg": 0.013070000000000002,
     "roi": 0.18894736842105264,
     "won": 10
   },
@@ -442,5 +446,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-11-23T12:11:16.822070+00:00"
+  "updated_at": "2026-11-24T00:48:05.407053+00:00"
 }
