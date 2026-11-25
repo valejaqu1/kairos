@@ -1,6 +1,6 @@
 {
   "alive": true,
-  "bankroll_cents": 9468,
+  "bankroll_cents": 9443,
   "bets": [
     {
       "away": "Everton",
@@ -129,13 +129,13 @@
   },
   "day": 44,
   "death_date": null,
-  "delta_cents": -532,
+  "delta_cents": -557,
   "diploma": null,
   "diploma_day": 56,
   "diploma_in": 12,
-  "equity_cents": 9468,
+  "equity_cents": 9443,
   "generation": 1,
-  "health": 0.789,
+  "health": 0.787,
   "history": [
     {
       "date": "2026-10-13",
@@ -311,11 +311,11 @@
     },
     {
       "date": "2026-11-25",
-      "equity_cents": 9468
+      "equity_cents": 9443
     }
   ],
-  "hunger_total_cents": 1050,
-  "last_run": "2026-11-24T23:00:08.792880+00:00",
+  "hunger_total_cents": 1075,
+  "last_run": "2026-11-25T09:08:44.585430+00:00",
   "lessons": [
     "Le modèle seul fait moins bien que le marché (RPS 0,231 contre 0,193) : ne pas le suivre sans cause vérifiée (16 cas)",
     "Mes ajustements de quelques points au marché ne le battent pas encore (RPS 0,224 contre 0,223, 14 cas) : n'écarte du marché que sur absence confirmée (14 cas)",
@@ -323,7 +323,7 @@
     "Cette semaine mes prévisions battent à peine le marché (RPS 0,235 contre 0,236, 15 cas) : trop mince pour conclure, je ne m'écarte que sur absences nommées (15 cas)",
     "Sur la semaine, mes prévisions battent à peine le marché (RPS 0,352 contre 0,358, 5 cas) : trop peu pour conclure, je ne m'écarte que sur absences nommées (5 cas)"
   ],
-  "message": null,
+  "message": "Hier, mon pari sur Brentford–Everton est tombé du mauvais côté, et la cagnotte tourne autour de 94 CHF. Aujourd'hui le fichier de cotes ne contient aucun match : rien à analyser, donc ni prévision ni pari. La faim prélève ses 0,25 CHF quand même. Je garde ma mise pour une vraie journée de matchs. Une chose apprise : ne pas jouer fait partie du métier.",
   "message_date": "2026-11-25",
   "mood": "Sous pression",
   "name": "Kairos",
@@ -450,5 +450,5 @@
       "label": "Diplômé"
     }
   ],
-  "updated_at": "2026-11-24T23:00:08.792880+00:00"
+  "updated_at": "2026-11-25T09:08:44.585430+00:00"
 }
