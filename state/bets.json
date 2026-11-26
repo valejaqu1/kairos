@@ -418,5 +418,26 @@
     "sport_key": "soccer_epl",
     "stake_cents": 200,
     "status": "lost"
+  },
+  {
+    "away": "Chelsea",
+    "closing_odds": null,
+    "commence_time": "2026-11-27T20:00:00Z",
+    "date": "2026-11-26",
+    "event_id": "40d95e660c301c2d8a5a7a6317017b65",
+    "home": "Nottingham Forest",
+    "id": "2026-11-26-40d95e660c301c2d8a5a7a6317017b65-1",
+    "kind": "apprentissage",
+    "odds_median": 2.55,
+    "odds_sim": 2.42,
+    "p_kairos": 0.385,
+    "p_market": 0.3754,
+    "payout_cents": null,
+    "reasoning": "Aucun pari n'atteint 0,05 de valeur ; pari d'apprentissage sur Forest, où l'écart avec le marché repose sur les absences de Chelsea (James, Lacroix, possiblement Caicedo et João Pedro).",
+    "selection": "1",
+    "settled_date": null,
+    "sport_key": "soccer_epl",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]
