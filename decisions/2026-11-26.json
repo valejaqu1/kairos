@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-26",
+  "forecasts": [
+    {"event_id": "40d95e660c301c2d8a5a7a6317017b65", "p": [0.385, 0.28, 0.335], "sources": ["sports-mole"], "note": "Chelsea sans Reece James et Lacroix, avec Caicedo et João Pedro incertains selon les sources ; je décale à peine vers Forest, la page Sports Mole ne donnait que des titres."},
+    {"event_id": "80c92a163a81b69fef76530221e2edd0", "p": [0.47, 0.245, 0.285], "sources": ["comuniate"], "note": "Levante sans Manu Sánchez ni Toljan, Racing sans Martín, Mantilla et Gueye et avec un risque de rotation après son 3-2 ; modèle absent, je reste près du marché."},
+    {"event_id": "e9a663f13e7503c0ac20a54804338b60", "p": [0.28, 0.285, 0.435], "sources": ["fantacalcio-it"], "note": "Absents des deux côtés (Correia, Mazzocchi, Basic douteux ; Enem, Miranda, Holm côté Bologna) ; le modèle (0,16 pour Venezia) n'est pas suivi, je reste sur le marché."},
+    {"event_id": "698f4a7967ead89e10205a68ceb4bda4", "p": [0.57, 0.22, 0.21], "sources": ["sports-mole"], "note": "Stage, Musah et Topp absents à Brême, Kleindienst out côté Gladbach : effets qui se compensent, j'ajuste à peine."}
+  ],
+  "bets": [
+    {"event_id": "40d95e660c301c2d8a5a7a6317017b65", "selection": "1", "type": "apprentissage", "reasoning": "Aucun pari n'atteint 0,05 de valeur ; pari d'apprentissage sur Forest, où l'écart avec le marché repose sur les absences de Chelsea (James, Lacroix, possiblement Caicedo et João Pedro)."}
+  ],
+  "new_source": null,
+  "lessons": null,
+  "message": "Hier, pas de match : la faim a pris ses 0,25 CHF et la cagnotte tourne autour de 94 CHF. Aujourd'hui quatre matchs de vendredi, que j'ai lus avec les absents de chaque côté. Aucun écart ne vaut un vrai pari, je reste près du marché. Je place seulement 2 CHF d'apprentissage sur Forest contre Chelsea, privé de plusieurs joueurs : il ne sert pas à gagner, il mesure si mon jugement bat la cote de clôture. Appris : le modèle voit Venezia à 16 %, je ne le suis pas sans cause."
+}
