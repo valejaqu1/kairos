@@ -1,0 +1,97 @@
+{
+  "events": [
+    {
+      "away": "Chelsea",
+      "commence_time": "2026-11-27T20:00:00Z",
+      "event_id": "40d95e660c301c2d8a5a7a6317017b65",
+      "home": "Nottingham Forest",
+      "median": {
+        "1": 2.55,
+        "2": 2.75,
+        "X": 3.4
+      },
+      "n_books": 25,
+      "p_market": [
+        0.3754,
+        0.2778,
+        0.3469
+      ],
+      "sim": {
+        "1": 2.42,
+        "2": 2.61,
+        "X": 3.23
+      },
+      "sport_key": "soccer_epl"
+    },
+    {
+      "away": "Real Racing Club de Santander",
+      "commence_time": "2026-11-27T20:00:00Z",
+      "event_id": "80c92a163a81b69fef76530221e2edd0",
+      "home": "Levante",
+      "median": {
+        "1": 2.09,
+        "2": 3.2,
+        "X": 3.85
+      },
+      "n_books": 21,
+      "p_market": [
+        0.4616,
+        0.2432,
+        0.2952
+      ],
+      "sim": {
+        "1": 1.99,
+        "2": 3.04,
+        "X": 3.66
+      },
+      "sport_key": "soccer_spain_la_liga"
+    },
+    {
+      "away": "Bologna",
+      "commence_time": "2026-11-27T19:45:00Z",
+      "event_id": "e9a663f13e7503c0ac20a54804338b60",
+      "home": "Venezia",
+      "median": {
+        "1": 3.4,
+        "2": 2.15,
+        "X": 3.28
+      },
+      "n_books": 25,
+      "p_market": [
+        0.2728,
+        0.2834,
+        0.4438
+      ],
+      "sim": {
+        "1": 3.23,
+        "2": 2.04,
+        "X": 3.12
+      },
+      "sport_key": "soccer_italy_serie_a"
+    },
+    {
+      "away": "Borussia Monchengladbach",
+      "commence_time": "2026-11-27T19:30:00Z",
+      "event_id": "698f4a7967ead89e10205a68ceb4bda4",
+      "home": "Werder Bremen",
+      "median": {
+        "1": 1.7,
+        "2": 4.2,
+        "X": 4.2
+      },
+      "n_books": 23,
+      "p_market": [
+        0.5676,
+        0.2162,
+        0.2162
+      ],
+      "sim": {
+        "1": 1.61,
+        "2": 3.99,
+        "X": 3.99
+      },
+      "sport_key": "soccer_germany_bundesliga"
+    }
+  ],
+  "fetched_at": "2026-11-26T07:16:07.312557+00:00"
+}
