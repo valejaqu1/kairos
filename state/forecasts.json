@@ -2904,66 +2904,6 @@
     "void": false
   },
   {
-    "away": "Chelsea",
-    "commence_time": "2026-11-27T20:00:00Z",
-    "date": "2026-11-26",
-    "event_id": "40d95e660c301c2d8a5a7a6317017b65",
-    "home": "Nottingham Forest",
-    "note": "Chelsea sans Reece James et Lacroix, avec Caicedo et João Pedro incertains selon les sources ; je décale à peine vers Forest, la page Sports Mole ne donnait que des titres.",
-    "outcome": null,
-    "p_kairos": [
-      0.385,
-      0.28,
-      0.335
-    ],
-    "p_market": [
-      0.3754,
-      0.2778,
-      0.3469
-    ],
-    "p_model": [
-      0.3935,
-      0.2739,
-      0.3326
-    ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
-    "sources": [
-      "sports-mole"
-    ],
-    "sport_key": "soccer_epl",
-    "void": false
-  },
-  {
-    "away": "Real Racing Club de Santander",
-    "commence_time": "2026-11-27T20:00:00Z",
-    "date": "2026-11-26",
-    "event_id": "80c92a163a81b69fef76530221e2edd0",
-    "home": "Levante",
-    "note": "Levante sans Manu Sánchez ni Toljan, Racing sans Martín, Mantilla et Gueye et avec un risque de rotation après son 3-2 ; modèle absent, je reste près du marché.",
-    "outcome": null,
-    "p_kairos": [
-      0.47,
-      0.245,
-      0.285
-    ],
-    "p_market": [
-      0.4616,
-      0.2432,
-      0.2952
-    ],
-    "p_model": null,
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
-    "sources": [
-      "comuniate"
-    ],
-    "sport_key": "soccer_spain_la_liga",
-    "void": false
-  },
-  {
     "away": "Bologna",
     "commence_time": "2026-11-27T19:45:00Z",
     "date": "2026-11-26",
@@ -3025,6 +2965,158 @@
       "sports-mole"
     ],
     "sport_key": "soccer_germany_bundesliga",
+    "void": false
+  },
+  {
+    "away": "Chelsea",
+    "commence_time": "2026-11-27T20:00:00Z",
+    "date": "2026-11-27",
+    "event_id": "40d95e660c301c2d8a5a7a6317017b65",
+    "home": "Nottingham Forest",
+    "note": "Aucune page datée de ce match n'a donné de nouvelle absence (seulement le titre du aperçu Sports Mole) ; je garde ma prévision d'hier, près du marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.385,
+      0.28,
+      0.335
+    ],
+    "p_market": [
+      0.3776,
+      0.2799,
+      0.3425
+    ],
+    "p_model": [
+      0.3935,
+      0.2739,
+      0.3326
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sports-mole"
+    ],
+    "sport_key": "soccer_epl",
+    "void": false
+  },
+  {
+    "away": "Real Racing Club de Santander",
+    "commence_time": "2026-11-27T20:00:00Z",
+    "date": "2026-11-27",
+    "event_id": "80c92a163a81b69fef76530221e2edd0",
+    "home": "Levante",
+    "note": "Ratkov (Levante) et Guliashvili (Racing) sont douteux selon Comuniate, ce qui se compense ; je reste sur le marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.475,
+      0.24,
+      0.285
+    ],
+    "p_market": [
+      0.4829,
+      0.2363,
+      0.2809
+    ],
+    "p_model": null,
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Atlético Madrid",
+    "commence_time": "2026-11-28T17:30:00Z",
+    "date": "2026-11-27",
+    "event_id": "40236ab976955345ebd1edb72abf6b22",
+    "home": "Elche CF",
+    "note": "Cuti Romero (Atlético) pointe vers une absence à Elche selon Comuniate, Sørloth est blessé aussi : je décale d'un demi-point vers Elche, sans plus.",
+    "outcome": null,
+    "p_kairos": [
+      0.145,
+      0.195,
+      0.66
+    ],
+    "p_market": [
+      0.1352,
+      0.1901,
+      0.6747
+    ],
+    "p_model": null,
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Brentford",
+    "commence_time": "2026-11-28T15:00:00Z",
+    "date": "2026-11-27",
+    "event_id": "ab87184803a63f7b679f1d12b01c3271",
+    "home": "Manchester United",
+    "note": "Recherche sans aucune liste d'absents datée de ce week-end ; je reste au marché, un peu en dessous du modèle.",
+    "outcome": null,
+    "p_kairos": [
+      0.455,
+      0.25,
+      0.295
+    ],
+    "p_market": [
+      0.459,
+      0.2498,
+      0.2912
+    ],
+    "p_model": [
+      0.4057,
+      0.25,
+      0.3443
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sports-mole"
+    ],
+    "sport_key": "soccer_epl",
+    "void": false
+  },
+  {
+    "away": "Coventry City",
+    "commence_time": "2026-11-28T15:00:00Z",
+    "date": "2026-11-27",
+    "event_id": "0bc17a3c7d8153e72b94688960cc603a",
+    "home": "Leeds United",
+    "note": "Pas de liste d'absents fiable trouvée pour ce match ; je suis le marché, le modèle (0,62) ne m'apporte pas de cause.",
+    "outcome": null,
+    "p_kairos": [
+      0.66,
+      0.2,
+      0.14
+    ],
+    "p_market": [
+      0.6646,
+      0.1982,
+      0.1372
+    ],
+    "p_model": [
+      0.6172,
+      0.2195,
+      0.1633
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sports-mole"
+    ],
+    "sport_key": "soccer_epl",
     "void": false
   }
 ]

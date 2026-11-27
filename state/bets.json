@@ -439,5 +439,26 @@
     "sport_key": "soccer_epl",
     "stake_cents": 200,
     "status": "open"
+  },
+  {
+    "away": "Atlético Madrid",
+    "closing_odds": null,
+    "commence_time": "2026-11-28T17:30:00Z",
+    "date": "2026-11-27",
+    "event_id": "40236ab976955345ebd1edb72abf6b22",
+    "home": "Elche CF",
+    "id": "2026-11-27-40236ab976955345ebd1edb72abf6b22-1",
+    "kind": "apprentissage",
+    "odds_median": 6.5,
+    "odds_sim": 6.17,
+    "p_kairos": 0.145,
+    "p_market": 0.1352,
+    "payout_cents": null,
+    "reasoning": "Le pari de Forest est déjà ouvert ; j'apprends sur Elche, où l'absence probable de Cuti Romero et la blessure de Sørloth côté Atlético sont ma seule information, même mince.",
+    "selection": "1",
+    "settled_date": null,
+    "sport_key": "soccer_spain_la_liga",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]
