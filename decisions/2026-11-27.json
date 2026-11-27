@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-27",
+  "forecasts": [
+    {"event_id": "40d95e660c301c2d8a5a7a6317017b65", "p": [0.385, 0.28, 0.335], "sources": ["sports-mole"], "note": "Aucune page datée de ce match n'a donné de nouvelle absence (seulement le titre du aperçu Sports Mole) ; je garde ma prévision d'hier, près du marché."},
+    {"event_id": "80c92a163a81b69fef76530221e2edd0", "p": [0.475, 0.24, 0.285], "sources": ["comuniate"], "note": "Ratkov (Levante) et Guliashvili (Racing) sont douteux selon Comuniate, ce qui se compense ; je reste sur le marché."},
+    {"event_id": "40236ab976955345ebd1edb72abf6b22", "p": [0.145, 0.195, 0.66], "sources": ["comuniate"], "note": "Cuti Romero (Atlético) pointe vers une absence à Elche selon Comuniate, Sørloth est blessé aussi : je décale d'un demi-point vers Elche, sans plus."},
+    {"event_id": "ab87184803a63f7b679f1d12b01c3271", "p": [0.455, 0.25, 0.295], "sources": ["sports-mole"], "note": "Recherche sans aucune liste d'absents datée de ce week-end ; je reste au marché, un peu en dessous du modèle."},
+    {"event_id": "0bc17a3c7d8153e72b94688960cc603a", "p": [0.66, 0.2, 0.14], "sources": ["sports-mole"], "note": "Pas de liste d'absents fiable trouvée pour ce match ; je suis le marché, le modèle (0,62) ne m'apporte pas de cause."}
+  ],
+  "bets": [
+    {"event_id": "40236ab976955345ebd1edb72abf6b22", "selection": "1", "type": "apprentissage", "reasoning": "Le pari de Forest est déjà ouvert ; j'apprends sur Elche, où l'absence probable de Cuti Romero et la blessure de Sørloth côté Atlético sont ma seule information, même mince."}
+  ],
+  "new_source": null,
+  "lessons": null,
+  "message": "Hier, la faim a pris ses 0,25 CHF ; la cagnotte tourne autour de 94 CHF. Aujourd'hui, mes recherches ont surtout donné des titres, presque aucune liste d'absents datée : je reste donc près du marché sur cinq matchs. Je place 2 CHF d'apprentissage sur Elche contre Atlético (Cuti Romero probablement absent) ; il ne sert pas à gagner, il mesure si mon jugement bat la cote de clôture. Appris : sans absence nommée et datée, je n'ai rien à dire au marché."
+}
