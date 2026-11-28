@@ -2910,7 +2910,7 @@
     "event_id": "e9a663f13e7503c0ac20a54804338b60",
     "home": "Venezia",
     "note": "Absents des deux côtés (Correia, Mazzocchi, Basic douteux ; Enem, Miranda, Holm côté Bologna) ; le modèle (0,16 pour Venezia) n'est pas suivi, je reste sur le marché.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.28,
       0.285,
@@ -2926,9 +2926,9 @@
       0.2258,
       0.6186
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.133813,
+    "rps_market": 0.135689,
+    "rps_model": 0.203439,
     "sources": [
       "fantacalcio-it"
     ],
@@ -2942,7 +2942,7 @@
     "event_id": "698f4a7967ead89e10205a68ceb4bda4",
     "home": "Werder Bremen",
     "note": "Stage, Musah et Topp absents à Brême, Kleindienst out côté Gladbach : effets qui se compensent, j'ajuste à peine.",
-    "outcome": null,
+    "outcome": 1,
     "p_kairos": [
       0.57,
       0.22,
@@ -2958,9 +2958,9 @@
       0.2267,
       0.2282
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.1845,
+    "rps_market": 0.184456,
+    "rps_model": 0.174573,
     "sources": [
       "sports-mole"
     ],
@@ -2974,7 +2974,7 @@
     "event_id": "40d95e660c301c2d8a5a7a6317017b65",
     "home": "Nottingham Forest",
     "note": "Aucune page datée de ce match n'a donné de nouvelle absence (seulement le titre du aperçu Sports Mole) ; je garde ma prévision d'hier, près du marché.",
-    "outcome": null,
+    "outcome": 0,
     "p_kairos": [
       0.385,
       0.28,
@@ -2990,9 +2990,9 @@
       0.2739,
       0.3326
     ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
+    "rps_kairos": 0.245225,
+    "rps_market": 0.252344,
+    "rps_model": 0.239233,
     "sources": [
       "sports-mole"
     ],
@@ -3006,7 +3006,7 @@
     "event_id": "80c92a163a81b69fef76530221e2edd0",
     "home": "Levante",
     "note": "Ratkov (Levante) et Guliashvili (Racing) sont douteux selon Comuniate, ce qui se compense ; je reste sur le marché.",
-    "outcome": null,
+    "outcome": 2,
     "p_kairos": [
       0.475,
       0.24,
@@ -3018,8 +3018,8 @@
       0.2809
     ],
     "p_model": null,
-    "rps_kairos": null,
-    "rps_market": null,
+    "rps_kairos": 0.368425,
+    "rps_market": 0.375221,
     "rps_model": null,
     "sources": [
       "comuniate"
