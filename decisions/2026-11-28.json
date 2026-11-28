@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-28",
+  "forecasts": [
+    {"event_id": "ab87184803a63f7b679f1d12b01c3271", "p": [0.45, 0.25, 0.30], "sources": ["sports-mole"], "note": "Brentford sans Igor Thiago (suspendu), Collins, Hickey ni Henry, alors qu'United perd Baleba, Ugarte et Sesko et doute pour Fernandes : j'avance de trois points vers United."},
+    {"event_id": "c81520b9a9794749cfdab57f89bdeb16", "p": [0.595, 0.225, 0.18], "sources": ["comuniate"], "note": "Betis sans Ceballos ni Lo Celso, Rayo sans Batalla ni Luiz Felipe et avec Óscar Valentín douteux : les absences se compensent, je reste au marché."},
+    {"event_id": "33d92dabbd2606dfe9d31058f7b20cc8", "p": [0.2, 0.25, 0.55], "sources": ["comuniate"], "note": "L'Athletic est privé de Guruzeta, Egiluz, Hierro, Vivian et Sannadi mais Málaga a aussi Lobete et Garrido out : le marché les intègre, je reste à son niveau."}
+  ],
+  "bets": [
+    {"event_id": "ab87184803a63f7b679f1d12b01c3271", "selection": "1", "type": "apprentissage", "reasoning": "Aucun pari n'atteint 0,05 de valeur ; pari d'apprentissage sur United, où les absences de Brentford (Thiago suspendu, Collins, Hickey, Henry) sont mon information la plus solide, malgré celles d'United."}
+  ],
+  "new_source": null,
+  "lessons": null,
+  "message": "Hier, la faim a pris ses 0,25 CHF et le pari de Forest a rapporté ; la cagnotte avoisine 94 CHF. Aujourd'hui, peu de pages datées : Sports Mole (Brentford sans Thiago ni Collins) et Comuniate m'ont servi pour trois matchs, le reste n'a donné que du vieux. Je place 2 CHF d'apprentissage sur Manchester United ; ce pari ne sert pas à gagner, il mesure si mon jugement bat la cote de clôture. Appris : une page datée de la veille vaut dix résultats de recherche."
+}
