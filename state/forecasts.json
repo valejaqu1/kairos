@@ -3056,38 +3056,6 @@
     "void": false
   },
   {
-    "away": "Brentford",
-    "commence_time": "2026-11-28T15:00:00Z",
-    "date": "2026-11-27",
-    "event_id": "ab87184803a63f7b679f1d12b01c3271",
-    "home": "Manchester United",
-    "note": "Recherche sans aucune liste d'absents datée de ce week-end ; je reste au marché, un peu en dessous du modèle.",
-    "outcome": null,
-    "p_kairos": [
-      0.455,
-      0.25,
-      0.295
-    ],
-    "p_market": [
-      0.459,
-      0.2498,
-      0.2912
-    ],
-    "p_model": [
-      0.4057,
-      0.25,
-      0.3443
-    ],
-    "rps_kairos": null,
-    "rps_market": null,
-    "rps_model": null,
-    "sources": [
-      "sports-mole"
-    ],
-    "sport_key": "soccer_epl",
-    "void": false
-  },
-  {
     "away": "Coventry City",
     "commence_time": "2026-11-28T15:00:00Z",
     "date": "2026-11-27",
@@ -3117,6 +3085,102 @@
       "sports-mole"
     ],
     "sport_key": "soccer_epl",
+    "void": false
+  },
+  {
+    "away": "Brentford",
+    "commence_time": "2026-11-28T15:00:00Z",
+    "date": "2026-11-28",
+    "event_id": "ab87184803a63f7b679f1d12b01c3271",
+    "home": "Manchester United",
+    "note": "Brentford sans Igor Thiago (suspendu), Collins, Hickey ni Henry, alors qu'United perd Baleba, Ugarte et Sesko et doute pour Fernandes : j'avance de trois points vers United.",
+    "outcome": null,
+    "p_kairos": [
+      0.45,
+      0.25,
+      0.3
+    ],
+    "p_market": [
+      0.4218,
+      0.2522,
+      0.326
+    ],
+    "p_model": [
+      0.4058,
+      0.25,
+      0.3442
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "sports-mole"
+    ],
+    "sport_key": "soccer_epl",
+    "void": false
+  },
+  {
+    "away": "Rayo Vallecano",
+    "commence_time": "2026-11-28T13:00:00Z",
+    "date": "2026-11-28",
+    "event_id": "c81520b9a9794749cfdab57f89bdeb16",
+    "home": "Real Betis",
+    "note": "Betis sans Ceballos ni Lo Celso, Rayo sans Batalla ni Luiz Felipe et avec Óscar Valentín douteux : les absences se compensent, je reste au marché.",
+    "outcome": null,
+    "p_kairos": [
+      0.595,
+      0.225,
+      0.18
+    ],
+    "p_market": [
+      0.6084,
+      0.2166,
+      0.175
+    ],
+    "p_model": [
+      0.5806,
+      0.2438,
+      0.1755
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
+    "void": false
+  },
+  {
+    "away": "Athletic Bilbao",
+    "commence_time": "2026-11-28T15:15:00Z",
+    "date": "2026-11-28",
+    "event_id": "33d92dabbd2606dfe9d31058f7b20cc8",
+    "home": "Málaga",
+    "note": "L'Athletic est privé de Guruzeta, Egiluz, Hierro, Vivian et Sannadi mais Málaga a aussi Lobete et Garrido out : le marché les intègre, je reste à son niveau.",
+    "outcome": null,
+    "p_kairos": [
+      0.2,
+      0.25,
+      0.55
+    ],
+    "p_market": [
+      0.1894,
+      0.2472,
+      0.5634
+    ],
+    "p_model": [
+      0.2121,
+      0.3012,
+      0.4867
+    ],
+    "rps_kairos": null,
+    "rps_market": null,
+    "rps_model": null,
+    "sources": [
+      "comuniate"
+    ],
+    "sport_key": "soccer_spain_la_liga",
     "void": false
   }
 ]

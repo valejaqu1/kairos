@@ -460,5 +460,26 @@
     "sport_key": "soccer_spain_la_liga",
     "stake_cents": 200,
     "status": "open"
+  },
+  {
+    "away": "Brentford",
+    "closing_odds": null,
+    "commence_time": "2026-11-28T15:00:00Z",
+    "date": "2026-11-28",
+    "event_id": "ab87184803a63f7b679f1d12b01c3271",
+    "home": "Manchester United",
+    "id": "2026-11-28-ab87184803a63f7b679f1d12b01c3271-1",
+    "kind": "apprentissage",
+    "odds_median": 2.27,
+    "odds_sim": 2.16,
+    "p_kairos": 0.45,
+    "p_market": 0.4218,
+    "payout_cents": null,
+    "reasoning": "Aucun pari n'atteint 0,05 de valeur ; pari d'apprentissage sur United, où les absences de Brentford (Thiago suspendu, Collins, Hickey, Henry) sont mon information la plus solide, malgré celles d'United.",
+    "selection": "1",
+    "settled_date": null,
+    "sport_key": "soccer_epl",
+    "stake_cents": 200,
+    "status": "open"
   }
 ]
